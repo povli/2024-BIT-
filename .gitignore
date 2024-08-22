@@ -1,0 +1,63 @@
+# 编译生成的二进制文件
+*.o
+*.obj
+*.so
+*.a
+*.lib
+*.dll
+*.exe
+
+# CMake生成的文件
+CMakeFiles/
+CMakeCache.txt
+cmake_install.cmake
+Makefile
+CMakeLists.txt.user
+CTestTestfile.cmake
+
+# Qt Creator生成的文件
+*.pro.user
+*.qbs.user
+*.pro.user.*
+*.qbs.user.*
+*.pro.user.version
+*.qbs.user.version
+*.autosave
+*.moc
+*.qmake.stash
+*.qmake.cache
+*.qrc
+*.qmlc
+*.qmltypes
+*.rcc
+
+# CLion生成的文件
+.idea/
+*.iml
+*.iws
+cmake-build-*/
+
+# Qt编译生成的文件
+*.moc
+*.qrc
+*.rcc
+*.cxx
+*.cpp
+*.h
+*.o
+*.so
+
+# 忽略日志文件和临时文件
+*.log
+*.tmp
+*.bak
+*.swp
+*~
+
+# 系统生成的文件
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# 覆盖其他配置
+# 如果有其他自定义规则，可以在这里添加
