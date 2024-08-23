@@ -2,7 +2,6 @@ cmake_minimum_required(VERSION 3.29)
 project(mainServer)
 
 set(CMAKE_CXX_STANDARD 14)
-
 #添加头文件搜索路径
 include_directories(/usr/local/include)
 #添加库文件搜索路径
@@ -26,8 +25,6 @@ find_package(absl REQUIRED)
 #find_package(Boost 1.70 REQUIRED COMPONENTS system filesystem)
 #find_package(Boost 1.86 REQUIRED COMPONENTS system filesystem)
 find_package(Boost REQUIRED)
-
-
 
 add_executable(mainServer main.cpp
         AsioIOServicePool.cpp
@@ -60,9 +57,7 @@ add_executable(mainServer main.cpp
         UserMgr.cpp
         UserMgr.h
         message.grpc.pb.cc
-        message.pb.cc
-)
-
+        message.pb.cc)
 
 # 链接Boost库
 target_link_libraries(mainServer
@@ -129,4 +124,3 @@ target_link_libraries(mainServer
 
 target_link_libraries(mainServer hiredis)
 target_link_libraries(mainServer ${MYSQLCPPCONN_LIB})
-
