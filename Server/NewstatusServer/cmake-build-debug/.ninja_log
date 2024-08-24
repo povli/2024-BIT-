@@ -1,0 +1,25 @@
+# ninja log v6
+33688	35795	1724232322344706447	CMakeFiles/NewstatusServer.dir/message.pb.cc.o	d871d497de9b74ec
+42330	47652	1724232330982481516	NewstatusServer	6f4d83ec45e3b4c3
+23943	31374	1724232312598194383	CMakeFiles/NewstatusServer.dir/MysqlMgr.cpp.o	9a60ae4c383af080
+23954	33687	1724232312606210275	CMakeFiles/NewstatusServer.dir/RedisMgr.cpp.o	c001bddd1d693d91
+33027	38249	1724232321683496421	CMakeFiles/NewstatusServer.dir/message.grpc.pb.cc.o	4118f9623a620fac
+44	7557	1724232288699943059	CMakeFiles/NewstatusServer.dir/AsioIOServicePool.cpp.o	3d9111f41764c53d
+7622	23943	1724232296274909836	CMakeFiles/NewstatusServer.dir/ConfigMgr.cpp.o	1c365d016aad0ba3
+52	23666	1724232288707964314	CMakeFiles/NewstatusServer.dir/ChatGrpcClient.cpp.o	ed90888857f66668
+31374	42330	1724232320028441774	CMakeFiles/NewstatusServer.dir/StatusServiceImpl.cpp.o	51713ceece0464c2
+35	23954	1724232288691921805	CMakeFiles/NewstatusServer.dir/main.cpp.o	f2afd5ce9e1d9d0f
+23682	33025	1724232312333669957	CMakeFiles/NewstatusServer.dir/MysqlDao.cpp.o	2fcfc42c5ab4a75f
+91	10559	1724311519323207653	CMakeFiles/NewstatusServer.dir/ConfigMgr.cpp.o	905042ff03f3967b
+79	11834	1724311519311156425	CMakeFiles/NewstatusServer.dir/AsioIOServicePool.cpp.o	5d6ee5ccc7aa4b47
+45	75679	1724311519275002741	CMakeFiles/NewstatusServer.dir/main.cpp.o	e496c23fb680b3cb
+82	75703	1724311519315173501	CMakeFiles/NewstatusServer.dir/ChatGrpcClient.cpp.o	9a2074797dd7c2b2
+11835	75705	1724311531063760197	CMakeFiles/NewstatusServer.dir/MysqlMgr.cpp.o	6b9530d65c9c39a4
+10618	77095	1724311529851619315	CMakeFiles/NewstatusServer.dir/MysqlDao.cpp.o	cc8092d3dbf28bb1
+77096	78994	1724311596320699835	CMakeFiles/NewstatusServer.dir/message.pb.cc.o	2309f35a497352f4
+75705	79669	1724311594934685374	CMakeFiles/NewstatusServer.dir/message.grpc.pb.cc.o	adbd0f0482561e3
+75691	82233	1724311594922667792	CMakeFiles/NewstatusServer.dir/RedisMgr.cpp.o	b8673e51fc1b249f
+75703	83409	1724311594934685374	CMakeFiles/NewstatusServer.dir/StatusServiceImpl.cpp.o	c9cb47558344e568
+83409	86639	1724311602637701362	NewstatusServer	6f4d83ec45e3b4c3
+65	9386	1724415916972998601	CMakeFiles/NewstatusServer.dir/StatusServiceImpl.cpp.o	c9cb47558344e568
+9386	12557	1724415926300793540	NewstatusServer	6f4d83ec45e3b4c3

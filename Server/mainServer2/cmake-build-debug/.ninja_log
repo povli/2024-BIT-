@@ -1,0 +1,18 @@
+# ninja log v6
+4	7720	1724430886255844332	CMakeFiles/mainServer2.dir/AsioIOServicePool.cpp.o	4ba8158923fb210c
+7723	12405	1724430893977817823	CMakeFiles/mainServer2.dir/ConfigMgr.cpp.o	a273cd9fe5e69f13
+8	16044	1724430886259862116	CMakeFiles/mainServer2.dir/ChatServiceImpl.cpp.o	3d9367b79eb388f4
+1	17677	1724430886255844332	CMakeFiles/mainServer2.dir/main.cpp.o	bec3e09157464945
+6	17746	1724430886259862116	CMakeFiles/mainServer2.dir/ChatGrpcClient.cpp.o	4a54bbe3c829eb02
+17746	20475	1724430903997433178	CMakeFiles/mainServer2.dir/MsgNode.cpp.o	de6615f80353352d
+12406	22346	1724430898658240534	CMakeFiles/mainServer2.dir/CServer.cpp.o	742c0de025c58083
+22346	23513	1724430908597348135	CMakeFiles/mainServer2.dir/MysqlMgr.cpp.o	a148e6721d2799a8
+20475	23691	1724430906729266514	CMakeFiles/mainServer2.dir/MysqlDao.cpp.o	566af4f40f20010e
+16047	25079	1724430902298061220	CMakeFiles/mainServer2.dir/CSession.cpp.o	f5d2766b16e4c5ec
+23514	25770	1724430909766402048	CMakeFiles/mainServer2.dir/RedisMgr.cpp.o	b8281c291783bac2
+23691	28736	1724430909943166092	CMakeFiles/mainServer2.dir/StatusGrpcClient.cpp.o	e9c3627f958bdf04
+25770	31016	1724430912020137855	CMakeFiles/mainServer2.dir/message.grpc.pb.cc.o	f3fef161fccc871e
+25080	31029	1724430911333171091	CMakeFiles/mainServer2.dir/UserMgr.cpp.o	f99a63fd8530b804
+17678	31523	1724430903933154412	CMakeFiles/mainServer2.dir/LogicSystem.cpp.o	f3ee3f20f7da5043
+28736	31892	1724430914988949583	CMakeFiles/mainServer2.dir/message.pb.cc.o	7571db3d1bac5436
+31893	36701	1724430918146562664	mainServer2	27aafb2432dcba5f
