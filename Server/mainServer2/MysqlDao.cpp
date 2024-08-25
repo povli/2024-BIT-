@@ -331,10 +331,10 @@ std::shared_ptr<UserInfo> MysqlDao::GetUser(int uid)
 			user_ptr->pwd = res->getString("pwd");
 			user_ptr->email = res->getString("email");
 			user_ptr->name= res->getString("name");
-			user_ptr->nick = res->getString("nick");
+			/*user_ptr->nick = res->getString("nick");
 			user_ptr->desc = res->getString("desc");
 			user_ptr->sex = res->getInt("sex");
-			user_ptr->icon = res->getString("icon");
+			user_ptr->icon = res->getString("icon");*/
 			user_ptr->uid = uid;
 			break;
 		}
@@ -373,9 +373,9 @@ std::shared_ptr<UserInfo> MysqlDao::GetUser(std::string name)
 			user_ptr->pwd = res->getString("pwd");
 			user_ptr->email = res->getString("email");
 			user_ptr->name = res->getString("name");
-			user_ptr->nick = res->getString("nick");
+			/*user_ptr->nick = res->getString("nick");
 			user_ptr->desc = res->getString("desc");
-			user_ptr->sex = res->getInt("sex");
+			user_ptr->sex = res->getInt("sex");*/
 			user_ptr->uid = res->getInt("uid");
 			break;
 		}
@@ -462,7 +462,7 @@ bool MysqlDao::GetFriendList(int self_id, std::vector<std::shared_ptr<UserInfo> 
 				continue;
 			}
 
-			user_info->back = user_info->name;
+			//user_info->back = user_info->name;
 			user_info_list.push_back(user_info);
 		}
 		return true;

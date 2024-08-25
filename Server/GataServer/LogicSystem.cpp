@@ -120,8 +120,9 @@ LogicSystem::LogicSystem() {
 			beast::ostream(connection->_response.body()) << jsonstr;
 			return true;
 		}
+		std::string uuid=std::to_string(uid);
 		root["error"] = 0;
-		root["uid"] = uid;
+		root["uid"] = uuid;
 		root["email"] = email;
 		root ["user"]= name;
 		root["passwd"] = pwd;
@@ -132,6 +133,51 @@ LogicSystem::LogicSystem() {
 		beast::ostream(connection->_response.body()) << jsonstr;
 		return true;
 		});
+
+	RegPost("/user_addInfo", [](std::shared_ptr<HttpConnection> connection) {
+		auto body_str = boost::beast::buffers_to_string(connection->_request.body().data());
+	std::cout << "receive body is " << body_str << std::endl;
+	connection->_response.set(http::field::content_type, "text/json");
+	Json::Value root;
+	Json::Reader reader;
+	Json::Value src_root;
+	bool parse_success = reader.parse(body_str, src_root);
+	if (!parse_success) {
+		std::cout << "Failed to parse JSON data!" << std::endl;
+		root["error"] = ErrorCodes::Error_Json;
+		std::string jsonstr = root.toStyledString();
+		beast::ostream(connection->_response.body()) << jsonstr;
+		return true;
+	}
+		auto uid = src_root["uid"].asString();
+		std::cout<<"uid is "<<uid<<std::endl;
+		auto name = src_root["name"].asString();
+		auto sex=src_root["sex"].asString();
+		auto year = src_root["year"].asString();
+		auto month = src_root["month"].asString();
+		auto data = src_root["data"].asString();
+		auto IDcard = src_root["IDcard"].asString();
+		auto phone = src_root["phone"].asString();
+		int uuid=std::stoi(uid);
+		int ssex=std::stoi(sex);
+		bool user_info_check=MysqlMgr::GetInstance()->UpdateUserDetails(uuid,name,ssex,year,month,data,IDcard,phone);
+		if(!user_info_check) {
+			std::cout << " user info updata in reg failed" << std::endl;
+			root["error"] = ErrorCodes::UPDATA_USER_INFO_IN_REG_FAIL;
+			std::string jsonstr = root.toStyledString();
+			beast::ostream(connection->_response.body()) << jsonstr;
+			return true;
+		}
+
+		std::cout << " user info updata in reg success" << std::endl;
+		root["error"] = 0;
+		root["uid"] = uid;
+		root["name"] = name;
+		std::string jsonstr = root.toStyledString();
+		beast::ostream(connection->_response.body()) << jsonstr;
+		return true;
+
+	});
 
 	//重置回调逻辑
 	RegPost("/reset_pwd", [](std::shared_ptr<HttpConnection> connection) {

@@ -178,3 +178,43 @@ bool MysqlDao::CheckPwd(const std::string& email, const std::string& pwd, UserIn
 		return false;
 	}
 }
+
+bool MysqlDao::UpdateUserDetails(int uid, const std::string& realname, int sex, const std::string& year, const std::string& month, const std::string& data, const std::string& IDcard, const std::string& phone) {
+	auto con = pool_->getConnection();
+	try {
+		if (con == nullptr) {
+			pool_->returnConnection(std::move(con));
+			return false;
+		}
+
+		// 准备更新语句
+		std::unique_ptr<sql::PreparedStatement> pstmt(con->_con->prepareStatement(
+			"UPDATE user SET realname = ?, sex = ?, year = ?, month = ?, data = ?, IDcard = ?, phone = ? WHERE uid = ?"
+		));
+
+		// 绑定参数
+		pstmt->setString(1, realname); // 绑定 realname
+		pstmt->setInt(2, sex); // 绑定 sex
+		pstmt->setString(3, year); // 绑定 year
+		pstmt->setString(4, month); // 绑定 month
+		pstmt->setString(5, data); // 绑定 data
+		pstmt->setString(6, IDcard); // 绑定 IDcard
+		pstmt->setString(7, phone); // 绑定 phone
+		pstmt->setInt(8, uid); // 绑定 uid
+
+		// 执行更新
+		int rowsAffected = pstmt->executeUpdate();
+		pool_->returnConnection(std::move(con));
+
+		// 检查更新是否成功
+		return (rowsAffected > 0);
+	}
+	catch (sql::SQLException& e) {
+		pool_->returnConnection(std::move(con));
+		std::cerr << "SQLException: " << e.what();
+		std::cerr << " (MySQL error code: " << e.getErrorCode();
+		std::cerr << ", SQLState: " << e.getSQLState() << " )" << std::endl;
+		return false;
+	}
+}
+

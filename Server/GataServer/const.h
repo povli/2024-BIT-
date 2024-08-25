@@ -49,6 +49,7 @@ enum ErrorCodes {
     PasswdInvalid = 1009,   //密码更新失败
     TokenInvalid = 1010,   //Token失效
     UidInvalid = 1011,  //uid无效
+    UPDATA_USER_INFO_IN_REG_FAIL=1012,//在注册时更新用户数据失败
 };
 
 

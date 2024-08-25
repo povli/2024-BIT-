@@ -1,3 +1,0 @@
-/home/user/2024.8BIT_Project/2024-BIT-/Server/NewstatusServer/cmake-build-debug/CMakeFiles/NewstatusServer.dir
-/home/user/2024.8BIT_Project/2024-BIT-/Server/NewstatusServer/cmake-build-debug/CMakeFiles/edit_cache.dir
-/home/user/2024.8BIT_Project/2024-BIT-/Server/NewstatusServer/cmake-build-debug/CMakeFiles/rebuild_cache.dir

@@ -134,10 +134,10 @@ void LogicSystem::LoginHandler(shared_ptr<CSession> session, const short &msg_id
 	rtvalue["pwd"] = user_info->pwd;
 	rtvalue["name"] = user_info->name;
 	rtvalue["email"] = user_info->email;
-	rtvalue["nick"] = user_info->nick;
-	rtvalue["desc"] = user_info->desc;
-	rtvalue["sex"] = user_info->sex;
-	rtvalue["icon"] = user_info->icon;
+	//rtvalue["nick"] = user_info->nick;
+	//rtvalue["desc"] = user_info->desc;
+	//rtvalue["sex"] = user_info->sex;
+	//rtvalue["icon"] = user_info->icon;
 
 	//从数据库获取申请列表
 	/*std::vector<std::shared_ptr<ApplyInfo>> apply_list;
@@ -269,9 +269,9 @@ void LogicSystem::AddFriendApply(std::shared_ptr<CSession> session, const short&
 			notify["name"] = applyname;
 			notify["desc"] = "";
 			if (b_info) {
-				notify["icon"] = apply_info->icon;
-				notify["sex"] = apply_info->sex;
-				notify["nick"] = apply_info->nick;
+				//notify["icon"] = apply_info->icon;
+				//notify["sex"] = apply_info->sex;
+				//notify["nick"] = apply_info->nick;
 			}
 			std::string return_str = notify.toStyledString();
 			session->Send(return_str, ID_NOTIFY_ADD_FRIEND_REQ);
@@ -287,9 +287,9 @@ void LogicSystem::AddFriendApply(std::shared_ptr<CSession> session, const short&
 	add_req.set_name(applyname);
 	add_req.set_desc("");
 	if (b_info) {
-		add_req.set_icon(apply_info->icon);
-		add_req.set_sex(apply_info->sex);
-		add_req.set_nick(apply_info->nick);
+		//add_req.set_icon(apply_info->icon);
+		//add_req.set_sex(apply_info->sex);
+		//add_req.set_nick(apply_info->nick);
 	}
 
 	//发送通知
@@ -316,9 +316,9 @@ void LogicSystem::AuthFriendApply(std::shared_ptr<CSession> session, const short
 	bool b_info = GetBaseInfo(base_key, touid, user_info);
 	if (b_info) {
 		rtvalue["name"] = user_info->name;
-		rtvalue["nick"] = user_info->nick;
-		rtvalue["icon"] = user_info->icon;
-		rtvalue["sex"] = user_info->sex;
+		//rtvalue["nick"] = user_info->nick;
+		//rtvalue["icon"] = user_info->icon;
+		//rtvalue["sex"] = user_info->sex;
 		rtvalue["uid"] = touid;
 	}
 	else {
@@ -362,9 +362,9 @@ void LogicSystem::AuthFriendApply(std::shared_ptr<CSession> session, const short
 			bool b_info = GetBaseInfo(base_key, uid, user_info);
 			if (b_info) {
 				notify["name"] = user_info->name;
-				notify["nick"] = user_info->nick;
-				notify["icon"] = user_info->icon;
-				notify["sex"] = user_info->sex;
+				///notify["nick"] = user_info->nick;
+				//notify["icon"] = user_info->icon;
+				//notify["sex"] = user_info->sex;
 			}
 			else {
 				notify["error"] = ErrorCodes::UidInvalid;
@@ -480,21 +480,21 @@ void LogicSystem::GetUserByUid(std::string uid_str, Json::Value& rtvalue)
 		auto name = root["name"].asString();
 		auto pwd = root["pwd"].asString();
 		auto email = root["email"].asString();
-		auto nick = root["nick"].asString();
-		auto desc = root["desc"].asString();
-		auto sex = root["sex"].asInt();
-		auto icon = root["icon"].asString();
+		//auto nick = root["nick"].asString();
+		//auto desc = root["desc"].asString();
+		//auto sex = root["sex"].asInt();
+		//auto icon = root["icon"].asString();
 		std::cout << "user  uid is  " << uid << " name  is "
-			<< name << " pwd is " << pwd << " email is " << email <<" icon is " << icon << endl;
+			<< name << " pwd is " << pwd << " email is " << email << endl;
 
 		rtvalue["uid"] = uid;
 		rtvalue["pwd"] = pwd;
 		rtvalue["name"] = name;
 		rtvalue["email"] = email;
-		rtvalue["nick"] = nick;
-		rtvalue["desc"] = desc;
-		rtvalue["sex"] = sex;
-		rtvalue["icon"] = icon;
+		//rtvalue["nick"] = nick;
+		/////rtvalue["desc"] = desc;
+		//rtvalue["sex"] = sex;
+		//rtvalue["icon"] = icon;
 		return;
 	}
 
@@ -514,10 +514,10 @@ void LogicSystem::GetUserByUid(std::string uid_str, Json::Value& rtvalue)
 	redis_root["pwd"] = user_info->pwd;
 	redis_root["name"] = user_info->name;
 	redis_root["email"] = user_info->email;
-	redis_root["nick"] = user_info->nick;
-	redis_root["desc"] = user_info->desc;
-	redis_root["sex"] = user_info->sex;
-	redis_root["icon"] = user_info->icon;
+	//redis_root["nick"] = user_info->nick;
+	///redis_root["desc"] = user_info->desc;
+	//redis_root["sex"] = user_info->sex;
+	//redis_root["icon"] = user_info->icon;
 
 	RedisMgr::GetInstance()->Set(base_key, redis_root.toStyledString());
 
@@ -526,10 +526,10 @@ void LogicSystem::GetUserByUid(std::string uid_str, Json::Value& rtvalue)
 	rtvalue["pwd"] = user_info->pwd;
 	rtvalue["name"] = user_info->name;
 	rtvalue["email"] = user_info->email;
-	rtvalue["nick"] = user_info->nick;
-	rtvalue["desc"] = user_info->desc;
-	rtvalue["sex"] = user_info->sex;
-	rtvalue["icon"] = user_info->icon;
+	//rtvalue["nick"] = user_info->nick;
+	//rtvalue["desc"] = user_info->desc;
+	//rtvalue["sex"] = user_info->sex;
+	//rtvalue["icon"] = user_info->icon;
 }
 
 void LogicSystem::GetUserByName(std::string name, Json::Value& rtvalue)
@@ -549,9 +549,9 @@ void LogicSystem::GetUserByName(std::string name, Json::Value& rtvalue)
 		auto name = root["name"].asString();
 		auto pwd = root["pwd"].asString();
 		auto email = root["email"].asString();
-		auto nick = root["nick"].asString();
-		auto desc = root["desc"].asString();
-		auto sex = root["sex"].asInt();
+		//auto nick = root["nick"].asString();
+		//auto desc = root["desc"].asString();
+		//auto sex = root["sex"].asInt();
 		std::cout << "user  uid is  " << uid << " name  is "
 			<< name << " pwd is " << pwd << " email is " << email << endl;
 
@@ -559,9 +559,9 @@ void LogicSystem::GetUserByName(std::string name, Json::Value& rtvalue)
 		rtvalue["pwd"] = pwd;
 		rtvalue["name"] = name;
 		rtvalue["email"] = email;
-		rtvalue["nick"] = nick;
-		rtvalue["desc"] = desc;
-		rtvalue["sex"] = sex;
+		//rtvalue["nick"] = nick;
+		//rtvalue["desc"] = desc;
+		//rtvalue["sex"] = sex;
 		return;
 	}
 
@@ -580,9 +580,9 @@ void LogicSystem::GetUserByName(std::string name, Json::Value& rtvalue)
 	redis_root["pwd"] = user_info->pwd;
 	redis_root["name"] = user_info->name;
 	redis_root["email"] = user_info->email;
-	redis_root["nick"] = user_info->nick;
-	redis_root["desc"] = user_info->desc;
-	redis_root["sex"] = user_info->sex;
+	//redis_root["nick"] = user_info->nick;
+	//redis_root["desc"] = user_info->desc;
+	//redis_root["sex"] = user_info->sex;
 
 	RedisMgr::GetInstance()->Set(base_key, redis_root.toStyledString());
 
@@ -591,9 +591,9 @@ void LogicSystem::GetUserByName(std::string name, Json::Value& rtvalue)
 	rtvalue["pwd"] = user_info->pwd;
 	rtvalue["name"] = user_info->name;
 	rtvalue["email"] = user_info->email;
-	rtvalue["nick"] = user_info->nick;
-	rtvalue["desc"] = user_info->desc;
-	rtvalue["sex"] = user_info->sex;
+	//rtvalue["nick"] = user_info->nick;
+	//rtvalue["desc"] = user_info->desc;
+	//rtvalue["sex"] = user_info->sex;
 }
 
 bool LogicSystem::GetBaseInfo(std::string base_key, int uid, std::shared_ptr<UserInfo>& userinfo)
@@ -609,10 +609,10 @@ bool LogicSystem::GetBaseInfo(std::string base_key, int uid, std::shared_ptr<Use
 		userinfo->name = root["name"].asString();
 		userinfo->pwd = root["pwd"].asString();
 		userinfo->email = root["email"].asString();
-		userinfo->nick = root["nick"].asString();
-		userinfo->desc = root["desc"].asString();
-		userinfo->sex = root["sex"].asInt();
-		userinfo->icon = root["icon"].asString();
+		//userinfo->nick = root["nick"].asString();
+		//userinfo->desc = root["desc"].asString();
+		/////userinfo->sex = root["sex"].asInt();
+		//userinfo->icon = root["icon"].asString();
 		std::cout << "user login uid is  " << userinfo->uid << " name  is "
 			<< userinfo->name << " pwd is " << userinfo->pwd << " email is " << userinfo->email << endl;
 	}
@@ -633,10 +633,10 @@ bool LogicSystem::GetBaseInfo(std::string base_key, int uid, std::shared_ptr<Use
 		redis_root["pwd"] = userinfo->pwd;
 		redis_root["name"] = userinfo->name;
 		redis_root["email"] = userinfo->email;
-		redis_root["nick"] = userinfo->nick;
-		redis_root["desc"] = userinfo->desc;
-		redis_root["sex"] = userinfo->sex;
-		redis_root["icon"] = userinfo->icon;
+		//redis_root["nick"] = userinfo->nick;
+		//redis_root["desc"] = userinfo->desc;
+		//redis_root["sex"] = userinfo->sex;
+		//redis_root["icon"] = userinfo->icon;
 		RedisMgr::GetInstance()->Set(base_key, redis_root.toStyledString());
 	}
 
