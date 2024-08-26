@@ -41,6 +41,14 @@ bool MysqlMgr::UpdateDoctorDetails(const std::string& workID, const std::string&
     return _dao.UpdateDoctorDetails(workID,name,sex,year, month, data,  IDcard, phone, department_id, intr);
 }
 
+bool MysqlMgr::CheckDoctorEmail(const std::string& workID, const std::string& email) {
+    return _dao.CheckDoctorEmail(workID, email);
+}
+
 bool MysqlMgr::CheckDoctorPwd(const std::string& workID, const std::string& pwd, DoctorInfo& doctorInfo) {
     return _dao.CheckDoctorPwd(workID, pwd, doctorInfo);
+}
+
+bool MysqlMgr::UpdateDoctorPwd(const std::string& workID, const std::string& newpwd) {
+    return _dao.UpdateDoctorPwd(workID, newpwd);
 }

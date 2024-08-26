@@ -109,6 +109,46 @@ int MysqlDao::RegUser(const std::string& name, const std::string& email, const s
 	}
 }
 
+
+bool MysqlDao::CheckDoctorEmail(const std::string& workID, const std::string& email) {
+	auto con = pool_->getConnection();
+	try {
+		if (con == nullptr) {
+			pool_->returnConnection(std::move(con));
+			return false;
+		}
+
+		// 准备查询语句
+		std::unique_ptr<sql::PreparedStatement> pstmt(con->_con->prepareStatement("SELECT email FROM doctors WHERE workID = ?"));
+
+		// 绑定参数
+		pstmt->setString(1, workID);
+
+		// 执行查询
+		std::unique_ptr<sql::ResultSet> res(pstmt->executeQuery());
+
+		// 遍历结果集
+		while (res->next()) {
+			std::cout << "Check Doctor Email: " << res->getString("email") << std::endl;
+			if (email != res->getString("email")) {
+				pool_->returnConnection(std::move(con));
+				return false;
+			}
+			pool_->returnConnection(std::move(con));
+			return true;
+		}
+	}
+	catch (sql::SQLException& e) {
+		pool_->returnConnection(std::move(con));
+		std::cerr << "SQLException: " << e.what();
+		std::cerr << " (MySQL error code: " << e.getErrorCode();
+		std::cerr << ", SQLState: " << e.getSQLState() << " )" << std::endl;
+		return false;
+	}
+	return false;  // 如果没有找到匹配的记录，返回false
+}
+
+
 bool MysqlDao::CheckEmail(const std::string& name, const std::string& email) {
 	auto con = pool_->getConnection();
 	try {
@@ -146,6 +186,8 @@ bool MysqlDao::CheckEmail(const std::string& name, const std::string& email) {
 	}
 }
 
+
+
 bool MysqlDao::UpdatePwd(const std::string& name, const std::string& newpwd) {
 	auto con = pool_->getConnection();
 	try {
@@ -176,9 +218,39 @@ bool MysqlDao::UpdatePwd(const std::string& name, const std::string& newpwd) {
 		return false;
 	}
 
-
-
 }
+
+bool MysqlDao::UpdateDoctorPwd(const std::string& workID, const std::string& newpwd) {
+	auto con = pool_->getConnection();
+	try {
+		if (con == nullptr) {
+			pool_->returnConnection(std::move(con));
+			return false;
+		}
+
+		// 准备更新语句
+		std::unique_ptr<sql::PreparedStatement> pstmt(con->_con->prepareStatement("UPDATE doctors SET pwd = ? WHERE workID = ?"));
+
+		// 绑定参数
+		pstmt->setString(1, newpwd);
+		pstmt->setString(2, workID);
+
+		// 执行更新
+		int updateCount = pstmt->executeUpdate();
+
+		std::cout << "Updated rows: " << updateCount << std::endl;
+		pool_->returnConnection(std::move(con));
+		return updateCount > 0;
+	}
+	catch (sql::SQLException& e) {
+		pool_->returnConnection(std::move(con));
+		std::cerr << "SQLException: " << e.what();
+		std::cerr << " (MySQL error code: " << e.getErrorCode();
+		std::cerr << ", SQLState: " << e.getSQLState() << " )" << std::endl;
+		return false;
+	}
+}
+
 
 
 

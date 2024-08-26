@@ -170,6 +170,8 @@ public:
 	bool UpdateUserDetails(int uid, const std::string& realname, int sex, const std::string& year, const std::string& month, const std::string& data, const std::string& IDcard, const std::string& phone);
 	bool UpdateDoctorDetails(const std::string& workID, const std::string& name, int sex, const std::string& year, const std::string& month, const std::string& data, const std::string& IDcard, const std::string& phone, int department_id, const std::string& intr);
 	//bool UpdateDoctorDetails(const std::string& workID, const std::string& name, int sex, const std::string& year, const std::string& month, const std::string& data, const std::string& IDcard, const std::string& phone, int department_id, const std::string& intr);
+	bool CheckDoctorEmail(const std::string& workID, const std::string& email);
+	bool UpdateDoctorPwd(const std::string& workID, const std::string& newpwd);
 
 
 

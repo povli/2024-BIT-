@@ -243,11 +243,11 @@ void ResetDialog::on_sure_btn_clicked()
 
     //发送http重置用户请求
     QJsonObject json_obj;
-    json_obj["user"] = ui->user_edit->text();
+    json_obj["workID"] = ui->user_edit->text();
     json_obj["email"] = ui->email_edit->text();
     json_obj["passwd"] = xorString(ui->pwd_edit->text());
     json_obj["varifycode"] = ui->varify_edit->text();
-    HttpMgr::GetInstance()->PostHttpReq(QUrl(gate_url_prefix+"/reset_pwd"),
+    HttpMgr::GetInstance()->PostHttpReq(QUrl(gate_url_prefix+"/doctor_reset_pwd"),
                                         json_obj, ReqId::ID_RESET_PWD,Moudles::RESETMOD);
 }
 

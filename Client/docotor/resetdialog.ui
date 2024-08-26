@@ -79,7 +79,7 @@
          </size>
         </property>
         <property name="text">
-         <string>用户名：</string>
+         <string>工号：</string>
         </property>
        </widget>
       </item>
