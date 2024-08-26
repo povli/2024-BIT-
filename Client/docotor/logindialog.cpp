@@ -222,6 +222,7 @@ void LoginDialog::initHttpHandlers()
 
 void LoginDialog::on_loginBtn_clicked()
 {
+    //emit TcpMgr::GetInstance()->sig_swich_chatdlg();
     qDebug()<<"login btn clicked";
     if(checkUserValid() == false){
         return;

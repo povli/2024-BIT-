@@ -2,10 +2,9 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
-#include "logindialog.h"
-#include"registerdialog.h"
-#include"resetdialog.h"
-//#include"pmainwindow.h"
+#include <QTableWidgetItem>
+#include"pinf.h"
+#include"information.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -18,20 +17,52 @@ class MainWindow : public QMainWindow
 public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
-public slots:
-    void slotSwitchRrg();
-    void slotSwitchLogin();
-    void slotSwitchReset();
-    void SlotSwitchLogin2();
 
-    void SlotSwitchMain();
+    //限制输入文本框
+    QString content();
+    void setMaxWordNum(const int maxNum);
+    void setTitle(const QString& title);
+    void setContent(const QString& content);
+    void paintEvent(QPaintEvent *event) override; // 覆盖 paintEvent 方法以添加背景图
+
+    //不同ui界面跳转
+    pinf *window = NULL;
+    information *window1 =NULL;
+
+//public slots:
+//    void on_PI_clicked();
+//    void on_WA_clicked();
+//    void on_return_1_clicked();
+//    void on_return_2_clicked();
+//private slots:
+//    void switchPage();
+//protected:
+//    void resizeEvent(QResizeEvent* event);
+
+
+private slots:
+    void slot_handleInput();
+//    void on_buttonBox_rejected();
+//    void on_buttonBox_accepted();
+
+    void on_pushButton_4_clicked();
+    void on_pushButton_5_clicked();
+
+    void on_checkBox_clicked();
+    void on_PI_clicked();
+    void on_INF_clicked();
+
+
+//    void on_tableWidget_itemDoubleClicked(QTableWidgetItem *item);
+//    void on_tableView_doubleClicked(const QModelIndex &index);
 
 private:
     Ui::MainWindow *ui;
-    LoginDialog* _login_dlg;
-    RegisterDialog* _reg_dlg;
-    ResetDialog* _reset_dlg;
-   // PMainWindow* _chat_dlg;
+    int m_maxWordNum;
 
+    QPixmap backgroundPixmap; // 用于背景图
+
+//    QList<QMainWindow> m_Widget;
+//    QMap<QMainWindow*,QRect> m_WidgetRect;
 };
 #endif // MAINWINDOW_H
