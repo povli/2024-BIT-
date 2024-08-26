@@ -1,0 +1,198 @@
+#include "hospitalizationwindow.h"
+#include "ui_hospitalizationwindow.h"
+
+HospitalizationWindow::HospitalizationWindow(QWidget *parent) :
+    QWidget(parent),
+    ui(new Ui::HospitalizationWindow)
+{
+    ui->setupUi(this);
+    //QLabel *temp= new QLabel(this);
+    //temp->setText("测试");
+           // 初始化虚拟数据
+           initializeVirtualData();
+           /*for (int i = 0; i < 100; ++i) { // 100条虚拟记录
+               QStringList row;
+               row << QString("入院日期 %1").arg(i)
+                   << QString("病房号 %1").arg(i)
+                   << QString("病床号 %1").arg(i)
+                   << QString("出院日期 %1").arg(i)
+                   << QString("主治医生 %1").arg(i);
+               virtualData.append(row);
+           }*/
+           // 创建中央部件
+           //QWidget *centralWidget = new QWidget;
+
+           // 创建 QTableView 对象
+           tableView = new QTableView;
+
+           // 创建 QStandardItemModel 对象
+           model = new QStandardItemModel;
+           tableView->setModel(model);
+
+           // 设置表头的居中对齐
+           QHeaderView *header = tableView->horizontalHeader();
+           header->setDefaultAlignment(Qt::AlignCenter);
+           header->setSectionResizeMode(QHeaderView::Stretch); // Set columns to stretch and fill the view
+
+           // 设置 QTableView 的行高以展示更多数据
+           tableView->verticalHeader()->setDefaultSectionSize(60); // 设置行高
+
+           // 创建标题文本部件
+           QLabel *titleLabel = new QLabel("住院信息");
+           titleLabel->setAlignment(Qt::AlignCenter);
+           titleLabel->setStyleSheet("font-size: 40px; font-weight: bold;"); // 设置字号和加粗
+
+           // 创建翻页按钮部件
+           QWidget *paginationWidget = new QWidget;
+           QHBoxLayout *paginationLayout = new QHBoxLayout(paginationWidget);
+
+           // 创建翻页按钮
+           prevButton = new QPushButton("上一页");
+           nextButton = new QPushButton("下一页");
+           paginationLayout->addWidget(prevButton);
+           paginationLayout->addWidget(nextButton);
+
+           // 确保按钮均匀分布
+           paginationLayout->setStretch(0, 1);
+           paginationLayout->setStretch(1, 1);
+
+           // 设置翻页按钮的布局
+           paginationWidget->setLayout(paginationLayout);
+
+           // 创建底部按钮部件
+           QWidget *buttonWidget = new QWidget;
+           QHBoxLayout *buttonLayout = new QHBoxLayout(buttonWidget);
+
+           // 创建五个按钮并添加到布局中，设置每个按钮的最小和最大尺寸
+           QStringList buttonLabels = {"首页", "预约", "个人", "聊天", "住院"};
+           for (const QString &label : buttonLabels) {
+               QPushButton *button = new QPushButton(label);
+               button->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Fixed); // 自适应宽度，高度固定
+               button->setMinimumSize(100, 60); // 设置最小尺寸
+               button->setMaximumSize(200, 60); // 设置最大尺寸
+               button->setStyleSheet("background-color: #003366; color: white; border: none;"); // 设置按钮背景颜色为深蓝色，文字颜色为白色，并去除边框
+               buttonLayout->addWidget(button);
+           }
+
+           // 确保按钮均匀分布
+           buttonLayout->setStretch(0, 1);
+           buttonLayout->setStretch(1, 1);
+           buttonLayout->setStretch(2, 1);
+           buttonLayout->setStretch(3, 1);
+           buttonLayout->setStretch(4, 1);
+
+           // 设置底部按钮的布局
+           buttonWidget->setLayout(buttonLayout);
+
+           // 创建主布局并添加 QTableView、标题、翻页按钮和底部按钮部件
+           QVBoxLayout *mainLayout = new QVBoxLayout(this);
+
+           // 添加标题文本
+           mainLayout->addWidget(titleLabel);
+
+           // 将 QTableView 添加到布局
+           mainLayout->addWidget(tableView);
+
+           // 将翻页按钮部件添加到布局
+           mainLayout->addWidget(paginationWidget);
+
+           // 将底部按钮部件添加到布局
+           mainLayout->addWidget(buttonWidget);
+
+           // 设置中央部件的布局
+           this->setLayout(mainLayout);
+
+           // 设置主窗口的初始大小
+           resize(1000, 800); // 设置窗口大小
+
+           // 设置界面背景颜色
+           setStyleSheet("background-color: #ADD8E6;"); // 设置背景颜色为浅蓝色
+
+           // 设置 QTableView 的样式表
+           tableView->setStyleSheet(
+               "QTableView {"
+               "   background-color: white;" // 表格背景颜色为白色
+               "}"
+               "QHeaderView::section {"
+               "   background-color: white;" // 表头背景颜色为深蓝色
+               "   color: black;" // 表头文字颜色为白色
+               "   padding: 4px;"
+               "}"
+               "QTableCornerButton::section {"
+               "   background-color: white;" // 表格角的背景颜色为深蓝色
+               "}"
+               "QTableView QTableCornerButton::section {"
+               "   background-color: white;" // 表格角的背景颜色为深蓝色
+               "}"
+               "QTableView::item {"
+               "   background-color: white;" // 单元格背景颜色为白色
+               "}"
+           );
+
+           // 初始化翻页
+           currentPage = 0;
+           rowsPerPage = 10;
+           totalRows = virtualData.size();
+           loadPage(currentPage);
+
+           // 连接翻页按钮的信号和槽
+           connect(prevButton, &QPushButton::clicked, this, &HospitalizationWindow::previousPage);
+           connect(nextButton, &QPushButton::clicked, this, &HospitalizationWindow::nextPage);
+
+           updateNavigationButtons();
+
+}
+
+HospitalizationWindow::~HospitalizationWindow()
+{
+    delete ui;
+}
+void HospitalizationWindow::initializeVirtualData() {
+    // 创建虚拟数据
+    for (int i = 0; i < 100; ++i) { // 100条虚拟记录
+        QStringList row;
+        row << QString("入院日期 %1").arg(i)
+            << QString("病房号 %1").arg(i)
+            << QString("病床号 %1").arg(i)
+            << QString("出院日期 %1").arg(i)
+            << QString("主治医生 %1").arg(i);
+        virtualData.append(row);
+    }
+}
+void HospitalizationWindow::loadPage(int pageNumber) {
+    model->clear();
+    model->setHorizontalHeaderLabels({"入院日期", "病房号", "病床号", "出院日期", "主治医生"});
+
+    int offset = pageNumber * rowsPerPage;
+    int end = std::min(offset + rowsPerPage, totalRows);
+
+    for (int i = offset; i < end; ++i) {
+        QList<QStandardItem*> rowItems;
+        for (const QString &data : virtualData[i]) {
+            QStandardItem *item = new QStandardItem(data);
+            rowItems << item;
+        }
+        model->appendRow(rowItems);
+    }
+
+    updateNavigationButtons();
+}
+void HospitalizationWindow::updateNavigationButtons() {
+    prevButton->setEnabled(currentPage > 0);
+    nextButton->setEnabled((currentPage + 1) * rowsPerPage < totalRows);
+}
+
+void HospitalizationWindow::previousPage() {
+    if (currentPage > 0) {
+        --currentPage;
+        loadPage(currentPage);
+    }
+}
+
+void HospitalizationWindow::nextPage() {
+    if ((currentPage + 1) * rowsPerPage < totalRows) {
+        ++currentPage;
+        loadPage(currentPage);
+    }
+}
+
