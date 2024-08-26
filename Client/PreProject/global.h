@@ -34,12 +34,14 @@ enum ReqId{
     ID_TEXT_CHAT_MSG_REQ  = 1017,  //文本聊天信息请求
     ID_TEXT_CHAT_MSG_RSP  = 1018,  //文本聊天信息回复
     ID_NOTIFY_TEXT_CHAT_MSG_REQ = 1019, //通知用户文本聊天信息
+    ID_USER_ADD_INFO=1020,
 };
 
 enum Moudles{
     REGISTERMOD=0,
     RESETMOD=1,
     LOGINMOD=2,
+    UPDATAINFOATREG=3,
 };
 
 enum TipErr{
@@ -49,7 +51,11 @@ enum TipErr{
     TIP_CONFIRM_ERR = 3,
     TIP_PWD_CONFIRM = 4,
     TIP_VARIFY_ERR = 5,
-    TIP_USER_ERR = 6
+    TIP_USER_ERR = 6,
+    TIP_USER_YEAR_ERR=7,
+    TIP_USER_data_ERR=8,
+    TIP_IDCARD_ERR=9,
+    TIP_PHONE_ERR=10,
 };
 
 enum ClickLbState{

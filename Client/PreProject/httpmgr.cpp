@@ -27,6 +27,10 @@ void HttpMgr::slotHttpFinish(ReqId id, QString res, ErrorCode err, Moudles mod)
     if(mod==Moudles::LOGINMOD){
         emit sig_login_mod_finish(id,res,err);
     }
+
+    if(mod==Moudles::UPDATAINFOATREG){
+        emit sig_updata_info_reg_mod_finish(id,res,err);
+    }
 }
 void HttpMgr::PostHttpReq(QUrl url,QJsonObject json,ReqId req_id,Moudles mod)
 {

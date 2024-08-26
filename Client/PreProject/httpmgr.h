@@ -29,6 +29,7 @@ signals:
     void sigRegModFinish(ReqId id,QString res,ErrorCode err);
     void sig_reset_mod_finish(ReqId id,QString res,ErrorCode err);
     void sig_login_mod_finish(ReqId id,QString res,ErrorCode err);
+    void sig_updata_info_reg_mod_finish(ReqId id,QString res,ErrorCode err);
 };
 
 #endif // HTTPMGR_H
