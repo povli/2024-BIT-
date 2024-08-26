@@ -399,7 +399,8 @@ LogicSystem::LogicSystem() {
 			return true;
 		}
 
-		auto workID= src_root["workid"].asString();
+		auto workID= src_root["workID"].asString();
+		std::cout<<"workID is:"<<workID<<std::endl;
 		auto pwd = src_root["passwd"].asString();
 		DoctorInfo doctor_info;
 		bool doctor_pwd_check=MysqlMgr::GetInstance()->CheckDoctorPwd(workID,pwd,doctor_info);

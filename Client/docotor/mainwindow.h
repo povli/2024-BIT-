@@ -24,7 +24,7 @@ public slots:
     void slotSwitchReset();
     void SlotSwitchLogin2();
 
-    void SlotSwitchMain();
+    //void SlotSwitchMain();
 
 private:
     Ui::MainWindow *ui;

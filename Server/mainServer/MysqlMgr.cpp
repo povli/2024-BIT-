@@ -51,6 +51,9 @@ std::shared_ptr<UserInfo> MysqlMgr::GetUser(std::string name)
 {
     return _dao.GetUser(name);
 }
+std::shared_ptr<DoctorInfo>  MysqlMgr::GetDoctor(int id) {
+    return _dao.GetDoctor(id);
+}
 
 bool MysqlMgr::GetApplyList(int touid,
     std::vector<std::shared_ptr<ApplyInfo>>& applyList, int begin, int limit) {

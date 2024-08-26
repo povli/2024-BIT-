@@ -89,6 +89,84 @@ void LogicSystem::RegisterCallBacks() {
 	_fun_callbacks[ID_TEXT_CHAT_MSG_REQ] = std::bind(&LogicSystem::DealChatTextMsg, this,
 		placeholders::_1, placeholders::_2, placeholders::_3);
 
+	_fun_callbacks[MSG_DOCTOR_MAINSERVER_LOGIN] = std::bind(&LogicSystem::DoctorLoginHandler, this,
+		placeholders::_1, placeholders::_2, placeholders::_3);
+
+}
+
+void LogicSystem::DoctorLoginHandler(shared_ptr<CSession> session, const short &msg_id, const string &msg_data) {
+	Json::Reader reader;
+	Json::Value root;
+	reader.parse(msg_data, root);
+	auto uid = root["uid"].asInt();
+	auto token = root["token"].asString();
+	std::cout << "doctor login uid is  " << uid << " user token  is "
+		<< token << endl;
+
+	Json::Value  rtvalue;
+	Defer defer([this, &rtvalue, session]() {
+		std::string return_str = rtvalue.toStyledString();
+		session->Send(return_str, MSG_CHAT_DOCTOR_LOGIN_RSP);
+		});
+	//从redis获取用户token是否正确
+	std::string uid_str = std::to_string(uid);
+	std::string token_key = USERTOKENPREFIX + uid_str;
+	std::string token_value = "";
+	bool success = RedisMgr::GetInstance()->Get(token_key, token_value);
+	if (!success) {
+		rtvalue["error"] = ErrorCodes::UidInvalid;
+		return ;
+	}
+
+	if (token_value != token) {
+		rtvalue["error"] = ErrorCodes::TokenInvalid;
+		return ;
+	}
+
+	rtvalue["error"] = ErrorCodes::Success;
+
+	std::string base_key = USER_BASE_INFO + uid_str;
+	auto doctor_info=std::make_shared<DoctorInfo>();
+	bool b_base=GetDoctorInfo(base_key, uid, doctor_info);
+	if (!b_base) {
+		rtvalue["error"] = ErrorCodes::UidInvalid;
+		return;
+	}
+
+	rtvalue["ID"]=doctor_info->id;
+	rtvalue["workID"]=doctor_info->workID;
+	rtvalue["name"]=doctor_info->name;
+	rtvalue["pwd"]=doctor_info->pwd;
+	rtvalue["email"]=doctor_info->email;
+	rtvalue["phone"]=doctor_info->phone;
+	rtvalue["sex"]=doctor_info->sex;
+	rtvalue["year"]=doctor_info->year;
+	rtvalue["month"]=doctor_info->month;
+	rtvalue["day"]=doctor_info->day;
+	rtvalue["IDcard"]=doctor_info->IDcard;
+	rtvalue["department_id"]=doctor_info->department_id;
+	rtvalue["intr"]=doctor_info->intr;
+	auto server_name = ConfigMgr::Inst().GetValue("SelfServer", "Name");
+	//将登录数量增加
+	auto rd_res = RedisMgr::GetInstance()->HGet(LOGIN_COUNT, server_name);
+	int count = 0;
+	if (!rd_res.empty()) {
+		count = std::stoi(rd_res);
+	}
+
+	count++;
+	auto count_str = std::to_string(count);
+	RedisMgr::GetInstance()->HSet(LOGIN_COUNT, server_name, count_str);
+	//session绑定用户uid
+	session->SetUserId(uid);
+	//为用户设置登录ip server的名字
+	std::string  ipkey = USERIPPREFIX + uid_str;
+	RedisMgr::GetInstance()->Set(ipkey, server_name);
+	//uid和session绑定管理,方便以后踢人操作
+	UserMgr::GetInstance()->SetUserSession(uid, session);
+
+	return;
+
 }
 
 void LogicSystem::LoginHandler(shared_ptr<CSession> session, const short &msg_id, const string &msg_data) {
@@ -595,7 +673,56 @@ void LogicSystem::GetUserByName(std::string name, Json::Value& rtvalue)
 	//rtvalue["desc"] = user_info->desc;
 	//rtvalue["sex"] = user_info->sex;
 }
+bool LogicSystem::GetDoctorInfo(std::string base_key, int uid, std::shared_ptr<DoctorInfo>& doctorinfo) {
+	std::string info_str = "";
+	bool b_base = RedisMgr::GetInstance()->Get(base_key, info_str);
+	if (b_base) {
+		Json::Reader reader;
+		Json::Value root;
+		reader.parse(info_str, root);
+		doctorinfo->id=root["id"].asInt();
+		doctorinfo->name=root["name"].asString();
+		doctorinfo->pwd=root["pwd"].asString();
+		doctorinfo->email=root["email"].asString();
+		doctorinfo->sex=root["sex"].asInt();
+		doctorinfo->year=root["year"].asString();
+		doctorinfo->month=root["month"].asString();
+		doctorinfo->day=root["day"].asString();
+		doctorinfo->workID=root["workID"].asString();
+		doctorinfo->department_id=root["department"].asInt();
+		doctorinfo->intr=root["intr"].asString();
+		doctorinfo->IDcard=root["IDcard"].asString();
+	}
+	else {
+		//redis中没有则查询mysql
+		//查询数据库
+		std::shared_ptr<DoctorInfo> doctor_info = nullptr;
+		doctor_info = MysqlMgr::GetInstance()->GetDoctor(uid);
+		if (doctor_info == nullptr) {
+			return false;
+		}
 
+		doctorinfo=doctor_info;
+
+		Json::Value redis_root;
+		redis_root["id"]=doctor_info->id;
+		redis_root["name"]=doctor_info->name;
+		redis_root["pwd"]=doctor_info->pwd;
+		redis_root["email"]=doctor_info->email;
+		redis_root["sex"]=doctorinfo->sex;
+		redis_root["year"]=doctorinfo->year;
+		redis_root["month"]=doctorinfo->month;
+		redis_root["day"]=doctorinfo->day;
+		redis_root["workID"]=doctorinfo->workID;
+		redis_root["department"]=doctorinfo->department_id;
+		redis_root["intr"]=doctorinfo->intr;
+		redis_root["IDcard"]=doctorinfo->IDcard;
+		RedisMgr::GetInstance()->Set(base_key, redis_root.toStyledString());
+
+	}
+	return true;
+
+}
 bool LogicSystem::GetBaseInfo(std::string base_key, int uid, std::shared_ptr<UserInfo>& userinfo)
 {
 	//优先查redis中查询用户信息

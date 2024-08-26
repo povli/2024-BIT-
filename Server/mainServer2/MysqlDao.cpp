@@ -347,6 +347,54 @@ std::shared_ptr<UserInfo> MysqlDao::GetUser(int uid)
 		return nullptr;
 	}
 }
+std::shared_ptr<DoctorInfo> MysqlDao::GetDoctor(int id)
+{
+	auto con = pool_->getConnection();
+	if (con == nullptr) {
+		return nullptr;
+	}
+
+	Defer defer([this, &con]() {
+		pool_->returnConnection(std::move(con));
+	});
+
+	try {
+		// 准备SQL语句
+		std::unique_ptr<sql::PreparedStatement> pstmt(con->_con->prepareStatement("SELECT * FROM doctors WHERE ID = ?"));
+		pstmt->setInt(1, id); // 将id替换为你要查询的id
+
+		// 执行查询
+		std::unique_ptr<sql::ResultSet> res(pstmt->executeQuery());
+		std::shared_ptr<DoctorInfo> doctor_ptr = nullptr;
+
+		// 遍历结果集
+		while (res->next()) {
+			doctor_ptr.reset(new DoctorInfo);
+			doctor_ptr->id = id;
+			doctor_ptr->workID = res->getString("workID");
+			doctor_ptr->name = res->getString("name");
+			doctor_ptr->pwd = res->getString("pwd");
+			doctor_ptr->email = res->getString("email");
+			doctor_ptr->sex = res->getInt("sex");
+			doctor_ptr->year = res->getString("year");
+			doctor_ptr->month = res->getString("month");
+			doctor_ptr->day = res->getString("day");
+			doctor_ptr->IDcard = res->getString("IDcard");
+			doctor_ptr->phone = res->getString("phone");
+			doctor_ptr->department_id = res->getInt("department_id");
+			doctor_ptr->intr = res->getString("intr");
+			break; // 只处理一条记录
+		}
+
+		return doctor_ptr;
+	}
+	catch (sql::SQLException& e) {
+		std::cerr << "SQLException: " << e.what();
+		std::cerr << " (MySQL error code: " << e.getErrorCode();
+		std::cerr << ", SQLState: " << e.getSQLState() << " )" << std::endl;
+		return nullptr;
+	}
+}
 
 std::shared_ptr<UserInfo> MysqlDao::GetUser(std::string name)
 {

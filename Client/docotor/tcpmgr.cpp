@@ -134,7 +134,7 @@ void TcpMgr::initHandlers()
 
 
 
-        _handlers.insert(ID_CHAT_LOGIN_RSP, [this](ReqId id, int len, QByteArray data){
+        _handlers.insert(ID_DOCTOR_REV, [this](ReqId id, int len, QByteArray data){
             Q_UNUSED(len);
             qDebug()<< "handle id is "<< id << " data is " << data;
             // 将QByteArray转换为QJsonDocument
