@@ -12,7 +12,7 @@ RegisterDialog::RegisterDialog(QWidget *parent) :
     ui(new Ui::RegisterDialog),_countdown(5)
 {
     ui->setupUi(this);
-    ui->user_edit->setValidator(new QRegExpValidator(QRegExp("[a-zA-Z0-9]+$")));
+    //ui->user_edit->setValidator(new QRegExpValidator(QRegExp("[a-zA-Z0-9]+$")));
     //设置密码格式隐藏
     ui->pass_edit->setEchoMode(QLineEdit::Password);
     ui->confirm_edit->setEchoMode(QLineEdit::Password);
@@ -21,7 +21,7 @@ RegisterDialog::RegisterDialog(QWidget *parent) :
     connect(HttpMgr::GetInstance().get(), &HttpMgr::sigRegModFinish, this,
             &RegisterDialog::slot_reg_mod_finish);
     initHttpHandlers();
-    //day11 设定输入框输入后清空字符串
+    // 设定输入框输入后清空字符串
     ui->err_tip->clear();
 
     connect(ui->user_edit,&QLineEdit::editingFinished,this,[this](){
@@ -42,6 +42,15 @@ RegisterDialog::RegisterDialog(QWidget *parent) :
 
     connect(ui->varify_edit, &QLineEdit::editingFinished, this, [this](){
          checkVarifyValid();
+    });
+    connect(ui->yearEdit,&QLineEdit::editingFinished,this,[this]{
+        checkYear();
+    });
+    connect(ui->IDcardEdit,&QLineEdit::editingFinished,this,[this]{
+        checkIDcard();
+    });
+    connect(ui->phoneEdit,&QLineEdit::editingFinished,this,[this]{
+        checkPhone();
     });
 
     //设置浮动显示手形状
@@ -248,6 +257,130 @@ bool RegisterDialog::checkConfirmValid()
     return true;
 }
 
+bool RegisterDialog::checkYear()
+{
+    QString year=ui->yearEdit->text();
+    QString month=ui->monthEdit->text();
+    QString day=ui->dataEdit->text();
+    // 正则表达式：匹配1900到2024之间的年份
+    QRegularExpression re("^(19[0-9][0-9]|20[0-1][0-9]|202[0-4])$");
+    if(!isDateFormatValid(year,month,day)){
+
+        AddTipErrInfo(TipErr::TIP_USER_YEAR_ERR,tr("格式错误"));
+        return false;
+    }
+
+        DelTipErrInfo(TipErr::TIP_USER_YEAR_ERR);
+
+    if(!isValidDate(year,month,day)){
+        AddTipErrInfo(TipErr::TIP_USER_data_ERR,tr("日期错误"));
+    }
+
+
+        DelTipErrInfo(TipErr::TIP_USER_data_ERR);
+
+
+    return true;
+}
+
+bool RegisterDialog::checkIDcard()
+{
+    auto IDcard=ui->IDcardEdit->text();
+    if(!isValidIDCard(IDcard)){
+        AddTipErrInfo(TipErr::TIP_IDCARD_ERR,tr("身份证错误"));
+    }
+
+        DelTipErrInfo(TipErr::TIP_IDCARD_ERR);
+
+    return true;
+}
+
+bool RegisterDialog::checkPhone()
+{
+    auto phone=ui->phoneEdit->text();
+    if(!isValidPhoneNumber(phone)){
+        AddTipErrInfo(TipErr::TIP_PHONE_ERR,tr("电话号码错误"));
+    }
+
+        DelTipErrInfo(TipErr::TIP_IDCARD_ERR);
+
+    return true;
+
+}
+
+bool RegisterDialog::isValidPhoneNumber(const QString& phoneNumber) {
+    // 正则表达式匹配中国大陆手机号码、固定电话号码，以及400/800电话
+    QRegularExpression re(
+        "^(1[3-9]\\d{9}$)|"                // 匹配中国大陆的11位手机号码
+        "(^(0\\d{2,3}-?\\d{7,8})$)|"      // 匹配带区号的固定电话号码，区号为2-3位，电话号码为7-8位
+        "(^400\\d{7}$)|"                  // 匹配400开头的电话号码
+        "(^800\\d{7}$)$"                  // 匹配800开头的电话号码
+    );
+
+    return re.match(phoneNumber).hasMatch();
+}
+bool RegisterDialog::isValidIDCard(const QString& idCard) {
+    // 正则表达式匹配15位和18位身份证号
+    QRegularExpression re(
+        "^(\\d{15}|"
+        "(\\d{6})(\\d{8})(\\d{3}[0-9Xx]))$");
+
+    QRegularExpressionMatch match = re.match(idCard);
+    if (!match.hasMatch()) {
+        return false;
+    }
+
+    // 对18位身份证号进一步校验
+    if (idCard.length() == 18) {
+        QString idCardWithoutCheckCode = idCard.left(17);
+        QString checkCode = idCard.right(1).toUpper();
+
+        // 身份证号码加权因子
+        int weights[17] = {7, 9, 10, 5, 8, 4, 2, 1, 6, 3, 7, 9, 10, 5, 8, 4, 2};
+        // 身份证号码校验码
+        QString checkCodes = "10X98765432";
+
+        int sum = 0;
+        for (int i = 0; i < 17; ++i) {
+            // 确保字符是数字
+            int digit = idCardWithoutCheckCode[i].digitValue();
+            if (digit == -1) {
+                return false; // 如果不是数字，返回false
+            }
+            sum += digit * weights[i];
+        }
+
+        // 计算校验码
+        int checkCodeIndex = sum % 11;
+        QString calculatedCheckCode = checkCodes.mid(checkCodeIndex, 1);
+
+        // 校验校验码
+        return checkCode == calculatedCheckCode;
+    }
+
+    return true;
+}
+
+
+bool RegisterDialog::isDateFormatValid(const QString& year, const QString& month, const QString& day) {
+    QRegularExpression re("\\d+");
+    return re.match(year).hasMatch() && re.match(month).hasMatch() && re.match(day).hasMatch()
+           && year.toInt() >= 1900 && year.toInt() <= 2099
+           && month.toInt() >= 1 && month.toInt() <= 12
+           && day.toInt() >= 1 && day.toInt() <= 31;
+}
+
+bool RegisterDialog::isValidDate(const QString& year, const QString& month, const QString& day) {
+    if (!isDateFormatValid(year, month, day)) {
+        return false;
+    }
+}
+
+
+
+
+
+
 void RegisterDialog::initHttpHandlers()
 {
     //注册获取验证码回包逻辑
@@ -271,9 +404,25 @@ void RegisterDialog::initHttpHandlers()
         }
         auto email = jsonObj["email"].toString();
         showTip(tr("用户注册成功"), true);
+        uid=jsonObj["uid"].toString();
         qDebug()<< "email is " << email ;
         qDebug()<< "user uuid is " <<  jsonObj["uid"].toString();
         ChangeTipPage();
+    });
+
+    _handlers.insert(ReqId::ID_USER_ADD_INFO,[this](QJsonObject jsonObj){
+        int error = jsonObj["error"].toInt();
+        if(error != ErrorCode::SUCCESS){
+            showTip(tr("参数错误"),false);
+            return;
+        }
+
+        auto uid=jsonObj["uid"].toString();
+        auto name=jsonObj["name"].toString();
+        qDebug()<<"uid is"<<uid;
+        qDebug()<<"name is"<<name;
+        ChangeTipPageToThree();
+
     });
 }
 
@@ -294,13 +443,34 @@ void RegisterDialog::DelTipErr(TipErr te)
     showTip(_tip_errs.first(), false);
 }
 
+void RegisterDialog::DelTipErrInfo(TipErr te){
+    _tip_errs.remove(te);
+    if(_tip_errs.empty()){
+      ui->errTip->clear();
+      return;
+    }
+
+}
+
 void RegisterDialog::ChangeTipPage()
 {
-    _countdown_timer->stop();
+    //_countdown_timer->stop();
     ui->stackedWidget->setCurrentWidget(ui->page_2);
 
     // 启动定时器，设置间隔为1000毫秒（1秒）
+    //_countdown_timer->start(1000);
+}
+
+void RegisterDialog::ChangeTipPageToThree(){
+    _countdown_timer->stop();
+    ui->stackedWidget->setCurrentWidget(ui->page_3);
     _countdown_timer->start(1000);
+}
+
+void RegisterDialog::AddTipErrInfo(TipErr te, QString tips)
+{
+    _tip_errs[te] = tips;
+    showTipInPage2(tips,false);
 }
 
 void RegisterDialog::showTip(QString str, bool b_ok)
@@ -314,6 +484,18 @@ void RegisterDialog::showTip(QString str, bool b_ok)
     ui->err_tip->setText(str);
 
     repolish(ui->err_tip);
+}
+
+void RegisterDialog::showTipInPage2(QString str,bool b_ok ){
+    if(b_ok){
+         ui->errTip->setProperty("state","normal");
+    }else{
+        ui->errTip->setProperty("state","err");
+    }
+
+    ui->errTip->setText(str);
+
+    repolish(ui->errTip);
 }
 
 //添加确认槽函数
@@ -360,6 +542,43 @@ void RegisterDialog::on_sure_btn_clicked()
                  json_obj, ReqId::ID_REG_USER,Moudles::REGISTERMOD);
 }
 
+void RegisterDialog::on_confirmInfo_clicked()
+{
+    if(ui->nameEdit->text()==""){
+        showTipInPage2(tr("姓名不能为空"),false);
+    }
+
+    if(ui->yearEdit->text()==""){
+        showTipInPage2(tr("年份不能为空"),false);
+
+    }
+    if(ui->monthEdit->text()==""){
+        showTipInPage2(tr("月份不能为空"),false);
+    }
+    if(ui->dataEdit->text()==""){
+        showTipInPage2(tr("日期不能为空"),false);
+    }
+    if(ui->IDcardEdit->text()==""){
+        showTipInPage2(tr("身份证不能为空"),false);
+    }
+    if(ui->phoneEdit->text()==""){
+        showTipInPage2(tr("电话号不能为空"),false);
+    }
+    QJsonObject json_obj;
+    json_obj["uid"]=uid;
+    json_obj["name"]=ui->nameEdit->text();
+    json_obj["sex"]=sex;
+    json_obj["year"]=ui->yearEdit->text();
+    json_obj["month"]=ui->monthEdit->text();
+    json_obj["data"]=ui->dataEdit->text();
+    json_obj["IDcard"]=ui->IDcardEdit->text();
+    json_obj["phone"]=ui->phoneEdit->text();
+    HttpMgr::GetInstance()->PostHttpReq(QUrl(gate_url_prefix+"/user_addInfo"),
+                 json_obj, ReqId::ID_USER_ADD_INFO,Moudles::REGISTERMOD);
+
+}
+
+
 void RegisterDialog::on_return_btn_clicked()
 {
     _countdown_timer->stop();
@@ -371,3 +590,24 @@ void RegisterDialog::on_cancel_btn_clicked()
     _countdown_timer->stop();
     emit sigSwitchLogin();
 }
+
+
+
+
+void RegisterDialog::on_manRadioButton_clicked()
+{
+    sex="1";
+}
+
+
+void RegisterDialog::on_womanRadbutton_clicked()
+{
+    sex='0';
+}
+
+
+void RegisterDialog::on_otherSex_clicked()
+{
+    sex='2';
+}
+

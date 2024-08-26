@@ -112,6 +112,8 @@ bool LoginDialog::checkPwdValid()
     return true;
 }
 
+
+
 void LoginDialog::slot_login_failed(int err)
 {
     QString result = QString("登录失败, err is %1")
