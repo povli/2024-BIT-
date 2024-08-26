@@ -91,6 +91,40 @@ void LogicSystem::RegisterCallBacks() {
 
 }
 
+void LogicSystem::DoctorLoginHandler(shared_ptr<CSession> session, const short &msg_id, const string &msg_data) {
+	Json::Reader reader;
+	Json::Value root;
+	reader.parse(msg_data, root);
+	auto uid = root["uid"].asInt();
+	auto token = root["token"].asString();
+	std::cout << "doctor login uid is  " << uid << " user token  is "
+		<< token << endl;
+
+	Json::Value  rtvalue;
+	Defer defer([this, &rtvalue, session]() {
+		std::string return_str = rtvalue.toStyledString();
+		session->Send(return_str, MSG_CHAT_DOCTOR_LOGIN_RSP);
+		});
+	//从redis获取用户token是否正确
+	std::string uid_str = std::to_string(uid);
+	std::string token_key = USERTOKENPREFIX + uid_str;
+	std::string token_value = "";
+	bool success = RedisMgr::GetInstance()->Get(token_key, token_value);
+	if (!success) {
+		rtvalue["error"] = ErrorCodes::UidInvalid;
+		return ;
+	}
+
+	if (token_value != token) {
+		rtvalue["error"] = ErrorCodes::TokenInvalid;
+		return ;
+	}
+
+	rtvalue["error"] = ErrorCodes::Success;
+
+	std::string base_key = USER_BASE_INFO + uid_str;
+}
+
 void LogicSystem::LoginHandler(shared_ptr<CSession> session, const short &msg_id, const string &msg_data) {
 	Json::Reader reader;
 	Json::Value root;

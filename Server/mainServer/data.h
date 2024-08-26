@@ -21,6 +21,12 @@ struct UserInfo {
     //std::string back;
 };
 
+struct DoctorInfo {
+    //DoctorInfo():
+    int id;
+    std::string workID
+};
+
 struct ApplyInfo {
     ApplyInfo(int uid, std::string name, std::string desc,
         std::string icon, std::string nick, int sex, int status)

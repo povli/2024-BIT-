@@ -35,6 +35,8 @@ enum ReqId{
     ID_TEXT_CHAT_MSG_RSP  = 1018,  //文本聊天信息回复
     ID_NOTIFY_TEXT_CHAT_MSG_REQ = 1019, //通知用户文本聊天信息
     ID_USER_ADD_INFO=1020,
+    ID_DOCTOR_LOGIN=1021,//医生登录
+    ID_DOCTOR_REV=1022,//医生登录的回包
 };
 
 enum Moudles{

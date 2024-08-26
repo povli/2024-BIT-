@@ -86,7 +86,7 @@
        <item>
         <widget class="QLabel" name="label">
          <property name="text">
-          <string>用户</string>
+          <string>工号</string>
          </property>
         </widget>
        </item>

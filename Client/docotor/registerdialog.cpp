@@ -404,9 +404,9 @@ void RegisterDialog::initHttpHandlers()
         }
         auto email = jsonObj["email"].toString();
         showTip(tr("用户注册成功"), true);
-        uid=jsonObj["uid"].toString();
+        workID=jsonObj["workID"].toString();
         qDebug()<< "email is " << email ;
-        qDebug()<< "user uuid is " <<  jsonObj["uid"].toString();
+        qDebug()<< "user workID is " <<  jsonObj["workID"].toString();
         ChangeTipPage();
     });
 
@@ -417,9 +417,9 @@ void RegisterDialog::initHttpHandlers()
             return;
         }
 
-        auto uid=jsonObj["uid"].toString();
+        auto uid=jsonObj["workID"].toString();
         auto name=jsonObj["name"].toString();
-        qDebug()<<"uid is"<<uid;
+        qDebug()<<"workID is"<<uid;
         qDebug()<<"name is"<<name;
         ChangeTipPageToThree();
 
@@ -538,7 +538,7 @@ void RegisterDialog::on_sure_btn_clicked()
     json_obj["passwd"] = xorString(ui->pass_edit->text());
     json_obj["confirm"] = xorString(ui->confirm_edit->text());
     json_obj["varifycode"] = ui->varify_edit->text();
-    HttpMgr::GetInstance()->PostHttpReq(QUrl(gate_url_prefix+"/user_register"),
+    HttpMgr::GetInstance()->PostHttpReq(QUrl(gate_url_prefix+"/doctor_register"),
                  json_obj, ReqId::ID_REG_USER,Moudles::REGISTERMOD);
 }
 
@@ -565,7 +565,7 @@ void RegisterDialog::on_confirmInfo_clicked()
         showTipInPage2(tr("电话号不能为空"),false);
     }
     QJsonObject json_obj;
-    json_obj["uid"]=uid;
+    json_obj["workID"]=workID;
     json_obj["name"]=ui->nameEdit->text();
     json_obj["sex"]=sex;
     json_obj["year"]=ui->yearEdit->text();
@@ -573,7 +573,9 @@ void RegisterDialog::on_confirmInfo_clicked()
     json_obj["data"]=ui->dataEdit->text();
     json_obj["IDcard"]=ui->IDcardEdit->text();
     json_obj["phone"]=ui->phoneEdit->text();
-    HttpMgr::GetInstance()->PostHttpReq(QUrl(gate_url_prefix+"/user_addInfo"),
+    json_obj["department"]=ui->DepartmentEdit->currentText();
+    json_obj["intr"]=ui->selfIntrInfo->text();
+    HttpMgr::GetInstance()->PostHttpReq(QUrl(gate_url_prefix+"/doctor_addInfo"),
                  json_obj, ReqId::ID_USER_ADD_INFO,Moudles::REGISTERMOD);
 
 }

@@ -59,7 +59,7 @@ private:
     bool isValidDate(const QString& year, const QString& month, const QString& day);
     bool isValidPhoneNumber(const QString& phoneNumber);
     bool isValidIDCard(const QString& idCard);
-    QString uid;
+    QString workID;
     QString sex;
     void showTipInPage2(QString str,bool b_ok );
     Ui::RegisterDialog *ui;

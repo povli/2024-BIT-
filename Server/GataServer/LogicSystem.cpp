@@ -26,6 +26,9 @@ LogicSystem::LogicSystem() {
             beast::ostream(connection->_response.body()) << ", " <<  " value is " << elem.second << std::endl;
         }
     });
+
+
+
     RegPost("/get_varifycode", [](std::shared_ptr<HttpConnection> connection) {
     auto body_str = boost::beast::buffers_to_string(connection->_request.body().data());
     std::cout << "receive body is " << body_str << std::endl;
@@ -61,6 +64,71 @@ LogicSystem::LogicSystem() {
         return true;
 });
 
+	//医生注册逻辑
+	RegPost("/doctor_register", [](std::shared_ptr<HttpConnection> connection) {
+		auto body_str = boost::beast::buffers_to_string(connection->_request.body().data());
+		std::cout << "receive body is " << body_str << std::endl;
+		connection->_response.set(http::field::content_type, "text/json");
+		Json::Value root;
+		Json::Reader reader;
+		Json::Value src_root;
+		bool parse_success = reader.parse(body_str, src_root);
+		if (!parse_success) {
+			std::cout << "Failed to parse JSON data!" << std::endl;
+			root["error"] = ErrorCodes::Error_Json;
+			std::string jsonstr = root.toStyledString();
+			beast::ostream(connection->_response.body()) << jsonstr;
+			return true;
+		}
+
+		auto email = src_root["email"].asString();
+		auto workID = src_root["user"].asString();
+		auto pwd = src_root["passwd"].asString();
+		auto confirm = src_root["confirm"].asString();
+		//auto icon = src_root["icon"].asString();
+		//先查找redis中email对应的验证码是否合理
+		std::string  varify_code;
+		bool b_get_varify = RedisMgr::GetInstance()->Get(CODEPREFIX+src_root["email"].asString(), varify_code);
+		if (!b_get_varify) {
+			std::cout << " get varify code expired" << std::endl;
+			root["error"] = ErrorCodes::VarifyExpired;
+			std::string jsonstr = root.toStyledString();
+			beast::ostream(connection->_response.body()) << jsonstr;
+			return true;
+		}
+
+		if (varify_code != src_root["varifycode"].asString()) {
+			std::cout << " varify code error" << std::endl;
+			root["error"] = ErrorCodes::VarifyCodeErr;
+			std::string jsonstr = root.toStyledString();
+			beast::ostream(connection->_response.body()) << jsonstr;
+			return true;
+		}
+
+		int result=MysqlMgr::GetInstance()->RegDoctor(workID,email,pwd);
+		if (result == 0 || result == -1) {
+			std::cout << " user or email exist" << std::endl;
+			root["error"] = ErrorCodes::UserExist;
+			std::string jsonstr = root.toStyledString();
+			beast::ostream(connection->_response.body()) << jsonstr;
+			return true;
+		}
+		//std::string uuid=std::to_string(uid);
+		root["error"] = 0;
+		root["workID"] = workID;
+		root["email"] = email;
+		//root ["user"]= name;
+		root["passwd"] = pwd;
+		root["confirm"] = confirm;
+		root["varifycode"] = src_root["varifycode"].asString();
+		std::string jsonstr = root.toStyledString();
+		beast::ostream(connection->_response.body()) << jsonstr;
+		return true;
+
+
+
+	});
+
     	//day11 注册用户逻辑
 	RegPost("/user_register", [](std::shared_ptr<HttpConnection> connection) {
 		auto body_str = boost::beast::buffers_to_string(connection->_request.body().data());
@@ -82,7 +150,8 @@ LogicSystem::LogicSystem() {
 		auto name = src_root["user"].asString();
 		auto pwd = src_root["passwd"].asString();
 		auto confirm = src_root["confirm"].asString();
-		auto icon = src_root["icon"].asString();
+		//auto icon = src_root["icon"].asString();
+
 
 		if (pwd != confirm) {
 			std::cout << "password err " << std::endl;
@@ -127,12 +196,76 @@ LogicSystem::LogicSystem() {
 		root ["user"]= name;
 		root["passwd"] = pwd;
 		root["confirm"] = confirm;
-		root["icon"] = icon;
+		//root["icon"] = icon;
 		root["varifycode"] = src_root["varifycode"].asString();
 		std::string jsonstr = root.toStyledString();
 		beast::ostream(connection->_response.body()) << jsonstr;
 		return true;
 		});
+
+
+
+
+
+	RegPost("/doctor_addInfo", [](std::shared_ptr<HttpConnection> connection) {
+		auto body_str = boost::beast::buffers_to_string(connection->_request.body().data());
+	std::cout << "receive body is " << body_str << std::endl;
+	connection->_response.set(http::field::content_type, "text/json");
+	Json::Value root;
+	Json::Reader reader;
+	Json::Value src_root;
+	bool parse_success = reader.parse(body_str, src_root);
+	if (!parse_success) {
+		std::cout << "Failed to parse JSON data!" << std::endl;
+		root["error"] = ErrorCodes::Error_Json;
+		std::string jsonstr = root.toStyledString();
+		beast::ostream(connection->_response.body()) << jsonstr;
+		return true;
+	}
+		auto workID = src_root["workID"].asString();
+		//std::cout<<"uid is "<<uid<<std::endl;
+		auto name = src_root["name"].asString();
+		auto lsex=src_root["sex"].asString();
+		auto year = src_root["year"].asString();
+		auto month = src_root["month"].asString();
+		auto data = src_root["data"].asString();
+		auto IDcard = src_root["IDcard"].asString();
+		auto phone = src_root["phone"].asString();
+		auto department = src_root["department"].asString();
+		auto intr=src_root["intr"].asString();
+		int sex=std::stoi(lsex);
+		int department_ID;
+		if(department=="儿科") {
+			department_ID=1;
+		}else if(department=="内科") {
+			department_ID=2;
+		}else if(department=="外科") {
+			department_ID=3;
+		}
+		else if(department=="妇科") {
+			department_ID=4;
+		}else if(department=="皮肤科") {
+			department_ID=5;
+		}
+		bool doctorUpdateCheck=MysqlMgr::GetInstance()->UpdateDoctorDetails(workID,name,sex,year,month,data,IDcard,phone,department_ID,intr);
+		if(!doctorUpdateCheck) {
+			std::cout << " doctor info updata in reg failed" << std::endl;
+			root["error"] = ErrorCodes::UPDATA_USER_INFO_IN_REG_FAIL;
+			std::string jsonstr = root.toStyledString();
+			beast::ostream(connection->_response.body()) << jsonstr;
+			return true;
+		}
+
+		std::cout << " doctor info updata in reg success" << std::endl;
+		root["error"] = 0;
+		root["workID"] = workID;
+		root["name"] = name;
+		std::string jsonstr = root.toStyledString();
+		beast::ostream(connection->_response.body()) << jsonstr;
+		return true;
+
+
+	});
 
 	RegPost("/user_addInfo", [](std::shared_ptr<HttpConnection> connection) {
 		auto body_str = boost::beast::buffers_to_string(connection->_request.body().data());
@@ -248,6 +381,59 @@ LogicSystem::LogicSystem() {
     beast::ostream(connection->_response.body()) << jsonstr;
     return true;
     });
+
+	RegPost("/doctor_login", [](std::shared_ptr<HttpConnection> connection) {
+		auto body_str = boost::beast::buffers_to_string(connection->_request.body().data());
+		std::cout << "receive body is " << body_str << std::endl;
+		connection->_response.set(http::field::content_type, "text/json");
+		Json::Value root;
+		Json::Reader reader;
+		Json::Value src_root;
+		//查询数据库
+		bool parse_success = reader.parse(body_str, src_root);
+		if (!parse_success) {
+			std::cout << "Failed to parse JSON data!" << std::endl;
+			root["error"] = ErrorCodes::Error_Json;
+			std::string jsonstr = root.toStyledString();
+			beast::ostream(connection->_response.body()) << jsonstr;
+			return true;
+		}
+
+		auto workID= src_root["workid"].asString();
+		auto pwd = src_root["passwd"].asString();
+		DoctorInfo doctor_info;
+		bool doctor_pwd_check=MysqlMgr::GetInstance()->CheckDoctorPwd(workID,pwd,doctor_info);
+		if (!doctor_pwd_check) {
+			std::cout << " doctor pwd not match" << std::endl;
+			root["error"] = ErrorCodes::PasswdInvalid;
+			std::string jsonstr = root.toStyledString();
+			beast::ostream(connection->_response.body()) << jsonstr;
+			return true;
+		}
+
+		auto reply = StatusGrpcClient::GetInstance()->GetChatServer(doctor_info.id);
+		if (reply.error()) {
+			std::cout << " grpc get chat server failed, error is " << reply.error()<< std::endl;
+			root["error"] = ErrorCodes::RPCFailed;
+			std::string jsonstr = root.toStyledString();
+			beast::ostream(connection->_response.body()) << jsonstr;
+			return true;
+		}
+		std::cout << "succeed to load userinfo uid is " << doctor_info.id << std::endl;
+		root["error"] = 0;
+		root["workID"] = workID;
+		root["ID"]=doctor_info.id;
+		root["token"] = reply.token();
+		root["host"] = reply.host();
+		root["port"] = reply.port();
+		std::string jsonstr = root.toStyledString();
+		beast::ostream(connection->_response.body()) << jsonstr;
+		return true;
+
+
+
+
+	});
 
 	//用户登录逻辑
 	RegPost("/user_login", [](std::shared_ptr<HttpConnection> connection) {

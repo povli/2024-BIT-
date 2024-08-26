@@ -129,7 +129,40 @@ void TcpMgr::initHandlers()
         UserMgr::GetInstance()->SetUid(jsonObj["uid"].toInt());
         UserMgr::GetInstance()->SetName(jsonObj["name"].toString());
         UserMgr::GetInstance()->SetToken(jsonObj["token"].toString());
-        emit sig_swich_chatdlg();
+        //emit sig_swich_chatdlg();
+    });
+
+
+
+        _handlers.insert(ID_CHAT_LOGIN_RSP, [this](ReqId id, int len, QByteArray data){
+            Q_UNUSED(len);
+            qDebug()<< "handle id is "<< id << " data is " << data;
+            // 将QByteArray转换为QJsonDocument
+            QJsonDocument jsonDoc = QJsonDocument::fromJson(data);
+
+            // 检查转换是否成功
+            if(jsonDoc.isNull()){
+               qDebug() << "Failed to create QJsonDocument.";
+               return;
+            }
+
+            QJsonObject jsonObj = jsonDoc.object();
+
+            if(!jsonObj.contains("error")){
+                int err = ErrorCode::ERR_JSON;
+                qDebug() << "Login Failed, err is Json Parse Err" << err ;
+                emit sig_login_failed(err);
+                return;
+            }
+
+            int err = jsonObj["error"].toInt();
+            if(err != ErrorCode::SUCCESS){
+                qDebug() << "Login Failed, err is " << err ;
+                emit sig_login_failed(err);
+                return;
+            }
+            emit sig_swich_chatdlg();
+
     });
 }
 

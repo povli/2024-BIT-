@@ -79,7 +79,7 @@ bool LoginDialog::checkUserValid()
     auto email = ui->emailEdit->text();
     if(email.isEmpty()){
         qDebug() << "email empty " ;
-        AddTipErr(TipErr::TIP_EMAIL_ERR, tr("邮箱不能为空"));
+        AddTipErr(TipErr::TIP_EMAIL_ERR, tr("工号不能为空"));
         return false;
     }
     DelTipErr(TipErr::TIP_EMAIL_ERR);
@@ -206,7 +206,7 @@ void LoginDialog::initHttpHandlers()
 
         //发送信号通知tcpMgr发送长链接
         ServerInfo si;
-        si.Uid = jsonObj["uid"].toInt();
+        si.Uid = jsonObj["ID"].toInt();
         si.Host = jsonObj["host"].toString();
         si.Port = jsonObj["port"].toString();
         si.Token = jsonObj["token"].toString();
@@ -236,9 +236,9 @@ void LoginDialog::on_loginBtn_clicked()
     auto pwd = ui->passEdit->text();
     //发送http请求登录
     QJsonObject json_obj;
-    json_obj["email"] = email;
+    json_obj["workID"] = email;
     json_obj["passwd"] = xorString(pwd);
-    HttpMgr::GetInstance()->PostHttpReq(QUrl(gate_url_prefix+"/user_login"),
+    HttpMgr::GetInstance()->PostHttpReq(QUrl(gate_url_prefix+"/doctor_login"),
                                         json_obj, ReqId::ID_LOGIN_USER,Moudles::LOGINMOD);
 }
 
@@ -255,7 +255,7 @@ void LoginDialog::slot_tcp_con_finish(bool bsuccess)
       QString jsonString = doc.toJson(QJsonDocument::Indented);
 
       //发送tcp请求给chat server
-      emit TcpMgr::GetInstance()->sig_send_data(ReqId::ID_CHAT_LOGIN, jsonString);
+      emit TcpMgr::GetInstance()->sig_send_data(ReqId::ID_DOCTOR_LOGIN, jsonString);
 
    }else{
       showTip(tr("网络异常"),false);

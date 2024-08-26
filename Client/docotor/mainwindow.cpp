@@ -17,7 +17,7 @@ MainWindow::MainWindow(QWidget *parent)
     connect(_login_dlg,&LoginDialog::switchReset,this,&MainWindow::slotSwitchReset);
 
     //连接创建聊天界面信号
-    connect(TcpMgr::GetInstance().get(),&TcpMgr::sig_swich_chatdlg, this, &MainWindow::SlotSwitchMain);
+   connect(TcpMgr::GetInstance().get(),&TcpMgr::sig_swich_chatdlg, this, &MainWindow::SlotSwitchMain);
 
 
 }
@@ -86,7 +86,7 @@ void MainWindow::SlotSwitchLogin2()
     connect(_login_dlg, &LoginDialog::switchToReg, this, &MainWindow::slotSwitchRrg);
 }
 
-void MainWindow::SlotSwitchMain()
+/*void MainWindow::SlotSwitchMain()
 {
     _chat_dlg = new ChatDialog();
     _chat_dlg->setWindowFlags(Qt::CustomizeWindowHint|Qt::FramelessWindowHint);
@@ -95,5 +95,5 @@ void MainWindow::SlotSwitchMain()
     _login_dlg->hide();
     this->setMinimumSize(QSize(1050,900));
     this->setMaximumSize(QWIDGETSIZE_MAX, QWIDGETSIZE_MAX);
-}
+}*/
 
