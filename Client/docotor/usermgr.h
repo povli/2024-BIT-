@@ -24,6 +24,56 @@ public:
     void setIDcard(QString IDcard);
     void setDepartment_id(int department_id);
     void setIntr(QString intr);
+    QString getName() const { return _name; }
+        //void setName(const QString& name) { _name = name; }
+
+        QString getToken() const { return _token; }
+        //void setToken(const QString& token) { _token = token; }
+
+        int getUid() const { return _uid; }
+        //void setUid(int uid) { _uid = uid; }
+
+        QString getWorkID() const { return _workID; }
+        //void setWorkID(const QString& workID) { _workID = workID; }
+
+        QString getEmail() const { return _email; }
+        //void setEmail(const QString& email) { _email = email; }
+
+        QString getPhone() const { return _phone; }
+        //void setPhone(const QString& phone) { _phone = phone; }
+
+        int getSex() const { return _sex; }
+        //void setSex(int sex) { _sex = sex; }
+
+        QString getYear() const { return _year; }
+        //void setYear(const QString& year) { _year = year; }
+
+        QString getMonth() const { return _month; }
+        //void setMonth(const QString& month) { _month = month; }
+
+        QString getDay() const { return _day; }
+        //void setDay(const QString& day) { _day = day; }
+
+        QString getIDCard() const { return _IDcard; }
+        //void setIDCard(const QString& IDcard) { _IDcard = IDcard; }
+
+        int getDepartmentID() const { return _department_id; }
+        //void setDepartmentID(const QString& departmentID) { _department_id = departmentID; }
+
+        QString getIntr() const { return _intr; }
+        //void setIntr(const QString& intr) { _intr = intr; }
+        QString getDepartmentName() const {
+                int deptId = getDepartmentID();
+                switch (deptId) {
+                    case 1: return "儿科";
+                    case 2: return "内科";
+                    case 3: return "外科";
+                    case 4: return "妇科";
+                    case 5: return "皮肤科";
+                    default: return "未知科室";
+                }
+            }
+
 private:
     UserMgr();
     QString _name;
@@ -37,7 +87,7 @@ private:
     QString _month;
     QString _day;
     QString _IDcard;
-    QString _department_id;
+    int _department_id;
     QString _intr;
 
 };

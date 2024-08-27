@@ -46,6 +46,29 @@
      <string>坐诊安排信息</string>
     </attribute>
     <layout class="QGridLayout" name="gridLayout_2">
+     <item row="0" column="1" colspan="2">
+      <widget class="QLineEdit" name="lineEditID">
+       <property name="minimumSize">
+        <size>
+         <width>160</width>
+         <height>30</height>
+        </size>
+       </property>
+      </widget>
+     </item>
+     <item row="2" column="1" colspan="2">
+      <widget class="QLineEdit" name="lineEditOwnerID">
+       <property name="minimumSize">
+        <size>
+         <width>160</width>
+         <height>30</height>
+        </size>
+       </property>
+      </widget>
+     </item>
+     <item row="3" column="1" colspan="2">
+      <widget class="QTextEdit" name="textEditSummary"/>
+     </item>
      <item row="3" column="0">
       <widget class="QLabel" name="label_2">
        <property name="minimumSize">
@@ -56,71 +79,6 @@
        </property>
        <property name="text">
         <string>医生信息资料</string>
-       </property>
-      </widget>
-     </item>
-     <item row="4" column="2">
-      <widget class="QTextEdit" name="textEditSummary_2"/>
-     </item>
-     <item row="2" column="1" colspan="3">
-      <widget class="QLineEdit" name="lineEditOwnerID">
-       <property name="minimumSize">
-        <size>
-         <width>160</width>
-         <height>30</height>
-        </size>
-       </property>
-      </widget>
-     </item>
-     <item row="4" column="0">
-      <widget class="QLabel" name="label_5">
-       <property name="minimumSize">
-        <size>
-         <width>0</width>
-         <height>30</height>
-        </size>
-       </property>
-       <property name="text">
-        <string>单日患者上限数</string>
-       </property>
-      </widget>
-     </item>
-     <item row="1" column="0">
-      <widget class="QLabel" name="label_3">
-       <property name="minimumSize">
-        <size>
-         <width>0</width>
-         <height>30</height>
-        </size>
-       </property>
-       <property name="text">
-        <string>所属科室</string>
-       </property>
-      </widget>
-     </item>
-     <item row="6" column="0" colspan="2">
-      <spacer name="horizontalSpacer_2">
-       <property name="orientation">
-        <enum>Qt::Horizontal</enum>
-       </property>
-       <property name="sizeHint" stdset="0">
-        <size>
-         <width>147</width>
-         <height>37</height>
-        </size>
-       </property>
-      </spacer>
-     </item>
-     <item row="2" column="0">
-      <widget class="QLabel" name="label_4">
-       <property name="minimumSize">
-        <size>
-         <width>0</width>
-         <height>30</height>
-        </size>
-       </property>
-       <property name="text">
-        <string>医生账号</string>
        </property>
       </widget>
      </item>
@@ -143,30 +101,20 @@
        </property>
       </widget>
      </item>
-     <item row="3" column="1" colspan="3">
-      <widget class="QTextEdit" name="textEditSummary"/>
-     </item>
-     <item row="0" column="1" colspan="3">
-      <widget class="QLineEdit" name="lineEditID">
-       <property name="minimumSize">
+     <item row="5" column="0" colspan="2">
+      <spacer name="horizontalSpacer_2">
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
         <size>
-         <width>160</width>
-         <height>30</height>
+         <width>147</width>
+         <height>37</height>
         </size>
        </property>
-      </widget>
+      </spacer>
      </item>
-     <item row="1" column="1" colspan="3">
-      <widget class="QLineEdit" name="lineEditName">
-       <property name="minimumSize">
-        <size>
-         <width>160</width>
-         <height>30</height>
-        </size>
-       </property>
-      </widget>
-     </item>
-     <item row="6" column="3">
+     <item row="5" column="2">
       <widget class="QPushButton" name="pushButtonCommit">
        <property name="minimumSize">
         <size>
@@ -185,6 +133,42 @@
        </property>
       </widget>
      </item>
+     <item row="2" column="0">
+      <widget class="QLabel" name="label_4">
+       <property name="minimumSize">
+        <size>
+         <width>0</width>
+         <height>30</height>
+        </size>
+       </property>
+       <property name="text">
+        <string>医生账号</string>
+       </property>
+      </widget>
+     </item>
+     <item row="1" column="0">
+      <widget class="QLabel" name="label_3">
+       <property name="minimumSize">
+        <size>
+         <width>0</width>
+         <height>30</height>
+        </size>
+       </property>
+       <property name="text">
+        <string>所属科室</string>
+       </property>
+      </widget>
+     </item>
+     <item row="1" column="1" colspan="2">
+      <widget class="QLineEdit" name="lineEditName">
+       <property name="minimumSize">
+        <size>
+         <width>160</width>
+         <height>30</height>
+        </size>
+       </property>
+      </widget>
+     </item>
     </layout>
    </widget>
   </widget>
@@ -192,4 +176,3 @@
  <resources/>
  <connections/>
 </ui>
-

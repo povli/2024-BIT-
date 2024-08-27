@@ -91,6 +91,69 @@ void LogicSystem::RegisterCallBacks() {
 
 	_fun_callbacks[MSG_DOCTOR_MAINSERVER_LOGIN] = std::bind(&LogicSystem::DoctorLoginHandler, this,
 		placeholders::_1, placeholders::_2, placeholders::_3);
+	_fun_callbacks[MSG_EDIT_DOCTOR_SELFINFO] = std::bind(&LogicSystem::EditDoctorInfo, this,
+		placeholders::_1, placeholders::_2, placeholders::_3);
+
+}
+
+void LogicSystem::EditDoctorInfo(shared_ptr<CSession> session, const short &msg_id, const string &msg_data) {
+	Json::Reader reader;
+	Json::Value root;
+	reader.parse(msg_data, root);
+	auto uid = root["uid"].asInt();
+	//auto token = root["token"].asString();
+	std::cout << "doctor login uid is  " << uid << " user token  is "
+		 << endl;
+
+	Json::Value  rtvalue;
+
+
+
+	std::string uid_str = std::to_string(uid);
+	Defer defer([this, &rtvalue, session]() {
+		std::string return_str = rtvalue.toStyledString();
+		session->Send(return_str, MSG_EDIT_DOCTOR_SELFINFO);
+		});
+
+	auto name = root["name"].asString();
+	std::cout<<name<<std::endl;
+	auto department= root["department"].asString();
+	auto email = root["email"].asString();
+	auto intro = root["intr"].asString();
+	auto department_id=std::make_shared<int>();
+	bool Edit_doctorinfo=MysqlMgr::GetInstance()->UpdateDoctorInfo(uid,name, email,department,intro,department_id);
+	if (!Edit_doctorinfo) {
+		rtvalue["error"] = ErrorCodes::UidInvalid;
+		return ;
+	}
+
+	//rtvalue["error"]=ErrorCodes::Success;
+	std::string base_key = USER_BASE_INFO + uid_str;
+
+
+
+
+	Json::Value redis_root;
+	/////////redis_root["id"]=doctor_info->id;
+	redis_root["name"]=name;
+	//redis_root["pwd"]=doctor_info->pwd;
+	redis_root["email"]=email;
+	//////////redis_root["sex"]=doctorinfo->sex;
+	//redis_root["year"]=doctorinfo->year;
+	//redis_root["month"]=doctorinfo->month;
+	//redis_root["day"]=doctorinfo->day;
+	//redis_root["workID"]=doctorinfo->workID;
+	redis_root["department"]=*department_id;
+	redis_root["intr"]=intro;
+	//redis_root["IDcard"]=doctorinfo->IDcard;
+	RedisMgr::GetInstance()->Set(base_key, redis_root.toStyledString());
+	rtvalue["error"] = ErrorCodes::Success;
+	rtvalue["name"] = name;
+	rtvalue["email"] = email;
+	rtvalue["department"] = *department_id;
+	rtvalue["intr"] = intro;
+	return;
+
 
 }
 
@@ -133,7 +196,7 @@ void LogicSystem::DoctorLoginHandler(shared_ptr<CSession> session, const short &
 		return;
 	}
 
-	rtvalue["ID"]=doctor_info->id;
+	rtvalue["ID"]=uid;
 	rtvalue["workID"]=doctor_info->workID;
 	rtvalue["name"]=doctor_info->name;
 	rtvalue["pwd"]=doctor_info->pwd;
@@ -680,16 +743,22 @@ bool LogicSystem::GetDoctorInfo(std::string base_key, int uid, std::shared_ptr<D
 		Json::Reader reader;
 		Json::Value root;
 		reader.parse(info_str, root);
+		std::cout<<"text before id "<<endl;
 		doctorinfo->id=root["id"].asInt();
+		std::cout<<"text after id "<< doctorinfo->id<<endl;
 		doctorinfo->name=root["name"].asString();
 		doctorinfo->pwd=root["pwd"].asString();
 		doctorinfo->email=root["email"].asString();
+		std::cout<<"text after id "<<endl;
 		doctorinfo->sex=root["sex"].asInt();
+		std::cout<<"sex "<<doctorinfo->sex<<std::endl;
 		doctorinfo->year=root["year"].asString();
 		doctorinfo->month=root["month"].asString();
 		doctorinfo->day=root["day"].asString();
 		doctorinfo->workID=root["workID"].asString();
+		std::cout<<"text after id "<<endl;
 		doctorinfo->department_id=root["department"].asInt();
+		std::cout<<"ddd:"<<doctorinfo->department_id<<std::endl;
 		doctorinfo->intr=root["intr"].asString();
 		doctorinfo->IDcard=root["IDcard"].asString();
 	}

@@ -45,6 +45,7 @@ private:
     bool GetFriendApplyInfo(int to_uid, std::vector<std::shared_ptr<ApplyInfo>>& list);
     bool GetFriendList(int self_id, std::vector<std::shared_ptr<UserInfo>> & user_list);
     bool GetDoctorInfo(std::string base_key, int uid, std::shared_ptr<DoctorInfo>& doctorinfo);
+    void EditDoctorInfo(shared_ptr<CSession> session, const short &msg_id, const string &msg_data);
     std::thread _worker_thread;
     std::queue<shared_ptr<LogicNode>> _msg_que;
     std::mutex _mutex;

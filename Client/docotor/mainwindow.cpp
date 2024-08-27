@@ -210,14 +210,22 @@ void MainWindow::on_checkBox_clicked()
 
 void MainWindow::on_PI_clicked()
 {
-    this->hide();
-    window->show();
+//    window=new pinf;
+
+
+//    window->setWindowFlags(Qt::CustomizeWindowHint|Qt::FramelessWindowHint);
+//    //connect(_reg_dlg,&RegisterDialog::sigSwitchLogin,this,&hMainWindow::slotSwitchLogin);
+//    setCentralWidget(window);
+//    window->show();
+//    this->hide();
+    pinf *pinfWindow = new pinf(this);
+    pinfWindow->show();
 }
 
 void MainWindow::on_INF_clicked()
 {
-    this->hide();
-    window1->show();
+    information *informationWindow = new information(this);
+    informationWindow->show();
 }
 
 void MainWindow::on_checkBox_1_stateChanged(int arg1)

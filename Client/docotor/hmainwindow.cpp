@@ -18,7 +18,7 @@ hMainWindow::hMainWindow(QWidget *parent)
 
     //连接创建主界面信号
    connect(TcpMgr::GetInstance().get(),&TcpMgr::sig_swich_chatdlg, this, &hMainWindow::SlotSwitchMain);
-   emit TcpMgr::GetInstance()->sig_swich_chatdlg();
+   //emit TcpMgr::GetInstance()->sig_swich_chatdlg();
 
 
 }
@@ -94,7 +94,7 @@ void hMainWindow::SlotSwitchMain()
     setCentralWidget(_main_dlg);
     _main_dlg->show();
     _login_dlg->hide();
-    this->setMinimumSize(QSize(800,300));
+    this->setMinimumSize(QSize(1000,400));
     this->setMaximumSize(QWIDGETSIZE_MAX, QWIDGETSIZE_MAX);
 }
 

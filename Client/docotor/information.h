@@ -3,6 +3,7 @@
 
 #include <QWidget>
 #include <QPaintEvent>
+#include"usermgr.h"
 
 namespace Ui {
 class information;
@@ -24,6 +25,8 @@ private slots:
     void on_pushButton_clicked();
     void on_pushButtonCommit_2_clicked();
     void handleDataUpdated(); // 处理数据更新的槽函数
+
+
 
 private:
     Ui::information *ui;

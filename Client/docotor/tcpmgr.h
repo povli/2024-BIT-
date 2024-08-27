@@ -34,6 +34,9 @@ signals:
 
     void sig_login_failed(int);
     void sig_swich_chatdlg();
+    void sig_edit_doctor_selfintr_failed();
+    void dataUpdated();
+    void apperSuccess();
 };
 
 #endif // TCPMGR_H

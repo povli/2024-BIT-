@@ -306,6 +306,59 @@ bool MysqlDao::AddFriend(const int& from, const int& to, std::string back_name) 
 	return true;
 }
 
+bool MysqlDao::UpdateDoctorInfo(int id, const std::string& name, const std::string& email, const std::string& department, const std::string& intr, const std::shared_ptr<int>& departid) {
+	auto con = pool_->getConnection();
+	if (con == nullptr) {
+		return false;
+	}
+
+	Defer defer([this, &con]() {
+		pool_->returnConnection(std::move(con));
+	});
+
+	try {
+		// 首先通过 department 名称查找对应的 department_id
+		std::unique_ptr<sql::PreparedStatement> pstmtDept(con->_con->prepareStatement("SELECT department_id FROM departments WHERE name = ?"));
+		pstmtDept->setString(1, department);
+		std::unique_ptr<sql::ResultSet> resDept(pstmtDept->executeQuery());
+
+		int department_id = -1;
+		if (resDept->next()) {
+			department_id = resDept->getInt("department_id");
+			if (departid) {
+				*departid = department_id; // 修改 departid 所指向的 int 值
+			}
+		} else {
+			std::cerr << "Department not found: " << department << std::endl;
+			return false;
+		}
+
+		// 准备更新 doctors 表的 SQL 语句
+		std::unique_ptr<sql::PreparedStatement> pstmt(con->_con->prepareStatement(
+			"UPDATE doctors SET name = ?, email = ?, department_id = ?, intr = ? WHERE id = ?"));
+
+		// 绑定参数
+		pstmt->setString(1, name);
+		pstmt->setString(2, email);
+		pstmt->setInt(3, department_id);
+		pstmt->setString(4, intr);
+		pstmt->setInt(5, id);
+
+		// 执行更新
+		int updateCount = pstmt->executeUpdate();
+
+		std::cout << "Updated rows: " << updateCount << std::endl;
+		return updateCount > 0;
+	} catch (sql::SQLException& e) {
+		std::cerr << "SQLException: " << e.what();
+		std::cerr << " (MySQL error code: " << e.getErrorCode();
+		std::cerr << ", SQLState: " << e.getSQLState() << " )" << std::endl;
+		return false;
+	}
+}
+
+
+
 std::shared_ptr<UserInfo> MysqlDao::GetUser(int uid)
 {
 	auto con = pool_->getConnection();

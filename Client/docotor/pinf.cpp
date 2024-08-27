@@ -1,5 +1,6 @@
 #include "pinf.h"
 #include "ui_pinf.h"
+#include "mainwindow.h"
 
 
 #include <QStandardItemModel>
@@ -165,6 +166,9 @@ pinf::~pinf()
 //MianWindow界面和pinf界面切换相关
 void pinf::on_pushButton_clicked()
 {
-    emit goback();
+   // emit goback();
+    this->hide();
+    //MainWindow *mmainWindow = new MainWindow(this);
+   // mmainWindow->show();
 }
 
