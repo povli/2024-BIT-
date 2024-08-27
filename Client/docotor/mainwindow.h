@@ -26,7 +26,7 @@ public:
     void paintEvent(QPaintEvent *event) override; // 覆盖 paintEvent 方法以添加背景图
 
     //不同ui界面跳转
-    pinf *window = NULL;
+    //pinf *window = NULL;
     information *window1 =NULL;
 
 //public slots:

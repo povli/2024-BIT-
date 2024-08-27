@@ -161,6 +161,21 @@ void TcpMgr::initHandlers()
                 emit sig_login_failed(err);
                 return;
             }
+            UserMgr::GetInstance()->SetUid(jsonObj["ID"].toInt());
+            UserMgr::GetInstance()->SetName(jsonObj["name"].toString());
+            UserMgr::GetInstance()->SetToken(jsonObj["token"].toString());
+            UserMgr::GetInstance()->SetWorkID(jsonObj["workID"].toString());
+            UserMgr::GetInstance()->setEmail(jsonObj["email"].toString());
+            UserMgr::GetInstance()->setSex(jsonObj["sex"].toInt());
+            UserMgr::GetInstance()->setYear(jsonObj["year"].toString());
+            UserMgr::GetInstance()->setMonth(jsonObj["month"].toString());
+            UserMgr::GetInstance()->setDay(jsonObj["day"].toString());
+            UserMgr::GetInstance()->setIDcard(jsonObj["IDcard"].toString());
+            UserMgr::GetInstance()->setPhone(jsonObj["phone"].toString());
+            UserMgr::GetInstance()->setDepartment_id(jsonObj["department_id"].toInt());
+            UserMgr::GetInstance()->setIntr(jsonObj["intr"].toString());
+
+
             emit sig_swich_chatdlg();
 
     });
