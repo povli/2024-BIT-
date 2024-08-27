@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>information</class>
+ <class>change</class>
  <widget class="QWidget" name="change">
   <property name="geometry">
    <rect>
@@ -192,3 +192,4 @@
  <resources/>
  <connections/>
 </ui>
+
