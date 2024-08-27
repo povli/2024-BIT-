@@ -1,7 +1,7 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 #include"resetdialog.h"
-
+#include "tcpmgr.h"
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
@@ -12,9 +12,10 @@ MainWindow::MainWindow(QWidget *parent)
     setCentralWidget(_login_dlg);
     //创建连接至注册
     connect(_login_dlg,&LoginDialog::switchToReg,this,&MainWindow::slotSwitchRrg);
-
     connect(_login_dlg,&LoginDialog::switchReset,this,&MainWindow::slotSwitchReset);
-
+    //连接创建主界面信号
+       connect(TcpMgr::GetInstance().get(),&TcpMgr::sig_swich_chatdlg, this, &MainWindow::SlotSwitchMain);
+       emit TcpMgr::GetInstance()->sig_swich_chatdlg();
 }
 
 MainWindow::~MainWindow()
@@ -48,6 +49,12 @@ void MainWindow::slotSwitchLogin()
     //连接登录页面forget信号
     connect(_login_dlg, &LoginDialog::switchReset, this, &MainWindow::slotSwitchReset);
 
+    connect(TcpMgr::GetInstance().get(),&TcpMgr::sig_swich_chatdlg, this, &MainWindow::SlotSwitchMain);
+
+
+    //测试
+    emit TcpMgr::GetInstance()->sig_swich_chatdlg();
+
 
 
 }
@@ -80,4 +87,13 @@ void MainWindow::SlotSwitchLogin2()
     //连接登录页面注册信号
     connect(_login_dlg, &LoginDialog::switchToReg, this, &MainWindow::slotSwitchRrg);
 }
-
+void MainWindow::SlotSwitchMain()
+{
+    _main_dlg = new PMainWindow();
+    _main_dlg->setWindowFlags(Qt::CustomizeWindowHint|Qt::FramelessWindowHint);
+    setCentralWidget(_main_dlg);
+    _main_dlg->show();
+    _login_dlg->hide();
+    this->setMinimumSize(QSize(800,300));
+    this->setMaximumSize(QWIDGETSIZE_MAX, QWIDGETSIZE_MAX);
+}
