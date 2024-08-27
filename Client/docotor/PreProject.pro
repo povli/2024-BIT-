@@ -9,9 +9,14 @@ CONFIG += c++11
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+    absence.cpp \
+    advice.cpp \
+    change.cpp \
     clickedlabel.cpp \
+    diagnostic.cpp \
     global.cpp \
     hmainwindow.cpp \
+    hospital.cpp \
     httpmgr.cpp \
     information.cpp \
     logindialog.cpp \
@@ -26,9 +31,14 @@ SOURCES += \
     usermgr.cpp
 
 HEADERS += \
+    absence.h \
+    advice.h \
+    change.h \
     clickedlabel.h \
+    diagnostic.h \
     global.h \
     hmainwindow.h \
+    hospital.h \
     httpmgr.h \
     information.h \
     logindialog.h \
@@ -43,7 +53,12 @@ HEADERS += \
     usermgr.h
 
 FORMS += \
+    absence.ui \
+    advice.ui \
+    change.ui \
+    diagnostic.ui \
     hmainwindow.ui \
+    hospital.ui \
     information.ui \
     logindialog.ui \
     mainwindow.ui \

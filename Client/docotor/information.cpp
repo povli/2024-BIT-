@@ -1,5 +1,6 @@
 #include "information.h"
 #include "ui_information.h"
+#include "change.h"
 #include <QPainter>
 #include <QPaintEvent>
 
@@ -32,4 +33,20 @@ void information::paintEvent(QPaintEvent *event)
 void information::on_pushButton_clicked()
 {
     emit goback();
+}
+
+void information::on_pushButtonCommit_2_clicked()
+{
+    change *changeWindow = new change(this);
+
+    // 连接数据更新信号到槽函数
+    connect(changeWindow, &change::dataUpdated, this, &information::handleDataUpdated);
+
+    changeWindow->show();
+}
+
+void information::handleDataUpdated()
+{
+    // 刷新当前界面的数据或状态
+    // 此处不要显示提示框
 }

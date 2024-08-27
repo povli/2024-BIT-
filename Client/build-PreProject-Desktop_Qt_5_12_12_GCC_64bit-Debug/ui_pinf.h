@@ -31,28 +31,24 @@ public:
     QGridLayout *gridLayout_8;
     QSpacerItem *horizontalSpacerRecordation_2;
     QGridLayout *gridLayoutRecordation_2;
-    QPushButton *pushButtonRecordationSearch_2;
     QPushButton *pushButtonRecordationRefresh_2;
     QTableView *tableViewRecordation_2;
     QWidget *tabUser_2;
     QGridLayout *gridLayout_3;
     QSpacerItem *horizontalSpacerUser_2;
     QGridLayout *gridLayoutUser_2;
-    QPushButton *pushButtonUserSearch_2;
     QPushButton *pushButtonUserRefresh_2;
     QTableView *tableViewUser_2;
     QWidget *tabGoods_2;
     QGridLayout *gridLayout_6;
     QSpacerItem *horizontalSpacerGoods_2;
     QGridLayout *gridLayoutGoods_2;
-    QPushButton *pushButtonGoodsSearch_2;
     QPushButton *pushButtonGoodsRefresh_2;
     QTableView *tableViewGoods_2;
     QWidget *tabStatistics_2;
     QGridLayout *gridLayout_4;
     QSpacerItem *horizontalSpacer_2;
     QHBoxLayout *horizontalLayout_2;
-    QPushButton *pushButtonStatisticsSearch_2;
     QPushButton *pushButtonStatisticsRefresh_2;
     QTableView *tableViewStatistics_2;
 
@@ -77,17 +73,11 @@ public:
 
         gridLayoutRecordation_2 = new QGridLayout();
         gridLayoutRecordation_2->setObjectName(QString::fromUtf8("gridLayoutRecordation_2"));
-        pushButtonRecordationSearch_2 = new QPushButton(tabRecordation_2);
-        pushButtonRecordationSearch_2->setObjectName(QString::fromUtf8("pushButtonRecordationSearch_2"));
-        pushButtonRecordationSearch_2->setMinimumSize(QSize(80, 40));
-
-        gridLayoutRecordation_2->addWidget(pushButtonRecordationSearch_2, 0, 0, 1, 1);
-
         pushButtonRecordationRefresh_2 = new QPushButton(tabRecordation_2);
         pushButtonRecordationRefresh_2->setObjectName(QString::fromUtf8("pushButtonRecordationRefresh_2"));
         pushButtonRecordationRefresh_2->setMinimumSize(QSize(80, 40));
 
-        gridLayoutRecordation_2->addWidget(pushButtonRecordationRefresh_2, 0, 1, 1, 1);
+        gridLayoutRecordation_2->addWidget(pushButtonRecordationRefresh_2, 0, 0, 1, 1);
 
 
         gridLayout_8->addLayout(gridLayoutRecordation_2, 0, 1, 1, 1);
@@ -108,17 +98,11 @@ public:
 
         gridLayoutUser_2 = new QGridLayout();
         gridLayoutUser_2->setObjectName(QString::fromUtf8("gridLayoutUser_2"));
-        pushButtonUserSearch_2 = new QPushButton(tabUser_2);
-        pushButtonUserSearch_2->setObjectName(QString::fromUtf8("pushButtonUserSearch_2"));
-        pushButtonUserSearch_2->setMinimumSize(QSize(80, 40));
-
-        gridLayoutUser_2->addWidget(pushButtonUserSearch_2, 0, 0, 1, 1);
-
         pushButtonUserRefresh_2 = new QPushButton(tabUser_2);
         pushButtonUserRefresh_2->setObjectName(QString::fromUtf8("pushButtonUserRefresh_2"));
         pushButtonUserRefresh_2->setMinimumSize(QSize(80, 40));
 
-        gridLayoutUser_2->addWidget(pushButtonUserRefresh_2, 0, 1, 1, 1);
+        gridLayoutUser_2->addWidget(pushButtonUserRefresh_2, 0, 0, 1, 1);
 
 
         gridLayout_3->addLayout(gridLayoutUser_2, 0, 1, 1, 1);
@@ -139,17 +123,11 @@ public:
 
         gridLayoutGoods_2 = new QGridLayout();
         gridLayoutGoods_2->setObjectName(QString::fromUtf8("gridLayoutGoods_2"));
-        pushButtonGoodsSearch_2 = new QPushButton(tabGoods_2);
-        pushButtonGoodsSearch_2->setObjectName(QString::fromUtf8("pushButtonGoodsSearch_2"));
-        pushButtonGoodsSearch_2->setMinimumSize(QSize(80, 40));
-
-        gridLayoutGoods_2->addWidget(pushButtonGoodsSearch_2, 0, 0, 1, 1);
-
         pushButtonGoodsRefresh_2 = new QPushButton(tabGoods_2);
         pushButtonGoodsRefresh_2->setObjectName(QString::fromUtf8("pushButtonGoodsRefresh_2"));
         pushButtonGoodsRefresh_2->setMinimumSize(QSize(80, 40));
 
-        gridLayoutGoods_2->addWidget(pushButtonGoodsRefresh_2, 0, 1, 1, 1);
+        gridLayoutGoods_2->addWidget(pushButtonGoodsRefresh_2, 0, 0, 1, 1);
 
 
         gridLayout_6->addLayout(gridLayoutGoods_2, 0, 1, 1, 1);
@@ -170,12 +148,6 @@ public:
 
         horizontalLayout_2 = new QHBoxLayout();
         horizontalLayout_2->setObjectName(QString::fromUtf8("horizontalLayout_2"));
-        pushButtonStatisticsSearch_2 = new QPushButton(tabStatistics_2);
-        pushButtonStatisticsSearch_2->setObjectName(QString::fromUtf8("pushButtonStatisticsSearch_2"));
-        pushButtonStatisticsSearch_2->setMinimumSize(QSize(80, 40));
-
-        horizontalLayout_2->addWidget(pushButtonStatisticsSearch_2);
-
         pushButtonStatisticsRefresh_2 = new QPushButton(tabStatistics_2);
         pushButtonStatisticsRefresh_2->setObjectName(QString::fromUtf8("pushButtonStatisticsRefresh_2"));
         pushButtonStatisticsRefresh_2->setMinimumSize(QSize(80, 40));
@@ -204,16 +176,12 @@ public:
     {
         pinf->setWindowTitle(QApplication::translate("pinf", "Form", nullptr));
         pushButton->setText(QApplication::translate("pinf", "<", nullptr));
-        pushButtonRecordationSearch_2->setText(QApplication::translate("pinf", "\346\237\245\350\257\242", nullptr));
         pushButtonRecordationRefresh_2->setText(QApplication::translate("pinf", "\345\210\267\346\226\260", nullptr));
         tabWidget->setTabText(tabWidget->indexOf(tabRecordation_2), QApplication::translate("pinf", "\351\242\204\347\272\246\350\256\260\345\275\225", nullptr));
-        pushButtonUserSearch_2->setText(QApplication::translate("pinf", "\346\237\245\350\257\242", nullptr));
         pushButtonUserRefresh_2->setText(QApplication::translate("pinf", "\345\210\267\346\226\260", nullptr));
         tabWidget->setTabText(tabWidget->indexOf(tabUser_2), QApplication::translate("pinf", "\350\257\212\346\226\255\350\256\260\345\275\225", nullptr));
-        pushButtonGoodsSearch_2->setText(QApplication::translate("pinf", "\346\237\245\350\257\242", nullptr));
         pushButtonGoodsRefresh_2->setText(QApplication::translate("pinf", "\345\210\267\346\226\260", nullptr));
         tabWidget->setTabText(tabWidget->indexOf(tabGoods_2), QApplication::translate("pinf", "\345\244\204\346\226\271\350\256\260\345\275\225", nullptr));
-        pushButtonStatisticsSearch_2->setText(QApplication::translate("pinf", "\346\237\245\350\257\242", nullptr));
         pushButtonStatisticsRefresh_2->setText(QApplication::translate("pinf", "\345\210\267\346\226\260", nullptr));
         tabWidget->setTabText(tabWidget->indexOf(tabStatistics_2), QApplication::translate("pinf", "\344\275\217\351\231\242\350\256\260\345\275\225", nullptr));
     } // retranslateUi

@@ -22,7 +22,6 @@
 #include <QtWidgets/QMenuBar>
 #include <QtWidgets/QPushButton>
 #include <QtWidgets/QSpacerItem>
-#include <QtWidgets/QSpinBox>
 #include <QtWidgets/QStackedWidget>
 #include <QtWidgets/QStatusBar>
 #include <QtWidgets/QTableWidget>
@@ -50,12 +49,12 @@ public:
     QWidget *page;
     QLabel *label_7;
     QCheckBox *checkBox;
-    QSpinBox *spinBox;
-    QSpinBox *spinBox_2;
-    QSpinBox *spinBox_3;
     QLabel *label_15;
     QLabel *label_16;
     QLabel *label_17;
+    QLabel *label_time;
+    QLabel *label_20;
+    QLabel *label_21;
     QWidget *page_3;
     QLabel *label_8;
     QPushButton *pushButton_4;
@@ -96,7 +95,6 @@ public:
     QPushButton *return_3;
     QLabel *label_6;
     QWidget *page_last;
-    QPushButton *return_0;
     QWidget *layoutWidget2;
     QHBoxLayout *horizontalLayout_5;
     QHBoxLayout *horizontalLayout_3;
@@ -166,33 +164,19 @@ public:
         page->setObjectName(QString::fromUtf8("page"));
         label_7 = new QLabel(page);
         label_7->setObjectName(QString::fromUtf8("label_7"));
-        label_7->setGeometry(QRect(280, 40, 61, 31));
+        label_7->setGeometry(QRect(260, 70, 81, 51));
         QFont font1;
-        font1.setPointSize(18);
+        font1.setPointSize(25);
         label_7->setFont(font1);
         checkBox = new QCheckBox(page);
         checkBox->setObjectName(QString::fromUtf8("checkBox"));
-        checkBox->setGeometry(QRect(400, 240, 92, 23));
-        spinBox = new QSpinBox(page);
-        spinBox->setObjectName(QString::fromUtf8("spinBox"));
-        spinBox->setGeometry(QRect(120, 230, 81, 41));
-        spinBox->setMinimum(2022);
-        spinBox->setMaximum(2024);
-        spinBox_2 = new QSpinBox(page);
-        spinBox_2->setObjectName(QString::fromUtf8("spinBox_2"));
-        spinBox_2->setGeometry(QRect(210, 230, 71, 41));
-        spinBox_2->setMinimum(1);
-        spinBox_2->setMaximum(12);
-        spinBox_3 = new QSpinBox(page);
-        spinBox_3->setObjectName(QString::fromUtf8("spinBox_3"));
-        spinBox_3->setGeometry(QRect(290, 230, 71, 41));
-        spinBox_3->setMinimum(1);
-        spinBox_3->setMaximum(31);
-        label_15 = new QLabel(page);
-        label_15->setObjectName(QString::fromUtf8("label_15"));
-        label_15->setGeometry(QRect(130, 200, 61, 31));
+        checkBox->setGeometry(QRect(310, 320, 92, 23));
         QFont font2;
         font2.setPointSize(16);
+        checkBox->setFont(font2);
+        label_15 = new QLabel(page);
+        label_15->setObjectName(QString::fromUtf8("label_15"));
+        label_15->setGeometry(QRect(150, 200, 61, 31));
         label_15->setFont(font2);
         label_16 = new QLabel(page);
         label_16->setObjectName(QString::fromUtf8("label_16"));
@@ -200,8 +184,22 @@ public:
         label_16->setFont(font2);
         label_17 = new QLabel(page);
         label_17->setObjectName(QString::fromUtf8("label_17"));
-        label_17->setGeometry(QRect(300, 200, 61, 31));
+        label_17->setGeometry(QRect(280, 200, 61, 31));
         label_17->setFont(font2);
+        label_time = new QLabel(page);
+        label_time->setObjectName(QString::fromUtf8("label_time"));
+        label_time->setGeometry(QRect(140, 240, 321, 51));
+        QFont font3;
+        font3.setPointSize(20);
+        label_time->setFont(font3);
+        label_20 = new QLabel(page);
+        label_20->setObjectName(QString::fromUtf8("label_20"));
+        label_20->setGeometry(QRect(340, 200, 67, 31));
+        label_20->setFont(font2);
+        label_21 = new QLabel(page);
+        label_21->setObjectName(QString::fromUtf8("label_21"));
+        label_21->setGeometry(QRect(390, 200, 67, 31));
+        label_21->setFont(font2);
         stackedWidget_2->addWidget(page);
         page_3 = new QWidget();
         page_3->setObjectName(QString::fromUtf8("page_3"));
@@ -357,7 +355,9 @@ public:
         label_9 = new QLabel(page_4);
         label_9->setObjectName(QString::fromUtf8("label_9"));
         label_9->setGeometry(QRect(270, 40, 61, 41));
-        label_9->setFont(font1);
+        QFont font4;
+        font4.setPointSize(18);
+        label_9->setFont(font4);
         tableWidget = new QTableWidget(page_4);
         if (tableWidget->columnCount() < 6)
             tableWidget->setColumnCount(6);
@@ -432,9 +432,6 @@ public:
         stackedWidget->addWidget(page_2);
         page_last = new QWidget();
         page_last->setObjectName(QString::fromUtf8("page_last"));
-        return_0 = new QPushButton(page_last);
-        return_0->setObjectName(QString::fromUtf8("return_0"));
-        return_0->setGeometry(QRect(0, 30, 89, 25));
         layoutWidget2 = new QWidget(page_last);
         layoutWidget2->setObjectName(QString::fromUtf8("layoutWidget2"));
         layoutWidget2->setGeometry(QRect(0, 110, 664, 101));
@@ -537,7 +534,7 @@ public:
 
         retranslateUi(MainWindow);
 
-        stackedWidget->setCurrentIndex(3);
+        stackedWidget->setCurrentIndex(1);
         stackedWidget_2->setCurrentIndex(0);
 
 
@@ -555,10 +552,13 @@ public:
         pushButton_2->setText(QApplication::translate("MainWindow", "\350\257\267\345\201\207", nullptr));
         pushButton_3->setText(QApplication::translate("MainWindow", "\351\224\200\345\201\207", nullptr));
         label_7->setText(QApplication::translate("MainWindow", "\346\211\223\345\215\241", nullptr));
-        checkBox->setText(QApplication::translate("MainWindow", "CheckBox", nullptr));
+        checkBox->setText(QApplication::translate("MainWindow", "\346\211\223\345\215\241", nullptr));
         label_15->setText(QApplication::translate("MainWindow", "\345\271\264", nullptr));
         label_16->setText(QApplication::translate("MainWindow", "\346\234\210", nullptr));
         label_17->setText(QApplication::translate("MainWindow", "\346\227\245", nullptr));
+        label_time->setText(QApplication::translate("MainWindow", "TextLabel", nullptr));
+        label_20->setText(QApplication::translate("MainWindow", "\346\227\266", nullptr));
+        label_21->setText(QApplication::translate("MainWindow", "\345\210\206", nullptr));
         label_8->setText(QApplication::translate("MainWindow", "\350\257\267\345\201\207\347\224\263\350\257\267\344\277\241\346\201\257\345\241\253\345\206\231", nullptr));
         pushButton_4->setText(QApplication::translate("MainWindow", "\347\241\256\345\256\232", nullptr));
         pushButton_5->setText(QApplication::translate("MainWindow", "\345\217\226\346\266\210", nullptr));
@@ -630,7 +630,6 @@ public:
         checkBox_1->setText(QApplication::translate("MainWindow", "\351\224\200\345\201\207", nullptr));
         return_3->setText(QApplication::translate("MainWindow", "<", nullptr));
         label_6->setText(QApplication::translate("MainWindow", "\344\270\252\344\272\272\344\277\241\346\201\257", nullptr));
-        return_0->setText(QApplication::translate("MainWindow", "\350\277\224\345\233\236", nullptr));
         label->setText(QApplication::translate("MainWindow", "TextLabel", nullptr));
         PI->setText(QApplication::translate("MainWindow", "\351\242\204\347\272\246\346\202\243\350\200\205\344\277\241\346\201\257", nullptr));
         label_2->setText(QApplication::translate("MainWindow", "TextLabel", nullptr));
