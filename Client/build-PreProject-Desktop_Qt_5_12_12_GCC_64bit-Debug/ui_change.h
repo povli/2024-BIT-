@@ -140,15 +140,15 @@ public:
 
     void retranslateUi(QWidget *change)
     {
-        change->setWindowTitle(QApplication::translate("information", "Form", nullptr));
-        pushButton->setText(QApplication::translate("information", "<", nullptr));
-        label_2->setText(QApplication::translate("information", "\345\214\273\347\224\237\344\277\241\346\201\257\350\265\204\346\226\231", nullptr));
-        label_5->setText(QApplication::translate("information", "\345\215\225\346\227\245\346\202\243\350\200\205\344\270\212\351\231\220\346\225\260", nullptr));
-        label_3->setText(QApplication::translate("information", "\346\211\200\345\261\236\347\247\221\345\256\244", nullptr));
-        label_4->setText(QApplication::translate("information", "\345\214\273\347\224\237\350\264\246\345\217\267", nullptr));
-        label->setText(QApplication::translate("information", "\345\214\273\347\224\237\345\247\223\345\220\215", nullptr));
-        pushButtonCommit->setText(QApplication::translate("information", "\347\241\256\350\256\244\344\277\256\346\224\271", nullptr));
-        tabWidget->setTabText(tabWidget->indexOf(tabGoods), QApplication::translate("information", "\345\235\220\350\257\212\345\256\211\346\216\222\344\277\241\346\201\257", nullptr));
+        change->setWindowTitle(QApplication::translate("change", "Form", nullptr));
+        pushButton->setText(QApplication::translate("change", "<", nullptr));
+        label_2->setText(QApplication::translate("change", "\345\214\273\347\224\237\344\277\241\346\201\257\350\265\204\346\226\231", nullptr));
+        label_5->setText(QApplication::translate("change", "\345\215\225\346\227\245\346\202\243\350\200\205\344\270\212\351\231\220\346\225\260", nullptr));
+        label_3->setText(QApplication::translate("change", "\346\211\200\345\261\236\347\247\221\345\256\244", nullptr));
+        label_4->setText(QApplication::translate("change", "\345\214\273\347\224\237\350\264\246\345\217\267", nullptr));
+        label->setText(QApplication::translate("change", "\345\214\273\347\224\237\345\247\223\345\220\215", nullptr));
+        pushButtonCommit->setText(QApplication::translate("change", "\347\241\256\350\256\244\344\277\256\346\224\271", nullptr));
+        tabWidget->setTabText(tabWidget->indexOf(tabGoods), QApplication::translate("change", "\345\235\220\350\257\212\345\256\211\346\216\222\344\277\241\346\201\257", nullptr));
     } // retranslateUi
 
 };

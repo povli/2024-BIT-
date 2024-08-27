@@ -5810,7 +5810,13 @@ mainwindow.o: ../docotor/mainwindow.cpp ../docotor/mainwindow.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/QTextEdit \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/qtextedit.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/QHeaderView \
-		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/qheaderview.h
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/qheaderview.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/QTimer \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qtimer.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qbasictimer.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/QDateTime \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qdatetime.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtGui/QMouseEvent
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o mainwindow.o ../docotor/mainwindow.cpp
 
 pbd.o: ../docotor/pbd.cpp ../docotor/pbd.h \
