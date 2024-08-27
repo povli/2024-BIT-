@@ -61,7 +61,7 @@ quizWd::quizWd(QWidget *parent) :
 void quizWd::paintEvent(QPaintEvent *event)
 {
     QPainter painter(this);
-    QPixmap backgroundPixmap(":/myimages/physical.jpg"); // 使用资源文件中的背景图片
+    QPixmap backgroundPixmap(":/res/psychologyquiz.jpg"); // 使用资源文件中的背景图片
     painter.drawPixmap(0, 0, width(), height(), backgroundPixmap);
     QWidget::paintEvent(event); // 调用基类的 paintEvent 以确保正常绘制其他内容
 }

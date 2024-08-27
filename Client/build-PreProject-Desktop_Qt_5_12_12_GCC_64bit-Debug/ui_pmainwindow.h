@@ -55,7 +55,7 @@ public:
         chattingroom->setSizePolicy(sizePolicy);
         chattingroom->setMinimumSize(QSize(130, 70));
         chattingroom->setMaximumSize(QSize(70, 70));
-        chattingroom->setStyleSheet(QString::fromUtf8(""));
+        chattingroom->setStyleSheet(QString::fromUtf8("background-image: url(:/res/chatroom.png);"));
         chattingroom->setIconSize(QSize(70, 70));
 
         gridLayout->addWidget(chattingroom, 0, 3, 1, 1);
@@ -66,7 +66,7 @@ public:
         personal->setSizePolicy(sizePolicy);
         personal->setMinimumSize(QSize(130, 70));
         personal->setMaximumSize(QSize(70, 70));
-        personal->setStyleSheet(QString::fromUtf8("image: url(:/personal-profile-icon.jpg);"));
+        personal->setStyleSheet(QString::fromUtf8("background-image: url(:/res/personal.png);"));
         personal->setIconSize(QSize(70, 70));
 
         gridLayout->addWidget(personal, 0, 2, 1, 1);
@@ -77,7 +77,7 @@ public:
         book->setSizePolicy(sizePolicy);
         book->setMinimumSize(QSize(130, 70));
         book->setMaximumSize(QSize(70, 70));
-        book->setStyleSheet(QString::fromUtf8(""));
+        book->setStyleSheet(QString::fromUtf8("background-image: url(:/res/myregister.png);"));
         book->setIconSize(QSize(70, 70));
         book->setCheckable(false);
 
@@ -89,6 +89,7 @@ public:
         hospitalization->setSizePolicy(sizePolicy);
         hospitalization->setMinimumSize(QSize(130, 70));
         hospitalization->setMaximumSize(QSize(70, 70));
+        hospitalization->setStyleSheet(QString::fromUtf8("background-image: url(:/res/hospitalization.png);"));
 
         gridLayout->addWidget(hospitalization, 0, 4, 1, 1);
 
@@ -98,14 +99,14 @@ public:
         home->setSizePolicy(sizePolicy);
         home->setMinimumSize(QSize(130, 70));
         home->setMaximumSize(QSize(70, 70));
-        home->setStyleSheet(QString::fromUtf8(""));
+        home->setStyleSheet(QString::fromUtf8("background-image: url(:/res/home.png);"));
         home->setIconSize(QSize(70, 70));
 
         gridLayout->addWidget(home, 0, 0, 1, 1);
 
         stackedWidget = new QStackedWidget(centralwidget);
         stackedWidget->setObjectName(QString::fromUtf8("stackedWidget"));
-        stackedWidget->setGeometry(QRect(-1, -2, 731, 591));
+        stackedWidget->setGeometry(QRect(-1, -2, 681, 591));
         sizePolicy.setHeightForWidth(stackedWidget->sizePolicy().hasHeightForWidth());
         stackedWidget->setSizePolicy(sizePolicy);
         PMainWindow->setCentralWidget(centralwidget);
@@ -118,11 +119,11 @@ public:
     void retranslateUi(QMainWindow *PMainWindow)
     {
         PMainWindow->setWindowTitle(QApplication::translate("PMainWindow", "PMainWindow", nullptr));
-        chattingroom->setText(QApplication::translate("PMainWindow", "Chat", nullptr));
-        personal->setText(QApplication::translate("PMainWindow", "Personal", nullptr));
-        book->setText(QApplication::translate("PMainWindow", "Register", nullptr));
-        hospitalization->setText(QApplication::translate("PMainWindow", "Hosptalization", nullptr));
-        home->setText(QApplication::translate("PMainWindow", "Home", nullptr));
+        chattingroom->setText(QString());
+        personal->setText(QString());
+        book->setText(QString());
+        hospitalization->setText(QString());
+        home->setText(QString());
     } // retranslateUi
 
 };

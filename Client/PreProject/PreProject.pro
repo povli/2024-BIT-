@@ -52,6 +52,7 @@ HEADERS += \
     InsideDoc.h \
     MedicineItem.h \
     OutDoc.h \
+    RegisterDataTransmit.h \
     SkinDoc.h \
     WomanDoc.h \
     basewindow.h \

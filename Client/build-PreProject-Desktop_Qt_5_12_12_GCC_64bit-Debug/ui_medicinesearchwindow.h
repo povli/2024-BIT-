@@ -28,7 +28,7 @@ public:
     {
         if (MedicineSearchWindow->objectName().isEmpty())
             MedicineSearchWindow->setObjectName(QString::fromUtf8("MedicineSearchWindow"));
-        MedicineSearchWindow->resize(685, 444);
+        MedicineSearchWindow->resize(700, 700);
         MedicineSearchWindow->setStyleSheet(QString::fromUtf8(""));
         backbtn = new QPushButton(MedicineSearchWindow);
         backbtn->setObjectName(QString::fromUtf8("backbtn"));

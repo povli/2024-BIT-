@@ -1,5 +1,7 @@
 #include "timetablewd.h"
 #include "ui_timetablewd.h"
+#include "GlobalData.h"
+//#include "RegisterDataTransmit.h"
 #include <QDate>
 #include <QVBoxLayout>
 #include <QHBoxLayout>
@@ -16,8 +18,10 @@ TimetableWd::~TimetableWd()
 {
     delete ui;
 }*/
+QVector<RegisterDataTransmit> GlobalData:: registerdata;
 TimetableWd::TimetableWd(QWidget *parent)
     : QWidget(parent),
+      doctorLabel(new QLabel("医生",this)),
       calendarWidget(new QCalendarWidget(this)),
       dateLabel(new QLabel("选择日期和时间段", this)),
       timeSlotComboBox(new QComboBox(this)),
@@ -47,10 +51,13 @@ TimetableWd::TimetableWd(QWidget *parent)
     mainLayout->addWidget(calendarWidget);
     mainLayout->addLayout(rightLayout);
     mainLayout->addWidget(dateLabel);
+    mainLayout->addWidget(doctorLabel);
     mainLayout->addWidget(pushButton);
+
 
     QWidget *centralWidget = new QWidget(this);
     centralWidget->setLayout(mainLayout);
+    centralWidget->resize(500,300);
     //setCentralWidget(centralWidget);
 }
 
@@ -79,5 +86,17 @@ void TimetableWd::onPushButtonClicked() {
         QMessageBox::warning(this, "预约失败", "请选择一个时间段进行预约！");
     } else {
         QMessageBox::information(this, "预约成功", ""+selectedDate.toString("yyyy-MM-dd")+"-"+timeSlot);
+        RegisterDataTransmit temp;
+        temp.Date=selectedDate.toString("yyyy-MM-dd");
+        temp.Hour=timeSlot;
+        temp.Room=ttroom;
+        temp.Name=ttdoc;
+        GlobalData::registerdata.append(temp);
+        //qDebug()<<GlobalData::registerdata.size();
     }
+}
+void TimetableWd::showdoc(QString room, QString doc){
+    ttroom=room;
+    ttdoc=doc;
+    doctorLabel->setText("预约医生:"+room+doc);
 }

@@ -1,81 +1,65 @@
 #include "ownwindow.h"
-#include "ownillness.h"
 #include "owndeal.h"
+#include "ownillness.h"
 #include "ownmessage.h"
-#include <QLabel>
-#include <QVBoxLayout>
 #include <QPushButton>
+#include <QVBoxLayout>
 #include <QHBoxLayout>
 
 OwnWindow::OwnWindow() {
     resize(600, 400);
-    this->setStyleSheet("background-color: lightblue;");
     setStyleSheet("background-color: lightblue;");
-    QVBoxLayout *mainLayout = new QVBoxLayout;
 
-    QLabel *titleLabel = new QLabel("");
-    titleLabel->setStyleSheet("font-size: 40px; font-weight: bold;");
-    mainLayout->addWidget(titleLabel);
-    mainLayout->addStretch();  // 将顶部标签推至顶部
+    QVBoxLayout *mainLayout = new QVBoxLayout;
+    this->illnessWindow = new OwnIllness;
+    this->dealWindow = new OwnDeal;
+    this->messageWindow = new OwnMessage;
+    QPushButton *illnessButton = new QPushButton("我的预约", this);
+    QPushButton *dealButton = new QPushButton("我的病例", this);
+    QPushButton *messageButton = new QPushButton("个人信息", this);
+
+    connect(illnessWindow,&OwnIllness::back,this,[=](){
+        illnessWindow->close();
+        this->show();
+    });
+    connect(dealWindow,&OwnDeal::back,this,[=](){
+        dealWindow->close();
+        this->show();
+    });
+    connect(messageWindow,&OwnMessage::back,this,[=](){
+        messageWindow->close();
+        this->show();
+    });
+
+    connect(illnessButton, &QPushButton::clicked, this, &OwnWindow::showOwnIllness);
+    connect(dealButton, &QPushButton::clicked, this, &OwnWindow::showOwnDeal);
+    connect(messageButton, &QPushButton::clicked, this, &OwnWindow::showOwnMessage);
 
     QHBoxLayout *buttonLayout = new QHBoxLayout;
-    for (int i = 0; i < 3; ++i) {
-        QPushButton *button = new QPushButton;
-        button->setIcon(QIcon(QString(":/images/button%1_icon.png").arg(i + 1)));
-        button->setIconSize(QSize(64, 64));
-        QLabel *label;
-        if(i==0){
-            label = new QLabel(QString("我的预约").arg(i + 1));
-        }else if (i==1) {
-            label = new QLabel(QString("我的病例").arg(i + 1));
-        }else if(i==2){
-            label = new QLabel(QString("个人信息").arg(i + 1));
-        }
-
-        label->setAlignment(Qt::AlignCenter);
-        QVBoxLayout *buttonAndLabelLayout = new QVBoxLayout;
-        buttonAndLabelLayout->addWidget(button);
-        buttonAndLabelLayout->addWidget(label);
-        buttonAndLabelLayout->setAlignment(Qt::AlignCenter);
-
-        buttonLayout->addLayout(buttonAndLabelLayout);
-        buttonLayout->addSpacing(20);
-
-        if (i == 0) {  // 按钮 1 的索引为 0
-            connect(button, &QPushButton::clicked, this, &OwnWindow::showOwnIllness);
-        } else if (i == 1) {  // 按钮 2 的索引为 1
-            connect(button, &QPushButton::clicked, this, &OwnWindow::showOwnDeal);
-        } else if (i == 2) {  // 按钮 3 的索引为 2
-            connect(button, &QPushButton::clicked, this, &OwnWindow::showOwnMessage);
-        }
-    }
+    buttonLayout->addWidget(illnessButton);
+    buttonLayout->addWidget(dealButton);
+    buttonLayout->addWidget(messageButton);
 
     mainLayout->addLayout(buttonLayout);
     setLayout(mainLayout);
 
-    // 初始化 OwnIllness 和 OwnDeal 窗口
-    illnessWindow = nullptr;
-    dealWindow = nullptr;
-    messageWindow = nullptr;
 }
-
-void OwnWindow::showOwnIllness() {
-    if (!illnessWindow) {
-        illnessWindow = new OwnIllness(this);
-    }
+void OwnWindow::showOwnIllness()
+{
+//    this->hide();
     illnessWindow->show();
+    illnessWindow->initializeTable();
 }
-
-void OwnWindow::showOwnDeal() {
-    if (!dealWindow) {
-        dealWindow = new OwnDeal(this);
-    }
+void OwnWindow::showOwnDeal()
+{
+//    this->hide();
     dealWindow->show();
 }
-
-void OwnWindow::showOwnMessage() {
-    if (!messageWindow) {
-        messageWindow = new OwnMessage(this);
-    }
+void OwnWindow::showOwnMessage()
+{
+//    this->hide();
     messageWindow->show();
+}
+OwnWindow::~OwnWindow()
+{
 }

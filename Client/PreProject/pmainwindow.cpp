@@ -14,6 +14,7 @@ PMainWindow::PMainWindow(QWidget *parent)
 {
     ui->setupUi(this);
     this->setWindowTitle("智慧医疗");
+
     ui->stackedWidget->addWidget(&homeWd);
     ui->stackedWidget->addWidget(&bookWd);
     ui->stackedWidget->addWidget(&ownWd);

@@ -51,10 +51,10 @@
         </size>
        </property>
        <property name="styleSheet">
-        <string notr="true"/>
+        <string notr="true">background-image: url(:/res/chatroom.png);</string>
        </property>
        <property name="text">
-        <string>Chat</string>
+        <string/>
        </property>
        <property name="iconSize">
         <size>
@@ -85,10 +85,10 @@
         </size>
        </property>
        <property name="styleSheet">
-        <string notr="true">image: url(:/personal-profile-icon.jpg);</string>
+        <string notr="true">background-image: url(:/res/personal.png);</string>
        </property>
        <property name="text">
-        <string>Personal</string>
+        <string/>
        </property>
        <property name="iconSize">
         <size>
@@ -119,10 +119,10 @@
         </size>
        </property>
        <property name="styleSheet">
-        <string notr="true"/>
+        <string notr="true">background-image: url(:/res/myregister.png);</string>
        </property>
        <property name="text">
-        <string>Register</string>
+        <string/>
        </property>
        <property name="iconSize">
         <size>
@@ -155,8 +155,11 @@
          <height>70</height>
         </size>
        </property>
+       <property name="styleSheet">
+        <string notr="true">background-image: url(:/res/hospitalization.png);</string>
+       </property>
        <property name="text">
-        <string>Hosptalization</string>
+        <string/>
        </property>
       </widget>
      </item>
@@ -181,10 +184,10 @@
         </size>
        </property>
        <property name="styleSheet">
-        <string notr="true"/>
+        <string notr="true">background-image: url(:/res/home.png);</string>
        </property>
        <property name="text">
-        <string>Home</string>
+        <string/>
        </property>
        <property name="iconSize">
         <size>
@@ -201,7 +204,7 @@
      <rect>
       <x>-1</x>
       <y>-2</y>
-      <width>731</width>
+      <width>681</width>
       <height>591</height>
      </rect>
     </property>

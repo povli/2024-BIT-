@@ -34,6 +34,8 @@ WomanWd::WomanWd(QWidget *parent) :
         womandoc[i].positionlabel->move(200,70*i);
         womandoc[i].positionlabel->setText(womandoc[i].position);//设置显示的文本
 
+        str=womandoc[i].name;
+
         QPushButton *tempBtn = new QPushButton(this);
         tempBtn->move(300,70*i+10);
         tempBtn->setText(womandoc[i].id);//到时候读取text就可以知道预约那个医生。
@@ -49,5 +51,6 @@ WomanWd::~WomanWd()
 void WomanWd::showdate(){
     TimetableWd *ttWd=new TimetableWd;
     ttWd->resize(500,300);
+    ttWd->showdoc("妇科",str);
     ttWd->show();
 }

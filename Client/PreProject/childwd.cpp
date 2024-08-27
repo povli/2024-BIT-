@@ -7,6 +7,7 @@
 #include <QVector>
 #include <QPushButton>
 #include "timetablewd.h"
+
 using namespace std;
 
 int GlobalData::ChildDocnum =3;//全局静态
@@ -35,11 +36,12 @@ ChildWd::ChildWd(QWidget *parent) :
         childdoc[i].positionlabel=new QLabel(childdoc[i].position,this);
         childdoc[i].positionlabel->move(200,70*i);
         childdoc[i].positionlabel->setText(childdoc[i].position);//设置显示的文本
-
+        str=childdoc[i].name;
         QPushButton *tempBtn = new QPushButton(this);
         tempBtn->move(300,70*i+10);
         tempBtn->setText(childdoc[i].id);//到时候读取text就可以知道预约那个医生。
         connect(tempBtn,SIGNAL(clicked()),this,SLOT(showdate()));
+
         i++;
     }
 
@@ -52,5 +54,7 @@ ChildWd::~ChildWd()
 void ChildWd::showdate(){
     TimetableWd *ttWd=new TimetableWd;
     ttWd->resize(500,300);
+    ttWd->showdoc("儿科",str);
     ttWd->show();
 }
+

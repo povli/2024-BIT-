@@ -94,6 +94,6 @@ void MainWindow::SlotSwitchMain()
     setCentralWidget(_main_dlg);
     _main_dlg->show();
     _login_dlg->hide();
-    this->setMinimumSize(QSize(800,300));
-    this->setMaximumSize(QWIDGETSIZE_MAX, QWIDGETSIZE_MAX);
+    this->setMinimumSize(QSize(675,300));
+    this->setMaximumSize(QWIDGETSIZE_MAX, 690);
 }

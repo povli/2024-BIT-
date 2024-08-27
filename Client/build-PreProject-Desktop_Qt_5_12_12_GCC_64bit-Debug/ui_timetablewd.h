@@ -23,7 +23,7 @@ public:
     {
         if (TimetableWd->objectName().isEmpty())
             TimetableWd->setObjectName(QString::fromUtf8("TimetableWd"));
-        TimetableWd->resize(400, 300);
+        TimetableWd->resize(400, 326);
 
         retranslateUi(TimetableWd);
 

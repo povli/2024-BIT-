@@ -2,10 +2,10 @@
 #define OWNDEAL_H
 
 #include <QWidget>
-
-class QPushButton;
-class QTableView;
-class QStandardItemModel;
+#include <QPushButton>
+#include <QTableView>
+#include <QStandardItemModel>
+#include <QCloseEvent>
 
 class OwnDeal : public QWidget {
     Q_OBJECT
@@ -13,8 +13,10 @@ class OwnDeal : public QWidget {
 public:
     OwnDeal(QWidget *parent = nullptr);
 
+signals:
+    void back();
 private slots:
-    void showDetails();  // 显示详细信息
+    void showDetails();
     void goBack();
 
 private:

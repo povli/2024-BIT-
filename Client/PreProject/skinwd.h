@@ -14,6 +14,8 @@ class SkinWd : public QWidget
 public:
     explicit SkinWd(QWidget *parent = nullptr);
     ~SkinWd();
+public:
+    QString str;
 
 private slots:
     void showdate();

@@ -25,6 +25,8 @@ private slots:
     void search();
     void on_quizBtn_clicked();
 
+    void on_tempBtn_clicked();
+
 public slots:
     void on_medicalexpenseBtn_clicked();
 

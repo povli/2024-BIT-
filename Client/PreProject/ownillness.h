@@ -2,10 +2,10 @@
 #define OWNILLNESS_H
 
 #include <QWidget>
-
-class QPushButton;
-class QTableView;
-class QStandardItemModel;
+#include <QPushButton>
+#include <QTableView>
+#include <QStandardItemModel>
+#include <QCloseEvent>
 
 class OwnIllness : public QWidget {
     Q_OBJECT
@@ -13,10 +13,13 @@ class OwnIllness : public QWidget {
 public:
     OwnIllness(QWidget *parent = nullptr);
 
+signals:
+    void back();
+
 private slots:
     void goBack();
 
-private:
+public:
     void initializeTable();
 
     QPushButton *backButton;

@@ -17,6 +17,7 @@ public:
 
 private:
     Ui::MedicalExpenseWd *ui;
+    virtual void paintEvent(QPaintEvent *);
 };
 
 #endif // MEDICALEXPENSEWD_H

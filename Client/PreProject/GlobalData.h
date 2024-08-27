@@ -1,6 +1,8 @@
 #ifndef GLOBALDATA_H
 #define GLOBALDATA_H
 #include <QString>
+#include <QVector>
+#include "RegisterDataTransmit.h"
 class GlobalData
 {
 public:
@@ -11,6 +13,7 @@ public:
     static int InsideDocnum;
     static int SkinDocnum;
     static QString str1;
+    static QVector<RegisterDataTransmit> registerdata;
 };
 
 #endif // GLOBALDATA_H

@@ -14,6 +14,8 @@ class OutWd : public QWidget
 public:
     explicit OutWd(QWidget *parent = nullptr);
     ~OutWd();
+public:
+    QString str;
 
 private slots:
     void showdate();

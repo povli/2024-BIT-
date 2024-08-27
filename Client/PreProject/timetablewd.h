@@ -26,12 +26,17 @@ private slots:
     void onDateChanged();
     void onTimeSlotChanged();
     void onPushButtonClicked();
+public:
+    void showdoc(QString room,QString doc);
+    QString ttroom;
+    QString ttdoc;
 
 private:
     QCalendarWidget *calendarWidget;
     QLabel *dateLabel;
     QComboBox *timeSlotComboBox;
     QPushButton *pushButton;
+    QLabel *doctorLabel;
 };
 
 #endif // TIMETABLEWD_H

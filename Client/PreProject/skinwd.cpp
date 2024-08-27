@@ -36,6 +36,8 @@ SkinWd::SkinWd(QWidget *parent) :
         skindoc[i].positionlabel->move(200,70*i);
         skindoc[i].positionlabel->setText(skindoc[i].position);//设置显示的文本
 
+        str=skindoc[i].name;
+
         QPushButton *tempBtn = new QPushButton(this);
         tempBtn->move(300,70*i+10);
         tempBtn->setText(skindoc[i].id);//到时候读取text就可以知道预约那个医生。
@@ -51,5 +53,6 @@ SkinWd::~SkinWd()
 void SkinWd::showdate(){
     TimetableWd *ttWd=new TimetableWd;
     ttWd->resize(500,300);
+    ttWd->showdoc("皮肤科",str);
     ttWd->show();
 }

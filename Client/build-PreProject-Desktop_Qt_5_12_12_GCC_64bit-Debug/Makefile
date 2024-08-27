@@ -388,6 +388,7 @@ DIST          = ../PreProject/config.ini \
 		../PreProject/InsideDoc.h \
 		../PreProject/MedicineItem.h \
 		../PreProject/OutDoc.h \
+		../PreProject/RegisterDataTransmit.h \
 		../PreProject/SkinDoc.h \
 		../PreProject/WomanDoc.h \
 		../PreProject/basewindow.h \
@@ -874,7 +875,7 @@ distdir: FORCE
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
 	$(COPY_FILE) --parents ../PreProject/rcs.qrc $(DISTDIR)/
 	$(COPY_FILE) --parents ../../../../Qt5.12.12/5.12.12/gcc_64/mkspecs/features/data/dummy.cpp $(DISTDIR)/
-	$(COPY_FILE) --parents ../PreProject/ChildDoc.h ../PreProject/GlobalData.h ../PreProject/InsideDoc.h ../PreProject/MedicineItem.h ../PreProject/OutDoc.h ../PreProject/SkinDoc.h ../PreProject/WomanDoc.h ../PreProject/basewindow.h ../PreProject/bookwindow.h ../PreProject/chattingroomwindow.h ../PreProject/chatwindow.h ../PreProject/childwd.h ../PreProject/clickedlabel.h ../PreProject/global.h ../PreProject/homewindow.h ../PreProject/hospitalizationwindow.h ../PreProject/httpmgr.h ../PreProject/insidewd.h ../PreProject/logindialog.h ../PreProject/mainwindow.h ../PreProject/medicalcaseswd.h ../PreProject/medicalexpensewd.h ../PreProject/medicinesearchwindow.h ../PreProject/misearchsonwd.h ../PreProject/outwd.h ../PreProject/owndeal.h ../PreProject/ownillness.h ../PreProject/ownmessage.h ../PreProject/ownwindow.h ../PreProject/personalinfowindow.h ../PreProject/personalwindow.h ../PreProject/pmainwindow.h ../PreProject/pmainwindowhome.h ../PreProject/quizwd.h ../PreProject/registerdialog.h ../PreProject/resetdialog.h ../PreProject/singleton.h ../PreProject/skinwd.h ../PreProject/tcpmgr.h ../PreProject/timerbtn.h ../PreProject/timetablewd.h ../PreProject/usermgr.h ../PreProject/womanwd.h $(DISTDIR)/
+	$(COPY_FILE) --parents ../PreProject/ChildDoc.h ../PreProject/GlobalData.h ../PreProject/InsideDoc.h ../PreProject/MedicineItem.h ../PreProject/OutDoc.h ../PreProject/RegisterDataTransmit.h ../PreProject/SkinDoc.h ../PreProject/WomanDoc.h ../PreProject/basewindow.h ../PreProject/bookwindow.h ../PreProject/chattingroomwindow.h ../PreProject/chatwindow.h ../PreProject/childwd.h ../PreProject/clickedlabel.h ../PreProject/global.h ../PreProject/homewindow.h ../PreProject/hospitalizationwindow.h ../PreProject/httpmgr.h ../PreProject/insidewd.h ../PreProject/logindialog.h ../PreProject/mainwindow.h ../PreProject/medicalcaseswd.h ../PreProject/medicalexpensewd.h ../PreProject/medicinesearchwindow.h ../PreProject/misearchsonwd.h ../PreProject/outwd.h ../PreProject/owndeal.h ../PreProject/ownillness.h ../PreProject/ownmessage.h ../PreProject/ownwindow.h ../PreProject/personalinfowindow.h ../PreProject/personalwindow.h ../PreProject/pmainwindow.h ../PreProject/pmainwindowhome.h ../PreProject/quizwd.h ../PreProject/registerdialog.h ../PreProject/resetdialog.h ../PreProject/singleton.h ../PreProject/skinwd.h ../PreProject/tcpmgr.h ../PreProject/timerbtn.h ../PreProject/timetablewd.h ../PreProject/usermgr.h ../PreProject/womanwd.h $(DISTDIR)/
 	$(COPY_FILE) --parents ../PreProject/basewindow.cpp ../PreProject/bookwindow.cpp ../PreProject/chattingroomwindow.cpp ../PreProject/chatwindow.cpp ../PreProject/childwd.cpp ../PreProject/clickedlabel.cpp ../PreProject/global.cpp ../PreProject/homewindow.cpp ../PreProject/hospitalizationwindow.cpp ../PreProject/httpmgr.cpp ../PreProject/insidewd.cpp ../PreProject/logindialog.cpp ../PreProject/main.cpp ../PreProject/mainwindow.cpp ../PreProject/medicalcaseswd.cpp ../PreProject/medicalexpensewd.cpp ../PreProject/medicinesearchwindow.cpp ../PreProject/misearchsonwd.cpp ../PreProject/outwd.cpp ../PreProject/owndeal.cpp ../PreProject/ownillness.cpp ../PreProject/ownmessage.cpp ../PreProject/ownwindow.cpp ../PreProject/personalinfowindow.cpp ../PreProject/personalwindow.cpp ../PreProject/pmainwindow.cpp ../PreProject/pmainwindowhome.cpp ../PreProject/quizwd.cpp ../PreProject/registerdialog.cpp ../PreProject/resetdialog.cpp ../PreProject/skinwd.cpp ../PreProject/tcpmgr.cpp ../PreProject/timerbtn.cpp ../PreProject/timetablewd.cpp ../PreProject/usermgr.cpp ../PreProject/womanwd.cpp $(DISTDIR)/
 	$(COPY_FILE) --parents ../PreProject/basewindow.ui ../PreProject/bookwindow.ui ../PreProject/chattingroomwindow.ui ../PreProject/chatwindow.ui ../PreProject/childwd.ui ../PreProject/homewindow.ui ../PreProject/hospitalizationwindow.ui ../PreProject/insidewd.ui ../PreProject/logindialog.ui ../PreProject/mainwindow.ui ../PreProject/medicalcaseswd.ui ../PreProject/medicalexpensewd.ui ../PreProject/medicinesearchwindow.ui ../PreProject/misearchsonwd.ui ../PreProject/outwd.ui ../PreProject/owndeal.ui ../PreProject/ownillness.ui ../PreProject/ownmessage.ui ../PreProject/ownwindow.ui ../PreProject/personalinfowindow.ui ../PreProject/personalwindow.ui ../PreProject/pmainwindow.ui ../PreProject/pmainwindowhome.ui ../PreProject/quizwd.ui ../PreProject/registerdialog.ui ../PreProject/resetdialog.ui ../PreProject/skinwd.ui ../PreProject/timetablewd.ui ../PreProject/womanwd.ui $(DISTDIR)/
 
@@ -910,6 +911,7 @@ qrc_rcs.cpp: ../PreProject/rcs.qrc \
 		../PreProject/res/voice_chat_hover.png \
 		../PreProject/res/visible.png \
 		../PreProject/res/head_4.jpg \
+		../PreProject/res/chatroom.png \
 		../PreProject/res/arowdown.png \
 		../PreProject/res/ice.png \
 		../PreProject/res/voice_chat_normal.png \
@@ -917,6 +919,8 @@ qrc_rcs.cpp: ../PreProject/rcs.qrc \
 		../PreProject/res/add_friend_normal.png \
 		../PreProject/res/male.png \
 		../PreProject/res/close_search.png \
+		../PreProject/res/psychologyquiz.jpg \
+		../PreProject/res/mycases.png \
 		../PreProject/res/contact_list_press.png \
 		../PreProject/res/head_2.jpg \
 		../PreProject/res/addtip.png \
@@ -930,15 +934,21 @@ qrc_rcs.cpp: ../PreProject/rcs.qrc \
 		../PreProject/res/contact_list_hover.png \
 		../PreProject/res/right_tip.png \
 		../PreProject/res/filedir_hover.png \
+		../PreProject/res/home.png \
 		../PreProject/res/msg_chat_hover.png \
 		../PreProject/res/loading.gif \
 		../PreProject/res/visible_hover.png \
+		../PreProject/res/myregister.png \
 		../PreProject/res/contact_list.png \
 		../PreProject/res/female.png \
 		../PreProject/res/chat_icon_select_press.png \
+		../PreProject/res/register.png \
 		../PreProject/res/smile_press.png \
+		../PreProject/res/homepagebackground.jpg \
 		../PreProject/res/unvisible.png \
+		../PreProject/res/medicalexpense.jpg \
 		../PreProject/res/chat_icon_hover.png \
+		../PreProject/res/personal.png \
 		../PreProject/res/video_chat_hover.png \
 		../PreProject/res/close_transparent.png \
 		../PreProject/res/msg_chat_normal.png \
@@ -952,6 +962,7 @@ qrc_rcs.cpp: ../PreProject/rcs.qrc \
 		../PreProject/res/smile_hover.png \
 		../PreProject/res/head_5.jpg \
 		../PreProject/res/add_friend.png \
+		../PreProject/res/hospitalization.png \
 		../PreProject/res/chat_icon_press.png \
 		../PreProject/res/filedir.png
 	/home/yimu/Qt5.12.12/5.12.12/gcc_64/bin/rcc -name rcs ../PreProject/rcs.qrc -o qrc_rcs.cpp
@@ -6559,12 +6570,13 @@ childwd.o: ../PreProject/childwd.cpp ../PreProject/childwd.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtGui/qinputmethod.h \
 		../PreProject/GlobalData.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/QString \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/QVector \
+		../PreProject/RegisterDataTransmit.h \
 		../PreProject/ChildDoc.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtGui/QPixmap \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/QLabel \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/qlabel.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/qframe.h \
-		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/QVector \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/QPushButton \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/qpushbutton.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/qabstractbutton.h \
@@ -7029,6 +7041,7 @@ homewindow.o: ../PreProject/homewindow.cpp ../PreProject/homewindow.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/qabstractbutton.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtGui/qicon.h \
 		../PreProject/GlobalData.h \
+		../PreProject/RegisterDataTransmit.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/QMessageBox \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/qmessagebox.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/qdialog.h \
@@ -7038,7 +7051,63 @@ homewindow.o: ../PreProject/homewindow.cpp ../PreProject/homewindow.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/qlayoutitem.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/qgridlayout.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/QHBoxLayout \
-		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtGui/QIcon
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtGui/QIcon \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtSql/QSqlQuery \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtSql/qsqlquery.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtSql/qtsqlglobal.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtSql/qtsql-config.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtSql/qsqldatabase.h \
+		../PreProject/pmainwindow.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/QMainWindow \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/qmainwindow.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/qtabwidget.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/QButtonGroup \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/qbuttongroup.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/QDebug \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtSql/QSqlDatabase \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtSql/QSqlError \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtSql/qsqlerror.h \
+		../PreProject/bookwindow.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/QListWidgetItem \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/qlistwidget.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/qlistview.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/qabstractitemview.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/qabstractscrollarea.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qabstractitemmodel.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qitemselectionmodel.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/qabstractitemdelegate.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/qstyleoption.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/qabstractspinbox.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtGui/qvalidator.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qregularexpression.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/qslider.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/qabstractslider.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/qstyle.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/qtabbar.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/qrubberband.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/QListWidget \
+		../PreProject/childwd.h \
+		../PreProject/womanwd.h \
+		../PreProject/outwd.h \
+		../PreProject/insidewd.h \
+		../PreProject/skinwd.h \
+		../PreProject/personalwindow.h \
+		../PreProject/personalinfowindow.h \
+		../PreProject/medicalcaseswd.h \
+		../PreProject/chattingroomwindow.h \
+		../PreProject/hospitalizationwindow.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/QTableView \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/qtableview.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtGui/QStandardItemModel \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtGui/qstandarditemmodel.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/QHeaderView \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/qheaderview.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/QSizePolicy \
+		../PreProject/ownwindow.h \
+		../PreProject/chatwindow.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/QTextEdit \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/qtextedit.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtGui/qtextdocument.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o homewindow.o ../PreProject/homewindow.cpp
 
 hospitalizationwindow.o: ../PreProject/hospitalizationwindow.cpp ../PreProject/hospitalizationwindow.h \
@@ -7461,12 +7530,13 @@ insidewd.o: ../PreProject/insidewd.cpp ../PreProject/insidewd.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtGui/qinputmethod.h \
 		../PreProject/GlobalData.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/QString \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/QVector \
+		../PreProject/RegisterDataTransmit.h \
 		../PreProject/InsideDoc.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtGui/QPixmap \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/QLabel \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/qlabel.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/qframe.h \
-		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/QVector \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/QPushButton \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/qpushbutton.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/qabstractbutton.h \
@@ -8431,7 +8501,11 @@ medicalexpensewd.o: ../PreProject/medicalexpensewd.cpp ../PreProject/medicalexpe
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtGui/qinputmethod.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/QLabel \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/qlabel.h \
-		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/qframe.h
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/qframe.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtGui/QPainter \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtGui/qpainter.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtGui/qtextoption.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtGui/qpen.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o medicalexpensewd.o ../PreProject/medicalexpensewd.cpp
 
 medicinesearchwindow.o: ../PreProject/medicinesearchwindow.cpp ../PreProject/medicinesearchwindow.h \
@@ -8777,7 +8851,15 @@ misearchsonwd.o: ../PreProject/misearchsonwd.cpp ../PreProject/misearchsonwd.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qfiledevice.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtGui/qvector2d.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtGui/qtouchdevice.h \
-		ui_misearchsonwd.h
+		ui_misearchsonwd.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/QVariant \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/QApplication \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/qapplication.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qcoreapplication.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qeventloop.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/qdesktopwidget.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtGui/qguiapplication.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtGui/qinputmethod.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o misearchsonwd.o ../PreProject/misearchsonwd.cpp
 
 outwd.o: ../PreProject/outwd.cpp ../PreProject/outwd.h \
@@ -8895,12 +8977,13 @@ outwd.o: ../PreProject/outwd.cpp ../PreProject/outwd.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtGui/qinputmethod.h \
 		../PreProject/GlobalData.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/QString \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/QVector \
+		../PreProject/RegisterDataTransmit.h \
 		../PreProject/OutDoc.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtGui/QPixmap \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/QLabel \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/qlabel.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/qframe.h \
-		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/QVector \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/QPushButton \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/qpushbutton.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/qabstractbutton.h \
@@ -9913,6 +9996,7 @@ pmainwindow.o: ../PreProject/pmainwindow.cpp ../PreProject/pmainwindow.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/QToolButton \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/qtoolbutton.h \
 		../PreProject/GlobalData.h \
+		../PreProject/RegisterDataTransmit.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/QCoreApplication
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o pmainwindow.o ../PreProject/pmainwindow.cpp
 
@@ -10666,12 +10750,13 @@ skinwd.o: ../PreProject/skinwd.cpp ../PreProject/skinwd.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtGui/qinputmethod.h \
 		../PreProject/GlobalData.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/QString \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/QVector \
+		../PreProject/RegisterDataTransmit.h \
 		../PreProject/SkinDoc.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtGui/QPixmap \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/QLabel \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/qlabel.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/qframe.h \
-		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/QVector \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/QPushButton \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/qpushbutton.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/qabstractbutton.h \
@@ -11109,6 +11194,10 @@ timetablewd.o: ../PreProject/timetablewd.cpp ../PreProject/timetablewd.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/qdesktopwidget.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtGui/qguiapplication.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtGui/qinputmethod.h \
+		../PreProject/GlobalData.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/QString \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/QVector \
+		../PreProject/RegisterDataTransmit.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/QDate \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/QVBoxLayout \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/qboxlayout.h \
@@ -11387,12 +11476,13 @@ womanwd.o: ../PreProject/womanwd.cpp ../PreProject/womanwd.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtGui/qinputmethod.h \
 		../PreProject/GlobalData.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/QString \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/QVector \
+		../PreProject/RegisterDataTransmit.h \
 		../PreProject/WomanDoc.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtGui/QPixmap \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/QLabel \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/qlabel.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/qframe.h \
-		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/QVector \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/QPushButton \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/qpushbutton.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/qabstractbutton.h \

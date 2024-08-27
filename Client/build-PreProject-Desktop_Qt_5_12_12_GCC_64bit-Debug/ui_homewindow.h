@@ -29,6 +29,9 @@ public:
     QPushButton *medicalexpenseBtn;
     QPushButton *quizBtn;
     QLabel *quizText;
+    QLabel *btnsearchText;
+    QPushButton *tempBtn;
+    QLabel *tempText;
 
     void setupUi(QWidget *HomeWindow)
     {
@@ -39,7 +42,8 @@ public:
         label_image->setObjectName(QString::fromUtf8("label_image"));
         label_image->setGeometry(QRect(0, 0, 800, 600));
         label_image->setStyleSheet(QString::fromUtf8("background-color: rgb(255, 255, 255);\n"
-"background-color: rgb(114, 159, 207);"));
+"background-color: rgb(114, 159, 207);\n"
+"background-image: url(:/res/homepagebackground.jpg);"));
         head1 = new QLabel(HomeWindow);
         head1->setObjectName(QString::fromUtf8("head1"));
         head1->setGeometry(QRect(140, 130, 421, 51));
@@ -47,10 +51,10 @@ public:
 "color: rgb(255, 255, 255);"));
         medicalexpenseText = new QLabel(HomeWindow);
         medicalexpenseText->setObjectName(QString::fromUtf8("medicalexpenseText"));
-        medicalexpenseText->setGeometry(QRect(220, 420, 67, 17));
+        medicalexpenseText->setGeometry(QRect(220, 340, 67, 17));
         lineEdit = new QLineEdit(HomeWindow);
         lineEdit->setObjectName(QString::fromUtf8("lineEdit"));
-        lineEdit->setGeometry(QRect(130, 40, 450, 41));
+        lineEdit->setGeometry(QRect(110, 150, 16, 21));
         QSizePolicy sizePolicy(QSizePolicy::Preferred, QSizePolicy::Preferred);
         sizePolicy.setHorizontalStretch(0);
         sizePolicy.setVerticalStretch(0);
@@ -63,16 +67,25 @@ public:
         lineEdit->setAlignment(Qt::AlignCenter);
         btnsearch = new QPushButton(HomeWindow);
         btnsearch->setObjectName(QString::fromUtf8("btnsearch"));
-        btnsearch->setGeometry(QRect(200, 470, 100, 70));
+        btnsearch->setGeometry(QRect(200, 390, 100, 70));
         medicalexpenseBtn = new QPushButton(HomeWindow);
         medicalexpenseBtn->setObjectName(QString::fromUtf8("medicalexpenseBtn"));
-        medicalexpenseBtn->setGeometry(QRect(200, 350, 100, 70));
+        medicalexpenseBtn->setGeometry(QRect(200, 270, 100, 70));
         quizBtn = new QPushButton(HomeWindow);
         quizBtn->setObjectName(QString::fromUtf8("quizBtn"));
-        quizBtn->setGeometry(QRect(400, 350, 100, 70));
+        quizBtn->setGeometry(QRect(400, 270, 100, 70));
         quizText = new QLabel(HomeWindow);
         quizText->setObjectName(QString::fromUtf8("quizText"));
-        quizText->setGeometry(QRect(420, 420, 67, 17));
+        quizText->setGeometry(QRect(420, 340, 67, 17));
+        btnsearchText = new QLabel(HomeWindow);
+        btnsearchText->setObjectName(QString::fromUtf8("btnsearchText"));
+        btnsearchText->setGeometry(QRect(220, 460, 67, 17));
+        tempBtn = new QPushButton(HomeWindow);
+        tempBtn->setObjectName(QString::fromUtf8("tempBtn"));
+        tempBtn->setGeometry(QRect(400, 390, 100, 70));
+        tempText = new QLabel(HomeWindow);
+        tempText->setObjectName(QString::fromUtf8("tempText"));
+        tempText->setGeometry(QRect(420, 460, 67, 17));
 
         retranslateUi(HomeWindow);
 
@@ -89,6 +102,9 @@ public:
         medicalexpenseBtn->setText(QApplication::translate("HomeWindow", "\345\214\273\347\226\227\347\274\264\350\264\271", nullptr));
         quizBtn->setText(QApplication::translate("HomeWindow", "\351\227\256\345\215\267\350\207\252\346\265\213", nullptr));
         quizText->setText(QApplication::translate("HomeWindow", "\351\227\256\345\215\267\350\207\252\346\265\213", nullptr));
+        btnsearchText->setText(QApplication::translate("HomeWindow", "\350\215\257\345\223\201\346\220\234\347\264\242", nullptr));
+        tempBtn->setText(QApplication::translate("HomeWindow", "\344\275\234\350\200\205\345\233\242\351\230\237", nullptr));
+        tempText->setText(QApplication::translate("HomeWindow", "\344\275\234\350\200\205\345\233\242\351\230\237", nullptr));
     } // retranslateUi
 
 };

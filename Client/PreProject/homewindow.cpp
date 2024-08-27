@@ -60,3 +60,9 @@ void HomeWindow::on_quizBtn_clicked()
     qzWd->show();
 }
 
+
+void HomeWindow::on_tempBtn_clicked()
+{
+    QMessageBox::information(this, QStringLiteral("第三组"), QStringLiteral("何晖，周沛智，董崇未，陈凯，肖昊晴"));
+}
+

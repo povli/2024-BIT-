@@ -36,6 +36,8 @@ OutWd::OutWd(QWidget *parent) :
         outdoc[i].positionlabel->move(200,70*i);
         outdoc[i].positionlabel->setText(outdoc[i].position);//设置显示的文本
 
+        str=outdoc[i].name;
+
         QPushButton *tempBtn = new QPushButton(this);
         tempBtn->move(300,70*i+10);
         tempBtn->setText(outdoc[i].id);//到时候读取text就可以知道预约那个医生。
@@ -51,5 +53,6 @@ OutWd::~OutWd()
 void OutWd::showdate(){
     TimetableWd *ttWd=new TimetableWd;
     ttWd->resize(500,300);
+    ttWd->showdoc("外科",str);
     ttWd->show();
 }

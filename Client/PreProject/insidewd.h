@@ -14,6 +14,8 @@ class InsideWd : public QWidget
 public:
     explicit InsideWd(QWidget *parent = nullptr);
     ~InsideWd();
+public:
+    QString str;
 
 private slots:
     void showdate();

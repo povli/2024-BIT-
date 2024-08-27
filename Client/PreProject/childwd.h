@@ -16,6 +16,8 @@ public:
     ~ChildWd();
 //private slots:
 //    void showdate();
+public:
+    QString str;
 private slots:
     void showdate();
 private:

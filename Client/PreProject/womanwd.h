@@ -16,6 +16,8 @@ public:
     ~WomanWd();
 private slots:
     void showdate();
+public:
+    QString str;
 
 private:
     Ui::WomanWd *ui;

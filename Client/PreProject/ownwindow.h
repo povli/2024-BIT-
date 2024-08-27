@@ -3,25 +3,24 @@
 
 #include <QWidget>
 
-class QPushButton;
-class OwnIllness;
-class OwnDeal;
-class OwnMessage;
+class OwnDeal;     // 前向声明
+class OwnIllness;  // 前向声明
+class OwnMessage;  // 前向声明
 
 class OwnWindow : public QWidget {
     Q_OBJECT
 
 public:
     OwnWindow();
+    OwnIllness *illnessWindow = NULL;
+    OwnDeal *dealWindow = NULL;
+    OwnMessage *messageWindow = NULL;
+    ~OwnWindow();
 
 private slots:
-    void showOwnIllness();  // 显示 OwnIllness 窗口
-    void showOwnDeal();     // 显示 OwnDeal 窗口
-    void showOwnMessage();  // 显示 OwnMessage 窗口
-private:
-    OwnIllness *illnessWindow;
-    OwnDeal *dealWindow;
-    OwnMessage *messageWindow;
+    void showOwnIllness();
+    void showOwnDeal();
+    void showOwnMessage();
 };
 
 #endif // OWNWINDOW_H
