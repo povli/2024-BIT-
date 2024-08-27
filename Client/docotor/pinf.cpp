@@ -53,6 +53,10 @@ pinf::pinf(QWidget *parent) :
     ui(new Ui::pinf)
 {
     ui->setupUi(this);
+    ui->tableViewRecordation_2->setEditTriggers(QAbstractItemView::NoEditTriggers);
+    ui->tableViewUser_2->setEditTriggers(QAbstractItemView::NoEditTriggers);
+    ui->tableViewGoods_2->setEditTriggers(QAbstractItemView::NoEditTriggers);
+    ui->tableViewStatistics_2->setEditTriggers(QAbstractItemView::NoEditTriggers);
 
     this->setStyleSheet("background-color: skyblue;");
     this->windowp = new pbd;

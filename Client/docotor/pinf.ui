@@ -59,19 +59,6 @@
      <item row="0" column="1">
       <layout class="QGridLayout" name="gridLayoutRecordation_2">
        <item row="0" column="0">
-        <widget class="QPushButton" name="pushButtonRecordationSearch_2">
-         <property name="minimumSize">
-          <size>
-           <width>80</width>
-           <height>40</height>
-          </size>
-         </property>
-         <property name="text">
-          <string>查询</string>
-         </property>
-        </widget>
-       </item>
-       <item row="0" column="1">
         <widget class="QPushButton" name="pushButtonRecordationRefresh_2">
          <property name="minimumSize">
           <size>
@@ -112,19 +99,6 @@
      <item row="0" column="1">
       <layout class="QGridLayout" name="gridLayoutUser_2">
        <item row="0" column="0">
-        <widget class="QPushButton" name="pushButtonUserSearch_2">
-         <property name="minimumSize">
-          <size>
-           <width>80</width>
-           <height>40</height>
-          </size>
-         </property>
-         <property name="text">
-          <string>查询</string>
-         </property>
-        </widget>
-       </item>
-       <item row="0" column="1">
         <widget class="QPushButton" name="pushButtonUserRefresh_2">
          <property name="minimumSize">
           <size>
@@ -165,19 +139,6 @@
      <item row="0" column="1">
       <layout class="QGridLayout" name="gridLayoutGoods_2">
        <item row="0" column="0">
-        <widget class="QPushButton" name="pushButtonGoodsSearch_2">
-         <property name="minimumSize">
-          <size>
-           <width>80</width>
-           <height>40</height>
-          </size>
-         </property>
-         <property name="text">
-          <string>查询</string>
-         </property>
-        </widget>
-       </item>
-       <item row="0" column="1">
         <widget class="QPushButton" name="pushButtonGoodsRefresh_2">
          <property name="minimumSize">
           <size>
@@ -217,19 +178,6 @@
      </item>
      <item row="0" column="1">
       <layout class="QHBoxLayout" name="horizontalLayout_2">
-       <item>
-        <widget class="QPushButton" name="pushButtonStatisticsSearch_2">
-         <property name="minimumSize">
-          <size>
-           <width>80</width>
-           <height>40</height>
-          </size>
-         </property>
-         <property name="text">
-          <string>查询</string>
-         </property>
-        </widget>
-       </item>
        <item>
         <widget class="QPushButton" name="pushButtonStatisticsRefresh_2">
          <property name="minimumSize">

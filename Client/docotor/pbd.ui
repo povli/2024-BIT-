@@ -82,7 +82,7 @@
        </widget>
       </item>
       <item>
-       <widget class="QLineEdit" name="lineEdit"/>
+       <widget class="QTableView" name="tableView"/>
       </item>
      </layout>
     </item>
@@ -101,7 +101,7 @@
        </widget>
       </item>
       <item>
-       <widget class="QLineEdit" name="lineEdit_5"/>
+       <widget class="QTableView" name="tableView_5"/>
       </item>
      </layout>
     </item>
@@ -120,7 +120,7 @@
        </widget>
       </item>
       <item>
-       <widget class="QLineEdit" name="lineEdit_2"/>
+       <widget class="QTableView" name="tableView_2"/>
       </item>
      </layout>
     </item>
@@ -139,7 +139,7 @@
        </widget>
       </item>
       <item>
-       <widget class="QLineEdit" name="lineEdit_3"/>
+       <widget class="QTableView" name="tableView_3"/>
       </item>
      </layout>
     </item>
@@ -158,7 +158,7 @@
        </widget>
       </item>
       <item>
-       <widget class="QLineEdit" name="lineEdit_4"/>
+       <widget class="QTableView" name="tableView_4"/>
       </item>
      </layout>
     </item>
@@ -174,24 +174,6 @@
     </rect>
    </property>
    <layout class="QVBoxLayout" name="verticalLayout_2">
-    <item>
-     <widget class="QPushButton" name="pushButton">
-      <property name="font">
-       <font>
-        <pointsize>14</pointsize>
-       </font>
-      </property>
-      <property name="autoFillBackground">
-       <bool>false</bool>
-      </property>
-      <property name="styleSheet">
-       <string notr="true"/>
-      </property>
-      <property name="text">
-       <string>病例详情</string>
-      </property>
-     </widget>
-    </item>
     <item>
      <widget class="QPushButton" name="pushButton_2">
       <property name="font">
@@ -234,3 +216,4 @@
  <resources/>
  <connections/>
 </ui>
+

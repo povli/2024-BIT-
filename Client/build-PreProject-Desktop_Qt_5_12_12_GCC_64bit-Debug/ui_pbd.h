@@ -12,9 +12,10 @@
 #include <QtCore/QVariant>
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QHBoxLayout>
+#include <QtWidgets/QHeaderView>
 #include <QtWidgets/QLabel>
-#include <QtWidgets/QLineEdit>
 #include <QtWidgets/QPushButton>
+#include <QtWidgets/QTableView>
 #include <QtWidgets/QVBoxLayout>
 #include <QtWidgets/QWidget>
 
@@ -29,22 +30,21 @@ public:
     QVBoxLayout *verticalLayout;
     QHBoxLayout *horizontalLayout;
     QLabel *label;
-    QLineEdit *lineEdit;
+    QTableView *tableView;
     QHBoxLayout *horizontalLayout_2;
     QLabel *label_5;
-    QLineEdit *lineEdit_5;
+    QTableView *tableView_5;
     QHBoxLayout *horizontalLayout_3;
     QLabel *label_2;
-    QLineEdit *lineEdit_2;
+    QTableView *tableView_2;
     QHBoxLayout *horizontalLayout_4;
     QLabel *label_3;
-    QLineEdit *lineEdit_3;
+    QTableView *tableView_3;
     QHBoxLayout *horizontalLayout_5;
     QLabel *label_4;
-    QLineEdit *lineEdit_4;
+    QTableView *tableView_4;
     QWidget *layoutWidget1;
     QVBoxLayout *verticalLayout_2;
-    QPushButton *pushButton;
     QPushButton *pushButton_2;
     QPushButton *pushButton_4;
     QPushButton *pushButton_3;
@@ -86,10 +86,10 @@ public:
 
         horizontalLayout->addWidget(label);
 
-        lineEdit = new QLineEdit(layoutWidget);
-        lineEdit->setObjectName(QString::fromUtf8("lineEdit"));
+        tableView = new QTableView(layoutWidget);
+        tableView->setObjectName(QString::fromUtf8("tableView"));
 
-        horizontalLayout->addWidget(lineEdit);
+        horizontalLayout->addWidget(tableView);
 
 
         verticalLayout->addLayout(horizontalLayout);
@@ -102,10 +102,10 @@ public:
 
         horizontalLayout_2->addWidget(label_5);
 
-        lineEdit_5 = new QLineEdit(layoutWidget);
-        lineEdit_5->setObjectName(QString::fromUtf8("lineEdit_5"));
+        tableView_5 = new QTableView(layoutWidget);
+        tableView_5->setObjectName(QString::fromUtf8("tableView_5"));
 
-        horizontalLayout_2->addWidget(lineEdit_5);
+        horizontalLayout_2->addWidget(tableView_5);
 
 
         verticalLayout->addLayout(horizontalLayout_2);
@@ -118,10 +118,10 @@ public:
 
         horizontalLayout_3->addWidget(label_2);
 
-        lineEdit_2 = new QLineEdit(layoutWidget);
-        lineEdit_2->setObjectName(QString::fromUtf8("lineEdit_2"));
+        tableView_2 = new QTableView(layoutWidget);
+        tableView_2->setObjectName(QString::fromUtf8("tableView_2"));
 
-        horizontalLayout_3->addWidget(lineEdit_2);
+        horizontalLayout_3->addWidget(tableView_2);
 
 
         verticalLayout->addLayout(horizontalLayout_3);
@@ -134,10 +134,10 @@ public:
 
         horizontalLayout_4->addWidget(label_3);
 
-        lineEdit_3 = new QLineEdit(layoutWidget);
-        lineEdit_3->setObjectName(QString::fromUtf8("lineEdit_3"));
+        tableView_3 = new QTableView(layoutWidget);
+        tableView_3->setObjectName(QString::fromUtf8("tableView_3"));
 
-        horizontalLayout_4->addWidget(lineEdit_3);
+        horizontalLayout_4->addWidget(tableView_3);
 
 
         verticalLayout->addLayout(horizontalLayout_4);
@@ -150,10 +150,10 @@ public:
 
         horizontalLayout_5->addWidget(label_4);
 
-        lineEdit_4 = new QLineEdit(layoutWidget);
-        lineEdit_4->setObjectName(QString::fromUtf8("lineEdit_4"));
+        tableView_4 = new QTableView(layoutWidget);
+        tableView_4->setObjectName(QString::fromUtf8("tableView_4"));
 
-        horizontalLayout_5->addWidget(lineEdit_4);
+        horizontalLayout_5->addWidget(tableView_4);
 
 
         verticalLayout->addLayout(horizontalLayout_5);
@@ -164,18 +164,10 @@ public:
         verticalLayout_2 = new QVBoxLayout(layoutWidget1);
         verticalLayout_2->setObjectName(QString::fromUtf8("verticalLayout_2"));
         verticalLayout_2->setContentsMargins(0, 0, 0, 0);
-        pushButton = new QPushButton(layoutWidget1);
-        pushButton->setObjectName(QString::fromUtf8("pushButton"));
-        QFont font2;
-        font2.setPointSize(14);
-        pushButton->setFont(font2);
-        pushButton->setAutoFillBackground(false);
-        pushButton->setStyleSheet(QString::fromUtf8(""));
-
-        verticalLayout_2->addWidget(pushButton);
-
         pushButton_2 = new QPushButton(layoutWidget1);
         pushButton_2->setObjectName(QString::fromUtf8("pushButton_2"));
+        QFont font2;
+        font2.setPointSize(14);
         pushButton_2->setFont(font2);
 
         verticalLayout_2->addWidget(pushButton_2);
@@ -208,7 +200,6 @@ public:
         label_2->setText(QApplication::translate("pbd", "\351\242\204\347\272\246\346\227\266\351\227\264:", nullptr));
         label_3->setText(QApplication::translate("pbd", "\346\211\200\345\261\236\347\247\221\345\256\244:", nullptr));
         label_4->setText(QApplication::translate("pbd", "\347\224\265\350\257\235:", nullptr));
-        pushButton->setText(QApplication::translate("pbd", "\347\227\205\344\276\213\350\257\246\346\203\205", nullptr));
         pushButton_2->setText(QApplication::translate("pbd", "\350\257\212\346\226\255\347\273\223\346\236\234", nullptr));
         pushButton_4->setText(QApplication::translate("pbd", "\347\225\231\344\270\213\345\214\273\345\230\261", nullptr));
         pushButton_3->setText(QApplication::translate("pbd", "\344\275\217\351\231\242\344\277\241\346\201\257", nullptr));
