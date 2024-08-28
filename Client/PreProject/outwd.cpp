@@ -1,7 +1,6 @@
 #include "outwd.h"
 #include "ui_outwd.h"
 #include "GlobalData.h"
-#include "OutDoc.h"
 #include <QLabel>
 #include <vector>
 #include <QVector>
@@ -9,14 +8,16 @@
 #include "timetablewd.h"
 using namespace std;
 
-int GlobalData::OutDocnum=3;
+int GlobalData::OutDocnum=0;
 
 OutWd::OutWd(QWidget *parent) :
     QWidget(parent),
     ui(new Ui::OutWd)
 {
     ui->setupUi(this);
-    QVector<OutDoc> outdoc(100);
+
+    //请在此处调用datatrans()
+
     int i=0;
     while(i<GlobalData::OutDocnum){  //condition
         outdoc[i].picturelabel=new QLabel("picture",this);
@@ -55,4 +56,17 @@ void OutWd::showdate(){
     ttWd->resize(500,300);
     ttWd->showdoc("外科",str);
     ttWd->show();
+}
+//封装借口，数据传输用
+//num是数据库里医生数量,其余请传入对应的数组：工号，姓名，介绍，职位。
+void OutWd::datatrans(int num,QString *id,QString *name,QString *introduce,QString *position){
+    GlobalData::OutDocnum=num;
+    while(num--){
+        OutDoc temp;
+        temp.id=id[num];
+        temp.name=name[num];
+        temp.introduce=introduce[num];
+        temp.position=position[num];
+        outdoc.append(temp);
+    }
 }

@@ -59,5 +59,6 @@
         <file>res/medicalexpense.jpg</file>
         <file>res/psychologyquiz.jpg</file>
         <file>res/homepagebackground.jpg</file>
+        <file>res/ownpagewindow.jpg</file>
     </qresource>
 </RCC>

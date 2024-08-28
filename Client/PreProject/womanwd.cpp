@@ -1,20 +1,21 @@
 #include "womanwd.h"
 #include "ui_womanwd.h"
 #include "GlobalData.h"
-#include "WomanDoc.h"
 #include <QLabel>
 #include <vector>
 #include <QVector>
 #include <QPushButton>
 #include "timetablewd.h"
 using namespace std;
-int GlobalData::WomanDocnum=3;
+int GlobalData::WomanDocnum=0;
 WomanWd::WomanWd(QWidget *parent) :
     QWidget(parent),
     ui(new Ui::WomanWd)
 {
     ui->setupUi(this);
-    QVector<WomanDoc> womandoc(100);
+
+    //此处调用datatrans()
+
     int i=0;
     while(i<GlobalData::WomanDocnum){  //condition
         womandoc[i].picturelabel=new QLabel("picture",this);
@@ -53,4 +54,17 @@ void WomanWd::showdate(){
     ttWd->resize(500,300);
     ttWd->showdoc("妇科",str);
     ttWd->show();
+}
+//封装借口，数据传输用
+//num是数据库里医生数量,其余请传入对应的数组：工号，姓名，介绍，职位。
+void WomanWd::datatrans(int num,QString *id,QString *name,QString *introduce,QString *position){
+    GlobalData::WomanDocnum=num;
+    while(num--){
+        WomanDoc temp;
+        temp.id=id[num];
+        temp.name=name[num];
+        temp.introduce=introduce[num];
+        temp.position=position[num];
+        womandoc.append(temp);
+    }
 }

@@ -14,6 +14,7 @@ class OwnMessage : public QWidget {
 
 public:
     OwnMessage(QWidget *parent = nullptr);
+    void setOriginData(QString name,QString birth,QString id,QString phone,QString email);
 
 signals:
     void back();

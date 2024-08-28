@@ -2,6 +2,7 @@
 #define WOMANWD_H
 
 #include <QWidget>
+#include "WomanDoc.h"
 
 namespace Ui {
 class WomanWd;
@@ -18,6 +19,8 @@ private slots:
     void showdate();
 public:
     QString str;
+    void datatrans(int num,QString *id,QString *name,QString *introduce,QString *position);
+    QVector<WomanDoc> womandoc;
 
 private:
     Ui::WomanWd *ui;

@@ -97,14 +97,14 @@ public:
         HomeWindow->setWindowTitle(QApplication::translate("HomeWindow", "Form", nullptr));
         label_image->setText(QString());
         head1->setText(QApplication::translate("HomeWindow", "\346\231\272\346\205\247\345\214\273\347\226\227,\351\200\240\347\246\217\344\275\240\346\210\221\344\273\226", nullptr));
-        medicalexpenseText->setText(QApplication::translate("HomeWindow", "\345\214\273\347\226\227\347\274\264\350\264\271", nullptr));
+        medicalexpenseText->setText(QString());
         btnsearch->setText(QApplication::translate("HomeWindow", "\350\215\257\345\223\201\346\220\234\347\264\242", nullptr));
         medicalexpenseBtn->setText(QApplication::translate("HomeWindow", "\345\214\273\347\226\227\347\274\264\350\264\271", nullptr));
-        quizBtn->setText(QApplication::translate("HomeWindow", "\351\227\256\345\215\267\350\207\252\346\265\213", nullptr));
-        quizText->setText(QApplication::translate("HomeWindow", "\351\227\256\345\215\267\350\207\252\346\265\213", nullptr));
-        btnsearchText->setText(QApplication::translate("HomeWindow", "\350\215\257\345\223\201\346\220\234\347\264\242", nullptr));
+        quizBtn->setText(QApplication::translate("HomeWindow", "\345\201\245\345\272\267\350\257\204\344\274\260", nullptr));
+        quizText->setText(QString());
+        btnsearchText->setText(QString());
         tempBtn->setText(QApplication::translate("HomeWindow", "\344\275\234\350\200\205\345\233\242\351\230\237", nullptr));
-        tempText->setText(QApplication::translate("HomeWindow", "\344\275\234\350\200\205\345\233\242\351\230\237", nullptr));
+        tempText->setText(QString());
     } // retranslateUi
 
 };

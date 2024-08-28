@@ -20,7 +20,7 @@
       <x>0</x>
       <y>587</y>
       <width>861</width>
-      <height>81</height>
+      <height>72</height>
      </rect>
     </property>
     <layout class="QGridLayout" name="gridLayout">
@@ -64,8 +64,8 @@
        </property>
       </widget>
      </item>
-     <item row="0" column="2">
-      <widget class="QToolButton" name="personal">
+     <item row="0" column="0">
+      <widget class="QToolButton" name="home">
        <property name="sizePolicy">
         <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
          <horstretch>0</horstretch>
@@ -85,7 +85,7 @@
         </size>
        </property>
        <property name="styleSheet">
-        <string notr="true">background-image: url(:/res/personal.png);</string>
+        <string notr="true">background-image: url(:/res/home.png);</string>
        </property>
        <property name="text">
         <string/>
@@ -163,8 +163,8 @@
        </property>
       </widget>
      </item>
-     <item row="0" column="0">
-      <widget class="QToolButton" name="home">
+     <item row="0" column="2">
+      <widget class="QToolButton" name="personal">
        <property name="sizePolicy">
         <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
          <horstretch>0</horstretch>
@@ -184,7 +184,7 @@
         </size>
        </property>
        <property name="styleSheet">
-        <string notr="true">background-image: url(:/res/home.png);</string>
+        <string notr="true">background-image: url(:/res/personal.png);</string>
        </property>
        <property name="text">
         <string/>

@@ -6,21 +6,8 @@ HospitalizationWindow::HospitalizationWindow(QWidget *parent) :
     ui(new Ui::HospitalizationWindow)
 {
     ui->setupUi(this);
-    //QLabel *temp= new QLabel(this);
-    //temp->setText("测试");
-           // 初始化虚拟数据
-           initializeVirtualData();
-           /*for (int i = 0; i < 100; ++i) { // 100条虚拟记录
-               QStringList row;
-               row << QString("入院日期 %1").arg(i)
-                   << QString("病房号 %1").arg(i)
-                   << QString("病床号 %1").arg(i)
-                   << QString("出院日期 %1").arg(i)
-                   << QString("主治医生 %1").arg(i);
-               virtualData.append(row);
-           }*/
-           // 创建中央部件
-           //QWidget *centralWidget = new QWidget;
+
+// //请在此处填写initializeVirtualData();————————————注意！！！————————————————
 
            // 创建 QTableView 对象
            tableView = new QTableView;
@@ -59,30 +46,6 @@ HospitalizationWindow::HospitalizationWindow(QWidget *parent) :
            // 设置翻页按钮的布局
            paginationWidget->setLayout(paginationLayout);
 
-           // 创建底部按钮部件
-           //QWidget *buttonWidget = new QWidget;
-           //QHBoxLayout *buttonLayout = new QHBoxLayout(buttonWidget);
-
-           // 创建五个按钮并添加到布局中，设置每个按钮的最小和最大尺寸
-           /*QStringList buttonLabels = {"首页", "预约", "个人", "聊天", "住院"};
-           for (const QString &label : buttonLabels) {
-               QPushButton *button = new QPushButton(label);
-               button->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Fixed); // 自适应宽度，高度固定
-               button->setMinimumSize(100, 60); // 设置最小尺寸
-               button->setMaximumSize(200, 60); // 设置最大尺寸
-               button->setStyleSheet("background-color: #003366; color: white; border: none;"); // 设置按钮背景颜色为深蓝色，文字颜色为白色，并去除边框
-               buttonLayout->addWidget(button);
-           }
-
-           // 确保按钮均匀分布
-           buttonLayout->setStretch(0, 1);
-           buttonLayout->setStretch(1, 1);
-           buttonLayout->setStretch(2, 1);
-           buttonLayout->setStretch(3, 1);
-           buttonLayout->setStretch(4, 1);
-
-           // 设置底部按钮的布局
-           buttonWidget->setLayout(buttonLayout);*/
 
            // 创建主布局并添加 QTableView、标题、翻页按钮和底部按钮部件
            QVBoxLayout *mainLayout = new QVBoxLayout(this);
@@ -147,15 +110,15 @@ HospitalizationWindow::~HospitalizationWindow()
 {
     delete ui;
 }
-void HospitalizationWindow::initializeVirtualData() {
+void HospitalizationWindow::initializeVirtualData(int num,QString *indate,QString *roomnum,QString *bednum,QString *outdate,QString *yourdoc) {
     // 创建虚拟数据
-    for (int i = 0; i < 100; ++i) { // 100条虚拟记录
+    for (int i = 0; i < num; ++i) { // 100条虚拟记录
         QStringList row;
-        row << QString("").arg(i)
-            << QString("").arg(i)
-            << QString("").arg(i)
-            << QString("").arg(i)
-            << QString("").arg(i);
+        row << QString("%1").arg(indate[i])
+            << QString("%1").arg(roomnum[i])
+            << QString("%1").arg(bednum[i])
+            << QString("%1").arg(outdate[i])
+            << QString("%1").arg(yourdoc[i]);
         virtualData.append(row);
     }
 }

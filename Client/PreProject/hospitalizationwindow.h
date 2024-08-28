@@ -40,11 +40,14 @@ private:
 
     // 虚拟数据
     QVector<QStringList> virtualData;
-    void initializeVirtualData();
+
+
     void loadPage(int pageNumber);
     void updateNavigationButtons();
     void previousPage();
     void nextPage();
+public:
+    void initializeVirtualData(int num,QString *indate,QString *roomnum,QString *bednum,QString *outdate,QString *yourdoc);
 
 };
 

@@ -58,7 +58,7 @@ color: rgb(255, 255, 255);</string>
     </rect>
    </property>
    <property name="text">
-    <string>医疗缴费</string>
+    <string/>
    </property>
   </widget>
   <widget class="QLineEdit" name="lineEdit">
@@ -124,7 +124,7 @@ color: rgb(255, 255, 255);</string>
     </rect>
    </property>
    <property name="text">
-    <string>问卷自测</string>
+    <string>健康评估</string>
    </property>
   </widget>
   <widget class="QLabel" name="quizText">
@@ -137,7 +137,7 @@ color: rgb(255, 255, 255);</string>
     </rect>
    </property>
    <property name="text">
-    <string>问卷自测</string>
+    <string/>
    </property>
   </widget>
   <widget class="QLabel" name="btnsearchText">
@@ -150,7 +150,7 @@ color: rgb(255, 255, 255);</string>
     </rect>
    </property>
    <property name="text">
-    <string>药品搜索</string>
+    <string/>
    </property>
   </widget>
   <widget class="QPushButton" name="tempBtn">
@@ -176,7 +176,7 @@ color: rgb(255, 255, 255);</string>
     </rect>
    </property>
    <property name="text">
-    <string>作者团队</string>
+    <string/>
    </property>
   </widget>
  </widget>

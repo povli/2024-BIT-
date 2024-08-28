@@ -240,7 +240,6 @@ std::shared_ptr<FriendInfo> UserMgr::GetFriendById(int uid)
     if(find_it == _friend_map.end()){
         return nullptr;
     }
-
     return *find_it;
 }
 

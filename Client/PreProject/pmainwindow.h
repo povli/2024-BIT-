@@ -15,6 +15,9 @@
 #include "hospitalizationwindow.h"
 #include "ownwindow.h"
 #include "chatwindow.h"
+
+#include "chatdialog.h"
+
 void MIsqlite_Init();
 
 QT_BEGIN_NAMESPACE
@@ -31,6 +34,9 @@ public:
 public slots:
     void infoRecv(int);
 
+private slots:
+
+
 private:
     Ui::PMainWindow *ui;
     QButtonGroup btnGroup;
@@ -41,5 +47,9 @@ private:
     HospitalizationWindow hospitalizationWd;
     ChatWindow chatWd;
     OwnWindow ownWd;
+    bool speakStatus=true;
+    Audio *my_audio;
+    QTextToSpeech *my_say;
+    //ChatDialog chatdialogWd;
 };
 #endif // PMAINWINDOW_H

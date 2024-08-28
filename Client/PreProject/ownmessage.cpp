@@ -24,6 +24,10 @@ OwnMessage::OwnMessage(QWidget *parent) : QWidget(parent) {
     phoneLabel = new QLabel;
     emailLabel = new QLabel;
 
+    //——————————————————————————————————————注意！——————————————————————————————————
+    //请在此处添加端口setOriginData(QString name,QString birth,QString id,QString phone,QString email)
+
+
     // 初始化文本框（用于用户输入）
     nameEdit = new QLineEdit;
     dobEdit = new QLineEdit;
@@ -133,11 +137,11 @@ void OwnMessage::setDisplayMode(bool display) {
 
 void OwnMessage::confirm() {
     // 从 QLineEdit 中获取文本并更新到 QLabel
-    nameLabel->setText(nameEdit->text());
-    dobLabel->setText(dobEdit->text());
-    idLabel->setText(idEdit->text());
-    phoneLabel->setText(phoneEdit->text());
-    emailLabel->setText(emailEdit->text());
+    nameLabel->setText(nameEdit->text());//姓名
+    dobLabel->setText(dobEdit->text());//出生年月
+    idLabel->setText(idEdit->text());//身份证件号码
+    phoneLabel->setText(phoneEdit->text());//电话
+    emailLabel->setText(emailEdit->text());//邮箱
 
     // 切换回显示模式
     setDisplayMode(true);
@@ -154,5 +158,13 @@ void OwnMessage::goBack() {
 void OwnMessage::modify() {
     // 切换到编辑模式
     setDisplayMode(false);
+}
+void OwnMessage::setOriginData(QString name,QString birth,QString id,QString phone,QString email){
+    nameLabel->setText(name);
+    dobLabel->setText(birth);
+    idLabel->setText(id);
+    phoneLabel->setText(phone);
+    emailLabel->setText(email);
+
 }
 

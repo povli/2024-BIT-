@@ -13,7 +13,9 @@ OwnDeal::OwnDeal(QWidget *parent) : QWidget(parent) {
     layout->addWidget(backButton);
 
     tableView = new QTableView;
-    initializeTable();
+
+    //请在此处调用initializeTable();
+
     layout->addWidget(tableView);
 
     connect(backButton, &QPushButton::clicked, this, &OwnDeal::goBack);
@@ -21,21 +23,33 @@ OwnDeal::OwnDeal(QWidget *parent) : QWidget(parent) {
     setLayout(layout);
 }
 
-void OwnDeal::initializeTable() {
-    model = new QStandardItemModel(10, 6, this);
+void OwnDeal::initializeTable(int num,QString *docname,QString *judge,QString *prescription,QString *note) {
+    model = new QStandardItemModel(10, 5, this);
     tableView->setModel(model);
 
-    model->setHorizontalHeaderLabels({"医生", "临床诊断", "处方", "医嘱", "列5", "操作"});
+    model->setHorizontalHeaderLabels({"医生", "临床诊断", "处方", "医嘱", "操作"});
 
-    for (int row = 0; row < 10; ++row) {
-        for (int column = 0; column < 5; ++column) {
-            QStandardItem *item = new QStandardItem(QString("数据 %1,%2").arg(row).arg(column));
-            model->setItem(row, column, item);
+    for (int row = 0; row < num; ++row) {
+        for (int column = 0; column < 4; ++column) {
+            if(column==0){
+                QStandardItem *item = new QStandardItem(QString("%1").arg(docname[row]));
+                model->setItem(row, column, item);
+            }else if(column==1){
+                QStandardItem *item = new QStandardItem(QString("%1").arg(judge[row]));
+                model->setItem(row, column, item);
+            }else if(column==2){
+                QStandardItem *item = new QStandardItem(QString("%1").arg(prescription[row]));
+                model->setItem(row, column, item);
+            }else if(column==3){
+                QStandardItem *item = new QStandardItem(QString("%1").arg(note[row]));
+                model->setItem(row, column, item);
+            }
+
         }
         QPushButton *viewButton = new QPushButton("查看");
         connect(viewButton, &QPushButton::clicked, this, &OwnDeal::showDetails);
-        model->setItem(row, 5, new QStandardItem());
-        tableView->setIndexWidget(model->index(row, 5), viewButton);
+        model->setItem(row, 4, new QStandardItem());
+        tableView->setIndexWidget(model->index(row, 4), viewButton);
     }
 }
 
@@ -47,3 +61,4 @@ void OwnDeal::goBack()
 {
     emit back();
 }
+

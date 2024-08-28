@@ -16,6 +16,7 @@ public:
     OwnDeal *dealWindow = NULL;
     OwnMessage *messageWindow = NULL;
     ~OwnWindow();
+    virtual void paintEvent(QPaintEvent *);
 
 private slots:
     void showOwnIllness();

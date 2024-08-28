@@ -5,6 +5,9 @@
 #include "medicinesearchwindow.h"
 #include "medicalexpensewd.h"
 #include "quizwd.h"
+#include <QTextToSpeech>
+#include <QVoice>
+#include "audio.h"//语音识别
 
 namespace Ui {
 class HomeWindow;

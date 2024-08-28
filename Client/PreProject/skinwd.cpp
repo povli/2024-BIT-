@@ -1,7 +1,6 @@
 #include "skinwd.h"
 #include "ui_skinwd.h"
 #include "GlobalData.h"
-#include "SkinDoc.h"
 #include <QLabel>
 #include <vector>
 #include <QVector>
@@ -9,14 +8,16 @@
 #include "timetablewd.h"
 using namespace std;
 
-int GlobalData::SkinDocnum=3;
+int GlobalData::SkinDocnum=0;
 
 SkinWd::SkinWd(QWidget *parent) :
     QWidget(parent),
     ui(new Ui::SkinWd)
 {
     ui->setupUi(this);
-    QVector<SkinDoc> skindoc(100);
+
+    //此处调用datatrans()
+
     int i=0;
     while(i<GlobalData::SkinDocnum){  //condition
         skindoc[i].picturelabel=new QLabel("picture",this);
@@ -55,4 +56,17 @@ void SkinWd::showdate(){
     ttWd->resize(500,300);
     ttWd->showdoc("皮肤科",str);
     ttWd->show();
+}
+//封装借口，数据传输用
+//num是数据库里医生数量,其余请传入对应的数组：工号，姓名，介绍，职位。
+void SkinWd::datatrans(int num,QString *id,QString *name,QString *introduce,QString *position){
+    GlobalData::SkinDocnum=num;
+    while(num--){
+        SkinDoc temp;
+        temp.id=id[num];
+        temp.name=name[num];
+        temp.introduce=introduce[num];
+        temp.position=position[num];
+        skindoc.append(temp);
+    }
 }

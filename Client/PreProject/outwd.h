@@ -2,6 +2,7 @@
 #define OUTWD_H
 
 #include <QWidget>
+#include "OutDoc.h"
 
 namespace Ui {
 class OutWd;
@@ -16,6 +17,8 @@ public:
     ~OutWd();
 public:
     QString str;
+    void datatrans(int num,QString *id,QString *name,QString *introduce,QString *position);
+    QVector<OutDoc> outdoc;
 
 private slots:
     void showdate();
