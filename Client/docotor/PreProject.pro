@@ -16,8 +16,10 @@ SOURCES += \
     change.cpp \
     circularbuf.cpp \
     clickedlabel.cpp \
+    client.cpp \
     diagnostic.cpp \
     display.cpp \
+    drawer.cpp \
     global.cpp \
     guidemainwindow.cpp \
     historydata.cpp \
@@ -39,12 +41,14 @@ SOURCES += \
     registerdialog.cpp \
     remainwindow.cpp \
     resetdialog.cpp \
+    server.cpp \
     tcpmgr.cpp \
     tcpserver.cpp \
     tcpthread.cpp \
     timerbtn.cpp \
     usermgr.cpp \
-    wavescene.cpp
+    wavescene.cpp \
+    widget.cpp
 
 HEADERS += \
     DataType.h \
@@ -53,9 +57,11 @@ HEADERS += \
     change.h \
     circularbuf.h \
     clickedlabel.h \
+    client.h \
     database.h \
     diagnostic.h \
     display.h \
+    drawer.h \
     global.h \
     guidemainwindow.h \
     historydata.h \
@@ -77,18 +83,21 @@ HEADERS += \
     registerdialog.h \
     remainwindow.h \
     resetdialog.h \
+    server.h \
     singleton.h \
     tcpmgr.h \
     tcpserver.h \
     tcpthread.h \
     timerbtn.h \
     usermgr.h \
-    wavescene.h
+    wavescene.h \
+    widget.h
 
 FORMS += \
     absence.ui \
     advice.ui \
     change.ui \
+    client.ui \
     diagnostic.ui \
     display.ui \
     guidemainwindow.ui \
@@ -108,7 +117,9 @@ FORMS += \
     register.ui \
     registerdialog.ui \
     remainwindow.ui \
-    resetdialog.ui
+    resetdialog.ui \
+    server.ui \
+    widget.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

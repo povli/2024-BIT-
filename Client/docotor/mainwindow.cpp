@@ -7,6 +7,8 @@
 #include "remainwindow.h"
 #include "guidemainwindow.h"
 #include "inchartx.h"
+#include "widget.h"
+#include "drawer.h"
 #include <QMessageBox>
 #include <QTextBlock>
 #include <QDebug>
@@ -350,6 +352,8 @@ void MainWindow::on_HC_clicked()
 
 void MainWindow::on_CR_clicked()
 {
-
+    Drawer *drawer = new Drawer(this);
+    drawer->resize(250, 500);
+    drawer->show();
 }
 

@@ -59,6 +59,8 @@ private slots:
 
 
 
+    void on_pushButtonStatisticsRefresh_2_clicked();
+
 private:
     Ui::pinf *ui;
     void setupTableViewStyle(QTableView *tableView);

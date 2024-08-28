@@ -2,6 +2,7 @@
 #include "pinf.h"
 #include "pbd.h"
 #include "mainwindow.h"
+#include "widget.h"
 #include<QFile>
 #include"diagnostic.h"
 
@@ -38,7 +39,7 @@ int main(int argc, char *argv[])
     hMainWindow w;
     // 模拟的 JSON 数据
     // QString jsonString = "{\"name\": \"张三\", \"account\": \"123456\", \"time\": \"2024-08-28 10:00\", \"gender\": \"男\", \"age\": \"31\"}";
-    // pbd w;
+    // Widget w;
     w.show();
     // w.populateData(jsonString);
     return a.exec();

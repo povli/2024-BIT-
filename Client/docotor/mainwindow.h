@@ -5,6 +5,7 @@
 #include <QTableWidgetItem>
 #include "pinf.h"
 #include "information.h"
+#include "drawer.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -58,6 +59,7 @@ private:
     QPixmap backgroundPixmap;
 
     bool eventFilter(QObject *obj, QEvent *event) override;
+    Drawer *drawer;
 };
 
 #endif // MAINWINDOW_H

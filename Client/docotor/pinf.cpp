@@ -354,10 +354,9 @@ void pinf::on_tabWidget_tabBarClicked(int index)
 }
 
 
+// 刷新的槽函数
+void pinf::on_pushButtonStatisticsRefresh_2_clicked()
+{
 
-
-
-
-
-
+}
 
