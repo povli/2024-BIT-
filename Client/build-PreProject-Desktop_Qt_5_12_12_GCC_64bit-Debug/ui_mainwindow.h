@@ -122,12 +122,14 @@ public:
     {
         if (MainWindow->objectName().isEmpty())
             MainWindow->setObjectName(QString::fromUtf8("MainWindow"));
-        MainWindow->resize(807, 610);
+        MainWindow->resize(1010, 610);
         centralwidget = new QWidget(MainWindow);
         centralwidget->setObjectName(QString::fromUtf8("centralwidget"));
         stackedWidget = new QStackedWidget(centralwidget);
         stackedWidget->setObjectName(QString::fromUtf8("stackedWidget"));
-        stackedWidget->setGeometry(QRect(0, 0, 810, 630));
+        stackedWidget->setGeometry(QRect(0, 0, 1000, 400));
+        stackedWidget->setMinimumSize(QSize(1000, 400));
+        stackedWidget->setMaximumSize(QSize(1000, 400));
         page_0 = new QWidget();
         page_0->setObjectName(QString::fromUtf8("page_0"));
         label_3 = new QLabel(page_0);
@@ -526,7 +528,7 @@ public:
         MainWindow->setCentralWidget(centralwidget);
         menubar = new QMenuBar(MainWindow);
         menubar->setObjectName(QString::fromUtf8("menubar"));
-        menubar->setGeometry(QRect(0, 0, 807, 22));
+        menubar->setGeometry(QRect(0, 0, 1010, 22));
         MainWindow->setMenuBar(menubar);
         statusbar = new QStatusBar(MainWindow);
         statusbar->setObjectName(QString::fromUtf8("statusbar"));
@@ -534,7 +536,7 @@ public:
 
         retranslateUi(MainWindow);
 
-        stackedWidget->setCurrentIndex(1);
+        stackedWidget->setCurrentIndex(3);
         stackedWidget_2->setCurrentIndex(0);
 
 

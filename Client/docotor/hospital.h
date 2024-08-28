@@ -30,6 +30,7 @@ private:
 
     bool validateData();
     void showDataInsufficientMessage();
+    void saveDataToDatabase(); // 存入数据库
 
 protected:
     void mousePressEvent(QMouseEvent *event) override;

@@ -43,9 +43,20 @@ bool Hospital::validateData()
     return true; // 所有数据都已填入
 }
 
+void Hospital::saveDataToDatabase()
+{
+    // 从表格中获取数据
+    QString patientName = ui->tableWidget->item(0, 0)->text();
+    QString wardNumber = ui->tableWidget->item(0, 1)->text();
+    QString bedNumber = ui->tableWidget->item(0, 2)->text();
+    QString doctorName = ui->tableWidget->item(0, 3)->text();
+    QString admissionDate = ui->tableWidget->item(0, 4)->text();
+}
+
 void Hospital::on_saveButton_clicked()
 {
     if (validateData()) {
+        saveDataToDatabase();
         QMessageBox::information(this, tr("确认保存"), tr("数据已保存成功。"), QMessageBox::Ok);
         close(); // 关闭窗口
     } else {
