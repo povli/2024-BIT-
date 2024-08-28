@@ -77,3 +77,21 @@ bool MysqlMgr::UpdateDoctorInfo(int id, const std::string &name, const std::stri
 bool MysqlMgr::GetFriendList(int self_id, std::vector<std::shared_ptr<UserInfo> >& user_info) {
     return _dao.GetFriendList(self_id, user_info);
 }
+
+bool MysqlMgr::UpdateCheckResult(int id, const std::string& paintuid, const std::string& result)
+{
+    return _dao.UpdateCheckResult(id, paintuid, result);
+}
+bool MysqlMgr::UpdateCheckAdivice(int id, const std::string& paintuid, const std::string& result) {
+    return _dao.UpdateCheckAdivice(id, paintuid, result);
+}
+
+bool MysqlMgr::InsertIntoHospitalization(int doctoruid, int patientuid, const std::string& patientname,
+                                         const std::string& bed_number, const std::string& admission_number,
+                                         const std::string& doctor_name, const std::string& room) {
+    return _dao.InsertIntoHospitalization(doctoruid,patientuid,patientname,bed_number,admission_number,doctor_name,room);
+}
+bool MysqlMgr::GetHospitalizationInfo(int doctor_uid, std::vector<HosInfobase>& hospitalList) {
+    return _dao.GetHospitalizationInfo(doctor_uid, hospitalList);
+}
+

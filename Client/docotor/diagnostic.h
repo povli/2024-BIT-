@@ -15,6 +15,7 @@ public:
     explicit DiagnosticDialog(QWidget *parent = nullptr);
     ~DiagnosticDialog();
 
+    static QString paintid;
 private slots:
     void on_buttonConfirm_clicked();
     void on_buttonCancel_clicked();

@@ -1,6 +1,11 @@
 #include "hospital.h"
 #include "ui_hospital.h"
 
+#include <qjsondocument.h>
+#include <qjsonobject.h>
+#include <tcpmgr.h>
+#include <usermgr.h>
+
 Hospital::Hospital(QWidget *parent) :
     QWidget(parent),
     ui(new Ui::Hospital),
@@ -43,9 +48,43 @@ bool Hospital::validateData()
     return true; // 所有数据都已填入
 }
 
+void Hospital::saveDataToDatabase()
+{
+    // 从表格中获取数据
+    QString patientName = ui->tableWidget->item(0, 0)->text();
+    QString wardNumber = ui->tableWidget->item(0, 1)->text();
+    QString bedNumber = ui->tableWidget->item(0, 2)->text();
+    QString doctorName = ui->tableWidget->item(0, 3)->text();
+    QString admissionDate = ui->tableWidget->item(0, 4)->text();
+    QString patientId=UserMgr::GetInstance()->getpainIdep();
+    int doctorid=UserMgr::GetInstance()->getUid();
+    //QString resultText = ui->textEditResult->toPlainText();
+    QJsonObject jsonObj;
+    jsonObj["doctor_uid"]=UserMgr::GetInstance()->getUid();
+    jsonObj["patient_uid"]=patientId;
+    jsonObj["patient_name"]=patientName;
+    jsonObj["bed_number"]=bedNumber;
+    jsonObj["admission_data"]=admissionDate;
+    jsonObj["doctorname"]=doctorName;
+    jsonObj["room"]=wardNumber;
+    //qDebug()<<jsonObj["doctoruid"].toInt();
+    //jsonObj["result"]=resultText;
+    //jsonObj["id"]=UserMgr::GetInstance()->getguahaoidEdit();
+
+    QJsonDocument doc(jsonObj);
+    QString jsonString = doc.toJson(QJsonDocument::Indented);
+
+    //发送tcp请求给chat server
+    emit TcpMgr::GetInstance()->sig_send_data(ReqId::ID_hospital, jsonString);
+
+
+
+}
+
 void Hospital::on_saveButton_clicked()
 {
     if (validateData()) {
+        saveDataToDatabase();
         QMessageBox::information(this, tr("确认保存"), tr("数据已保存成功。"), QMessageBox::Ok);
         close(); // 关闭窗口
     } else {

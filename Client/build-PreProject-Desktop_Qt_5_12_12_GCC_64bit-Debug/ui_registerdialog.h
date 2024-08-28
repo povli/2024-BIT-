@@ -11,7 +11,6 @@
 
 #include <QtCore/QVariant>
 #include <QtWidgets/QApplication>
-#include <QtWidgets/QComboBox>
 #include <QtWidgets/QDialog>
 #include <QtWidgets/QHBoxLayout>
 #include <QtWidgets/QLabel>
@@ -98,14 +97,6 @@ public:
     QHBoxLayout *horizontalLayout_13;
     QLabel *label_7;
     QLineEdit *phoneEdit;
-    QWidget *widget_11;
-    QHBoxLayout *horizontalLayout_15;
-    QLabel *label_9;
-    QComboBox *DepartmentEdit;
-    QWidget *widget_12;
-    QHBoxLayout *horizontalLayout_16;
-    QLabel *label_10;
-    QLineEdit *selfIntrInfo;
     QPushButton *confirmInfo;
     QWidget *page_3;
     QVBoxLayout *verticalLayout_5;
@@ -449,46 +440,6 @@ public:
 
         verticalLayout_2->addWidget(widget_7);
 
-        widget_11 = new QWidget(widget_10);
-        widget_11->setObjectName(QString::fromUtf8("widget_11"));
-        horizontalLayout_15 = new QHBoxLayout(widget_11);
-        horizontalLayout_15->setObjectName(QString::fromUtf8("horizontalLayout_15"));
-        label_9 = new QLabel(widget_11);
-        label_9->setObjectName(QString::fromUtf8("label_9"));
-
-        horizontalLayout_15->addWidget(label_9);
-
-        DepartmentEdit = new QComboBox(widget_11);
-        DepartmentEdit->addItem(QString());
-        DepartmentEdit->addItem(QString());
-        DepartmentEdit->addItem(QString());
-        DepartmentEdit->addItem(QString());
-        DepartmentEdit->addItem(QString());
-        DepartmentEdit->setObjectName(QString::fromUtf8("DepartmentEdit"));
-        DepartmentEdit->setMaxCount(2147483644);
-
-        horizontalLayout_15->addWidget(DepartmentEdit);
-
-
-        verticalLayout_2->addWidget(widget_11);
-
-        widget_12 = new QWidget(widget_10);
-        widget_12->setObjectName(QString::fromUtf8("widget_12"));
-        horizontalLayout_16 = new QHBoxLayout(widget_12);
-        horizontalLayout_16->setObjectName(QString::fromUtf8("horizontalLayout_16"));
-        label_10 = new QLabel(widget_12);
-        label_10->setObjectName(QString::fromUtf8("label_10"));
-
-        horizontalLayout_16->addWidget(label_10);
-
-        selfIntrInfo = new QLineEdit(widget_12);
-        selfIntrInfo->setObjectName(QString::fromUtf8("selfIntrInfo"));
-
-        horizontalLayout_16->addWidget(selfIntrInfo);
-
-
-        verticalLayout_2->addWidget(widget_12);
-
         confirmInfo = new QPushButton(widget_10);
         confirmInfo->setObjectName(QString::fromUtf8("confirmInfo"));
 
@@ -568,7 +519,7 @@ public:
     {
         RegisterDialog->setWindowTitle(QApplication::translate("RegisterDialog", "Dialog", nullptr));
         err_tip->setText(QApplication::translate("RegisterDialog", "\351\224\231\350\257\257\346\217\220\347\244\272", nullptr));
-        user_label->setText(QApplication::translate("RegisterDialog", "\345\267\245\345\217\267\357\274\232", nullptr));
+        user_label->setText(QApplication::translate("RegisterDialog", "\347\224\250\346\210\267\357\274\232", nullptr));
         email_label->setText(QApplication::translate("RegisterDialog", "\351\202\256\347\256\261\357\274\232", nullptr));
         pass_label->setText(QApplication::translate("RegisterDialog", "\345\257\206\347\240\201\357\274\232", nullptr));
         pass_visible->setText(QString());
@@ -588,16 +539,8 @@ public:
         label_3->setText(QApplication::translate("RegisterDialog", "\345\207\272\347\224\237\346\227\245\346\234\237\357\274\232    \345\271\264", nullptr));
         label_5->setText(QApplication::translate("RegisterDialog", "\346\234\210", nullptr));
         label_6->setText(QApplication::translate("RegisterDialog", "\346\227\245", nullptr));
-        label_4->setText(QApplication::translate("RegisterDialog", "\350\272\253\344\273\275\350\257\201\345\217\267\357\274\232", nullptr));
-        label_7->setText(QApplication::translate("RegisterDialog", "\346\211\213\346\234\272\345\217\267\357\274\232", nullptr));
-        label_9->setText(QApplication::translate("RegisterDialog", "\347\247\221\345\256\244", nullptr));
-        DepartmentEdit->setItemText(0, QApplication::translate("RegisterDialog", "\345\204\277\347\247\221", nullptr));
-        DepartmentEdit->setItemText(1, QApplication::translate("RegisterDialog", "\345\246\207\347\247\221", nullptr));
-        DepartmentEdit->setItemText(2, QApplication::translate("RegisterDialog", "\347\232\256\350\202\244\347\247\221", nullptr));
-        DepartmentEdit->setItemText(3, QApplication::translate("RegisterDialog", "\345\206\205\347\247\221", nullptr));
-        DepartmentEdit->setItemText(4, QApplication::translate("RegisterDialog", "\345\244\226\347\247\221", nullptr));
-
-        label_10->setText(QApplication::translate("RegisterDialog", "\350\207\252\346\210\221\344\273\213\347\273\215\357\274\232", nullptr));
+        label_4->setText(QApplication::translate("RegisterDialog", "\350\272\253\344\273\275\350\257\201\345\217\267", nullptr));
+        label_7->setText(QApplication::translate("RegisterDialog", "\346\211\213\346\234\272\345\217\267", nullptr));
         confirmInfo->setText(QApplication::translate("RegisterDialog", "\347\241\256\350\256\244\345\256\214\346\210\220", nullptr));
         tip_lb->setText(QApplication::translate("RegisterDialog", "\346\263\250\345\206\214\346\210\220\345\212\237\357\274\2145 s\345\220\216\350\277\224\345\233\236\347\231\273\345\275\225", nullptr));
         tip2_lb->setText(QApplication::translate("RegisterDialog", "\345\217\257\347\202\271\345\207\273\350\277\224\345\233\236\346\214\211\351\222\256\347\233\264\346\216\245\350\277\224\345\233\236\347\231\273\345\275\225\347\225\214\351\235\242", nullptr));

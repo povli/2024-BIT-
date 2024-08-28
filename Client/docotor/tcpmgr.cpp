@@ -241,6 +241,7 @@ void TcpMgr::initHandlers()
                 for (const QJsonValue& value : baseList) {
                     QJsonObject obj = value.toObject();
                     QVector<QString> row;
+                    row.append(QString::number(obj["id"].toInt()));
                     row.append(QString::number(obj["userid"].toInt()));
                     row.append(obj["username"].toString());
                     row.append(obj["useremail"].toString());
@@ -266,6 +267,7 @@ void TcpMgr::initHandlers()
                     for (const QJsonValue& value : checkList) {
                         QJsonObject obj = value.toObject();
                         QVector<QString> row;
+                        row.append(QString::number(obj["id"].toInt()));
                         row.append(QString::number(obj["userid"].toInt()));
                         row.append(obj["username"].toString());
                         row.append(obj["useremail"].toString());
@@ -292,6 +294,7 @@ void TcpMgr::initHandlers()
                         for (const QJsonValue& value : chufangList) {
                             QJsonObject obj = value.toObject();
                             QVector<QString> row;
+                            row.append(QString::number(obj["id"].toInt()));
                             row.append(QString::number(obj["userid"].toInt()));
                             row.append(obj["username"].toString());
                             row.append(obj["useremail"].toString());
@@ -313,9 +316,24 @@ void TcpMgr::initHandlers()
                             wdata.append(row);
                         }
 
+                        QVector<QVector<QString>> hdata;
+                        QJsonArray hospitalList = responseJson["hospitalList"].toArray();
+
+                        for (const QJsonValue& value : hospitalList) {
+                            QJsonObject obj = value.toObject();
+                            QVector<QString> row;
+                            row.append(QString::number(obj["patient_uid"].toInt()));
+                            row.append(obj["patient_name"].toString());
+                            row.append(obj["roomnum"].toString());
+                            row.append(obj["bed_number"].toString());
+                            row.append(obj["admission_data"].toString());
+                            hdata.append(row);
+                        }
+
                         UserMgr::GetInstance()->setData(data);
                         UserMgr::GetInstance()->setMdata(mdata);
                         UserMgr::GetInstance()->setWdata(wdata);
+                        UserMgr::GetInstance()->sethdata(hdata);
 
                         emit sig_make_first_list(UserMgr::GetInstance()->getData());
 

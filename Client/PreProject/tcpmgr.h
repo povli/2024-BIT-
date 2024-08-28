@@ -1,7 +1,7 @@
 #ifndef TCPMGR_H
 #define TCPMGR_H
 
-
+#include "userdata.h"
 #include <QTcpSocket>
 #include "singleton.h"
 #include "global.h"
@@ -34,6 +34,12 @@ signals:
 
     void sig_login_failed(int);
     void sig_swich_chatdlg();
+
+    void sig_friend_apply(std::shared_ptr<AddFriendApply>);//新添加
+    void sig_add_auth_friend(std::shared_ptr<AuthInfo>);
+    void sig_auth_rsp(std::shared_ptr<AuthRsp>);
+    void sig_text_chat_msg(std::shared_ptr<TextChatMsg> msg);
+    void sig_user_search(std::shared_ptr<SearchInfo>);
 };
 
 #endif // TCPMGR_H

@@ -11,22 +11,9 @@
 
 #include <QtCore/QVariant>
 #include <QtWidgets/QApplication>
-#include <QtWidgets/QCheckBox>
-#include <QtWidgets/QComboBox>
-#include <QtWidgets/QDateTimeEdit>
-#include <QtWidgets/QHBoxLayout>
-#include <QtWidgets/QHeaderView>
-#include <QtWidgets/QLabel>
-#include <QtWidgets/QLineEdit>
 #include <QtWidgets/QMainWindow>
 #include <QtWidgets/QMenuBar>
-#include <QtWidgets/QPushButton>
-#include <QtWidgets/QSpacerItem>
-#include <QtWidgets/QStackedWidget>
 #include <QtWidgets/QStatusBar>
-#include <QtWidgets/QTableWidget>
-#include <QtWidgets/QTextEdit>
-#include <QtWidgets/QVBoxLayout>
 #include <QtWidgets/QWidget>
 
 QT_BEGIN_NAMESPACE
@@ -35,86 +22,6 @@ class Ui_MainWindow
 {
 public:
     QWidget *centralwidget;
-    QStackedWidget *stackedWidget;
-    QWidget *page_0;
-    QLabel *label_3;
-    QPushButton *return_1;
-    QWidget *page_1;
-    QLabel *label_4;
-    QPushButton *return_2;
-    QPushButton *pushButton;
-    QPushButton *pushButton_2;
-    QPushButton *pushButton_3;
-    QStackedWidget *stackedWidget_2;
-    QWidget *page;
-    QLabel *label_7;
-    QCheckBox *checkBox;
-    QLabel *label_15;
-    QLabel *label_16;
-    QLabel *label_17;
-    QLabel *label_time;
-    QLabel *label_20;
-    QLabel *label_21;
-    QWidget *page_3;
-    QLabel *label_8;
-    QPushButton *pushButton_4;
-    QPushButton *pushButton_5;
-    QLabel *label_13;
-    QTextEdit *textEdit;
-    QWidget *layoutWidget;
-    QHBoxLayout *horizontalLayout_9;
-    QLabel *labelTitle;
-    QLabel *labelCurrentNum;
-    QLabel *label_10;
-    QLabel *labelMaxNum;
-    QWidget *layoutWidget1;
-    QVBoxLayout *verticalLayout_4;
-    QHBoxLayout *horizontalLayout_11;
-    QLabel *label_18;
-    QLineEdit *lineEdit;
-    QHBoxLayout *horizontalLayout_14;
-    QLabel *label_19;
-    QLineEdit *lineEdit_3;
-    QHBoxLayout *horizontalLayout_6;
-    QLabel *label_14;
-    QLineEdit *lineEdit_2;
-    QHBoxLayout *horizontalLayout_7;
-    QLabel *label_11;
-    QComboBox *comboBox;
-    QHBoxLayout *horizontalLayout_8;
-    QLabel *label_12;
-    QHBoxLayout *horizontalLayout_10;
-    QDateTimeEdit *dateBegin;
-    QDateTimeEdit *dateEnd;
-    QWidget *page_4;
-    QLabel *label_9;
-    QTableWidget *tableWidget;
-    QCheckBox *checkBox_;
-    QCheckBox *checkBox_1;
-    QWidget *page_2;
-    QPushButton *return_3;
-    QLabel *label_6;
-    QWidget *page_last;
-    QWidget *layoutWidget2;
-    QHBoxLayout *horizontalLayout_5;
-    QHBoxLayout *horizontalLayout_3;
-    QHBoxLayout *horizontalLayout;
-    QSpacerItem *horizontalSpacer;
-    QVBoxLayout *verticalLayout;
-    QLabel *label;
-    QPushButton *PI;
-    QHBoxLayout *horizontalLayout_2;
-    QSpacerItem *horizontalSpacer_2;
-    QVBoxLayout *verticalLayout_2;
-    QLabel *label_2;
-    QPushButton *WA;
-    QHBoxLayout *horizontalLayout_4;
-    QSpacerItem *horizontalSpacer_3;
-    QVBoxLayout *verticalLayout_3;
-    QLabel *label_5;
-    QPushButton *INF;
-    QWidget *layoutWidget3;
-    QHBoxLayout *horizontalLayout_12;
     QMenuBar *menubar;
     QStatusBar *statusbar;
 
@@ -122,12 +29,25 @@ public:
     {
         if (MainWindow->objectName().isEmpty())
             MainWindow->setObjectName(QString::fromUtf8("MainWindow"));
-        MainWindow->resize(807, 610);
+<<<<<<< HEAD
+        MainWindow->resize(500, 800);
+        MainWindow->setMinimumSize(QSize(500, 800));
+        MainWindow->setMaximumSize(QSize(500, 800));
+        centralwidget = new QWidget(MainWindow);
+        centralwidget->setObjectName(QString::fromUtf8("centralwidget"));
+        MainWindow->setCentralWidget(centralwidget);
+        menubar = new QMenuBar(MainWindow);
+        menubar->setObjectName(QString::fromUtf8("menubar"));
+        menubar->setGeometry(QRect(0, 0, 500, 28));
+=======
+        MainWindow->resize(1010, 610);
         centralwidget = new QWidget(MainWindow);
         centralwidget->setObjectName(QString::fromUtf8("centralwidget"));
         stackedWidget = new QStackedWidget(centralwidget);
         stackedWidget->setObjectName(QString::fromUtf8("stackedWidget"));
-        stackedWidget->setGeometry(QRect(0, 0, 810, 630));
+        stackedWidget->setGeometry(QRect(0, 0, 1000, 400));
+        stackedWidget->setMinimumSize(QSize(1000, 400));
+        stackedWidget->setMaximumSize(QSize(1000, 400));
         page_0 = new QWidget();
         page_0->setObjectName(QString::fromUtf8("page_0"));
         label_3 = new QLabel(page_0);
@@ -526,7 +446,8 @@ public:
         MainWindow->setCentralWidget(centralwidget);
         menubar = new QMenuBar(MainWindow);
         menubar->setObjectName(QString::fromUtf8("menubar"));
-        menubar->setGeometry(QRect(0, 0, 807, 22));
+        menubar->setGeometry(QRect(0, 0, 1010, 22));
+>>>>>>> 9e1acf7f4e940ddfee8d6a95eb27ca3d167d77c9
         MainWindow->setMenuBar(menubar);
         statusbar = new QStatusBar(MainWindow);
         statusbar->setObjectName(QString::fromUtf8("statusbar"));
@@ -534,108 +455,19 @@ public:
 
         retranslateUi(MainWindow);
 
-        stackedWidget->setCurrentIndex(1);
+<<<<<<< HEAD
+=======
+        stackedWidget->setCurrentIndex(3);
         stackedWidget_2->setCurrentIndex(0);
 
 
+>>>>>>> 9e1acf7f4e940ddfee8d6a95eb27ca3d167d77c9
         QMetaObject::connectSlotsByName(MainWindow);
     } // setupUi
 
     void retranslateUi(QMainWindow *MainWindow)
     {
-        MainWindow->setWindowTitle(QApplication::translate("MainWindow", "MainWindow", nullptr));
-        label_3->setText(QApplication::translate("MainWindow", "\351\242\204\347\272\246\346\202\243\350\200\205\344\277\241\346\201\257", nullptr));
-        return_1->setText(QApplication::translate("MainWindow", "<", nullptr));
-        label_4->setText(QApplication::translate("MainWindow", "\350\200\203\345\213\244", nullptr));
-        return_2->setText(QApplication::translate("MainWindow", "<", nullptr));
-        pushButton->setText(QApplication::translate("MainWindow", "\346\227\245\345\270\270\346\211\223\345\215\241", nullptr));
-        pushButton_2->setText(QApplication::translate("MainWindow", "\350\257\267\345\201\207", nullptr));
-        pushButton_3->setText(QApplication::translate("MainWindow", "\351\224\200\345\201\207", nullptr));
-        label_7->setText(QApplication::translate("MainWindow", "\346\211\223\345\215\241", nullptr));
-        checkBox->setText(QApplication::translate("MainWindow", "\346\211\223\345\215\241", nullptr));
-        label_15->setText(QApplication::translate("MainWindow", "\345\271\264", nullptr));
-        label_16->setText(QApplication::translate("MainWindow", "\346\234\210", nullptr));
-        label_17->setText(QApplication::translate("MainWindow", "\346\227\245", nullptr));
-        label_time->setText(QApplication::translate("MainWindow", "TextLabel", nullptr));
-        label_20->setText(QApplication::translate("MainWindow", "\346\227\266", nullptr));
-        label_21->setText(QApplication::translate("MainWindow", "\345\210\206", nullptr));
-        label_8->setText(QApplication::translate("MainWindow", "\350\257\267\345\201\207\347\224\263\350\257\267\344\277\241\346\201\257\345\241\253\345\206\231", nullptr));
-        pushButton_4->setText(QApplication::translate("MainWindow", "\347\241\256\345\256\232", nullptr));
-        pushButton_5->setText(QApplication::translate("MainWindow", "\345\217\226\346\266\210", nullptr));
-        label_13->setText(QApplication::translate("MainWindow", "\350\257\267\345\201\207\344\272\213\347\224\261", nullptr));
-        textEdit->setHtml(QApplication::translate("MainWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
-"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
-"p, li { white-space: pre-wrap; }\n"
-"</style></head><body style=\" font-family:'Ubuntu'; font-size:11pt; font-weight:400; font-style:normal;\">\n"
-"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><br /></p></body></html>", nullptr));
-        textEdit->setPlaceholderText(QApplication::translate("MainWindow", "\344\270\200\350\210\254\350\207\263\345\260\221\346\217\220\345\211\215\344\270\200\345\244\251\350\257\267\345\201\207\357\274\214\350\257\264\346\230\216\350\257\267\345\201\207\347\220\206\347\224\261\357\274\214\345\246\202\350\257\267\347\227\205\345\201\207\357\274\214\350\277\230\351\234\200\346\217\220\344\276\233\346\234\211\346\225\210\350\257\201\346\230\216\357\274\233\345\217\202\345\212\240\346\264\273\345\212\250\346\257\224\350\265\233\343\200\201\344\274\232\350\256\256\347\255\211\345\272\224\345\206\231\346\230\216\347\233\256\347\232\204\345\234\260\357\274\214\344\270\273\345\212\236\346\226\271\345\271\266\351\231\204\350\257\201\346\230\216\347\255\211", nullptr));
-        labelTitle->setText(QApplication::translate("MainWindow", "\345\255\227\346\225\260\351\231\220\345\210\266", nullptr));
-        labelCurrentNum->setText(QApplication::translate("MainWindow", "0", nullptr));
-        label_10->setText(QApplication::translate("MainWindow", "/", nullptr));
-        labelMaxNum->setText(QApplication::translate("MainWindow", "60", nullptr));
-        label_18->setText(QApplication::translate("MainWindow", "\345\247\223\345\220\215", nullptr));
-        lineEdit->setPlaceholderText(QApplication::translate("MainWindow", "\350\257\267\350\276\223\345\205\245\345\247\223\345\220\215", nullptr));
-        label_19->setText(QApplication::translate("MainWindow", "\347\247\221\345\256\244", nullptr));
-        lineEdit_3->setPlaceholderText(QApplication::translate("MainWindow", "\350\257\267\350\276\223\345\205\245\346\211\200\345\234\250\347\247\221\345\256\244", nullptr));
-        label_14->setText(QApplication::translate("MainWindow", "\350\201\224\347\263\273\346\226\271\345\274\217", nullptr));
-        lineEdit_2->setPlaceholderText(QApplication::translate("MainWindow", "\350\257\267\350\276\223\345\205\245\346\211\213\346\234\272\345\217\267", nullptr));
-        label_11->setText(QApplication::translate("MainWindow", "\350\257\267\345\201\207\346\200\247\350\264\250", nullptr));
-        comboBox->setItemText(0, QApplication::translate("MainWindow", "\345\233\240\345\205\254\350\257\267\345\201\207", nullptr));
-        comboBox->setItemText(1, QApplication::translate("MainWindow", "\345\233\240\347\247\201\350\257\267\345\201\207", nullptr));
-
-        label_12->setText(QApplication::translate("MainWindow", "\350\257\267\345\201\207\346\227\245\346\234\237", nullptr));
-        label_9->setText(QApplication::translate("MainWindow", "\351\224\200\345\201\207", nullptr));
-        QTableWidgetItem *___qtablewidgetitem = tableWidget->horizontalHeaderItem(0);
-        ___qtablewidgetitem->setText(QApplication::translate("MainWindow", "\345\247\223\345\220\215", nullptr));
-        QTableWidgetItem *___qtablewidgetitem1 = tableWidget->horizontalHeaderItem(1);
-        ___qtablewidgetitem1->setText(QApplication::translate("MainWindow", "\347\247\221\345\256\244", nullptr));
-        QTableWidgetItem *___qtablewidgetitem2 = tableWidget->horizontalHeaderItem(2);
-        ___qtablewidgetitem2->setText(QApplication::translate("MainWindow", "\350\201\224\347\263\273\346\226\271\345\274\217", nullptr));
-        QTableWidgetItem *___qtablewidgetitem3 = tableWidget->horizontalHeaderItem(3);
-        ___qtablewidgetitem3->setText(QApplication::translate("MainWindow", "\350\257\267\345\201\207\347\261\273\345\236\213", nullptr));
-        QTableWidgetItem *___qtablewidgetitem4 = tableWidget->horizontalHeaderItem(4);
-        ___qtablewidgetitem4->setText(QApplication::translate("MainWindow", "\350\257\267\345\201\207\346\227\245\346\234\237", nullptr));
-        QTableWidgetItem *___qtablewidgetitem5 = tableWidget->horizontalHeaderItem(5);
-        ___qtablewidgetitem5->setText(QApplication::translate("MainWindow", "\346\230\257\345\220\246\351\224\200\345\201\207", nullptr));
-        QTableWidgetItem *___qtablewidgetitem6 = tableWidget->verticalHeaderItem(0);
-        ___qtablewidgetitem6->setText(QApplication::translate("MainWindow", "1", nullptr));
-        QTableWidgetItem *___qtablewidgetitem7 = tableWidget->verticalHeaderItem(1);
-        ___qtablewidgetitem7->setText(QApplication::translate("MainWindow", "2", nullptr));
-
-        const bool __sortingEnabled = tableWidget->isSortingEnabled();
-        tableWidget->setSortingEnabled(false);
-        QTableWidgetItem *___qtablewidgetitem8 = tableWidget->item(0, 0);
-        ___qtablewidgetitem8->setText(QApplication::translate("MainWindow", "\350\265\265\345\233\233", nullptr));
-        QTableWidgetItem *___qtablewidgetitem9 = tableWidget->item(0, 1);
-        ___qtablewidgetitem9->setText(QApplication::translate("MainWindow", "\347\245\236\347\273\217\347\247\221", nullptr));
-        QTableWidgetItem *___qtablewidgetitem10 = tableWidget->item(0, 2);
-        ___qtablewidgetitem10->setText(QApplication::translate("MainWindow", "*********", nullptr));
-        QTableWidgetItem *___qtablewidgetitem11 = tableWidget->item(0, 3);
-        ___qtablewidgetitem11->setText(QApplication::translate("MainWindow", "\345\233\240\347\247\201\350\257\267\345\201\207", nullptr));
-        QTableWidgetItem *___qtablewidgetitem12 = tableWidget->item(0, 4);
-        ___qtablewidgetitem12->setText(QApplication::translate("MainWindow", "2024/8/26", nullptr));
-        QTableWidgetItem *___qtablewidgetitem13 = tableWidget->item(1, 0);
-        ___qtablewidgetitem13->setText(QApplication::translate("MainWindow", "\345\274\240\344\270\211", nullptr));
-        QTableWidgetItem *___qtablewidgetitem14 = tableWidget->item(1, 1);
-        ___qtablewidgetitem14->setText(QApplication::translate("MainWindow", "\345\204\277\347\253\245\347\247\221", nullptr));
-        QTableWidgetItem *___qtablewidgetitem15 = tableWidget->item(1, 2);
-        ___qtablewidgetitem15->setText(QApplication::translate("MainWindow", "*******", nullptr));
-        QTableWidgetItem *___qtablewidgetitem16 = tableWidget->item(1, 3);
-        ___qtablewidgetitem16->setText(QApplication::translate("MainWindow", "\345\233\240\345\205\254\350\257\267\345\201\207", nullptr));
-        QTableWidgetItem *___qtablewidgetitem17 = tableWidget->item(1, 4);
-        ___qtablewidgetitem17->setText(QApplication::translate("MainWindow", "2024/8/27", nullptr));
-        tableWidget->setSortingEnabled(__sortingEnabled);
-
-        checkBox_->setText(QApplication::translate("MainWindow", "\351\224\200\345\201\207", nullptr));
-        checkBox_1->setText(QApplication::translate("MainWindow", "\351\224\200\345\201\207", nullptr));
-        return_3->setText(QApplication::translate("MainWindow", "<", nullptr));
-        label_6->setText(QApplication::translate("MainWindow", "\344\270\252\344\272\272\344\277\241\346\201\257", nullptr));
-        label->setText(QApplication::translate("MainWindow", "TextLabel", nullptr));
-        PI->setText(QApplication::translate("MainWindow", "\351\242\204\347\272\246\346\202\243\350\200\205\344\277\241\346\201\257", nullptr));
-        label_2->setText(QApplication::translate("MainWindow", "TextLabel", nullptr));
-        WA->setText(QApplication::translate("MainWindow", "\350\200\203\345\213\244", nullptr));
-        label_5->setText(QApplication::translate("MainWindow", "TextLabel", nullptr));
-        INF->setText(QApplication::translate("MainWindow", "\344\270\252\344\272\272\344\277\241\346\201\257", nullptr));
+        MainWindow->setWindowTitle(QApplication::translate("MainWindow", "\347\231\273\345\275\225", nullptr));
     } // retranslateUi
 
 };

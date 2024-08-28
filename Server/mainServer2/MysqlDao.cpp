@@ -60,6 +60,44 @@ int MysqlDao::RegUser(const std::string& name, const std::string& email, const s
 	}
 }
 
+bool MysqlDao::GetHospitalizationInfo(int doctor_uid, std::vector<HosInfobase>& hospitalList) {
+	auto con = pool_->getConnection();
+	if (con == nullptr) {
+		return false;
+	}
+
+	Defer defer([this, &con]() {
+		pool_->returnConnection(std::move(con));
+	});
+
+	try {
+		std::unique_ptr<sql::PreparedStatement> pstmt(con->_con->prepareStatement(
+			"SELECT patient_uid, patient_name, roomnum, bed_number, admission_data "
+			"FROM Hospitalization WHERE doctor_uid = ?"));
+
+		pstmt->setInt(1, doctor_uid);
+
+		std::unique_ptr<sql::ResultSet> res(pstmt->executeQuery());
+
+		while (res->next()) {
+			HosInfobase hosInfo;
+			hosInfo.patient_uid = res->getInt("patient_uid");
+			hosInfo.patient_name = res->getString("patient_name");
+			hosInfo.roomnum = res->getString("roomnum");
+			hosInfo.bed_number = res->getString("bed_number");
+			hosInfo.admission_data = res->getString("admission_data");
+			hospitalList.push_back(hosInfo);
+		}
+		return true;
+	} catch (sql::SQLException& e) {
+		std::cerr << "SQLException: " << e.what();
+		std::cerr << " (MySQL error code: " << e.getErrorCode();
+		std::cerr << ", SQLState: " << e.getSQLState() << " )" << std::endl;
+		return false;
+	}
+}
+
+
 bool MysqlDao::CheckEmail(const std::string& name, const std::string& email) {
 	auto con = pool_->getConnection();
 	try {
@@ -535,6 +573,130 @@ bool MysqlDao::GetApplyList(int touid, std::vector<std::shared_ptr<ApplyInfo>>& 
 	}
 }
 
+
+bool MysqlDao::UpdateCheckAdivice(int id, const std::string& paintuid, const std::string& result) {
+	auto con = pool_->getConnection();
+	if (con == nullptr) {
+		return false;
+	}
+
+	Defer defer([this, &con]() {
+		pool_->returnConnection(std::move(con));
+	});
+
+	try {
+		// 准备更新语句
+		std::unique_ptr<sql::PreparedStatement> pstmt(con->_con->prepareStatement(
+			"UPDATE guahao SET chufang = ? WHERE id = ? "));
+
+		// 设置参数
+		pstmt->setString(1, result);
+		pstmt->setInt(2, id);
+		//pstmt->setString(3, paintuid);
+
+		// 执行更新操作
+		int update_count = pstmt->executeUpdate();
+
+		// 检查更新是否成功
+		if (update_count > 0) {
+			return true;
+		} else {
+			std::cerr << "No rows updated, check if id and paintuid are correct." << std::endl;
+			return false;
+		}
+	} catch (sql::SQLException& e) {
+		std::cerr << "SQLException: " << e.what();
+		std::cerr << " (MySQL error code: " << e.getErrorCode();
+		std::cerr << ", SQLState: " << e.getSQLState() << " )" << std::endl;
+		return false;
+	}
+}
+
+
+bool MysqlDao::InsertIntoHospitalization(int doctoruid, int patientuid, const std::string& patientname,
+										 const std::string& bed_number, const std::string& admission_number,
+										 const std::string& doctor_name, const std::string& room) {
+	auto con = pool_->getConnection();
+	if (con == nullptr) {
+		return false;
+	}
+
+	Defer defer([this, &con]() {
+		pool_->returnConnection(std::move(con));
+	});
+
+	try {
+		// 准备插入语句
+		std::unique_ptr<sql::PreparedStatement> pstmt(con->_con->prepareStatement(
+			"INSERT INTO Hospitalization (doctor_uid, patient_uid, patient_name, bed_number, admission_data, doctorname, roomnum) "
+			"VALUES (?, ?, ?, ?, ?, ?, ?)"));
+
+		// 设置参数
+		pstmt->setInt(1, doctoruid);
+		pstmt->setInt(2, patientuid);
+		pstmt->setString(3, patientname);
+		pstmt->setString(4, bed_number);
+		pstmt->setString(5, admission_number);
+		pstmt->setString(6, doctor_name);
+		pstmt->setString(7, room);
+
+		// 执行插入操作
+		int insert_count = pstmt->executeUpdate();
+
+		// 检查插入是否成功
+		if (insert_count > 0) {
+			return true;
+		} else {
+			std::cerr << "No rows inserted, check the data provided." << std::endl;
+			return false;
+		}
+	} catch (sql::SQLException& e) {
+		std::cerr << "SQLException: " << e.what();
+		std::cerr << " (MySQL error code: " << e.getErrorCode();
+		std::cerr << ", SQLState: " << e.getSQLState() << " )" << std::endl;
+		return false;
+	}
+}
+
+
+bool MysqlDao::UpdateCheckResult(int id, const std::string& paintuid, const std::string& result) {
+	auto con = pool_->getConnection();
+	if (con == nullptr) {
+		return false;
+	}
+
+	Defer defer([this, &con]() {
+		pool_->returnConnection(std::move(con));
+	});
+
+	try {
+		// 准备更新语句
+		std::unique_ptr<sql::PreparedStatement> pstmt(con->_con->prepareStatement(
+			"UPDATE guahao SET checkresult = ? WHERE id = ? "));
+
+		// 设置参数
+		pstmt->setString(1, result);
+		pstmt->setInt(2, id);
+		//pstmt->setString(3, paintuid);
+
+		// 执行更新操作
+		int update_count = pstmt->executeUpdate();
+
+		// 检查更新是否成功
+		if (update_count > 0) {
+			return true;
+		} else {
+			std::cerr << "No rows updated, check if id and paintuid are correct." << std::endl;
+			return false;
+		}
+	} catch (sql::SQLException& e) {
+		std::cerr << "SQLException: " << e.what();
+		std::cerr << " (MySQL error code: " << e.getErrorCode();
+		std::cerr << ", SQLState: " << e.getSQLState() << " )" << std::endl;
+		return false;
+	}
+}
+
 bool MysqlDao::GetGuahaoList(int doctor_uid,
     std::vector<std::shared_ptr<paintInfobase>>& baseList,
     std::vector<std::shared_ptr<paintInfocheck>>& checkList,
@@ -551,7 +713,7 @@ bool MysqlDao::GetGuahaoList(int doctor_uid,
 
     try {
         std::unique_ptr<sql::PreparedStatement> pstmt(con->_con->prepareStatement(
-            "SELECT useruid, username, useremail, usersex, userage, userorderdata, userinfo, checkresult, chufang "
+            "SELECT id, useruid, username, useremail, usersex, userage, userorderdata, userinfo, checkresult, chufang "
             "FROM guahao WHERE doctoruid = ?"));
 
         pstmt->setInt(1, doctor_uid);
@@ -559,6 +721,7 @@ bool MysqlDao::GetGuahaoList(int doctor_uid,
         std::unique_ptr<sql::ResultSet> res(pstmt->executeQuery());
 
         while (res->next()) {
+        	int id=res->getInt("id");
             int userid = res->getInt("useruid");
             std::string username = res->getString("username");
             std::string useremail = res->getString("useremail");
@@ -570,15 +733,15 @@ bool MysqlDao::GetGuahaoList(int doctor_uid,
             std::string chufang = res->getString("chufang");
 
             // 构建 paintInfobase 对象
-            auto base_ptr = std::make_shared<paintInfobase>(userid, username, useremail, usersex, userage, userorderdata, userinfo);
+            auto base_ptr = std::make_shared<paintInfobase>(id,userid, username, useremail, usersex, userage, userorderdata, userinfo);
             baseList.push_back(base_ptr);
 
             // 构建 paintInfocheck 对象
-            auto check_ptr = std::make_shared<paintInfocheck>(userid, username, useremail, usersex, userage, userorderdata, userinfo, checkresult);
+            auto check_ptr = std::make_shared<paintInfocheck>(id,userid, username, useremail, usersex, userage, userorderdata, userinfo, checkresult);
             checkList.push_back(check_ptr);
 
             // 构建 paintInfochufang 对象
-            auto chufang_ptr = std::make_shared<paintInfochufang>(userid, username, useremail, usersex, userage, userorderdata, userinfo, checkresult, chufang);
+            auto chufang_ptr = std::make_shared<paintInfochufang>(id,userid, username, useremail, usersex, userage, userorderdata, userinfo, checkresult, chufang);
             chufangList.push_back(chufang_ptr);
         }
         return true;

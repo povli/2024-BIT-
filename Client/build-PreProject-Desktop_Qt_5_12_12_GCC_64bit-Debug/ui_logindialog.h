@@ -193,7 +193,7 @@ public:
         LoginDialog->setWindowTitle(QApplication::translate("LoginDialog", "Dialog", nullptr));
         head_label->setText(QString());
         err_tip->setText(QString());
-        label->setText(QApplication::translate("LoginDialog", "\345\267\245\345\217\267", nullptr));
+        label->setText(QApplication::translate("LoginDialog", "\347\224\250\346\210\267", nullptr));
         label_3->setText(QApplication::translate("LoginDialog", "\345\257\206\347\240\201", nullptr));
         forget_label->setText(QApplication::translate("LoginDialog", "\345\277\230\350\256\260\345\257\206\347\240\201", nullptr));
         loginBtn->setText(QApplication::translate("LoginDialog", "\347\231\273\345\275\225", nullptr));

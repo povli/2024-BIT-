@@ -28,6 +28,24 @@ public:
     std::vector<std::shared_ptr<paintInfochufang>>& chufangList);
     bool AuthFriendApply(const int& from, const int& to);
     bool AddFriend(const int& from, const int& to, std::string back_name);
+    bool UpdateCheckResult(int id, const std::string& paintuid, const std::string& result);
+bool UpdateCheckAdivice(int id, const std::string& paintuid, const std::string& result);
+
+
+
+
+
+
+
+
+
+
+
+
+    bool GetHospitalizationInfo(int doctor_uid, std::vector<HosInfobase>& hospitalList);
+    bool InsertIntoHospitalization(int doctoruid, int patientuid, const std::string& patientname,
+                                         const std::string& bed_number, const std::string& admission_number,
+                                         const std::string& doctor_name, const std::string& room);
     bool UpdateDoctorInfo(int id, const std::string& name, const std::string& email, const std::string& department, const std::string& intr,const std::shared_ptr<int> &department_id);
     std::shared_ptr<UserInfo> GetUser(int uid);
     std::shared_ptr<UserInfo> GetUser(std::string name);

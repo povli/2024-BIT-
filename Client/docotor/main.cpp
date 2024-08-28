@@ -1,10 +1,12 @@
 #include "hmainwindow.h"
-#include "remainwindow.h"
-#include "guidemainwindow.h"
+#include "pinf.h"
+#include "pbd.h"
+#include "mainwindow.h"
 #include<QFile>
+#include"diagnostic.h"
 
 #include <QApplication>
-
+QString  DiagnosticDialog::paintid="ff";
 int main(int argc, char *argv[])
 {
 

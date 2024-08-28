@@ -39,6 +39,9 @@ enum ReqId{
     ID_DOCTOR_REV=1022,//医生登录的回包
     ID_DOCTOR_SEND_EDIT_SELFINFO=1023,//医生修改个人信息
     ID_DOCTOR_CALL_PAINTINFO=1024,//医生申请病人挂号信息
+    ID_WRITE_PAINT_CHECKRESULT=1025,//医生写诊断
+    ID_WRITE_PAINT_ADVICE=1026,
+    ID_hospital=1027,
 
 };
 
