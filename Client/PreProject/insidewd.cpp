@@ -6,6 +6,7 @@
 #include <QVector>
 #include <QPushButton>
 #include "timetablewd.h"
+#include "usermgr.h"
 using namespace std;
 
 int GlobalData::InsideDocnum=0;
@@ -17,6 +18,31 @@ InsideWd::InsideWd(QWidget *parent) :
     ui->setupUi(this);
 
     //请在此处调用datatrans()
+
+    QVector<QVector<QString>> internalMedicineData = UserMgr::GetInstance()->getInternalMedicineData();
+
+       int num = internalMedicineData.size();
+       QString *id = new QString[num];
+       QString *name = new QString[num];
+       QString *introduce = new QString[num];
+       QString *position = new QString[num];
+
+       for (int i = 0; i < num; ++i) {
+           id[i] = internalMedicineData[i][1];          // 工号
+           name[i] = internalMedicineData[i][2];        // 姓名
+           introduce[i] = internalMedicineData[i][5];   // 介绍
+           position[i] = internalMedicineData[i][12];    // 职位
+       }
+
+       // 调用 datatrans 函数传递数据
+
+       this->datatrans(num, id, name, introduce, position);
+
+       // 清理动态分配的内存
+       delete[] id;
+       delete[] name;
+       delete[] introduce;
+       delete[] position;
 
     int i=0;
     while(i<GlobalData::InsideDocnum){  //condition

@@ -70,6 +70,8 @@ enum MSG_IDS {
     ID_WRITE_PAINT_CHECKRESULT=1025,//医生写诊断
     ID_WRITE_PAINT_ADVICE=1026,
     ID_hospital=1027,
+    ID_UPDATE_USER_INFO=1028,
+    ID_order=1029,
 };
 
 #define USERIPPREFIX  "uip_"

@@ -94,4 +94,35 @@ bool MysqlMgr::InsertIntoHospitalization(int doctoruid, int patientuid, const st
 bool MysqlMgr::GetHospitalizationInfo(int doctor_uid, std::vector<HosInfobase>& hospitalList) {
     return _dao.GetHospitalizationInfo(doctor_uid, hospitalList);
 }
+bool  MysqlMgr::GetDoctorInfoByDepartment(std::shared_ptr<DepartmentInfo> pediatrics,
+                                         std::shared_ptr<DepartmentInfo> internalMedicine,
+                                         std::shared_ptr<DepartmentInfo> surgery,
+                                         std::shared_ptr<DepartmentInfo> gynecology,
+                                         std::shared_ptr<DepartmentInfo> dermatology) {
+    return _dao.GetDoctorInfoByDepartment(pediatrics,internalMedicine,surgery,gynecology,dermatology);
+}
+bool MysqlMgr::GetGuahaoInfo(int useruid, std::vector<std::shared_ptr<GuahaoInfo>>& guahaoList) {
+    return _dao.GetGuahaoInfo(useruid, guahaoList);
+}
+bool MysqlMgr::UserGetHospitalizationInfo(int uid, std::vector<std::shared_ptr<HospitalizationInfo>>& hospitalizationList) {
+    return _dao.UserGetHospitalizationInfo(uid, hospitalizationList);
+}
+
+bool MysqlMgr::GetUserInfo(int uid, UserInfo& userInfo) {
+    return _dao.GetUserInfo(uid, userInfo);
+}
+bool MysqlMgr::UpdateUserInfo(int uid, const std::string& name, const std::string& IDcard, const std::string& phone, const std::string& email) {
+    return _dao.UpdateUserInfo(uid, name, IDcard, phone, email);
+}
+
+bool MysqlMgr::GetDoctorIdByName(const std::string& doctorName, int& doctoruid) {
+    return _dao.GetDoctorIdByName(doctorName, doctoruid);
+}
+bool MysqlMgr::GetUserInfoByUid(int uid, std::string& name, std::string& email, int& sex) {
+    return _dao.GetUserInfoByUid(uid,name,email,sex);
+}
+bool MysqlMgr::InsertGuahaoData(int useruid, int doctoruid, const std::string& doctorName, const std::string& username, const std::string& useremail, int usersex, const std::string& orderTime) {
+    return _dao.InsertGuahaoData(useruid,doctoruid,doctorName,username,useremail,usersex,orderTime);
+}
+
 

@@ -47,7 +47,7 @@ private:
     void previousPage();
     void nextPage();
 public:
-    void initializeVirtualData(int num,QString *indate,QString *roomnum,QString *bednum,QString *outdate,QString *yourdoc);
+    void initializeVirtualData(int num,QString *indate,QString *roomnum,QString *bednum,QString *yourdoc);
 
 };
 

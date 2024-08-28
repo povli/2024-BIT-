@@ -1,11 +1,16 @@
 #include "timetablewd.h"
 #include "ui_timetablewd.h"
 #include "GlobalData.h"
+#include "tcpmgr.h"
 //#include "RegisterDataTransmit.h"
 #include <QDate>
 #include <QVBoxLayout>
 #include <QHBoxLayout>
 #include <QMessageBox>
+#include <qjsondocument.h>
+#include"global.h"
+#include <qjsonobject.h>
+#include"usermgr.h"
 
 /*TimetableWd::TimetableWd(QWidget *parent) :
     QWidget(parent),
@@ -85,13 +90,35 @@ void TimetableWd::onPushButtonClicked() {
     if (timeSlot.isEmpty()) {
         QMessageBox::warning(this, "预约失败", "请选择一个时间段进行预约！");
     } else {
-        QMessageBox::information(this, "预约成功", ""+selectedDate.toString("yyyy-MM-dd")+"-"+timeSlot);
         RegisterDataTransmit temp;
+
         temp.Date=selectedDate.toString("yyyy-MM-dd");
         temp.Hour=timeSlot;
         temp.Room=ttroom;
         temp.Name=ttdoc;
         GlobalData::registerdata.append(temp);
+        QString doctorName =ttdoc;//json部分
+                   QString doctorRoom =ttroom;
+                   QString date = calendarWidget->selectedDate().toString("yyyy-MM-dd");
+                   QString hour = timeSlot;
+                   QString time=date+"/"+hour;
+
+                   QJsonObject jsonObj;
+                   jsonObj["useruid"]=QString::number(UserMgr::GetInstance()->getUid());
+                   jsonObj["doctorname"]=doctorName;//预约医生姓名
+                   //jsonObj["doctorroom"]=doctorRoom;//预约科室
+                   jsonObj["username"]=UserMgr::GetInstance()->getName();
+                   jsonObj["usersex"]=UserMgr::GetInstance()->getSex();
+                   jsonObj["email"]=UserMgr::GetInstance()->getEmail();
+                   jsonObj["time"]=time;//日期
+
+
+
+                   QJsonDocument doc(jsonObj);
+                   QString jsonString = doc.toJson(QJsonDocument::Indented);
+                   emit TcpMgr::GetInstance()->sig_send_data(ReqId::ID_order, jsonString);
+                   QMessageBox::information(this, "预约成功", ""+selectedDate.toString("yyyy-MM-dd")+"-"+timeSlot);
+
         //qDebug()<<GlobalData::registerdata.size();
     }
 }

@@ -1,5 +1,6 @@
 #include "hospitalizationwindow.h"
 #include "ui_hospitalizationwindow.h"
+#include "usermgr.h"
 
 HospitalizationWindow::HospitalizationWindow(QWidget *parent) :
     QWidget(parent),
@@ -9,6 +10,32 @@ HospitalizationWindow::HospitalizationWindow(QWidget *parent) :
 
 // //请在此处填写initializeVirtualData();————————————注意！！！————————————————
 
+    int ii=UserMgr::GetInstance()->getId();
+
+    QVector<QVector<QString>> hospitalizationData = UserMgr::GetInstance()->getHospitalizationDataByUid(UserMgr::GetInstance()->getUid());
+
+        int num = hospitalizationData.size();
+        QString* indate = new QString[num];
+        QString* roomnum = new QString[num];
+        QString* bednum = new QString[num];
+        QString* yourdoc = new QString[num];
+
+        for (int i = 0; i < num; ++i) {
+            indate[i] = hospitalizationData[i][5];    // admission_data 列
+            roomnum[i] = hospitalizationData[i][7];   // roomnum 列
+            bednum[i] = hospitalizationData[i][4];    // bed_number 列
+            yourdoc[i] = hospitalizationData[i][6];   // doctorname 列
+        }
+
+        // 调用 initializeVirtualData 方法
+ // 假设你有一个 HospitalizationWindow 实例
+        this->initializeVirtualData(num, indate, roomnum, bednum, yourdoc);
+
+        // 清理动态分配的内存
+        delete[] indate;
+        delete[] roomnum;
+        delete[] bednum;
+        delete[] yourdoc;
            // 创建 QTableView 对象
            tableView = new QTableView;
 
@@ -110,21 +137,20 @@ HospitalizationWindow::~HospitalizationWindow()
 {
     delete ui;
 }
-void HospitalizationWindow::initializeVirtualData(int num,QString *indate,QString *roomnum,QString *bednum,QString *outdate,QString *yourdoc) {
+void HospitalizationWindow::initializeVirtualData(int num,QString *indate,QString *roomnum,QString *bednum,QString *yourdoc) {
     // 创建虚拟数据
     for (int i = 0; i < num; ++i) { // 100条虚拟记录
         QStringList row;
         row << QString("%1").arg(indate[i])
             << QString("%1").arg(roomnum[i])
             << QString("%1").arg(bednum[i])
-            << QString("%1").arg(outdate[i])
             << QString("%1").arg(yourdoc[i]);
         virtualData.append(row);
     }
 }
 void HospitalizationWindow::loadPage(int pageNumber) {
     model->clear();
-    model->setHorizontalHeaderLabels({"入院日期", "病房号", "病床号", "出院日期", "主治医生"});
+    model->setHorizontalHeaderLabels({"入院日期", "病房号", "病床号",  "主治医生"});
 
     int offset = pageNumber * rowsPerPage;
     int end = std::min(offset + rowsPerPage, totalRows);

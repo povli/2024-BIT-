@@ -16,7 +16,7 @@
 #include "ownwindow.h"
 #include "chatwindow.h"
 
-#include "chatdialog.h"
+//#include "chatdialog.h"
 
 void MIsqlite_Init();
 

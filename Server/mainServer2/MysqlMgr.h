@@ -30,6 +30,19 @@ public:
     bool AddFriend(const int& from, const int& to, std::string back_name);
     bool UpdateCheckResult(int id, const std::string& paintuid, const std::string& result);
 bool UpdateCheckAdivice(int id, const std::string& paintuid, const std::string& result);
+    bool GetDoctorInfoByDepartment(std::shared_ptr<DepartmentInfo> pediatrics,
+                                         std::shared_ptr<DepartmentInfo> internalMedicine,
+                                         std::shared_ptr<DepartmentInfo> surgery,
+                                         std::shared_ptr<DepartmentInfo> gynecology,
+                                         std::shared_ptr<DepartmentInfo> dermatology);
+    bool GetGuahaoInfo(int useruid, std::vector<std::shared_ptr<GuahaoInfo>>& guahaoList);
+    bool UserGetHospitalizationInfo(int uid, std::vector<std::shared_ptr<HospitalizationInfo>>& hospitalizationList);
+    bool GetUserInfo(int uid, UserInfo& userInfo);
+    bool UpdateUserInfo(int uid, const std::string& name, const std::string& IDcard, const std::string& phone, const std::string& email);
+    bool GetDoctorIdByName(const std::string& doctorName, int& doctoruid);
+    bool GetUserInfoByUid(int uid, std::string& name, std::string& email, int& sex);
+    bool InsertGuahaoData(int useruid, int doctoruid, const std::string& doctorName, const std::string& username, const std::string& useremail, int usersex, const std::string& orderTime);
+
 
 
 

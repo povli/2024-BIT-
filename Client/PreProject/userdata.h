@@ -146,6 +146,22 @@ struct UserInfo {
     std::vector<std::shared_ptr<TextChatData>> _chat_msgs;
 };
 
+struct UserInfoNew {
+    int id;
+    int uid;
+    QString name;
+    QString email;
+    QString pwd;
+    QString realName;
+    int sex;
+    QString year;
+    QString month;
+    QString data;
+    QString IDcard;
+    QString phone;
+};
+
+
 struct TextChatData{
     TextChatData(QString msg_id, QString msg_content, int fromuid, int touid)
         :_msg_id(msg_id),_msg_content(msg_content),_from_uid(fromuid),_to_uid(touid){

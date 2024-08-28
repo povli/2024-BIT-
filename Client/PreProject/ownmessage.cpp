@@ -1,4 +1,6 @@
 #include "ownmessage.h"
+#include "tcpmgr.h"
+#include "usermgr.h"
 #include <QVBoxLayout>
 #include <QFormLayout>
 #include <QMessageBox>
@@ -6,6 +8,7 @@
 #include <QLabel>
 #include <QLineEdit>
 #include <QWidget>
+#include <qjsondocument.h>
 
 OwnMessage::OwnMessage(QWidget *parent) : QWidget(parent) {
     // 设置窗口的初始大小
@@ -27,6 +30,17 @@ OwnMessage::OwnMessage(QWidget *parent) : QWidget(parent) {
     //——————————————————————————————————————注意！——————————————————————————————————
     //请在此处添加端口setOriginData(QString name,QString birth,QString id,QString phone,QString email)
 
+    UserInfoNew userInfo = UserMgr::GetInstance()->getUserInfo();
+
+        // 提取需要的数据
+        QString name = userInfo.name;
+        QString birth = userInfo.year + "-" + userInfo.month + "-" + userInfo.data;  // 假设 birth 需要完整的出生日期
+        QString id = userInfo.IDcard;
+        QString phone = userInfo.phone;
+        QString email = userInfo.email;
+
+        // 调用 setOriginData 函数传递数据
+        setOriginData(name, birth, id, phone, email);
 
     // 初始化文本框（用于用户输入）
     nameEdit = new QLineEdit;
@@ -107,6 +121,17 @@ OwnMessage::OwnMessage(QWidget *parent) : QWidget(parent) {
 
 void OwnMessage::setDisplayMode(bool display) {
     if (display) {
+        UserInfoNew userInfo = UserMgr::GetInstance()->getUserInfo();
+
+            // 提取需要的数据
+            QString name = userInfo.name;
+            QString birth = userInfo.year + "-" + userInfo.month + "-" + userInfo.data;  // 假设 birth 需要完整的出生日期
+            QString id = userInfo.IDcard;
+            QString phone = userInfo.phone;
+            QString email = userInfo.email;
+
+            // 调用 setOriginData 函数传递数据
+            setOriginData(name, birth, id, phone, email);
         // 设置为显示模式，显示 QLabel，隐藏 QLineEdit
         nameLabel->show();
         dobLabel->show();
@@ -142,6 +167,35 @@ void OwnMessage::confirm() {
     idLabel->setText(idEdit->text());//身份证件号码
     phoneLabel->setText(phoneEdit->text());//电话
     emailLabel->setText(emailEdit->text());//邮箱
+
+    QString name = nameLabel->text();
+    QString dob = dobLabel->text();
+    QString id = idLabel->text();
+    QString phone = phoneLabel->text();
+    QString email = emailLabel->text();
+    int uid = UserMgr::GetInstance()->getUid();  // 从 UserMgr 获取 uid
+
+    // 构建 JSON 对象
+    QJsonObject jsonObj;
+    jsonObj["uid"] = uid;
+    jsonObj["name"] = name;
+    jsonObj["IDcard"] = id;  // 将 idLabel 的值作为 IDcard 传递
+    jsonObj["phone"] = phone;
+    jsonObj["email"] = email;
+
+    // 将 JSON 对象转换为字符串
+    QJsonDocument doc(jsonObj);
+    QString jsonString = doc.toJson(QJsonDocument::Indented);
+
+    // 发送 TCP 请求给服务器
+    emit TcpMgr::GetInstance()->sig_send_data(ReqId::ID_UPDATE_USER_INFO, jsonString);
+    UserMgr::GetInstance()->setUid(uid);
+    UserMgr::GetInstance()->setName(name);
+    UserMgr::GetInstance()->setIDcard(id);
+    UserMgr::GetInstance()->setPhone(phone);
+    UserMgr::GetInstance()->setEmail(email);
+
+
 
     // 切换回显示模式
     setDisplayMode(true);

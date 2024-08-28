@@ -9,48 +9,21 @@ CONFIG += c++11
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
-    BubbleFrame.cpp \
-    ChatItemBase.cpp \
-    ChatView.cpp \
-    MessageTextEdit.cpp \
-    PictureBubble.cpp \
-    TextBubble.cpp \
-    adduseritem.cpp \
-    applyfriend.cpp \
-    applyfrienditem.cpp \
-    applyfriendlist.cpp \
-    applyfriendpage.cpp \
     audio.cpp \
-    authenfriend.cpp \
     basewindow.cpp \
     bookwindow.cpp \
-    chatdialog.cpp \
-    chatpage.cpp \
     chattingroomwindow.cpp \
-    chatuserlist.cpp \
-    chatuserwid.cpp \
     chatwindow.cpp \
     childwd.cpp \
     clickedbtn.cpp \
     clickedlabel.cpp \
     clickedoncelabel.cpp \
-    contactuserlist.cpp \
-    conuseritem.cpp \
-    customizeedit.cpp \
-    findfaildlg.cpp \
-    findsuccessdlg.cpp \
-    friendinfopage.cpp \
-    friendlabel.cpp \
     global.cpp \
-    grouptipitem.cpp \
     homewindow.cpp \
     hospitalizationwindow.cpp \
     http.cpp \
     httpmgr.cpp \
     insidewd.cpp \
-    invaliditem.cpp \
-    lineitem.cpp \
-    listitembase.cpp \
     loadingdlg.cpp \
     logindialog.cpp \
     main.cpp \
@@ -71,11 +44,8 @@ SOURCES += \
     quizwd.cpp \
     registerdialog.cpp \
     resetdialog.cpp \
-    searchlist.cpp \
     skinwd.cpp \
     speech.cpp \
-    statelabel.cpp \
-    statewidget.cpp \
     tcpmgr.cpp \
     timerbtn.cpp \
     timetablewd.cpp \
@@ -84,7 +54,6 @@ SOURCES += \
     womanwd.cpp
 
 HEADERS += \
-    BubbleFrame.h \
     ChatItemBase.h \
     ChatView.h \
     ChildDoc.h \
@@ -132,7 +101,6 @@ HEADERS += \
     httpmgr.h \
     insidewd.h \
     invaliditem.h \
-    lineitem.h \
     listitembase.h \
     loadingdlg.h \
     logindialog.h \
@@ -167,31 +135,16 @@ HEADERS += \
     womanwd.h
 
 FORMS += \
-    adduseritem.ui \
-    applyfriend.ui \
-    applyfrienditem.ui \
-    applyfriendpage.ui \
     audio.ui \
-    authenfriend.ui \
     basewindow.ui \
     bookwindow.ui \
-    chatdialog.ui \
-    chatpage.ui \
     chattingroomwindow.ui \
-    chatuserwid.ui \
     chatwindow.ui \
     childwd.ui \
-    conuseritem.ui \
-    findfaildlg.ui \
-    findsuccessdlg.ui \
-    friendinfopage.ui \
-    friendlabel.ui \
-    grouptipitem.ui \
     homewindow.ui \
     hospitalizationwindow.ui \
     http.ui \
     insidewd.ui \
-    lineitem.ui \
     loadingdlg.ui \
     logindialog.ui \
     mainwindow.ui \
