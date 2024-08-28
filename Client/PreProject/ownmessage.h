@@ -34,12 +34,12 @@ private:
     QLabel *phoneLabel;
     QLabel *emailLabel;
     QLineEdit *nameEdit;
-    QLineEdit *dobEdit;
+    //QLineEdit *dobEdit;
     QLineEdit *idEdit;
     QLineEdit *phoneEdit;
     QLineEdit *emailEdit;
     QWidget *nameContainer;
-    QWidget *dobContainer;
+    //QWidget *dobContainer;
     QWidget *idContainer;
     QWidget *phoneContainer;
     QWidget *emailContainer;

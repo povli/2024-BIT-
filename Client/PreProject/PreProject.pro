@@ -9,48 +9,23 @@ CONFIG += c++11
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
-    BubbleFrame.cpp \
-    ChatItemBase.cpp \
-    ChatView.cpp \
-    MessageTextEdit.cpp \
-    PictureBubble.cpp \
-    TextBubble.cpp \
-    adduseritem.cpp \
-    applyfriend.cpp \
-    applyfrienditem.cpp \
-    applyfriendlist.cpp \
-    applyfriendpage.cpp \
     audio.cpp \
-    authenfriend.cpp \
     basewindow.cpp \
     bookwindow.cpp \
-    chatdialog.cpp \
-    chatpage.cpp \
     chattingroomwindow.cpp \
-    chatuserlist.cpp \
-    chatuserwid.cpp \
     chatwindow.cpp \
     childwd.cpp \
     clickedbtn.cpp \
     clickedlabel.cpp \
     clickedoncelabel.cpp \
-    contactuserlist.cpp \
-    conuseritem.cpp \
-    customizeedit.cpp \
-    findfaildlg.cpp \
-    findsuccessdlg.cpp \
-    friendinfopage.cpp \
-    friendlabel.cpp \
+    client.cpp \
+    drawer.cpp \
     global.cpp \
-    grouptipitem.cpp \
     homewindow.cpp \
     hospitalizationwindow.cpp \
     http.cpp \
     httpmgr.cpp \
     insidewd.cpp \
-    invaliditem.cpp \
-    lineitem.cpp \
-    listitembase.cpp \
     loadingdlg.cpp \
     logindialog.cpp \
     main.cpp \
@@ -71,69 +46,44 @@ SOURCES += \
     quizwd.cpp \
     registerdialog.cpp \
     resetdialog.cpp \
-    searchlist.cpp \
+    server.cpp \
+    showdetails.cpp \
     skinwd.cpp \
     speech.cpp \
-    statelabel.cpp \
-    statewidget.cpp \
     tcpmgr.cpp \
     timerbtn.cpp \
     timetablewd.cpp \
     userdata.cpp \
     usermgr.cpp \
+    widget.cpp \
     womanwd.cpp
 
 HEADERS += \
-    BubbleFrame.h \
-    ChatItemBase.h \
-    ChatView.h \
     ChildDoc.h \
     GlobalData.h \
     InsideDoc.h \
     MedicineItem.h \
-    MessageTextEdit.h \
     OutDoc.h \
-    PictureBubble.h \
     RegisterDataTransmit.h \
     SkinDoc.h \
-    TextBubble.h \
     WomanDoc.h \
-    adduseritem.h \
-    applyfriend.h \
-    applyfrienditem.h \
-    applyfriendlist.h \
-    applyfriendpage.h \
     audio.h \
-    authenfriend.h \
     basewindow.h \
     bookwindow.h \
-    chatdialog.h \
-    chatpage.h \
     chattingroomwindow.h \
-    chatuserlist.h \
-    chatuserwid.h \
     chatwindow.h \
     childwd.h \
     clickedbtn.h \
     clickedlabel.h \
     clickedoncelabel.h \
-    contactuserlist.h \
-    conuseritem.h \
-    customizeedit.h \
-    findfaildlg.h \
-    findsuccessdlg.h \
-    friendinfopage.h \
-    friendlabel.h \
+    client.h \
+    drawer.h \
     global.h \
-    grouptipitem.h \
     homewindow.h \
     hospitalizationwindow.h \
     http.h \
     httpmgr.h \
     insidewd.h \
-    invaliditem.h \
-    lineitem.h \
-    listitembase.h \
     loadingdlg.h \
     logindialog.h \
     mainwindow.h \
@@ -154,44 +104,31 @@ HEADERS += \
     registerdialog.h \
     resetdialog.h \
     searchlist.h \
+    server.h \
+    showdetails.h \
     singleton.h \
     skinwd.h \
     speech.h \
-    statelabel.h \
-    statewidget.h \
     tcpmgr.h \
     timerbtn.h \
     timetablewd.h \
     userdata.h \
     usermgr.h \
+    widget.h \
     womanwd.h
 
 FORMS += \
-    adduseritem.ui \
-    applyfriend.ui \
-    applyfrienditem.ui \
-    applyfriendpage.ui \
     audio.ui \
-    authenfriend.ui \
     basewindow.ui \
     bookwindow.ui \
-    chatdialog.ui \
-    chatpage.ui \
     chattingroomwindow.ui \
-    chatuserwid.ui \
     chatwindow.ui \
     childwd.ui \
-    conuseritem.ui \
-    findfaildlg.ui \
-    findsuccessdlg.ui \
-    friendinfopage.ui \
-    friendlabel.ui \
-    grouptipitem.ui \
+    client.ui \
     homewindow.ui \
     hospitalizationwindow.ui \
     http.ui \
     insidewd.ui \
-    lineitem.ui \
     loadingdlg.ui \
     logindialog.ui \
     mainwindow.ui \
@@ -211,9 +148,12 @@ FORMS += \
     quizwd.ui \
     registerdialog.ui \
     resetdialog.ui \
+    server.ui \
+    showdetails.ui \
     skinwd.ui \
     speech.ui \
     timetablewd.ui \
+    widget.ui \
     womanwd.ui
 
 # Default rules for deployment.
@@ -226,6 +166,13 @@ RESOURCES += \
 
 DISTFILES += \
     config.ini \
+    res/banlangen.jpg \
+    res/ganmaoling999.jpg \
+    res/huoxiangzhengqishui.jpg \
+    res/jiuxinwan.jpg \
+    res/liuweidihuangwanjpg.jpg \
+    res/medicalsearchpage.jpg \
+    res/weishuping.jpg \
     style/stylesheet.qss
 
 unix:CONFIG(release, debug | release)

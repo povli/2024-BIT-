@@ -110,21 +110,21 @@ HospitalizationWindow::~HospitalizationWindow()
 {
     delete ui;
 }
-void HospitalizationWindow::initializeVirtualData(int num,QString *indate,QString *roomnum,QString *bednum,QString *outdate,QString *yourdoc) {
+void HospitalizationWindow::initializeVirtualData(int num,QString *indate,QString *roomnum,QString *bednum,QString *yourdoc) {
     // 创建虚拟数据
     for (int i = 0; i < num; ++i) { // 100条虚拟记录
         QStringList row;
         row << QString("%1").arg(indate[i])
             << QString("%1").arg(roomnum[i])
             << QString("%1").arg(bednum[i])
-            << QString("%1").arg(outdate[i])
+            //<< QString("%1").arg(outdate[i])
             << QString("%1").arg(yourdoc[i]);
         virtualData.append(row);
     }
 }
 void HospitalizationWindow::loadPage(int pageNumber) {
     model->clear();
-    model->setHorizontalHeaderLabels({"入院日期", "病房号", "病床号", "出院日期", "主治医生"});
+    model->setHorizontalHeaderLabels({"入院日期", "病房号", "病床号", "主治医生"});
 
     int offset = pageNumber * rowsPerPage;
     int end = std::min(offset + rowsPerPage, totalRows);

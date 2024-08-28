@@ -4,6 +4,7 @@
 #include <QStandardItemModel>
 #include <QCloseEvent>
 #include <QMessageBox>
+#include "showdetails.h"
 
 OwnDeal::OwnDeal(QWidget *parent) : QWidget(parent) {
     resize(600, 400);  // 设置与主窗口相同的大小
@@ -27,10 +28,10 @@ void OwnDeal::initializeTable(int num,QString *docname,QString *judge,QString *p
     model = new QStandardItemModel(10, 5, this);
     tableView->setModel(model);
 
-    model->setHorizontalHeaderLabels({"医生", "临床诊断", "处方", "医嘱", "操作"});
+    model->setHorizontalHeaderLabels({"医生", "临床诊断", "处方", "操作"});
 
     for (int row = 0; row < num; ++row) {
-        for (int column = 0; column < 4; ++column) {
+        for (int column = 0; column < 3; ++column) {
             if(column==0){
                 QStandardItem *item = new QStandardItem(QString("%1").arg(docname[row]));
                 model->setItem(row, column, item);
@@ -40,21 +41,37 @@ void OwnDeal::initializeTable(int num,QString *docname,QString *judge,QString *p
             }else if(column==2){
                 QStandardItem *item = new QStandardItem(QString("%1").arg(prescription[row]));
                 model->setItem(row, column, item);
-            }else if(column==3){
+            }
+            /*else if(column==3){
                 QStandardItem *item = new QStandardItem(QString("%1").arg(note[row]));
                 model->setItem(row, column, item);
-            }
+            }*/
 
         }
         QPushButton *viewButton = new QPushButton("查看");
+        //QString temp=QString::number(row);
+        //viewButton->setText(temp);
         connect(viewButton, &QPushButton::clicked, this, &OwnDeal::showDetails);
-        model->setItem(row, 4, new QStandardItem());
-        tableView->setIndexWidget(model->index(row, 4), viewButton);
+        model->setItem(row, 3, new QStandardItem());
+        tableView->setIndexWidget(model->index(row, 3), viewButton);
     }
 }
 
-void OwnDeal::showDetails() {
-    QMessageBox::information(this, "详细信息", "这是详细信息！");
+void OwnDeal::showDetails(int row) {
+    QString docname = model->item(row, 0)->text();
+        QString judge = model->item(row, 1)->text();
+        QString prescription = model->item(row, 2)->text();
+        QString note = model->item(row, 3)->text();
+
+        QString details = QString("医生: %1\n诊断: %2\n处方: %3\n医嘱: %4")
+                .arg(docname)
+                .arg(judge)
+                .arg(prescription)
+                .arg(note);
+
+    //    QMessageBox::information(this, "详细信息:", details);
+        ShowDetails *showDetail = new ShowDetails(details, this);
+        showDetail->show();
 }
 
 void OwnDeal::goBack()

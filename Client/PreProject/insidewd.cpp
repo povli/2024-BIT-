@@ -17,30 +17,34 @@ InsideWd::InsideWd(QWidget *parent) :
     ui->setupUi(this);
 
     //请在此处调用datatrans()
-
+    //QVector<InsideDoc> insidedoc(100);
     int i=0;
     while(i<GlobalData::InsideDocnum){  //condition
-        insidedoc[i].picturelabel=new QLabel("picture",this);
-        insidedoc[i].picturelabel->setPixmap(insidedoc[i].picture);
-        insidedoc[i].picturelabel->move(0,70*i);
-        insidedoc[i].picturelabel->setText(insidedoc[i].name);//设置显示的文本
+        QLabel *temp=new QLabel(this);
+        QString pixmapstring=QString(":/res/doc%1.jpeg").arg(i+1+12);
+        QPixmap pixmap(pixmapstring);
+        temp->setPixmap(pixmap.scaled(QSize(100,100),
+                                       Qt::IgnoreAspectRatio,
+                                       Qt::SmoothTransformation));
+        temp->resize(100,100);
+        temp->move(0,100*i);
 
         insidedoc[i].namelabel=new QLabel(insidedoc[i].name,this);
-        insidedoc[i].namelabel->move(100,70*i);
+        insidedoc[i].namelabel->move(100,100*i);
         insidedoc[i].namelabel->setText(insidedoc[i].name);//设置显示的文本
 
         insidedoc[i].introducelabel=new QLabel(insidedoc[i].introduce,this);
-        insidedoc[i].introducelabel->move(100,70*i+20);
+        insidedoc[i].introducelabel->move(100,100*i+60);
         insidedoc[i].introducelabel->setText(insidedoc[i].introduce);//设置显示的文本
 
         insidedoc[i].positionlabel=new QLabel(insidedoc[i].position,this);
-        insidedoc[i].positionlabel->move(200,70*i);
+        insidedoc[i].positionlabel->move(200,100*i);
         insidedoc[i].positionlabel->setText(insidedoc[i].position);//设置显示的文本
 
         str=insidedoc[i].name;
 
         QPushButton *tempBtn = new QPushButton(this);
-        tempBtn->move(300,70*i+10);
+        tempBtn->move(300,100*i+30);
         tempBtn->setText(insidedoc[i].id);//到时候读取text就可以知道预约那个医生。
         connect(tempBtn,SIGNAL(clicked()),this,SLOT(showdate()));
         i++;

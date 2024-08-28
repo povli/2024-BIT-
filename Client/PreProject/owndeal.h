@@ -16,7 +16,7 @@ public:
 signals:
     void back();
 private slots:
-    void showDetails();
+    void showDetails(int row);
     void goBack();
 
 public:

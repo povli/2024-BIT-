@@ -6,6 +6,8 @@
 #include <QVBoxLayout>
 #include <QHBoxLayout>
 #include <QMessageBox>
+#include <QJsonDocument>
+#include <QJsonObject>
 
 /*TimetableWd::TimetableWd(QWidget *parent) :
     QWidget(parent),
@@ -92,6 +94,19 @@ void TimetableWd::onPushButtonClicked() {
         temp.Room=ttroom;
         temp.Name=ttdoc;
         GlobalData::registerdata.append(temp);
+            QString doctorName =ttdoc;//json部分
+            QString doctorRoom =ttroom;
+            QString date = calendarWidget->selectedDate().toString("yyyy-MM-dd");
+            QString hour = timeSlot;
+
+            QJsonObject jsonObj;
+            jsonObj["doctorname"]=doctorName;//预约医生姓名
+            jsonObj["doctorroom"]=doctorRoom;//预约科室
+            jsonObj["registerdate"]=date;//日期
+            jsonObj["registerhour"]=hour;//预约时间
+
+            QJsonDocument doc(jsonObj);
+            QString jsonString = doc.toJson(QJsonDocument::Indented);
         //qDebug()<<GlobalData::registerdata.size();
     }
 }

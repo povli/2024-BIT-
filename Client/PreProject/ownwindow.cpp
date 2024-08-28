@@ -52,17 +52,21 @@ OwnWindow::OwnWindow() {
 void OwnWindow::showOwnIllness()
 {
 //    this->hide();
+    illnessWindow->setWindowTitle("我的预约");
     illnessWindow->show();
+
     illnessWindow->initializeTable();
 }
 void OwnWindow::showOwnDeal()
 {
 //    this->hide();
+    dealWindow->setWindowTitle("我的病例");
     dealWindow->show();
 }
 void OwnWindow::showOwnMessage()
 {
 //    this->hide();
+    messageWindow->setWindowTitle("个人信息");
     messageWindow->show();
 }
 OwnWindow::~OwnWindow()

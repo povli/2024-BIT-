@@ -15,8 +15,8 @@
 #include "hospitalizationwindow.h"
 #include "ownwindow.h"
 #include "chatwindow.h"
-
-#include "chatdialog.h"
+#include "drawer.h"
+#include "widget.h"
 
 void MIsqlite_Init();
 
@@ -51,5 +51,6 @@ private:
     Audio *my_audio;
     QTextToSpeech *my_say;
     //ChatDialog chatdialogWd;
+    Drawer drawer;
 };
 #endif // PMAINWINDOW_H

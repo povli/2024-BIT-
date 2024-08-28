@@ -18,27 +18,31 @@ WomanWd::WomanWd(QWidget *parent) :
 
     int i=0;
     while(i<GlobalData::WomanDocnum){  //condition
-        womandoc[i].picturelabel=new QLabel("picture",this);
-        womandoc[i].picturelabel->setPixmap(womandoc[i].picture);
-        womandoc[i].picturelabel->move(0,70*i);
-        womandoc[i].picturelabel->setText(womandoc[i].name);//设置显示的文本
+        QLabel *temp=new QLabel(this);
+        QString pixmapstring=QString(":/res/doc%1.jpeg").arg(i+1+3);
+        QPixmap pixmap(pixmapstring);
+        temp->setPixmap(pixmap.scaled(QSize(100,100),
+                                       Qt::IgnoreAspectRatio,
+                                       Qt::SmoothTransformation));
+        temp->resize(100,100);
+        temp->move(0,100*i);
 
         womandoc[i].namelabel=new QLabel(womandoc[i].name,this);
-        womandoc[i].namelabel->move(100,70*i);
+        womandoc[i].namelabel->move(100,100*i);
         womandoc[i].namelabel->setText(womandoc[i].name);//设置显示的文本
 
         womandoc[i].introducelabel=new QLabel(womandoc[i].introduce,this);
-        womandoc[i].introducelabel->move(100,70*i+20);
+        womandoc[i].introducelabel->move(100,100*i+60);
         womandoc[i].introducelabel->setText(womandoc[i].introduce);//设置显示的文本
 
         womandoc[i].positionlabel=new QLabel(womandoc[i].position,this);
-        womandoc[i].positionlabel->move(200,70*i);
+        womandoc[i].positionlabel->move(200,100*i);
         womandoc[i].positionlabel->setText(womandoc[i].position);//设置显示的文本
 
         str=womandoc[i].name;
 
         QPushButton *tempBtn = new QPushButton(this);
-        tempBtn->move(300,70*i+10);
+        tempBtn->move(300,100*i+30);
         tempBtn->setText(womandoc[i].id);//到时候读取text就可以知道预约那个医生。
         connect(tempBtn,SIGNAL(clicked()),this,SLOT(showdate()));
         i++;

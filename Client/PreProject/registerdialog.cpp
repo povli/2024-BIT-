@@ -374,6 +374,7 @@ bool RegisterDialog::isValidDate(const QString& year, const QString& month, cons
     if (!isDateFormatValid(year, month, day)) {
         return false;
     }
+    return true;
 }
 
 

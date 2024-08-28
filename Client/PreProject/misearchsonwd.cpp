@@ -6,6 +6,9 @@ MIsearchSonWd::MIsearchSonWd(QWidget *parent) :
     ui(new Ui::MIsearchSonWd)
 {
     ui->setupUi(this);
+    this->setFixedSize(1200, 800);
+    this->setStyleSheet("background-color:white;");
+    this->setWindowTitle("医药搜索");
 }
 
 MIsearchSonWd::~MIsearchSonWd()

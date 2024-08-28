@@ -99,24 +99,38 @@ void MedicineSearchWindow::on_searchBtn_clicked()
         i=0;
         while(i<sum){
             //medicineitem[i].picturelabel=new QLabel("picture",this);
-            QLabel *picturelabel=new QLabel(missWd);
-            //medicineitem[i].picture
-            picturelabel->setPixmap(medicineitem[i].picture);
-            picturelabel->move(100,70*i+70);
-            picturelabel->setText(medicineitem[i].name);//设置显示的文本
-            //medicineitem[i].picturelabel->setText("123123");
+                        QLabel *picturelabel=new QLabel(missWd);
+                        //medicineitem[i].picture
+            //            picturelabel->setPixmap(medicineitem[i].picture);
+            //            picturelabel->move(100,70*i+70);
+            //            picturelabel->setText(medicineitem[i].name);//设置显示的文本
+            //            //medicineitem[i].picturelabel->setText("123123");
+                        QString picturePath = QString(":/res/%1.jpg").arg(medicineitem[i].name); // Build image path using name
+                        QPixmap pixmap(picturePath);
+                        picturelabel->setFixedSize(pixmap.size()); // Set the label size to the image size
 
-            //medicineitem[i].namelabel=new QLabel(medicineitem[i].name,this);
-            QLabel *namelabel=new QLabel(missWd);
-            namelabel->move(200,70*i+70);
-            namelabel->setText(medicineitem[i].name);//设置显示的文本
-            //namelabel->setText("2392834239");
+                        if (pixmap.isNull()) {
+                            qDebug() << "Failed to load image: " << picturePath;
+                        } else {
+                            QPixmap scaledPixmap = pixmap.scaled(picturelabel->width(), picturelabel->height(), Qt::KeepAspectRatio, Qt::SmoothTransformation);
+                            picturelabel->setPixmap(pixmap);
+                        }
+                        picturelabel->move(50, 70 * i + 70);
 
-            //medicineitem[i].introducelabel=new QLabel(medicineitem[i].introduce,this);
-            QLabel *introducelabel=new QLabel(missWd);
-            introducelabel->move(200,70*i+20+70);
-            introducelabel->setText(medicineitem[i].introduce);//设置显示的文本
-            i++;
+                        //medicineitem[i].namelabel=new QLabel(medicineitem[i].name,this);
+                        QLabel *namelabel=new QLabel(missWd);
+                        namelabel->move(800,70*i+70);
+                        namelabel->setText(medicineitem[i].name);//设置显示的文本
+                        namelabel->setFont(QFont("Arial", 20));
+                        //namelabel->setText("2392834239");
+
+                        //medicineitem[i].introducelabel=new QLabel(medicineitem[i].introduce,this);
+                        QTextEdit *introducelabel=new QTextEdit(missWd);
+                        introducelabel->move(800,70*i+60+70);
+                        introducelabel->setText(medicineitem[i].introduce);//设置显示的文本
+                        introducelabel->setFont(QFont("Arial", 20));
+                        introducelabel->resize(300,600);
+                        i++;
         }
         update();
         missWd->show();

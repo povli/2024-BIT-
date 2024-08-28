@@ -6,6 +6,8 @@
 #include <QLabel>
 #include <QLineEdit>
 #include <QWidget>
+#include <QJsonObject>
+#include <QJsonDocument>
 
 OwnMessage::OwnMessage(QWidget *parent) : QWidget(parent) {
     // 设置窗口的初始大小
@@ -19,7 +21,7 @@ OwnMessage::OwnMessage(QWidget *parent) : QWidget(parent) {
 
     // 初始化标签（用于显示信息）
     nameLabel = new QLabel;
-    dobLabel = new QLabel;
+    //dobLabel = new QLabel;
     idLabel = new QLabel;
     phoneLabel = new QLabel;
     emailLabel = new QLabel;
@@ -30,21 +32,21 @@ OwnMessage::OwnMessage(QWidget *parent) : QWidget(parent) {
 
     // 初始化文本框（用于用户输入）
     nameEdit = new QLineEdit;
-    dobEdit = new QLineEdit;
+    //dobEdit = new QLineEdit;
     idEdit = new QLineEdit;
     phoneEdit = new QLineEdit;
     emailEdit = new QLineEdit;
 
     // 创建容器，用于将标签和输入框组合在一起
     nameContainer = new QWidget;
-    dobContainer = new QWidget;
+    //dobContainer = new QWidget;
     idContainer = new QWidget;
     phoneContainer = new QWidget;
     emailContainer = new QWidget;
 
     // 创建水平布局，用于在容器内排列标签和输入框
     QHBoxLayout *nameLayout = new QHBoxLayout;
-    QHBoxLayout *dobLayout = new QHBoxLayout;
+    //QHBoxLayout *dobLayout = new QHBoxLayout;
     QHBoxLayout *idLayout = new QHBoxLayout;
     QHBoxLayout *phoneLayout = new QHBoxLayout;
     QHBoxLayout *emailLayout = new QHBoxLayout;
@@ -54,9 +56,9 @@ OwnMessage::OwnMessage(QWidget *parent) : QWidget(parent) {
     nameLayout->addWidget(nameLabel); // 标签在后
     nameContainer->setLayout(nameLayout);
 
-    dobLayout->addWidget(dobEdit);  // 文本框在前
+    /*dobLayout->addWidget(dobEdit);  // 文本框在前
     dobLayout->addWidget(dobLabel); // 标签在后
-    dobContainer->setLayout(dobLayout);
+    dobContainer->setLayout(dobLayout);*/
 
     idLayout->addWidget(idEdit);  // 文本框在前
     idLayout->addWidget(idLabel); // 标签在后
@@ -72,7 +74,7 @@ OwnMessage::OwnMessage(QWidget *parent) : QWidget(parent) {
 
     // 将每个容器添加到表单布局中
     formLayout->addRow("姓名:", nameContainer);
-    formLayout->addRow("出生年月日:", dobContainer);
+    //formLayout->addRow("出生年月日:", dobContainer);
     formLayout->addRow("身份证号:", idContainer);
     formLayout->addRow("手机号:", phoneContainer);
     formLayout->addRow("邮箱:", emailContainer);
@@ -109,26 +111,26 @@ void OwnMessage::setDisplayMode(bool display) {
     if (display) {
         // 设置为显示模式，显示 QLabel，隐藏 QLineEdit
         nameLabel->show();
-        dobLabel->show();
+        //dobLabel->show();
         idLabel->show();
         phoneLabel->show();
         emailLabel->show();
 
         nameEdit->hide();
-        dobEdit->hide();
+        //dobEdit->hide();
         idEdit->hide();
         phoneEdit->hide();
         emailEdit->hide();
     } else {
         // 设置为编辑模式，显示 QLineEdit，隐藏 QLabel
         nameEdit->show();
-        dobEdit->show();
+        //dobEdit->show();
         idEdit->show();
         phoneEdit->show();
         emailEdit->show();
 
         nameLabel->hide();
-        dobLabel->hide();
+        //dobLabel->hide();
         idLabel->hide();
         phoneLabel->hide();
         emailLabel->hide();
@@ -138,13 +140,26 @@ void OwnMessage::setDisplayMode(bool display) {
 void OwnMessage::confirm() {
     // 从 QLineEdit 中获取文本并更新到 QLabel
     nameLabel->setText(nameEdit->text());//姓名
-    dobLabel->setText(dobEdit->text());//出生年月
+    //dobLabel->setText(dobEdit->text());//出生年月
     idLabel->setText(idEdit->text());//身份证件号码
     phoneLabel->setText(phoneEdit->text());//电话
     emailLabel->setText(emailEdit->text());//邮箱
-
     // 切换回显示模式
     setDisplayMode(true);
+
+    QString myname =nameEdit->text();//json部分
+    //QString mybirth =dobEdit->text();
+    QString myid = idEdit->text();
+    QString myphone = phoneEdit->text();
+    QString myemail = emailEdit->text();
+    QJsonObject jsonObj;
+    jsonObj["myname"]=myname;//我的姓名
+    //jsonObj["mybirth"]=mybirth;//我的出生年月
+    jsonObj["myid"]=myid;//我的日期
+    jsonObj["myphone"]=myphone;//我的电话
+    jsonObj["myemail"]=myemail;//我的邮箱
+    QJsonDocument doc(jsonObj);
+    QString jsonString = doc.toJson(QJsonDocument::Indented);
 
     // 弹出确认对话框
     QMessageBox::information(this, "确认", "信息已提交！");
@@ -161,7 +176,7 @@ void OwnMessage::modify() {
 }
 void OwnMessage::setOriginData(QString name,QString birth,QString id,QString phone,QString email){
     nameLabel->setText(name);
-    dobLabel->setText(birth);
+    //dobLabel->setText(birth);
     idLabel->setText(id);
     phoneLabel->setText(phone);
     emailLabel->setText(email);

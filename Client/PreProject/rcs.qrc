@@ -60,5 +60,45 @@
         <file>res/psychologyquiz.jpg</file>
         <file>res/homepagebackground.jpg</file>
         <file>res/ownpagewindow.jpg</file>
+        <file>res/板蓝根.jpg</file>
+        <file>res/999感冒灵.jpg</file>
+        <file>res/藿香正气水.jpg</file>
+        <file>res/救心丸.jpg</file>
+        <file>res/六味地黄丸.jpg</file>
+        <file>res/medicalsearchpage.jpg</file>
+        <file>res/胃舒平.jpg</file>
+        <file>res/doc1.jpeg</file>
+        <file>res/doc2.jpeg</file>
+        <file>res/doc3.jpeg</file>
+        <file>res/doc4.jpeg</file>
+        <file>res/doc5.jpeg</file>
+        <file>res/doc6.jpeg</file>
+        <file>res/doc7.jpg</file>
+        <file>res/doc8.jpeg</file>
+        <file>res/doc9.jpeg</file>
+        <file>res/doc10.jpeg</file>
+        <file>res/doc11.jpeg</file>
+        <file>res/doc12.jpg</file>
+        <file>res/doc13.jpeg</file>
+        <file>res/doc14.jpeg</file>
+        <file>res/doc15.jpeg</file>
+        <file>res/doc16.jpeg</file>
+        <file>res/1.jpg</file>
+        <file>res/2.jpg</file>
+        <file>res/3.jpg</file>
+        <file>res/4.jpg</file>
+        <file>res/5.jpg</file>
+        <file>res/6.jpg</file>
+        <file>res/7.jpg</file>
+        <file>res/8.jpg</file>
+        <file>res/9.jpg</file>
+        <file>res/bold.png</file>
+        <file>res/clear.png</file>
+        <file>res/color.png</file>
+        <file>res/italic.png</file>
+        <file>res/qq.png</file>
+        <file>res/save.png</file>
+        <file>res/send.png</file>
+        <file>res/under.png</file>
     </qresource>
 </RCC>
