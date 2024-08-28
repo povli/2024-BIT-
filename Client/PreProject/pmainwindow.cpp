@@ -7,6 +7,9 @@
 #include <QMessageBox>
 #include <QCoreApplication>
 #include <QVector>
+#include <QTextToSpeech>
+#include <QVoice>
+#include "audio.h"//语音识别
 
 PMainWindow::PMainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -14,6 +17,8 @@ PMainWindow::PMainWindow(QWidget *parent)
 {
     ui->setupUi(this);
     this->setWindowTitle("智慧医疗");
+    my_audio=new Audio;
+    my_say=new QTextToSpeech;
 
     ui->stackedWidget->addWidget(&homeWd);
     ui->stackedWidget->addWidget(&bookWd);

@@ -34,6 +34,9 @@ public:
 public slots:
     void infoRecv(int);
 
+private slots:
+
+
 private:
     Ui::PMainWindow *ui;
     QButtonGroup btnGroup;
@@ -44,5 +47,9 @@ private:
     HospitalizationWindow hospitalizationWd;
     ChatWindow chatWd;
     OwnWindow ownWd;
+    bool speakStatus=true;
+    Audio *my_audio;
+    QTextToSpeech *my_say;
+    //ChatDialog chatdialogWd;
 };
 #endif // PMAINWINDOW_H

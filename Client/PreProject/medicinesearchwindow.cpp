@@ -100,6 +100,7 @@ void MedicineSearchWindow::on_searchBtn_clicked()
         while(i<sum){
             //medicineitem[i].picturelabel=new QLabel("picture",this);
             QLabel *picturelabel=new QLabel(missWd);
+            //medicineitem[i].picture
             picturelabel->setPixmap(medicineitem[i].picture);
             picturelabel->move(100,70*i+70);
             picturelabel->setText(medicineitem[i].name);//设置显示的文本

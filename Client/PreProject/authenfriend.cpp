@@ -65,7 +65,7 @@ void AuthenFriend::InitTipLbs()
         lb->setObjectName("tipslb");
         lb->setText(_tip_data[i]);
         //[=](ImagePoolItem item){ ImageScene::slotImageChanged(item); }
-        //connect(lb, &ClickedLabel::clicked, this, &AuthenFriend::SlotChangeFriendLabelByTip);
+        connect(lb, &ClickedLabel::clicked, this, &AuthenFriend::SlotChangeFriendLabelByTip);
 
         QFontMetrics fontMetrics(lb->font()); // 获取QLabel控件的字体信息
         int textWidth = fontMetrics.width(lb->text()); // 获取文本的宽度

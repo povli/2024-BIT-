@@ -14,10 +14,10 @@ EQ            = =
 
 CC            = gcc
 CXX           = g++
-DEFINES       = -DQT_QML_DEBUG -DQT_WIDGETS_LIB -DQT_GUI_LIB -DQT_NETWORK_LIB -DQT_SQL_LIB -DQT_CORE_LIB
+DEFINES       = -DQT_QML_DEBUG -DQT_MULTIMEDIA_LIB -DQT_WIDGETS_LIB -DQT_GUI_LIB -DQT_NETWORK_LIB -DQT_SQL_LIB -DQT_TEXTTOSPEECH_LIB -DQT_CORE_LIB
 CFLAGS        = -pipe -g -Wall -W -D_REENTRANT -fPIC $(DEFINES)
 CXXFLAGS      = -pipe -g -std=gnu++11 -Wall -W -D_REENTRANT -fPIC $(DEFINES)
-INCPATH       = -I../PreProject -I. -I../../../../Qt5.12.12/5.12.12/gcc_64/include -I../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets -I../../../../Qt5.12.12/5.12.12/gcc_64/include/QtGui -I../../../../Qt5.12.12/5.12.12/gcc_64/include/QtNetwork -I../../../../Qt5.12.12/5.12.12/gcc_64/include/QtSql -I../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore -I. -isystem /usr/include/libdrm -I. -I../../../../Qt5.12.12/5.12.12/gcc_64/mkspecs/linux-g++
+INCPATH       = -I../PreProject -I. -I../../../../Qt5.12.12/5.12.12/gcc_64/include -I../../../../Qt5.12.12/5.12.12/gcc_64/include/QtMultimedia -I../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets -I../../../../Qt5.12.12/5.12.12/gcc_64/include/QtGui -I../../../../Qt5.12.12/5.12.12/gcc_64/include/QtNetwork -I../../../../Qt5.12.12/5.12.12/gcc_64/include/QtSql -I../../../../Qt5.12.12/5.12.12/gcc_64/include/QtTextToSpeech -I../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore -I. -isystem /usr/include/libdrm -I. -I../../../../Qt5.12.12/5.12.12/gcc_64/mkspecs/linux-g++
 QMAKE         = /home/yimu/Qt5.12.12/5.12.12/gcc_64/bin/qmake
 DEL_FILE      = rm -f
 CHK_DIR_EXISTS= test -d
@@ -40,7 +40,7 @@ DISTNAME      = PreProject1.0.0
 DISTDIR = /home/yimu/mywork/2024-BIT-/Client/build-PreProject-Desktop_Qt_5_12_12_GCC_64bit-Debug/.tmp/PreProject1.0.0
 LINK          = g++
 LFLAGS        = -Wl,-rpath,/home/yimu/Qt5.12.12/5.12.12/gcc_64/lib
-LIBS          = $(SUBLIBS) /home/yimu/Qt5.12.12/5.12.12/gcc_64/lib/libQt5Widgets.so /home/yimu/Qt5.12.12/5.12.12/gcc_64/lib/libQt5Gui.so /home/yimu/Qt5.12.12/5.12.12/gcc_64/lib/libQt5Network.so /home/yimu/Qt5.12.12/5.12.12/gcc_64/lib/libQt5Sql.so /home/yimu/Qt5.12.12/5.12.12/gcc_64/lib/libQt5Core.so -lGL -lpthread   
+LIBS          = $(SUBLIBS) /home/yimu/Qt5.12.12/5.12.12/gcc_64/lib/libQt5Multimedia.so /home/yimu/Qt5.12.12/5.12.12/gcc_64/lib/libQt5Widgets.so /home/yimu/Qt5.12.12/5.12.12/gcc_64/lib/libQt5Gui.so /home/yimu/Qt5.12.12/5.12.12/gcc_64/lib/libQt5Network.so /home/yimu/Qt5.12.12/5.12.12/gcc_64/lib/libQt5Sql.so /home/yimu/Qt5.12.12/5.12.12/gcc_64/lib/libQt5TextToSpeech.so /home/yimu/Qt5.12.12/5.12.12/gcc_64/lib/libQt5Core.so -lGL -lpthread   
 AR            = ar cqs
 RANLIB        = 
 SED           = sed
@@ -63,6 +63,7 @@ SOURCES       = ../PreProject/BubbleFrame.cpp \
 		../PreProject/applyfrienditem.cpp \
 		../PreProject/applyfriendlist.cpp \
 		../PreProject/applyfriendpage.cpp \
+		../PreProject/audio.cpp \
 		../PreProject/authenfriend.cpp \
 		../PreProject/basewindow.cpp \
 		../PreProject/bookwindow.cpp \
@@ -87,6 +88,7 @@ SOURCES       = ../PreProject/BubbleFrame.cpp \
 		../PreProject/grouptipitem.cpp \
 		../PreProject/homewindow.cpp \
 		../PreProject/hospitalizationwindow.cpp \
+		../PreProject/http.cpp \
 		../PreProject/httpmgr.cpp \
 		../PreProject/insidewd.cpp \
 		../PreProject/invaliditem.cpp \
@@ -114,6 +116,7 @@ SOURCES       = ../PreProject/BubbleFrame.cpp \
 		../PreProject/resetdialog.cpp \
 		../PreProject/searchlist.cpp \
 		../PreProject/skinwd.cpp \
+		../PreProject/speech.cpp \
 		../PreProject/statelabel.cpp \
 		../PreProject/statewidget.cpp \
 		../PreProject/tcpmgr.cpp \
@@ -133,6 +136,7 @@ SOURCES       = ../PreProject/BubbleFrame.cpp \
 		moc_applyfrienditem.cpp \
 		moc_applyfriendlist.cpp \
 		moc_applyfriendpage.cpp \
+		moc_audio.cpp \
 		moc_authenfriend.cpp \
 		moc_basewindow.cpp \
 		moc_bookwindow.cpp \
@@ -156,6 +160,7 @@ SOURCES       = ../PreProject/BubbleFrame.cpp \
 		moc_grouptipitem.cpp \
 		moc_homewindow.cpp \
 		moc_hospitalizationwindow.cpp \
+		moc_http.cpp \
 		moc_httpmgr.cpp \
 		moc_insidewd.cpp \
 		moc_invaliditem.cpp \
@@ -182,6 +187,7 @@ SOURCES       = ../PreProject/BubbleFrame.cpp \
 		moc_resetdialog.cpp \
 		moc_searchlist.cpp \
 		moc_skinwd.cpp \
+		moc_speech.cpp \
 		moc_statelabel.cpp \
 		moc_statewidget.cpp \
 		moc_tcpmgr.cpp \
@@ -199,6 +205,7 @@ OBJECTS       = BubbleFrame.o \
 		applyfrienditem.o \
 		applyfriendlist.o \
 		applyfriendpage.o \
+		audio.o \
 		authenfriend.o \
 		basewindow.o \
 		bookwindow.o \
@@ -223,6 +230,7 @@ OBJECTS       = BubbleFrame.o \
 		grouptipitem.o \
 		homewindow.o \
 		hospitalizationwindow.o \
+		http.o \
 		httpmgr.o \
 		insidewd.o \
 		invaliditem.o \
@@ -250,6 +258,7 @@ OBJECTS       = BubbleFrame.o \
 		resetdialog.o \
 		searchlist.o \
 		skinwd.o \
+		speech.o \
 		statelabel.o \
 		statewidget.o \
 		tcpmgr.o \
@@ -270,6 +279,7 @@ OBJECTS       = BubbleFrame.o \
 		moc_applyfrienditem.o \
 		moc_applyfriendlist.o \
 		moc_applyfriendpage.o \
+		moc_audio.o \
 		moc_authenfriend.o \
 		moc_basewindow.o \
 		moc_bookwindow.o \
@@ -293,6 +303,7 @@ OBJECTS       = BubbleFrame.o \
 		moc_grouptipitem.o \
 		moc_homewindow.o \
 		moc_hospitalizationwindow.o \
+		moc_http.o \
 		moc_httpmgr.o \
 		moc_insidewd.o \
 		moc_invaliditem.o \
@@ -319,6 +330,7 @@ OBJECTS       = BubbleFrame.o \
 		moc_resetdialog.o \
 		moc_searchlist.o \
 		moc_skinwd.o \
+		moc_speech.o \
 		moc_statelabel.o \
 		moc_statewidget.o \
 		moc_tcpmgr.o \
@@ -536,6 +548,7 @@ DIST          = ../PreProject/config.ini \
 		../PreProject/applyfrienditem.h \
 		../PreProject/applyfriendlist.h \
 		../PreProject/applyfriendpage.h \
+		../PreProject/audio.h \
 		../PreProject/authenfriend.h \
 		../PreProject/basewindow.h \
 		../PreProject/bookwindow.h \
@@ -560,6 +573,7 @@ DIST          = ../PreProject/config.ini \
 		../PreProject/grouptipitem.h \
 		../PreProject/homewindow.h \
 		../PreProject/hospitalizationwindow.h \
+		../PreProject/http.h \
 		../PreProject/httpmgr.h \
 		../PreProject/insidewd.h \
 		../PreProject/invaliditem.h \
@@ -587,6 +601,7 @@ DIST          = ../PreProject/config.ini \
 		../PreProject/searchlist.h \
 		../PreProject/singleton.h \
 		../PreProject/skinwd.h \
+		../PreProject/speech.h \
 		../PreProject/statelabel.h \
 		../PreProject/statewidget.h \
 		../PreProject/tcpmgr.h \
@@ -605,6 +620,7 @@ DIST          = ../PreProject/config.ini \
 		../PreProject/applyfrienditem.cpp \
 		../PreProject/applyfriendlist.cpp \
 		../PreProject/applyfriendpage.cpp \
+		../PreProject/audio.cpp \
 		../PreProject/authenfriend.cpp \
 		../PreProject/basewindow.cpp \
 		../PreProject/bookwindow.cpp \
@@ -629,6 +645,7 @@ DIST          = ../PreProject/config.ini \
 		../PreProject/grouptipitem.cpp \
 		../PreProject/homewindow.cpp \
 		../PreProject/hospitalizationwindow.cpp \
+		../PreProject/http.cpp \
 		../PreProject/httpmgr.cpp \
 		../PreProject/insidewd.cpp \
 		../PreProject/invaliditem.cpp \
@@ -656,6 +673,7 @@ DIST          = ../PreProject/config.ini \
 		../PreProject/resetdialog.cpp \
 		../PreProject/searchlist.cpp \
 		../PreProject/skinwd.cpp \
+		../PreProject/speech.cpp \
 		../PreProject/statelabel.cpp \
 		../PreProject/statewidget.cpp \
 		../PreProject/tcpmgr.cpp \
@@ -672,7 +690,7 @@ TARGET        = PreProject
 first: all
 ####### Build rules
 
-PreProject: ui_adduseritem.h ui_applyfriend.h ui_applyfrienditem.h ui_applyfriendpage.h ui_authenfriend.h ui_basewindow.h ui_bookwindow.h ui_chatdialog.h ui_chatpage.h ui_chattingroomwindow.h ui_chatuserwid.h ui_chatwindow.h ui_childwd.h ui_conuseritem.h ui_findfaildlg.h ui_findsuccessdlg.h ui_friendinfopage.h ui_friendlabel.h ui_grouptipitem.h ui_homewindow.h ui_hospitalizationwindow.h ui_insidewd.h ui_lineitem.h ui_loadingdlg.h ui_logindialog.h ui_mainwindow.h ui_medicalcaseswd.h ui_medicalexpensewd.h ui_medicinesearchwindow.h ui_misearchsonwd.h ui_outwd.h ui_owndeal.h ui_ownillness.h ui_ownmessage.h ui_ownwindow.h ui_personalinfowindow.h ui_personalwindow.h ui_pmainwindow.h ui_pmainwindowhome.h ui_quizwd.h ui_registerdialog.h ui_resetdialog.h ui_skinwd.h ui_timetablewd.h ui_womanwd.h $(OBJECTS)  
+PreProject: ui_adduseritem.h ui_applyfriend.h ui_applyfrienditem.h ui_applyfriendpage.h ui_audio.h ui_authenfriend.h ui_basewindow.h ui_bookwindow.h ui_chatdialog.h ui_chatpage.h ui_chattingroomwindow.h ui_chatuserwid.h ui_chatwindow.h ui_childwd.h ui_conuseritem.h ui_findfaildlg.h ui_findsuccessdlg.h ui_friendinfopage.h ui_friendlabel.h ui_grouptipitem.h ui_homewindow.h ui_hospitalizationwindow.h ui_http.h ui_insidewd.h ui_lineitem.h ui_loadingdlg.h ui_logindialog.h ui_mainwindow.h ui_medicalcaseswd.h ui_medicalexpensewd.h ui_medicinesearchwindow.h ui_misearchsonwd.h ui_outwd.h ui_owndeal.h ui_ownillness.h ui_ownmessage.h ui_ownwindow.h ui_personalinfowindow.h ui_personalwindow.h ui_pmainwindow.h ui_pmainwindowhome.h ui_quizwd.h ui_registerdialog.h ui_resetdialog.h ui_skinwd.h ui_speech.h ui_timetablewd.h ui_womanwd.h $(OBJECTS)  
 	$(LINK) $(LFLAGS) -o $(TARGET) $(OBJECTS) $(OBJCOMP) $(LIBS)
 	cp -f "/home/yimu/mywork/2024-BIT-/Client/PreProject/config.ini" "/home/yimu/mywork/2024-BIT-/Client/build-PreProject-Desktop_Qt_5_12_12_GCC_64bit-Debug/"
 
@@ -1077,9 +1095,9 @@ distdir: FORCE
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
 	$(COPY_FILE) --parents ../PreProject/rcs.qrc $(DISTDIR)/
 	$(COPY_FILE) --parents ../../../../Qt5.12.12/5.12.12/gcc_64/mkspecs/features/data/dummy.cpp $(DISTDIR)/
-	$(COPY_FILE) --parents ../PreProject/BubbleFrame.h ../PreProject/ChatItemBase.h ../PreProject/ChatView.h ../PreProject/ChildDoc.h ../PreProject/GlobalData.h ../PreProject/InsideDoc.h ../PreProject/MedicineItem.h ../PreProject/MessageTextEdit.h ../PreProject/OutDoc.h ../PreProject/PictureBubble.h ../PreProject/RegisterDataTransmit.h ../PreProject/SkinDoc.h ../PreProject/TextBubble.h ../PreProject/WomanDoc.h ../PreProject/adduseritem.h ../PreProject/applyfriend.h ../PreProject/applyfrienditem.h ../PreProject/applyfriendlist.h ../PreProject/applyfriendpage.h ../PreProject/authenfriend.h ../PreProject/basewindow.h ../PreProject/bookwindow.h ../PreProject/chatdialog.h ../PreProject/chatpage.h ../PreProject/chattingroomwindow.h ../PreProject/chatuserlist.h ../PreProject/chatuserwid.h ../PreProject/chatwindow.h ../PreProject/childwd.h ../PreProject/clickedbtn.h ../PreProject/clickedlabel.h ../PreProject/clickedoncelabel.h ../PreProject/contactuserlist.h ../PreProject/conuseritem.h ../PreProject/customizeedit.h ../PreProject/findfaildlg.h ../PreProject/findsuccessdlg.h ../PreProject/friendinfopage.h ../PreProject/friendlabel.h ../PreProject/global.h ../PreProject/grouptipitem.h ../PreProject/homewindow.h ../PreProject/hospitalizationwindow.h ../PreProject/httpmgr.h ../PreProject/insidewd.h ../PreProject/invaliditem.h ../PreProject/lineitem.h ../PreProject/listitembase.h ../PreProject/loadingdlg.h ../PreProject/logindialog.h ../PreProject/mainwindow.h ../PreProject/medicalcaseswd.h ../PreProject/medicalexpensewd.h ../PreProject/medicinesearchwindow.h ../PreProject/misearchsonwd.h ../PreProject/outwd.h ../PreProject/owndeal.h ../PreProject/ownillness.h ../PreProject/ownmessage.h ../PreProject/ownwindow.h ../PreProject/personalinfowindow.h ../PreProject/personalwindow.h ../PreProject/pmainwindow.h ../PreProject/pmainwindowhome.h ../PreProject/quizwd.h ../PreProject/registerdialog.h ../PreProject/resetdialog.h ../PreProject/searchlist.h ../PreProject/singleton.h ../PreProject/skinwd.h ../PreProject/statelabel.h ../PreProject/statewidget.h ../PreProject/tcpmgr.h ../PreProject/timerbtn.h ../PreProject/timetablewd.h ../PreProject/userdata.h ../PreProject/usermgr.h ../PreProject/womanwd.h $(DISTDIR)/
-	$(COPY_FILE) --parents ../PreProject/BubbleFrame.cpp ../PreProject/ChatItemBase.cpp ../PreProject/ChatView.cpp ../PreProject/MessageTextEdit.cpp ../PreProject/PictureBubble.cpp ../PreProject/TextBubble.cpp ../PreProject/adduseritem.cpp ../PreProject/applyfriend.cpp ../PreProject/applyfrienditem.cpp ../PreProject/applyfriendlist.cpp ../PreProject/applyfriendpage.cpp ../PreProject/authenfriend.cpp ../PreProject/basewindow.cpp ../PreProject/bookwindow.cpp ../PreProject/chatdialog.cpp ../PreProject/chatpage.cpp ../PreProject/chattingroomwindow.cpp ../PreProject/chatuserlist.cpp ../PreProject/chatuserwid.cpp ../PreProject/chatwindow.cpp ../PreProject/childwd.cpp ../PreProject/clickedbtn.cpp ../PreProject/clickedlabel.cpp ../PreProject/clickedoncelabel.cpp ../PreProject/contactuserlist.cpp ../PreProject/conuseritem.cpp ../PreProject/customizeedit.cpp ../PreProject/findfaildlg.cpp ../PreProject/findsuccessdlg.cpp ../PreProject/friendinfopage.cpp ../PreProject/friendlabel.cpp ../PreProject/global.cpp ../PreProject/grouptipitem.cpp ../PreProject/homewindow.cpp ../PreProject/hospitalizationwindow.cpp ../PreProject/httpmgr.cpp ../PreProject/insidewd.cpp ../PreProject/invaliditem.cpp ../PreProject/lineitem.cpp ../PreProject/listitembase.cpp ../PreProject/loadingdlg.cpp ../PreProject/logindialog.cpp ../PreProject/main.cpp ../PreProject/mainwindow.cpp ../PreProject/medicalcaseswd.cpp ../PreProject/medicalexpensewd.cpp ../PreProject/medicinesearchwindow.cpp ../PreProject/misearchsonwd.cpp ../PreProject/outwd.cpp ../PreProject/owndeal.cpp ../PreProject/ownillness.cpp ../PreProject/ownmessage.cpp ../PreProject/ownwindow.cpp ../PreProject/personalinfowindow.cpp ../PreProject/personalwindow.cpp ../PreProject/pmainwindow.cpp ../PreProject/pmainwindowhome.cpp ../PreProject/quizwd.cpp ../PreProject/registerdialog.cpp ../PreProject/resetdialog.cpp ../PreProject/searchlist.cpp ../PreProject/skinwd.cpp ../PreProject/statelabel.cpp ../PreProject/statewidget.cpp ../PreProject/tcpmgr.cpp ../PreProject/timerbtn.cpp ../PreProject/timetablewd.cpp ../PreProject/userdata.cpp ../PreProject/usermgr.cpp ../PreProject/womanwd.cpp $(DISTDIR)/
-	$(COPY_FILE) --parents ../PreProject/adduseritem.ui ../PreProject/applyfriend.ui ../PreProject/applyfrienditem.ui ../PreProject/applyfriendpage.ui ../PreProject/authenfriend.ui ../PreProject/basewindow.ui ../PreProject/bookwindow.ui ../PreProject/chatdialog.ui ../PreProject/chatpage.ui ../PreProject/chattingroomwindow.ui ../PreProject/chatuserwid.ui ../PreProject/chatwindow.ui ../PreProject/childwd.ui ../PreProject/conuseritem.ui ../PreProject/findfaildlg.ui ../PreProject/findsuccessdlg.ui ../PreProject/friendinfopage.ui ../PreProject/friendlabel.ui ../PreProject/grouptipitem.ui ../PreProject/homewindow.ui ../PreProject/hospitalizationwindow.ui ../PreProject/insidewd.ui ../PreProject/lineitem.ui ../PreProject/loadingdlg.ui ../PreProject/logindialog.ui ../PreProject/mainwindow.ui ../PreProject/medicalcaseswd.ui ../PreProject/medicalexpensewd.ui ../PreProject/medicinesearchwindow.ui ../PreProject/misearchsonwd.ui ../PreProject/outwd.ui ../PreProject/owndeal.ui ../PreProject/ownillness.ui ../PreProject/ownmessage.ui ../PreProject/ownwindow.ui ../PreProject/personalinfowindow.ui ../PreProject/personalwindow.ui ../PreProject/pmainwindow.ui ../PreProject/pmainwindowhome.ui ../PreProject/quizwd.ui ../PreProject/registerdialog.ui ../PreProject/resetdialog.ui ../PreProject/skinwd.ui ../PreProject/timetablewd.ui ../PreProject/womanwd.ui $(DISTDIR)/
+	$(COPY_FILE) --parents ../PreProject/BubbleFrame.h ../PreProject/ChatItemBase.h ../PreProject/ChatView.h ../PreProject/ChildDoc.h ../PreProject/GlobalData.h ../PreProject/InsideDoc.h ../PreProject/MedicineItem.h ../PreProject/MessageTextEdit.h ../PreProject/OutDoc.h ../PreProject/PictureBubble.h ../PreProject/RegisterDataTransmit.h ../PreProject/SkinDoc.h ../PreProject/TextBubble.h ../PreProject/WomanDoc.h ../PreProject/adduseritem.h ../PreProject/applyfriend.h ../PreProject/applyfrienditem.h ../PreProject/applyfriendlist.h ../PreProject/applyfriendpage.h ../PreProject/audio.h ../PreProject/authenfriend.h ../PreProject/basewindow.h ../PreProject/bookwindow.h ../PreProject/chatdialog.h ../PreProject/chatpage.h ../PreProject/chattingroomwindow.h ../PreProject/chatuserlist.h ../PreProject/chatuserwid.h ../PreProject/chatwindow.h ../PreProject/childwd.h ../PreProject/clickedbtn.h ../PreProject/clickedlabel.h ../PreProject/clickedoncelabel.h ../PreProject/contactuserlist.h ../PreProject/conuseritem.h ../PreProject/customizeedit.h ../PreProject/findfaildlg.h ../PreProject/findsuccessdlg.h ../PreProject/friendinfopage.h ../PreProject/friendlabel.h ../PreProject/global.h ../PreProject/grouptipitem.h ../PreProject/homewindow.h ../PreProject/hospitalizationwindow.h ../PreProject/http.h ../PreProject/httpmgr.h ../PreProject/insidewd.h ../PreProject/invaliditem.h ../PreProject/lineitem.h ../PreProject/listitembase.h ../PreProject/loadingdlg.h ../PreProject/logindialog.h ../PreProject/mainwindow.h ../PreProject/medicalcaseswd.h ../PreProject/medicalexpensewd.h ../PreProject/medicinesearchwindow.h ../PreProject/misearchsonwd.h ../PreProject/outwd.h ../PreProject/owndeal.h ../PreProject/ownillness.h ../PreProject/ownmessage.h ../PreProject/ownwindow.h ../PreProject/personalinfowindow.h ../PreProject/personalwindow.h ../PreProject/pmainwindow.h ../PreProject/pmainwindowhome.h ../PreProject/quizwd.h ../PreProject/registerdialog.h ../PreProject/resetdialog.h ../PreProject/searchlist.h ../PreProject/singleton.h ../PreProject/skinwd.h ../PreProject/speech.h ../PreProject/statelabel.h ../PreProject/statewidget.h ../PreProject/tcpmgr.h ../PreProject/timerbtn.h ../PreProject/timetablewd.h ../PreProject/userdata.h ../PreProject/usermgr.h ../PreProject/womanwd.h $(DISTDIR)/
+	$(COPY_FILE) --parents ../PreProject/BubbleFrame.cpp ../PreProject/ChatItemBase.cpp ../PreProject/ChatView.cpp ../PreProject/MessageTextEdit.cpp ../PreProject/PictureBubble.cpp ../PreProject/TextBubble.cpp ../PreProject/adduseritem.cpp ../PreProject/applyfriend.cpp ../PreProject/applyfrienditem.cpp ../PreProject/applyfriendlist.cpp ../PreProject/applyfriendpage.cpp ../PreProject/audio.cpp ../PreProject/authenfriend.cpp ../PreProject/basewindow.cpp ../PreProject/bookwindow.cpp ../PreProject/chatdialog.cpp ../PreProject/chatpage.cpp ../PreProject/chattingroomwindow.cpp ../PreProject/chatuserlist.cpp ../PreProject/chatuserwid.cpp ../PreProject/chatwindow.cpp ../PreProject/childwd.cpp ../PreProject/clickedbtn.cpp ../PreProject/clickedlabel.cpp ../PreProject/clickedoncelabel.cpp ../PreProject/contactuserlist.cpp ../PreProject/conuseritem.cpp ../PreProject/customizeedit.cpp ../PreProject/findfaildlg.cpp ../PreProject/findsuccessdlg.cpp ../PreProject/friendinfopage.cpp ../PreProject/friendlabel.cpp ../PreProject/global.cpp ../PreProject/grouptipitem.cpp ../PreProject/homewindow.cpp ../PreProject/hospitalizationwindow.cpp ../PreProject/http.cpp ../PreProject/httpmgr.cpp ../PreProject/insidewd.cpp ../PreProject/invaliditem.cpp ../PreProject/lineitem.cpp ../PreProject/listitembase.cpp ../PreProject/loadingdlg.cpp ../PreProject/logindialog.cpp ../PreProject/main.cpp ../PreProject/mainwindow.cpp ../PreProject/medicalcaseswd.cpp ../PreProject/medicalexpensewd.cpp ../PreProject/medicinesearchwindow.cpp ../PreProject/misearchsonwd.cpp ../PreProject/outwd.cpp ../PreProject/owndeal.cpp ../PreProject/ownillness.cpp ../PreProject/ownmessage.cpp ../PreProject/ownwindow.cpp ../PreProject/personalinfowindow.cpp ../PreProject/personalwindow.cpp ../PreProject/pmainwindow.cpp ../PreProject/pmainwindowhome.cpp ../PreProject/quizwd.cpp ../PreProject/registerdialog.cpp ../PreProject/resetdialog.cpp ../PreProject/searchlist.cpp ../PreProject/skinwd.cpp ../PreProject/speech.cpp ../PreProject/statelabel.cpp ../PreProject/statewidget.cpp ../PreProject/tcpmgr.cpp ../PreProject/timerbtn.cpp ../PreProject/timetablewd.cpp ../PreProject/userdata.cpp ../PreProject/usermgr.cpp ../PreProject/womanwd.cpp $(DISTDIR)/
+	$(COPY_FILE) --parents ../PreProject/adduseritem.ui ../PreProject/applyfriend.ui ../PreProject/applyfrienditem.ui ../PreProject/applyfriendpage.ui ../PreProject/audio.ui ../PreProject/authenfriend.ui ../PreProject/basewindow.ui ../PreProject/bookwindow.ui ../PreProject/chatdialog.ui ../PreProject/chatpage.ui ../PreProject/chattingroomwindow.ui ../PreProject/chatuserwid.ui ../PreProject/chatwindow.ui ../PreProject/childwd.ui ../PreProject/conuseritem.ui ../PreProject/findfaildlg.ui ../PreProject/findsuccessdlg.ui ../PreProject/friendinfopage.ui ../PreProject/friendlabel.ui ../PreProject/grouptipitem.ui ../PreProject/homewindow.ui ../PreProject/hospitalizationwindow.ui ../PreProject/http.ui ../PreProject/insidewd.ui ../PreProject/lineitem.ui ../PreProject/loadingdlg.ui ../PreProject/logindialog.ui ../PreProject/mainwindow.ui ../PreProject/medicalcaseswd.ui ../PreProject/medicalexpensewd.ui ../PreProject/medicinesearchwindow.ui ../PreProject/misearchsonwd.ui ../PreProject/outwd.ui ../PreProject/owndeal.ui ../PreProject/ownillness.ui ../PreProject/ownmessage.ui ../PreProject/ownwindow.ui ../PreProject/personalinfowindow.ui ../PreProject/personalwindow.ui ../PreProject/pmainwindow.ui ../PreProject/pmainwindowhome.ui ../PreProject/quizwd.ui ../PreProject/registerdialog.ui ../PreProject/resetdialog.ui ../PreProject/skinwd.ui ../PreProject/speech.ui ../PreProject/timetablewd.ui ../PreProject/womanwd.ui $(DISTDIR)/
 
 
 clean: compiler_clean 
@@ -1160,6 +1178,7 @@ qrc_rcs.cpp: ../PreProject/rcs.qrc \
 		../PreProject/res/msg_chat_press.png \
 		../PreProject/res/add_friend_hover.png \
 		../PreProject/res/chat_icon_select_hover.png \
+		../PreProject/res/ownpagewindow.jpg \
 		../PreProject/res/search.png \
 		../PreProject/res/smile_hover.png \
 		../PreProject/res/head_5.jpg \
@@ -1175,9 +1194,9 @@ compiler_moc_predefs_clean:
 moc_predefs.h: ../../../../Qt5.12.12/5.12.12/gcc_64/mkspecs/features/data/dummy.cpp
 	g++ -pipe -g -std=gnu++11 -Wall -W -dM -E -o moc_predefs.h ../../../../Qt5.12.12/5.12.12/gcc_64/mkspecs/features/data/dummy.cpp
 
-compiler_moc_header_make_all: moc_BubbleFrame.cpp moc_ChatItemBase.cpp moc_ChatView.cpp moc_MessageTextEdit.cpp moc_PictureBubble.cpp moc_TextBubble.cpp moc_adduseritem.cpp moc_applyfriend.cpp moc_applyfrienditem.cpp moc_applyfriendlist.cpp moc_applyfriendpage.cpp moc_authenfriend.cpp moc_basewindow.cpp moc_bookwindow.cpp moc_chatdialog.cpp moc_chatpage.cpp moc_chattingroomwindow.cpp moc_chatuserlist.cpp moc_chatuserwid.cpp moc_chatwindow.cpp moc_childwd.cpp moc_clickedbtn.cpp moc_clickedlabel.cpp moc_clickedoncelabel.cpp moc_contactuserlist.cpp moc_conuseritem.cpp moc_customizeedit.cpp moc_findfaildlg.cpp moc_findsuccessdlg.cpp moc_friendinfopage.cpp moc_friendlabel.cpp moc_grouptipitem.cpp moc_homewindow.cpp moc_hospitalizationwindow.cpp moc_httpmgr.cpp moc_insidewd.cpp moc_invaliditem.cpp moc_lineitem.cpp moc_listitembase.cpp moc_loadingdlg.cpp moc_logindialog.cpp moc_mainwindow.cpp moc_medicalcaseswd.cpp moc_medicalexpensewd.cpp moc_medicinesearchwindow.cpp moc_misearchsonwd.cpp moc_outwd.cpp moc_owndeal.cpp moc_ownillness.cpp moc_ownmessage.cpp moc_ownwindow.cpp moc_personalinfowindow.cpp moc_personalwindow.cpp moc_pmainwindow.cpp moc_pmainwindowhome.cpp moc_quizwd.cpp moc_registerdialog.cpp moc_resetdialog.cpp moc_searchlist.cpp moc_skinwd.cpp moc_statelabel.cpp moc_statewidget.cpp moc_tcpmgr.cpp moc_timetablewd.cpp moc_usermgr.cpp moc_womanwd.cpp
+compiler_moc_header_make_all: moc_BubbleFrame.cpp moc_ChatItemBase.cpp moc_ChatView.cpp moc_MessageTextEdit.cpp moc_PictureBubble.cpp moc_TextBubble.cpp moc_adduseritem.cpp moc_applyfriend.cpp moc_applyfrienditem.cpp moc_applyfriendlist.cpp moc_applyfriendpage.cpp moc_audio.cpp moc_authenfriend.cpp moc_basewindow.cpp moc_bookwindow.cpp moc_chatdialog.cpp moc_chatpage.cpp moc_chattingroomwindow.cpp moc_chatuserlist.cpp moc_chatuserwid.cpp moc_chatwindow.cpp moc_childwd.cpp moc_clickedbtn.cpp moc_clickedlabel.cpp moc_clickedoncelabel.cpp moc_contactuserlist.cpp moc_conuseritem.cpp moc_customizeedit.cpp moc_findfaildlg.cpp moc_findsuccessdlg.cpp moc_friendinfopage.cpp moc_friendlabel.cpp moc_grouptipitem.cpp moc_homewindow.cpp moc_hospitalizationwindow.cpp moc_http.cpp moc_httpmgr.cpp moc_insidewd.cpp moc_invaliditem.cpp moc_lineitem.cpp moc_listitembase.cpp moc_loadingdlg.cpp moc_logindialog.cpp moc_mainwindow.cpp moc_medicalcaseswd.cpp moc_medicalexpensewd.cpp moc_medicinesearchwindow.cpp moc_misearchsonwd.cpp moc_outwd.cpp moc_owndeal.cpp moc_ownillness.cpp moc_ownmessage.cpp moc_ownwindow.cpp moc_personalinfowindow.cpp moc_personalwindow.cpp moc_pmainwindow.cpp moc_pmainwindowhome.cpp moc_quizwd.cpp moc_registerdialog.cpp moc_resetdialog.cpp moc_searchlist.cpp moc_skinwd.cpp moc_speech.cpp moc_statelabel.cpp moc_statewidget.cpp moc_tcpmgr.cpp moc_timetablewd.cpp moc_usermgr.cpp moc_womanwd.cpp
 compiler_moc_header_clean:
-	-$(DEL_FILE) moc_BubbleFrame.cpp moc_ChatItemBase.cpp moc_ChatView.cpp moc_MessageTextEdit.cpp moc_PictureBubble.cpp moc_TextBubble.cpp moc_adduseritem.cpp moc_applyfriend.cpp moc_applyfrienditem.cpp moc_applyfriendlist.cpp moc_applyfriendpage.cpp moc_authenfriend.cpp moc_basewindow.cpp moc_bookwindow.cpp moc_chatdialog.cpp moc_chatpage.cpp moc_chattingroomwindow.cpp moc_chatuserlist.cpp moc_chatuserwid.cpp moc_chatwindow.cpp moc_childwd.cpp moc_clickedbtn.cpp moc_clickedlabel.cpp moc_clickedoncelabel.cpp moc_contactuserlist.cpp moc_conuseritem.cpp moc_customizeedit.cpp moc_findfaildlg.cpp moc_findsuccessdlg.cpp moc_friendinfopage.cpp moc_friendlabel.cpp moc_grouptipitem.cpp moc_homewindow.cpp moc_hospitalizationwindow.cpp moc_httpmgr.cpp moc_insidewd.cpp moc_invaliditem.cpp moc_lineitem.cpp moc_listitembase.cpp moc_loadingdlg.cpp moc_logindialog.cpp moc_mainwindow.cpp moc_medicalcaseswd.cpp moc_medicalexpensewd.cpp moc_medicinesearchwindow.cpp moc_misearchsonwd.cpp moc_outwd.cpp moc_owndeal.cpp moc_ownillness.cpp moc_ownmessage.cpp moc_ownwindow.cpp moc_personalinfowindow.cpp moc_personalwindow.cpp moc_pmainwindow.cpp moc_pmainwindowhome.cpp moc_quizwd.cpp moc_registerdialog.cpp moc_resetdialog.cpp moc_searchlist.cpp moc_skinwd.cpp moc_statelabel.cpp moc_statewidget.cpp moc_tcpmgr.cpp moc_timetablewd.cpp moc_usermgr.cpp moc_womanwd.cpp
+	-$(DEL_FILE) moc_BubbleFrame.cpp moc_ChatItemBase.cpp moc_ChatView.cpp moc_MessageTextEdit.cpp moc_PictureBubble.cpp moc_TextBubble.cpp moc_adduseritem.cpp moc_applyfriend.cpp moc_applyfrienditem.cpp moc_applyfriendlist.cpp moc_applyfriendpage.cpp moc_audio.cpp moc_authenfriend.cpp moc_basewindow.cpp moc_bookwindow.cpp moc_chatdialog.cpp moc_chatpage.cpp moc_chattingroomwindow.cpp moc_chatuserlist.cpp moc_chatuserwid.cpp moc_chatwindow.cpp moc_childwd.cpp moc_clickedbtn.cpp moc_clickedlabel.cpp moc_clickedoncelabel.cpp moc_contactuserlist.cpp moc_conuseritem.cpp moc_customizeedit.cpp moc_findfaildlg.cpp moc_findsuccessdlg.cpp moc_friendinfopage.cpp moc_friendlabel.cpp moc_grouptipitem.cpp moc_homewindow.cpp moc_hospitalizationwindow.cpp moc_http.cpp moc_httpmgr.cpp moc_insidewd.cpp moc_invaliditem.cpp moc_lineitem.cpp moc_listitembase.cpp moc_loadingdlg.cpp moc_logindialog.cpp moc_mainwindow.cpp moc_medicalcaseswd.cpp moc_medicalexpensewd.cpp moc_medicinesearchwindow.cpp moc_misearchsonwd.cpp moc_outwd.cpp moc_owndeal.cpp moc_ownillness.cpp moc_ownmessage.cpp moc_ownwindow.cpp moc_personalinfowindow.cpp moc_personalwindow.cpp moc_pmainwindow.cpp moc_pmainwindowhome.cpp moc_quizwd.cpp moc_registerdialog.cpp moc_resetdialog.cpp moc_searchlist.cpp moc_skinwd.cpp moc_speech.cpp moc_statelabel.cpp moc_statewidget.cpp moc_tcpmgr.cpp moc_timetablewd.cpp moc_usermgr.cpp moc_womanwd.cpp
 moc_BubbleFrame.cpp: ../PreProject/BubbleFrame.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/QFrame \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/qframe.h \
@@ -1335,7 +1354,7 @@ moc_BubbleFrame.cpp: ../PreProject/BubbleFrame.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/qgridlayout.h \
 		moc_predefs.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/bin/moc
-	/home/yimu/Qt5.12.12/5.12.12/gcc_64/bin/moc $(DEFINES) --include /home/yimu/mywork/2024-BIT-/Client/build-PreProject-Desktop_Qt_5_12_12_GCC_64bit-Debug/moc_predefs.h -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/mkspecs/linux-g++ -I/home/yimu/mywork/2024-BIT-/Client/PreProject -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtWidgets -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtGui -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtNetwork -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtSql -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtCore -I. -I/usr/include/c++/7 -I/usr/include/x86_64-linux-gnu/c++/7 -I/usr/include/c++/7/backward -I/usr/lib/gcc/x86_64-linux-gnu/7/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include ../PreProject/BubbleFrame.h -o moc_BubbleFrame.cpp
+	/home/yimu/Qt5.12.12/5.12.12/gcc_64/bin/moc $(DEFINES) --include /home/yimu/mywork/2024-BIT-/Client/build-PreProject-Desktop_Qt_5_12_12_GCC_64bit-Debug/moc_predefs.h -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/mkspecs/linux-g++ -I/home/yimu/mywork/2024-BIT-/Client/PreProject -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtMultimedia -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtWidgets -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtGui -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtNetwork -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtSql -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtTextToSpeech -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtCore -I. -I/usr/include/c++/7 -I/usr/include/x86_64-linux-gnu/c++/7 -I/usr/include/c++/7/backward -I/usr/lib/gcc/x86_64-linux-gnu/7/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include ../PreProject/BubbleFrame.h -o moc_BubbleFrame.cpp
 
 moc_ChatItemBase.cpp: ../PreProject/ChatItemBase.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/QWidget \
@@ -1495,7 +1514,7 @@ moc_ChatItemBase.cpp: ../PreProject/ChatItemBase.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qsettings.h \
 		moc_predefs.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/bin/moc
-	/home/yimu/Qt5.12.12/5.12.12/gcc_64/bin/moc $(DEFINES) --include /home/yimu/mywork/2024-BIT-/Client/build-PreProject-Desktop_Qt_5_12_12_GCC_64bit-Debug/moc_predefs.h -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/mkspecs/linux-g++ -I/home/yimu/mywork/2024-BIT-/Client/PreProject -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtWidgets -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtGui -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtNetwork -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtSql -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtCore -I. -I/usr/include/c++/7 -I/usr/include/x86_64-linux-gnu/c++/7 -I/usr/include/c++/7/backward -I/usr/lib/gcc/x86_64-linux-gnu/7/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include ../PreProject/ChatItemBase.h -o moc_ChatItemBase.cpp
+	/home/yimu/Qt5.12.12/5.12.12/gcc_64/bin/moc $(DEFINES) --include /home/yimu/mywork/2024-BIT-/Client/build-PreProject-Desktop_Qt_5_12_12_GCC_64bit-Debug/moc_predefs.h -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/mkspecs/linux-g++ -I/home/yimu/mywork/2024-BIT-/Client/PreProject -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtMultimedia -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtWidgets -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtGui -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtNetwork -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtSql -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtTextToSpeech -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtCore -I. -I/usr/include/c++/7 -I/usr/include/x86_64-linux-gnu/c++/7 -I/usr/include/c++/7/backward -I/usr/lib/gcc/x86_64-linux-gnu/7/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include ../PreProject/ChatItemBase.h -o moc_ChatItemBase.cpp
 
 moc_ChatView.cpp: ../PreProject/ChatView.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/QScrollArea \
@@ -1614,7 +1633,7 @@ moc_ChatView.cpp: ../PreProject/ChatView.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qbasictimer.h \
 		moc_predefs.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/bin/moc
-	/home/yimu/Qt5.12.12/5.12.12/gcc_64/bin/moc $(DEFINES) --include /home/yimu/mywork/2024-BIT-/Client/build-PreProject-Desktop_Qt_5_12_12_GCC_64bit-Debug/moc_predefs.h -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/mkspecs/linux-g++ -I/home/yimu/mywork/2024-BIT-/Client/PreProject -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtWidgets -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtGui -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtNetwork -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtSql -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtCore -I. -I/usr/include/c++/7 -I/usr/include/x86_64-linux-gnu/c++/7 -I/usr/include/c++/7/backward -I/usr/lib/gcc/x86_64-linux-gnu/7/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include ../PreProject/ChatView.h -o moc_ChatView.cpp
+	/home/yimu/Qt5.12.12/5.12.12/gcc_64/bin/moc $(DEFINES) --include /home/yimu/mywork/2024-BIT-/Client/build-PreProject-Desktop_Qt_5_12_12_GCC_64bit-Debug/moc_predefs.h -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/mkspecs/linux-g++ -I/home/yimu/mywork/2024-BIT-/Client/PreProject -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtMultimedia -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtWidgets -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtGui -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtNetwork -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtSql -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtTextToSpeech -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtCore -I. -I/usr/include/c++/7 -I/usr/include/x86_64-linux-gnu/c++/7 -I/usr/include/c++/7/backward -I/usr/lib/gcc/x86_64-linux-gnu/7/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include ../PreProject/ChatView.h -o moc_ChatView.cpp
 
 moc_MessageTextEdit.cpp: ../PreProject/MessageTextEdit.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/QObject \
@@ -1794,7 +1813,7 @@ moc_MessageTextEdit.cpp: ../PreProject/MessageTextEdit.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qsettings.h \
 		moc_predefs.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/bin/moc
-	/home/yimu/Qt5.12.12/5.12.12/gcc_64/bin/moc $(DEFINES) --include /home/yimu/mywork/2024-BIT-/Client/build-PreProject-Desktop_Qt_5_12_12_GCC_64bit-Debug/moc_predefs.h -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/mkspecs/linux-g++ -I/home/yimu/mywork/2024-BIT-/Client/PreProject -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtWidgets -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtGui -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtNetwork -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtSql -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtCore -I. -I/usr/include/c++/7 -I/usr/include/x86_64-linux-gnu/c++/7 -I/usr/include/c++/7/backward -I/usr/lib/gcc/x86_64-linux-gnu/7/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include ../PreProject/MessageTextEdit.h -o moc_MessageTextEdit.cpp
+	/home/yimu/Qt5.12.12/5.12.12/gcc_64/bin/moc $(DEFINES) --include /home/yimu/mywork/2024-BIT-/Client/build-PreProject-Desktop_Qt_5_12_12_GCC_64bit-Debug/moc_predefs.h -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/mkspecs/linux-g++ -I/home/yimu/mywork/2024-BIT-/Client/PreProject -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtMultimedia -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtWidgets -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtGui -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtNetwork -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtSql -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtTextToSpeech -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtCore -I. -I/usr/include/c++/7 -I/usr/include/x86_64-linux-gnu/c++/7 -I/usr/include/c++/7/backward -I/usr/lib/gcc/x86_64-linux-gnu/7/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include ../PreProject/MessageTextEdit.h -o moc_MessageTextEdit.cpp
 
 moc_PictureBubble.cpp: ../PreProject/PictureBubble.h \
 		../PreProject/BubbleFrame.h \
@@ -1955,7 +1974,7 @@ moc_PictureBubble.cpp: ../PreProject/PictureBubble.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtGui/QPixmap \
 		moc_predefs.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/bin/moc
-	/home/yimu/Qt5.12.12/5.12.12/gcc_64/bin/moc $(DEFINES) --include /home/yimu/mywork/2024-BIT-/Client/build-PreProject-Desktop_Qt_5_12_12_GCC_64bit-Debug/moc_predefs.h -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/mkspecs/linux-g++ -I/home/yimu/mywork/2024-BIT-/Client/PreProject -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtWidgets -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtGui -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtNetwork -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtSql -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtCore -I. -I/usr/include/c++/7 -I/usr/include/x86_64-linux-gnu/c++/7 -I/usr/include/c++/7/backward -I/usr/lib/gcc/x86_64-linux-gnu/7/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include ../PreProject/PictureBubble.h -o moc_PictureBubble.cpp
+	/home/yimu/Qt5.12.12/5.12.12/gcc_64/bin/moc $(DEFINES) --include /home/yimu/mywork/2024-BIT-/Client/build-PreProject-Desktop_Qt_5_12_12_GCC_64bit-Debug/moc_predefs.h -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/mkspecs/linux-g++ -I/home/yimu/mywork/2024-BIT-/Client/PreProject -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtMultimedia -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtWidgets -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtGui -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtNetwork -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtSql -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtTextToSpeech -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtCore -I. -I/usr/include/c++/7 -I/usr/include/x86_64-linux-gnu/c++/7 -I/usr/include/c++/7/backward -I/usr/lib/gcc/x86_64-linux-gnu/7/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include ../PreProject/PictureBubble.h -o moc_PictureBubble.cpp
 
 moc_TextBubble.cpp: ../PreProject/TextBubble.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/QTextEdit \
@@ -2123,7 +2142,7 @@ moc_TextBubble.cpp: ../PreProject/TextBubble.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/qgridlayout.h \
 		moc_predefs.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/bin/moc
-	/home/yimu/Qt5.12.12/5.12.12/gcc_64/bin/moc $(DEFINES) --include /home/yimu/mywork/2024-BIT-/Client/build-PreProject-Desktop_Qt_5_12_12_GCC_64bit-Debug/moc_predefs.h -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/mkspecs/linux-g++ -I/home/yimu/mywork/2024-BIT-/Client/PreProject -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtWidgets -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtGui -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtNetwork -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtSql -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtCore -I. -I/usr/include/c++/7 -I/usr/include/x86_64-linux-gnu/c++/7 -I/usr/include/c++/7/backward -I/usr/lib/gcc/x86_64-linux-gnu/7/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include ../PreProject/TextBubble.h -o moc_TextBubble.cpp
+	/home/yimu/Qt5.12.12/5.12.12/gcc_64/bin/moc $(DEFINES) --include /home/yimu/mywork/2024-BIT-/Client/build-PreProject-Desktop_Qt_5_12_12_GCC_64bit-Debug/moc_predefs.h -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/mkspecs/linux-g++ -I/home/yimu/mywork/2024-BIT-/Client/PreProject -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtMultimedia -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtWidgets -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtGui -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtNetwork -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtSql -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtTextToSpeech -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtCore -I. -I/usr/include/c++/7 -I/usr/include/x86_64-linux-gnu/c++/7 -I/usr/include/c++/7/backward -I/usr/lib/gcc/x86_64-linux-gnu/7/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include ../PreProject/TextBubble.h -o moc_TextBubble.cpp
 
 moc_adduseritem.cpp: ../PreProject/adduseritem.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/QWidget \
@@ -2276,7 +2295,7 @@ moc_adduseritem.cpp: ../PreProject/adduseritem.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qsettings.h \
 		moc_predefs.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/bin/moc
-	/home/yimu/Qt5.12.12/5.12.12/gcc_64/bin/moc $(DEFINES) --include /home/yimu/mywork/2024-BIT-/Client/build-PreProject-Desktop_Qt_5_12_12_GCC_64bit-Debug/moc_predefs.h -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/mkspecs/linux-g++ -I/home/yimu/mywork/2024-BIT-/Client/PreProject -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtWidgets -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtGui -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtNetwork -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtSql -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtCore -I. -I/usr/include/c++/7 -I/usr/include/x86_64-linux-gnu/c++/7 -I/usr/include/c++/7/backward -I/usr/lib/gcc/x86_64-linux-gnu/7/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include ../PreProject/adduseritem.h -o moc_adduseritem.cpp
+	/home/yimu/Qt5.12.12/5.12.12/gcc_64/bin/moc $(DEFINES) --include /home/yimu/mywork/2024-BIT-/Client/build-PreProject-Desktop_Qt_5_12_12_GCC_64bit-Debug/moc_predefs.h -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/mkspecs/linux-g++ -I/home/yimu/mywork/2024-BIT-/Client/PreProject -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtMultimedia -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtWidgets -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtGui -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtNetwork -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtSql -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtTextToSpeech -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtCore -I. -I/usr/include/c++/7 -I/usr/include/x86_64-linux-gnu/c++/7 -I/usr/include/c++/7/backward -I/usr/lib/gcc/x86_64-linux-gnu/7/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include ../PreProject/adduseritem.h -o moc_adduseritem.cpp
 
 moc_applyfriend.cpp: ../PreProject/applyfriend.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/QDialog \
@@ -2439,7 +2458,7 @@ moc_applyfriend.cpp: ../PreProject/applyfriend.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qjsonarray.h \
 		moc_predefs.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/bin/moc
-	/home/yimu/Qt5.12.12/5.12.12/gcc_64/bin/moc $(DEFINES) --include /home/yimu/mywork/2024-BIT-/Client/build-PreProject-Desktop_Qt_5_12_12_GCC_64bit-Debug/moc_predefs.h -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/mkspecs/linux-g++ -I/home/yimu/mywork/2024-BIT-/Client/PreProject -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtWidgets -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtGui -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtNetwork -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtSql -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtCore -I. -I/usr/include/c++/7 -I/usr/include/x86_64-linux-gnu/c++/7 -I/usr/include/c++/7/backward -I/usr/lib/gcc/x86_64-linux-gnu/7/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include ../PreProject/applyfriend.h -o moc_applyfriend.cpp
+	/home/yimu/Qt5.12.12/5.12.12/gcc_64/bin/moc $(DEFINES) --include /home/yimu/mywork/2024-BIT-/Client/build-PreProject-Desktop_Qt_5_12_12_GCC_64bit-Debug/moc_predefs.h -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/mkspecs/linux-g++ -I/home/yimu/mywork/2024-BIT-/Client/PreProject -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtMultimedia -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtWidgets -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtGui -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtNetwork -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtSql -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtTextToSpeech -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtCore -I. -I/usr/include/c++/7 -I/usr/include/x86_64-linux-gnu/c++/7 -I/usr/include/c++/7/backward -I/usr/lib/gcc/x86_64-linux-gnu/7/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include ../PreProject/applyfriend.h -o moc_applyfriend.cpp
 
 moc_applyfrienditem.cpp: ../PreProject/applyfrienditem.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/QWidget \
@@ -2595,7 +2614,7 @@ moc_applyfrienditem.cpp: ../PreProject/applyfrienditem.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qjsonarray.h \
 		moc_predefs.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/bin/moc
-	/home/yimu/Qt5.12.12/5.12.12/gcc_64/bin/moc $(DEFINES) --include /home/yimu/mywork/2024-BIT-/Client/build-PreProject-Desktop_Qt_5_12_12_GCC_64bit-Debug/moc_predefs.h -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/mkspecs/linux-g++ -I/home/yimu/mywork/2024-BIT-/Client/PreProject -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtWidgets -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtGui -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtNetwork -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtSql -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtCore -I. -I/usr/include/c++/7 -I/usr/include/x86_64-linux-gnu/c++/7 -I/usr/include/c++/7/backward -I/usr/lib/gcc/x86_64-linux-gnu/7/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include ../PreProject/applyfrienditem.h -o moc_applyfrienditem.cpp
+	/home/yimu/Qt5.12.12/5.12.12/gcc_64/bin/moc $(DEFINES) --include /home/yimu/mywork/2024-BIT-/Client/build-PreProject-Desktop_Qt_5_12_12_GCC_64bit-Debug/moc_predefs.h -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/mkspecs/linux-g++ -I/home/yimu/mywork/2024-BIT-/Client/PreProject -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtMultimedia -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtWidgets -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtGui -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtNetwork -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtSql -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtTextToSpeech -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtCore -I. -I/usr/include/c++/7 -I/usr/include/x86_64-linux-gnu/c++/7 -I/usr/include/c++/7/backward -I/usr/lib/gcc/x86_64-linux-gnu/7/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include ../PreProject/applyfrienditem.h -o moc_applyfrienditem.cpp
 
 moc_applyfriendlist.cpp: ../PreProject/applyfriendlist.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/QListWidget \
@@ -2723,7 +2742,7 @@ moc_applyfriendlist.cpp: ../PreProject/applyfriendlist.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/QEvent \
 		moc_predefs.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/bin/moc
-	/home/yimu/Qt5.12.12/5.12.12/gcc_64/bin/moc $(DEFINES) --include /home/yimu/mywork/2024-BIT-/Client/build-PreProject-Desktop_Qt_5_12_12_GCC_64bit-Debug/moc_predefs.h -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/mkspecs/linux-g++ -I/home/yimu/mywork/2024-BIT-/Client/PreProject -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtWidgets -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtGui -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtNetwork -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtSql -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtCore -I. -I/usr/include/c++/7 -I/usr/include/x86_64-linux-gnu/c++/7 -I/usr/include/c++/7/backward -I/usr/lib/gcc/x86_64-linux-gnu/7/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include ../PreProject/applyfriendlist.h -o moc_applyfriendlist.cpp
+	/home/yimu/Qt5.12.12/5.12.12/gcc_64/bin/moc $(DEFINES) --include /home/yimu/mywork/2024-BIT-/Client/build-PreProject-Desktop_Qt_5_12_12_GCC_64bit-Debug/moc_predefs.h -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/mkspecs/linux-g++ -I/home/yimu/mywork/2024-BIT-/Client/PreProject -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtMultimedia -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtWidgets -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtGui -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtNetwork -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtSql -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtTextToSpeech -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtCore -I. -I/usr/include/c++/7 -I/usr/include/x86_64-linux-gnu/c++/7 -I/usr/include/c++/7/backward -I/usr/lib/gcc/x86_64-linux-gnu/7/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include ../PreProject/applyfriendlist.h -o moc_applyfriendlist.cpp
 
 moc_applyfriendpage.cpp: ../PreProject/applyfriendpage.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/QWidget \
@@ -2880,7 +2899,175 @@ moc_applyfriendpage.cpp: ../PreProject/applyfriendpage.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qsettings.h \
 		moc_predefs.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/bin/moc
-	/home/yimu/Qt5.12.12/5.12.12/gcc_64/bin/moc $(DEFINES) --include /home/yimu/mywork/2024-BIT-/Client/build-PreProject-Desktop_Qt_5_12_12_GCC_64bit-Debug/moc_predefs.h -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/mkspecs/linux-g++ -I/home/yimu/mywork/2024-BIT-/Client/PreProject -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtWidgets -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtGui -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtNetwork -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtSql -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtCore -I. -I/usr/include/c++/7 -I/usr/include/x86_64-linux-gnu/c++/7 -I/usr/include/c++/7/backward -I/usr/lib/gcc/x86_64-linux-gnu/7/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include ../PreProject/applyfriendpage.h -o moc_applyfriendpage.cpp
+	/home/yimu/Qt5.12.12/5.12.12/gcc_64/bin/moc $(DEFINES) --include /home/yimu/mywork/2024-BIT-/Client/build-PreProject-Desktop_Qt_5_12_12_GCC_64bit-Debug/moc_predefs.h -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/mkspecs/linux-g++ -I/home/yimu/mywork/2024-BIT-/Client/PreProject -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtMultimedia -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtWidgets -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtGui -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtNetwork -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtSql -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtTextToSpeech -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtCore -I. -I/usr/include/c++/7 -I/usr/include/x86_64-linux-gnu/c++/7 -I/usr/include/c++/7/backward -I/usr/lib/gcc/x86_64-linux-gnu/7/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include ../PreProject/applyfriendpage.h -o moc_applyfriendpage.cpp
+
+moc_audio.cpp: ../PreProject/audio.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/QObject \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qobject.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qobjectdefs.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qnamespace.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qglobal.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qconfig-bootstrapped.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qconfig.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qtcore-config.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qsystemdetection.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qprocessordetection.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qcompilerdetection.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qtypeinfo.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qsysinfo.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qlogging.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qflags.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qatomic.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qbasicatomic.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qatomic_bootstrap.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qgenericatomic.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qatomic_cxx11.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qatomic_msvc.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qglobalstatic.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qmutex.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qnumeric.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qversiontagging.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qobjectdefs_impl.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qstring.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qchar.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qbytearray.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qrefcount.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qarraydata.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qstringliteral.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qstringalgorithms.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qstringview.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qstringbuilder.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qlist.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qalgorithms.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qiterator.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qhashfunctions.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qpair.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qbytearraylist.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qstringlist.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qregexp.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qstringmatcher.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qcoreevent.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qscopedpointer.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qmetatype.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qvarlengtharray.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qcontainerfwd.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qobject_impl.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtMultimedia/QAudioDeviceInfo \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtMultimedia/qaudiodeviceinfo.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtMultimedia/qtmultimediaglobal.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtGui/qtguiglobal.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtGui/qtgui-config.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtMultimedia/qtmultimedia-config.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtMultimedia/qmultimedia.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtMultimedia/qaudio.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtMultimedia/qaudioformat.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qshareddata.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qhash.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtMultimedia/QAudioInput \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtMultimedia/qaudioinput.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qiodevice.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtMultimedia/QAudioFormat \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/QFile \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qfile.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qfiledevice.h \
+		../PreProject/speech.h \
+		../PreProject/http.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtNetwork/QNetworkAccessManager \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtNetwork/qnetworkaccessmanager.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtNetwork/qtnetworkglobal.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtNetwork/qtnetwork-config.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtNetwork/qnetworkrequest.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/QSharedDataPointer \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/QString \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/QUrl \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qurl.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qurlquery.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/QVariant \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qvariant.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qmap.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qdebug.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qtextstream.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qlocale.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qvector.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qpoint.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qset.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qcontiguouscache.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qsharedpointer.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qsharedpointer_impl.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/QVector \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtNetwork/QSslConfiguration \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtNetwork/qsslconfiguration.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtNetwork/qsslsocket.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtNetwork/qtcpsocket.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtNetwork/qabstractsocket.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtNetwork/qsslerror.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtNetwork/qsslcertificate.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qcryptographichash.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qdatetime.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtNetwork/qssl.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/QFlags \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtNetwork/QSslPreSharedKeyAuthenticator \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtNetwork/qsslpresharedkeyauthenticator.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/QMetaType \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtNetwork/QNetworkRequest \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtNetwork/QNetworkReply \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtNetwork/qnetworkreply.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/QIODevice \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/QEventLoop \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qeventloop.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/QMap \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/QByteArray \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/QMessageBox \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/qmessagebox.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/qtwidgetsglobal.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/qtwidgets-config.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/qdialog.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/qwidget.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtGui/qwindowdefs.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtGui/qwindowdefs_win.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qmargins.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtGui/qpaintdevice.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qrect.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qsize.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtGui/qpalette.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtGui/qcolor.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtGui/qrgb.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtGui/qrgba64.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtGui/qbrush.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtGui/qmatrix.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtGui/qpolygon.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtGui/qregion.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qdatastream.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qline.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtGui/qtransform.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtGui/qpainterpath.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtGui/qimage.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtGui/qpixelformat.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtGui/qpixmap.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtGui/qfont.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtGui/qfontmetrics.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtGui/qfontinfo.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/qsizepolicy.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtGui/qcursor.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtGui/qkeysequence.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtGui/qevent.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtGui/qvector2d.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtGui/qtouchdevice.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/QJsonDocument \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qjsondocument.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qjsonvalue.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/QJsonObject \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qjsonobject.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/QJsonArray \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qjsonarray.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/QJsonValue \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtNetwork/QHostInfo \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtNetwork/qhostinfo.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtNetwork/qhostaddress.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/QDebug \
+		moc_predefs.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/bin/moc
+	/home/yimu/Qt5.12.12/5.12.12/gcc_64/bin/moc $(DEFINES) --include /home/yimu/mywork/2024-BIT-/Client/build-PreProject-Desktop_Qt_5_12_12_GCC_64bit-Debug/moc_predefs.h -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/mkspecs/linux-g++ -I/home/yimu/mywork/2024-BIT-/Client/PreProject -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtMultimedia -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtWidgets -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtGui -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtNetwork -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtSql -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtTextToSpeech -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtCore -I. -I/usr/include/c++/7 -I/usr/include/x86_64-linux-gnu/c++/7 -I/usr/include/c++/7/backward -I/usr/lib/gcc/x86_64-linux-gnu/7/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include ../PreProject/audio.h -o moc_audio.cpp
 
 moc_authenfriend.cpp: ../PreProject/authenfriend.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/QDialog \
@@ -3045,7 +3232,7 @@ moc_authenfriend.cpp: ../PreProject/authenfriend.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qjsondocument.h \
 		moc_predefs.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/bin/moc
-	/home/yimu/Qt5.12.12/5.12.12/gcc_64/bin/moc $(DEFINES) --include /home/yimu/mywork/2024-BIT-/Client/build-PreProject-Desktop_Qt_5_12_12_GCC_64bit-Debug/moc_predefs.h -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/mkspecs/linux-g++ -I/home/yimu/mywork/2024-BIT-/Client/PreProject -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtWidgets -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtGui -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtNetwork -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtSql -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtCore -I. -I/usr/include/c++/7 -I/usr/include/x86_64-linux-gnu/c++/7 -I/usr/include/c++/7/backward -I/usr/lib/gcc/x86_64-linux-gnu/7/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include ../PreProject/authenfriend.h -o moc_authenfriend.cpp
+	/home/yimu/Qt5.12.12/5.12.12/gcc_64/bin/moc $(DEFINES) --include /home/yimu/mywork/2024-BIT-/Client/build-PreProject-Desktop_Qt_5_12_12_GCC_64bit-Debug/moc_predefs.h -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/mkspecs/linux-g++ -I/home/yimu/mywork/2024-BIT-/Client/PreProject -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtMultimedia -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtWidgets -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtGui -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtNetwork -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtSql -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtTextToSpeech -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtCore -I. -I/usr/include/c++/7 -I/usr/include/x86_64-linux-gnu/c++/7 -I/usr/include/c++/7/backward -I/usr/lib/gcc/x86_64-linux-gnu/7/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include ../PreProject/authenfriend.h -o moc_authenfriend.cpp
 
 moc_basewindow.cpp: ../PreProject/basewindow.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/QWidget \
@@ -3160,7 +3347,7 @@ moc_basewindow.cpp: ../PreProject/basewindow.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/qframe.h \
 		moc_predefs.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/bin/moc
-	/home/yimu/Qt5.12.12/5.12.12/gcc_64/bin/moc $(DEFINES) --include /home/yimu/mywork/2024-BIT-/Client/build-PreProject-Desktop_Qt_5_12_12_GCC_64bit-Debug/moc_predefs.h -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/mkspecs/linux-g++ -I/home/yimu/mywork/2024-BIT-/Client/PreProject -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtWidgets -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtGui -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtNetwork -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtSql -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtCore -I. -I/usr/include/c++/7 -I/usr/include/x86_64-linux-gnu/c++/7 -I/usr/include/c++/7/backward -I/usr/lib/gcc/x86_64-linux-gnu/7/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include ../PreProject/basewindow.h -o moc_basewindow.cpp
+	/home/yimu/Qt5.12.12/5.12.12/gcc_64/bin/moc $(DEFINES) --include /home/yimu/mywork/2024-BIT-/Client/build-PreProject-Desktop_Qt_5_12_12_GCC_64bit-Debug/moc_predefs.h -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/mkspecs/linux-g++ -I/home/yimu/mywork/2024-BIT-/Client/PreProject -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtMultimedia -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtWidgets -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtGui -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtNetwork -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtSql -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtTextToSpeech -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtCore -I. -I/usr/include/c++/7 -I/usr/include/x86_64-linux-gnu/c++/7 -I/usr/include/c++/7/backward -I/usr/lib/gcc/x86_64-linux-gnu/7/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include ../PreProject/basewindow.h -o moc_basewindow.cpp
 
 moc_bookwindow.cpp: ../PreProject/bookwindow.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/QWidget \
@@ -3288,13 +3475,22 @@ moc_bookwindow.cpp: ../PreProject/bookwindow.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/qrubberband.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/QListWidget \
 		../PreProject/childwd.h \
+		../PreProject/ChildDoc.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/QString \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtGui/QPixmap \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/QLabel \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/qlabel.h \
 		../PreProject/womanwd.h \
+		../PreProject/WomanDoc.h \
 		../PreProject/outwd.h \
+		../PreProject/OutDoc.h \
 		../PreProject/insidewd.h \
+		../PreProject/InsideDoc.h \
 		../PreProject/skinwd.h \
+		../PreProject/SkinDoc.h \
 		moc_predefs.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/bin/moc
-	/home/yimu/Qt5.12.12/5.12.12/gcc_64/bin/moc $(DEFINES) --include /home/yimu/mywork/2024-BIT-/Client/build-PreProject-Desktop_Qt_5_12_12_GCC_64bit-Debug/moc_predefs.h -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/mkspecs/linux-g++ -I/home/yimu/mywork/2024-BIT-/Client/PreProject -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtWidgets -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtGui -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtNetwork -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtSql -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtCore -I. -I/usr/include/c++/7 -I/usr/include/x86_64-linux-gnu/c++/7 -I/usr/include/c++/7/backward -I/usr/lib/gcc/x86_64-linux-gnu/7/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include ../PreProject/bookwindow.h -o moc_bookwindow.cpp
+	/home/yimu/Qt5.12.12/5.12.12/gcc_64/bin/moc $(DEFINES) --include /home/yimu/mywork/2024-BIT-/Client/build-PreProject-Desktop_Qt_5_12_12_GCC_64bit-Debug/moc_predefs.h -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/mkspecs/linux-g++ -I/home/yimu/mywork/2024-BIT-/Client/PreProject -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtMultimedia -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtWidgets -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtGui -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtNetwork -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtSql -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtTextToSpeech -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtCore -I. -I/usr/include/c++/7 -I/usr/include/x86_64-linux-gnu/c++/7 -I/usr/include/c++/7/backward -I/usr/lib/gcc/x86_64-linux-gnu/7/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include ../PreProject/bookwindow.h -o moc_bookwindow.cpp
 
 moc_chatdialog.cpp: ../PreProject/chatdialog.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/QDialog \
@@ -3474,7 +3670,7 @@ moc_chatdialog.cpp: ../PreProject/chatdialog.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/qrubberband.h \
 		moc_predefs.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/bin/moc
-	/home/yimu/Qt5.12.12/5.12.12/gcc_64/bin/moc $(DEFINES) --include /home/yimu/mywork/2024-BIT-/Client/build-PreProject-Desktop_Qt_5_12_12_GCC_64bit-Debug/moc_predefs.h -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/mkspecs/linux-g++ -I/home/yimu/mywork/2024-BIT-/Client/PreProject -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtWidgets -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtGui -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtNetwork -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtSql -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtCore -I. -I/usr/include/c++/7 -I/usr/include/x86_64-linux-gnu/c++/7 -I/usr/include/c++/7/backward -I/usr/lib/gcc/x86_64-linux-gnu/7/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include ../PreProject/chatdialog.h -o moc_chatdialog.cpp
+	/home/yimu/Qt5.12.12/5.12.12/gcc_64/bin/moc $(DEFINES) --include /home/yimu/mywork/2024-BIT-/Client/build-PreProject-Desktop_Qt_5_12_12_GCC_64bit-Debug/moc_predefs.h -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/mkspecs/linux-g++ -I/home/yimu/mywork/2024-BIT-/Client/PreProject -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtMultimedia -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtWidgets -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtGui -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtNetwork -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtSql -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtTextToSpeech -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtCore -I. -I/usr/include/c++/7 -I/usr/include/x86_64-linux-gnu/c++/7 -I/usr/include/c++/7/backward -I/usr/lib/gcc/x86_64-linux-gnu/7/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include ../PreProject/chatdialog.h -o moc_chatdialog.cpp
 
 moc_chatpage.cpp: ../PreProject/chatpage.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/QWidget \
@@ -3590,7 +3786,7 @@ moc_chatpage.cpp: ../PreProject/chatpage.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/QMap \
 		moc_predefs.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/bin/moc
-	/home/yimu/Qt5.12.12/5.12.12/gcc_64/bin/moc $(DEFINES) --include /home/yimu/mywork/2024-BIT-/Client/build-PreProject-Desktop_Qt_5_12_12_GCC_64bit-Debug/moc_predefs.h -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/mkspecs/linux-g++ -I/home/yimu/mywork/2024-BIT-/Client/PreProject -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtWidgets -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtGui -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtNetwork -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtSql -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtCore -I. -I/usr/include/c++/7 -I/usr/include/x86_64-linux-gnu/c++/7 -I/usr/include/c++/7/backward -I/usr/lib/gcc/x86_64-linux-gnu/7/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include ../PreProject/chatpage.h -o moc_chatpage.cpp
+	/home/yimu/Qt5.12.12/5.12.12/gcc_64/bin/moc $(DEFINES) --include /home/yimu/mywork/2024-BIT-/Client/build-PreProject-Desktop_Qt_5_12_12_GCC_64bit-Debug/moc_predefs.h -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/mkspecs/linux-g++ -I/home/yimu/mywork/2024-BIT-/Client/PreProject -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtMultimedia -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtWidgets -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtGui -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtNetwork -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtSql -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtTextToSpeech -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtCore -I. -I/usr/include/c++/7 -I/usr/include/x86_64-linux-gnu/c++/7 -I/usr/include/c++/7/backward -I/usr/lib/gcc/x86_64-linux-gnu/7/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include ../PreProject/chatpage.h -o moc_chatpage.cpp
 
 moc_chattingroomwindow.cpp: ../PreProject/chattingroomwindow.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/QWidget \
@@ -3698,7 +3894,7 @@ moc_chattingroomwindow.cpp: ../PreProject/chattingroomwindow.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtGui/qtouchdevice.h \
 		moc_predefs.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/bin/moc
-	/home/yimu/Qt5.12.12/5.12.12/gcc_64/bin/moc $(DEFINES) --include /home/yimu/mywork/2024-BIT-/Client/build-PreProject-Desktop_Qt_5_12_12_GCC_64bit-Debug/moc_predefs.h -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/mkspecs/linux-g++ -I/home/yimu/mywork/2024-BIT-/Client/PreProject -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtWidgets -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtGui -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtNetwork -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtSql -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtCore -I. -I/usr/include/c++/7 -I/usr/include/x86_64-linux-gnu/c++/7 -I/usr/include/c++/7/backward -I/usr/lib/gcc/x86_64-linux-gnu/7/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include ../PreProject/chattingroomwindow.h -o moc_chattingroomwindow.cpp
+	/home/yimu/Qt5.12.12/5.12.12/gcc_64/bin/moc $(DEFINES) --include /home/yimu/mywork/2024-BIT-/Client/build-PreProject-Desktop_Qt_5_12_12_GCC_64bit-Debug/moc_predefs.h -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/mkspecs/linux-g++ -I/home/yimu/mywork/2024-BIT-/Client/PreProject -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtMultimedia -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtWidgets -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtGui -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtNetwork -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtSql -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtTextToSpeech -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtCore -I. -I/usr/include/c++/7 -I/usr/include/x86_64-linux-gnu/c++/7 -I/usr/include/c++/7/backward -I/usr/lib/gcc/x86_64-linux-gnu/7/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include ../PreProject/chattingroomwindow.h -o moc_chattingroomwindow.cpp
 
 moc_chatuserlist.cpp: ../PreProject/chatuserlist.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/QListWidget \
@@ -3830,7 +4026,7 @@ moc_chatuserlist.cpp: ../PreProject/chatuserlist.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/QDebug \
 		moc_predefs.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/bin/moc
-	/home/yimu/Qt5.12.12/5.12.12/gcc_64/bin/moc $(DEFINES) --include /home/yimu/mywork/2024-BIT-/Client/build-PreProject-Desktop_Qt_5_12_12_GCC_64bit-Debug/moc_predefs.h -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/mkspecs/linux-g++ -I/home/yimu/mywork/2024-BIT-/Client/PreProject -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtWidgets -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtGui -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtNetwork -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtSql -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtCore -I. -I/usr/include/c++/7 -I/usr/include/x86_64-linux-gnu/c++/7 -I/usr/include/c++/7/backward -I/usr/lib/gcc/x86_64-linux-gnu/7/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include ../PreProject/chatuserlist.h -o moc_chatuserlist.cpp
+	/home/yimu/Qt5.12.12/5.12.12/gcc_64/bin/moc $(DEFINES) --include /home/yimu/mywork/2024-BIT-/Client/build-PreProject-Desktop_Qt_5_12_12_GCC_64bit-Debug/moc_predefs.h -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/mkspecs/linux-g++ -I/home/yimu/mywork/2024-BIT-/Client/PreProject -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtMultimedia -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtWidgets -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtGui -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtNetwork -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtSql -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtTextToSpeech -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtCore -I. -I/usr/include/c++/7 -I/usr/include/x86_64-linux-gnu/c++/7 -I/usr/include/c++/7/backward -I/usr/lib/gcc/x86_64-linux-gnu/7/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include ../PreProject/chatuserlist.h -o moc_chatuserlist.cpp
 
 moc_chatuserwid.cpp: ../PreProject/chatuserwid.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/QWidget \
@@ -3986,7 +4182,7 @@ moc_chatuserwid.cpp: ../PreProject/chatuserwid.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qjsonarray.h \
 		moc_predefs.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/bin/moc
-	/home/yimu/Qt5.12.12/5.12.12/gcc_64/bin/moc $(DEFINES) --include /home/yimu/mywork/2024-BIT-/Client/build-PreProject-Desktop_Qt_5_12_12_GCC_64bit-Debug/moc_predefs.h -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/mkspecs/linux-g++ -I/home/yimu/mywork/2024-BIT-/Client/PreProject -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtWidgets -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtGui -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtNetwork -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtSql -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtCore -I. -I/usr/include/c++/7 -I/usr/include/x86_64-linux-gnu/c++/7 -I/usr/include/c++/7/backward -I/usr/lib/gcc/x86_64-linux-gnu/7/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include ../PreProject/chatuserwid.h -o moc_chatuserwid.cpp
+	/home/yimu/Qt5.12.12/5.12.12/gcc_64/bin/moc $(DEFINES) --include /home/yimu/mywork/2024-BIT-/Client/build-PreProject-Desktop_Qt_5_12_12_GCC_64bit-Debug/moc_predefs.h -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/mkspecs/linux-g++ -I/home/yimu/mywork/2024-BIT-/Client/PreProject -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtMultimedia -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtWidgets -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtGui -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtNetwork -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtSql -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtTextToSpeech -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtCore -I. -I/usr/include/c++/7 -I/usr/include/x86_64-linux-gnu/c++/7 -I/usr/include/c++/7/backward -I/usr/lib/gcc/x86_64-linux-gnu/7/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include ../PreProject/chatuserwid.h -o moc_chatuserwid.cpp
 
 moc_chatwindow.cpp: ../PreProject/chatwindow.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/QWidget \
@@ -4129,7 +4325,7 @@ moc_chatwindow.cpp: ../PreProject/chatwindow.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/qgridlayout.h \
 		moc_predefs.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/bin/moc
-	/home/yimu/Qt5.12.12/5.12.12/gcc_64/bin/moc $(DEFINES) --include /home/yimu/mywork/2024-BIT-/Client/build-PreProject-Desktop_Qt_5_12_12_GCC_64bit-Debug/moc_predefs.h -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/mkspecs/linux-g++ -I/home/yimu/mywork/2024-BIT-/Client/PreProject -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtWidgets -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtGui -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtNetwork -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtSql -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtCore -I. -I/usr/include/c++/7 -I/usr/include/x86_64-linux-gnu/c++/7 -I/usr/include/c++/7/backward -I/usr/lib/gcc/x86_64-linux-gnu/7/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include ../PreProject/chatwindow.h -o moc_chatwindow.cpp
+	/home/yimu/Qt5.12.12/5.12.12/gcc_64/bin/moc $(DEFINES) --include /home/yimu/mywork/2024-BIT-/Client/build-PreProject-Desktop_Qt_5_12_12_GCC_64bit-Debug/moc_predefs.h -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/mkspecs/linux-g++ -I/home/yimu/mywork/2024-BIT-/Client/PreProject -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtMultimedia -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtWidgets -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtGui -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtNetwork -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtSql -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtTextToSpeech -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtCore -I. -I/usr/include/c++/7 -I/usr/include/x86_64-linux-gnu/c++/7 -I/usr/include/c++/7/backward -I/usr/lib/gcc/x86_64-linux-gnu/7/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include ../PreProject/chatwindow.h -o moc_chatwindow.cpp
 
 moc_childwd.cpp: ../PreProject/childwd.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/QWidget \
@@ -4235,9 +4431,15 @@ moc_childwd.cpp: ../PreProject/childwd.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qfiledevice.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtGui/qvector2d.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtGui/qtouchdevice.h \
+		../PreProject/ChildDoc.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/QString \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtGui/QPixmap \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/QLabel \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/qlabel.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/qframe.h \
 		moc_predefs.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/bin/moc
-	/home/yimu/Qt5.12.12/5.12.12/gcc_64/bin/moc $(DEFINES) --include /home/yimu/mywork/2024-BIT-/Client/build-PreProject-Desktop_Qt_5_12_12_GCC_64bit-Debug/moc_predefs.h -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/mkspecs/linux-g++ -I/home/yimu/mywork/2024-BIT-/Client/PreProject -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtWidgets -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtGui -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtNetwork -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtSql -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtCore -I. -I/usr/include/c++/7 -I/usr/include/x86_64-linux-gnu/c++/7 -I/usr/include/c++/7/backward -I/usr/lib/gcc/x86_64-linux-gnu/7/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include ../PreProject/childwd.h -o moc_childwd.cpp
+	/home/yimu/Qt5.12.12/5.12.12/gcc_64/bin/moc $(DEFINES) --include /home/yimu/mywork/2024-BIT-/Client/build-PreProject-Desktop_Qt_5_12_12_GCC_64bit-Debug/moc_predefs.h -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/mkspecs/linux-g++ -I/home/yimu/mywork/2024-BIT-/Client/PreProject -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtMultimedia -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtWidgets -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtGui -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtNetwork -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtSql -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtTextToSpeech -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtCore -I. -I/usr/include/c++/7 -I/usr/include/x86_64-linux-gnu/c++/7 -I/usr/include/c++/7/backward -I/usr/lib/gcc/x86_64-linux-gnu/7/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include ../PreProject/childwd.h -o moc_childwd.cpp
 
 moc_clickedbtn.cpp: ../PreProject/clickedbtn.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/QPushButton \
@@ -4348,7 +4550,7 @@ moc_clickedbtn.cpp: ../PreProject/clickedbtn.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtGui/qtouchdevice.h \
 		moc_predefs.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/bin/moc
-	/home/yimu/Qt5.12.12/5.12.12/gcc_64/bin/moc $(DEFINES) --include /home/yimu/mywork/2024-BIT-/Client/build-PreProject-Desktop_Qt_5_12_12_GCC_64bit-Debug/moc_predefs.h -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/mkspecs/linux-g++ -I/home/yimu/mywork/2024-BIT-/Client/PreProject -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtWidgets -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtGui -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtNetwork -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtSql -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtCore -I. -I/usr/include/c++/7 -I/usr/include/x86_64-linux-gnu/c++/7 -I/usr/include/c++/7/backward -I/usr/lib/gcc/x86_64-linux-gnu/7/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include ../PreProject/clickedbtn.h -o moc_clickedbtn.cpp
+	/home/yimu/Qt5.12.12/5.12.12/gcc_64/bin/moc $(DEFINES) --include /home/yimu/mywork/2024-BIT-/Client/build-PreProject-Desktop_Qt_5_12_12_GCC_64bit-Debug/moc_predefs.h -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/mkspecs/linux-g++ -I/home/yimu/mywork/2024-BIT-/Client/PreProject -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtMultimedia -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtWidgets -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtGui -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtNetwork -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtSql -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtTextToSpeech -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtCore -I. -I/usr/include/c++/7 -I/usr/include/x86_64-linux-gnu/c++/7 -I/usr/include/c++/7/backward -I/usr/lib/gcc/x86_64-linux-gnu/7/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include ../PreProject/clickedbtn.h -o moc_clickedbtn.cpp
 
 moc_clickedlabel.cpp: ../PreProject/clickedlabel.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/QLabel \
@@ -4503,7 +4705,7 @@ moc_clickedlabel.cpp: ../PreProject/clickedlabel.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qsettings.h \
 		moc_predefs.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/bin/moc
-	/home/yimu/Qt5.12.12/5.12.12/gcc_64/bin/moc $(DEFINES) --include /home/yimu/mywork/2024-BIT-/Client/build-PreProject-Desktop_Qt_5_12_12_GCC_64bit-Debug/moc_predefs.h -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/mkspecs/linux-g++ -I/home/yimu/mywork/2024-BIT-/Client/PreProject -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtWidgets -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtGui -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtNetwork -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtSql -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtCore -I. -I/usr/include/c++/7 -I/usr/include/x86_64-linux-gnu/c++/7 -I/usr/include/c++/7/backward -I/usr/lib/gcc/x86_64-linux-gnu/7/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include ../PreProject/clickedlabel.h -o moc_clickedlabel.cpp
+	/home/yimu/Qt5.12.12/5.12.12/gcc_64/bin/moc $(DEFINES) --include /home/yimu/mywork/2024-BIT-/Client/build-PreProject-Desktop_Qt_5_12_12_GCC_64bit-Debug/moc_predefs.h -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/mkspecs/linux-g++ -I/home/yimu/mywork/2024-BIT-/Client/PreProject -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtMultimedia -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtWidgets -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtGui -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtNetwork -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtSql -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtTextToSpeech -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtCore -I. -I/usr/include/c++/7 -I/usr/include/x86_64-linux-gnu/c++/7 -I/usr/include/c++/7/backward -I/usr/lib/gcc/x86_64-linux-gnu/7/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include ../PreProject/clickedlabel.h -o moc_clickedlabel.cpp
 
 moc_clickedoncelabel.cpp: ../PreProject/clickedoncelabel.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/QLabel \
@@ -4614,7 +4816,7 @@ moc_clickedoncelabel.cpp: ../PreProject/clickedoncelabel.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtGui/QMouseEvent \
 		moc_predefs.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/bin/moc
-	/home/yimu/Qt5.12.12/5.12.12/gcc_64/bin/moc $(DEFINES) --include /home/yimu/mywork/2024-BIT-/Client/build-PreProject-Desktop_Qt_5_12_12_GCC_64bit-Debug/moc_predefs.h -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/mkspecs/linux-g++ -I/home/yimu/mywork/2024-BIT-/Client/PreProject -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtWidgets -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtGui -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtNetwork -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtSql -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtCore -I. -I/usr/include/c++/7 -I/usr/include/x86_64-linux-gnu/c++/7 -I/usr/include/c++/7/backward -I/usr/lib/gcc/x86_64-linux-gnu/7/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include ../PreProject/clickedoncelabel.h -o moc_clickedoncelabel.cpp
+	/home/yimu/Qt5.12.12/5.12.12/gcc_64/bin/moc $(DEFINES) --include /home/yimu/mywork/2024-BIT-/Client/build-PreProject-Desktop_Qt_5_12_12_GCC_64bit-Debug/moc_predefs.h -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/mkspecs/linux-g++ -I/home/yimu/mywork/2024-BIT-/Client/PreProject -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtMultimedia -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtWidgets -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtGui -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtNetwork -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtSql -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtTextToSpeech -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtCore -I. -I/usr/include/c++/7 -I/usr/include/x86_64-linux-gnu/c++/7 -I/usr/include/c++/7/backward -I/usr/lib/gcc/x86_64-linux-gnu/7/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include ../PreProject/clickedoncelabel.h -o moc_clickedoncelabel.cpp
 
 moc_contactuserlist.cpp: ../PreProject/contactuserlist.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/QListWidget \
@@ -4753,7 +4955,7 @@ moc_contactuserlist.cpp: ../PreProject/contactuserlist.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qjsonobject.h \
 		moc_predefs.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/bin/moc
-	/home/yimu/Qt5.12.12/5.12.12/gcc_64/bin/moc $(DEFINES) --include /home/yimu/mywork/2024-BIT-/Client/build-PreProject-Desktop_Qt_5_12_12_GCC_64bit-Debug/moc_predefs.h -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/mkspecs/linux-g++ -I/home/yimu/mywork/2024-BIT-/Client/PreProject -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtWidgets -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtGui -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtNetwork -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtSql -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtCore -I. -I/usr/include/c++/7 -I/usr/include/x86_64-linux-gnu/c++/7 -I/usr/include/c++/7/backward -I/usr/lib/gcc/x86_64-linux-gnu/7/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include ../PreProject/contactuserlist.h -o moc_contactuserlist.cpp
+	/home/yimu/Qt5.12.12/5.12.12/gcc_64/bin/moc $(DEFINES) --include /home/yimu/mywork/2024-BIT-/Client/build-PreProject-Desktop_Qt_5_12_12_GCC_64bit-Debug/moc_predefs.h -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/mkspecs/linux-g++ -I/home/yimu/mywork/2024-BIT-/Client/PreProject -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtMultimedia -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtWidgets -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtGui -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtNetwork -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtSql -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtTextToSpeech -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtCore -I. -I/usr/include/c++/7 -I/usr/include/x86_64-linux-gnu/c++/7 -I/usr/include/c++/7/backward -I/usr/lib/gcc/x86_64-linux-gnu/7/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include ../PreProject/contactuserlist.h -o moc_contactuserlist.cpp
 
 moc_conuseritem.cpp: ../PreProject/conuseritem.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/QWidget \
@@ -4909,7 +5111,7 @@ moc_conuseritem.cpp: ../PreProject/conuseritem.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qjsonarray.h \
 		moc_predefs.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/bin/moc
-	/home/yimu/Qt5.12.12/5.12.12/gcc_64/bin/moc $(DEFINES) --include /home/yimu/mywork/2024-BIT-/Client/build-PreProject-Desktop_Qt_5_12_12_GCC_64bit-Debug/moc_predefs.h -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/mkspecs/linux-g++ -I/home/yimu/mywork/2024-BIT-/Client/PreProject -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtWidgets -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtGui -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtNetwork -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtSql -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtCore -I. -I/usr/include/c++/7 -I/usr/include/x86_64-linux-gnu/c++/7 -I/usr/include/c++/7/backward -I/usr/lib/gcc/x86_64-linux-gnu/7/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include ../PreProject/conuseritem.h -o moc_conuseritem.cpp
+	/home/yimu/Qt5.12.12/5.12.12/gcc_64/bin/moc $(DEFINES) --include /home/yimu/mywork/2024-BIT-/Client/build-PreProject-Desktop_Qt_5_12_12_GCC_64bit-Debug/moc_predefs.h -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/mkspecs/linux-g++ -I/home/yimu/mywork/2024-BIT-/Client/PreProject -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtMultimedia -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtWidgets -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtGui -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtNetwork -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtSql -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtTextToSpeech -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtCore -I. -I/usr/include/c++/7 -I/usr/include/x86_64-linux-gnu/c++/7 -I/usr/include/c++/7/backward -I/usr/lib/gcc/x86_64-linux-gnu/7/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include ../PreProject/conuseritem.h -o moc_conuseritem.cpp
 
 moc_customizeedit.cpp: ../PreProject/customizeedit.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/QLineEdit \
@@ -5024,7 +5226,7 @@ moc_customizeedit.cpp: ../PreProject/customizeedit.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/QDebug \
 		moc_predefs.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/bin/moc
-	/home/yimu/Qt5.12.12/5.12.12/gcc_64/bin/moc $(DEFINES) --include /home/yimu/mywork/2024-BIT-/Client/build-PreProject-Desktop_Qt_5_12_12_GCC_64bit-Debug/moc_predefs.h -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/mkspecs/linux-g++ -I/home/yimu/mywork/2024-BIT-/Client/PreProject -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtWidgets -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtGui -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtNetwork -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtSql -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtCore -I. -I/usr/include/c++/7 -I/usr/include/x86_64-linux-gnu/c++/7 -I/usr/include/c++/7/backward -I/usr/lib/gcc/x86_64-linux-gnu/7/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include ../PreProject/customizeedit.h -o moc_customizeedit.cpp
+	/home/yimu/Qt5.12.12/5.12.12/gcc_64/bin/moc $(DEFINES) --include /home/yimu/mywork/2024-BIT-/Client/build-PreProject-Desktop_Qt_5_12_12_GCC_64bit-Debug/moc_predefs.h -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/mkspecs/linux-g++ -I/home/yimu/mywork/2024-BIT-/Client/PreProject -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtMultimedia -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtWidgets -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtGui -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtNetwork -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtSql -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtTextToSpeech -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtCore -I. -I/usr/include/c++/7 -I/usr/include/x86_64-linux-gnu/c++/7 -I/usr/include/c++/7/backward -I/usr/lib/gcc/x86_64-linux-gnu/7/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include ../PreProject/customizeedit.h -o moc_customizeedit.cpp
 
 moc_findfaildlg.cpp: ../PreProject/findfaildlg.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/QDialog \
@@ -5133,7 +5335,7 @@ moc_findfaildlg.cpp: ../PreProject/findfaildlg.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtGui/qtouchdevice.h \
 		moc_predefs.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/bin/moc
-	/home/yimu/Qt5.12.12/5.12.12/gcc_64/bin/moc $(DEFINES) --include /home/yimu/mywork/2024-BIT-/Client/build-PreProject-Desktop_Qt_5_12_12_GCC_64bit-Debug/moc_predefs.h -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/mkspecs/linux-g++ -I/home/yimu/mywork/2024-BIT-/Client/PreProject -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtWidgets -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtGui -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtNetwork -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtSql -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtCore -I. -I/usr/include/c++/7 -I/usr/include/x86_64-linux-gnu/c++/7 -I/usr/include/c++/7/backward -I/usr/lib/gcc/x86_64-linux-gnu/7/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include ../PreProject/findfaildlg.h -o moc_findfaildlg.cpp
+	/home/yimu/Qt5.12.12/5.12.12/gcc_64/bin/moc $(DEFINES) --include /home/yimu/mywork/2024-BIT-/Client/build-PreProject-Desktop_Qt_5_12_12_GCC_64bit-Debug/moc_predefs.h -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/mkspecs/linux-g++ -I/home/yimu/mywork/2024-BIT-/Client/PreProject -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtMultimedia -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtWidgets -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtGui -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtNetwork -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtSql -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtTextToSpeech -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtCore -I. -I/usr/include/c++/7 -I/usr/include/x86_64-linux-gnu/c++/7 -I/usr/include/c++/7/backward -I/usr/lib/gcc/x86_64-linux-gnu/7/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include ../PreProject/findfaildlg.h -o moc_findfaildlg.cpp
 
 moc_findsuccessdlg.cpp: ../PreProject/findsuccessdlg.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/QDialog \
@@ -5249,7 +5451,7 @@ moc_findsuccessdlg.cpp: ../PreProject/findsuccessdlg.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qjsonobject.h \
 		moc_predefs.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/bin/moc
-	/home/yimu/Qt5.12.12/5.12.12/gcc_64/bin/moc $(DEFINES) --include /home/yimu/mywork/2024-BIT-/Client/build-PreProject-Desktop_Qt_5_12_12_GCC_64bit-Debug/moc_predefs.h -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/mkspecs/linux-g++ -I/home/yimu/mywork/2024-BIT-/Client/PreProject -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtWidgets -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtGui -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtNetwork -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtSql -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtCore -I. -I/usr/include/c++/7 -I/usr/include/x86_64-linux-gnu/c++/7 -I/usr/include/c++/7/backward -I/usr/lib/gcc/x86_64-linux-gnu/7/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include ../PreProject/findsuccessdlg.h -o moc_findsuccessdlg.cpp
+	/home/yimu/Qt5.12.12/5.12.12/gcc_64/bin/moc $(DEFINES) --include /home/yimu/mywork/2024-BIT-/Client/build-PreProject-Desktop_Qt_5_12_12_GCC_64bit-Debug/moc_predefs.h -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/mkspecs/linux-g++ -I/home/yimu/mywork/2024-BIT-/Client/PreProject -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtMultimedia -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtWidgets -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtGui -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtNetwork -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtSql -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtTextToSpeech -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtCore -I. -I/usr/include/c++/7 -I/usr/include/x86_64-linux-gnu/c++/7 -I/usr/include/c++/7/backward -I/usr/lib/gcc/x86_64-linux-gnu/7/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include ../PreProject/findsuccessdlg.h -o moc_findsuccessdlg.cpp
 
 moc_friendinfopage.cpp: ../PreProject/friendinfopage.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/QWidget \
@@ -5364,7 +5566,7 @@ moc_friendinfopage.cpp: ../PreProject/friendinfopage.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qjsonobject.h \
 		moc_predefs.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/bin/moc
-	/home/yimu/Qt5.12.12/5.12.12/gcc_64/bin/moc $(DEFINES) --include /home/yimu/mywork/2024-BIT-/Client/build-PreProject-Desktop_Qt_5_12_12_GCC_64bit-Debug/moc_predefs.h -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/mkspecs/linux-g++ -I/home/yimu/mywork/2024-BIT-/Client/PreProject -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtWidgets -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtGui -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtNetwork -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtSql -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtCore -I. -I/usr/include/c++/7 -I/usr/include/x86_64-linux-gnu/c++/7 -I/usr/include/c++/7/backward -I/usr/lib/gcc/x86_64-linux-gnu/7/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include ../PreProject/friendinfopage.h -o moc_friendinfopage.cpp
+	/home/yimu/Qt5.12.12/5.12.12/gcc_64/bin/moc $(DEFINES) --include /home/yimu/mywork/2024-BIT-/Client/build-PreProject-Desktop_Qt_5_12_12_GCC_64bit-Debug/moc_predefs.h -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/mkspecs/linux-g++ -I/home/yimu/mywork/2024-BIT-/Client/PreProject -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtMultimedia -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtWidgets -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtGui -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtNetwork -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtSql -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtTextToSpeech -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtCore -I. -I/usr/include/c++/7 -I/usr/include/x86_64-linux-gnu/c++/7 -I/usr/include/c++/7/backward -I/usr/lib/gcc/x86_64-linux-gnu/7/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include ../PreProject/friendinfopage.h -o moc_friendinfopage.cpp
 
 moc_friendlabel.cpp: ../PreProject/friendlabel.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/QFrame \
@@ -5474,7 +5676,7 @@ moc_friendlabel.cpp: ../PreProject/friendlabel.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/QString \
 		moc_predefs.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/bin/moc
-	/home/yimu/Qt5.12.12/5.12.12/gcc_64/bin/moc $(DEFINES) --include /home/yimu/mywork/2024-BIT-/Client/build-PreProject-Desktop_Qt_5_12_12_GCC_64bit-Debug/moc_predefs.h -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/mkspecs/linux-g++ -I/home/yimu/mywork/2024-BIT-/Client/PreProject -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtWidgets -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtGui -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtNetwork -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtSql -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtCore -I. -I/usr/include/c++/7 -I/usr/include/x86_64-linux-gnu/c++/7 -I/usr/include/c++/7/backward -I/usr/lib/gcc/x86_64-linux-gnu/7/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include ../PreProject/friendlabel.h -o moc_friendlabel.cpp
+	/home/yimu/Qt5.12.12/5.12.12/gcc_64/bin/moc $(DEFINES) --include /home/yimu/mywork/2024-BIT-/Client/build-PreProject-Desktop_Qt_5_12_12_GCC_64bit-Debug/moc_predefs.h -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/mkspecs/linux-g++ -I/home/yimu/mywork/2024-BIT-/Client/PreProject -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtMultimedia -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtWidgets -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtGui -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtNetwork -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtSql -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtTextToSpeech -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtCore -I. -I/usr/include/c++/7 -I/usr/include/x86_64-linux-gnu/c++/7 -I/usr/include/c++/7/backward -I/usr/lib/gcc/x86_64-linux-gnu/7/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include ../PreProject/friendlabel.h -o moc_friendlabel.cpp
 
 moc_grouptipitem.cpp: ../PreProject/grouptipitem.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/QWidget \
@@ -5627,7 +5829,7 @@ moc_grouptipitem.cpp: ../PreProject/grouptipitem.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qsettings.h \
 		moc_predefs.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/bin/moc
-	/home/yimu/Qt5.12.12/5.12.12/gcc_64/bin/moc $(DEFINES) --include /home/yimu/mywork/2024-BIT-/Client/build-PreProject-Desktop_Qt_5_12_12_GCC_64bit-Debug/moc_predefs.h -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/mkspecs/linux-g++ -I/home/yimu/mywork/2024-BIT-/Client/PreProject -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtWidgets -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtGui -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtNetwork -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtSql -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtCore -I. -I/usr/include/c++/7 -I/usr/include/x86_64-linux-gnu/c++/7 -I/usr/include/c++/7/backward -I/usr/lib/gcc/x86_64-linux-gnu/7/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include ../PreProject/grouptipitem.h -o moc_grouptipitem.cpp
+	/home/yimu/Qt5.12.12/5.12.12/gcc_64/bin/moc $(DEFINES) --include /home/yimu/mywork/2024-BIT-/Client/build-PreProject-Desktop_Qt_5_12_12_GCC_64bit-Debug/moc_predefs.h -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/mkspecs/linux-g++ -I/home/yimu/mywork/2024-BIT-/Client/PreProject -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtMultimedia -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtWidgets -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtGui -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtNetwork -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtSql -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtTextToSpeech -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtCore -I. -I/usr/include/c++/7 -I/usr/include/x86_64-linux-gnu/c++/7 -I/usr/include/c++/7/backward -I/usr/lib/gcc/x86_64-linux-gnu/7/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include ../PreProject/grouptipitem.h -o moc_grouptipitem.cpp
 
 moc_homewindow.cpp: ../PreProject/homewindow.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/QWidget \
@@ -5738,16 +5940,81 @@ moc_homewindow.cpp: ../PreProject/homewindow.h \
 		../PreProject/homewindow.h \
 		../PreProject/medicalexpensewd.h \
 		../PreProject/quizwd.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtTextToSpeech/QTextToSpeech \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtTextToSpeech/qtexttospeech.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtTextToSpeech/qtexttospeech_global.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/QSharedDataPointer \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtTextToSpeech/qvoice.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtTextToSpeech/QVoice \
+		../PreProject/audio.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/QObject \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtMultimedia/QAudioDeviceInfo \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtMultimedia/qaudiodeviceinfo.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtMultimedia/qtmultimediaglobal.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtMultimedia/qtmultimedia-config.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtMultimedia/qmultimedia.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtMultimedia/qaudio.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtMultimedia/qaudioformat.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtMultimedia/QAudioInput \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtMultimedia/qaudioinput.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtMultimedia/QAudioFormat \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/QFile \
+		../PreProject/speech.h \
+		../PreProject/http.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtNetwork/QNetworkAccessManager \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtNetwork/qnetworkaccessmanager.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtNetwork/qtnetworkglobal.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtNetwork/qtnetwork-config.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtNetwork/qnetworkrequest.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/QString \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/QUrl \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/QVariant \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtNetwork/QSslConfiguration \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtNetwork/qsslconfiguration.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtNetwork/qsslsocket.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtNetwork/qtcpsocket.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtNetwork/qabstractsocket.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtNetwork/qsslerror.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtNetwork/qsslcertificate.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qcryptographichash.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qdatetime.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtNetwork/qssl.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/QFlags \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtNetwork/QSslPreSharedKeyAuthenticator \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtNetwork/qsslpresharedkeyauthenticator.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/QMetaType \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtNetwork/QNetworkRequest \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtNetwork/QNetworkReply \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtNetwork/qnetworkreply.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/QIODevice \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/QEventLoop \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qeventloop.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/QMap \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/QByteArray \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/QMessageBox \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/qmessagebox.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/qdialog.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/QJsonDocument \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qjsondocument.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qjsonvalue.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/QJsonObject \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qjsonobject.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/QJsonArray \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qjsonarray.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/QJsonValue \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtNetwork/QHostInfo \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtNetwork/qhostinfo.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtNetwork/qhostaddress.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/QDebug \
 		../PreProject/MedicineItem.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/QLabel \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/qlabel.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/qframe.h \
-		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/QString \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtGui/QPixmap \
 		../PreProject/misearchsonwd.h \
 		moc_predefs.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/bin/moc
-	/home/yimu/Qt5.12.12/5.12.12/gcc_64/bin/moc $(DEFINES) --include /home/yimu/mywork/2024-BIT-/Client/build-PreProject-Desktop_Qt_5_12_12_GCC_64bit-Debug/moc_predefs.h -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/mkspecs/linux-g++ -I/home/yimu/mywork/2024-BIT-/Client/PreProject -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtWidgets -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtGui -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtNetwork -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtSql -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtCore -I. -I/usr/include/c++/7 -I/usr/include/x86_64-linux-gnu/c++/7 -I/usr/include/c++/7/backward -I/usr/lib/gcc/x86_64-linux-gnu/7/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include ../PreProject/homewindow.h -o moc_homewindow.cpp
+	/home/yimu/Qt5.12.12/5.12.12/gcc_64/bin/moc $(DEFINES) --include /home/yimu/mywork/2024-BIT-/Client/build-PreProject-Desktop_Qt_5_12_12_GCC_64bit-Debug/moc_predefs.h -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/mkspecs/linux-g++ -I/home/yimu/mywork/2024-BIT-/Client/PreProject -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtMultimedia -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtWidgets -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtGui -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtNetwork -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtSql -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtTextToSpeech -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtCore -I. -I/usr/include/c++/7 -I/usr/include/x86_64-linux-gnu/c++/7 -I/usr/include/c++/7/backward -I/usr/lib/gcc/x86_64-linux-gnu/7/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include ../PreProject/homewindow.h -o moc_homewindow.cpp
 
 moc_hospitalizationwindow.cpp: ../PreProject/hospitalizationwindow.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/QWidget \
@@ -5899,7 +6166,108 @@ moc_hospitalizationwindow.cpp: ../PreProject/hospitalizationwindow.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/QSizePolicy \
 		moc_predefs.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/bin/moc
-	/home/yimu/Qt5.12.12/5.12.12/gcc_64/bin/moc $(DEFINES) --include /home/yimu/mywork/2024-BIT-/Client/build-PreProject-Desktop_Qt_5_12_12_GCC_64bit-Debug/moc_predefs.h -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/mkspecs/linux-g++ -I/home/yimu/mywork/2024-BIT-/Client/PreProject -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtWidgets -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtGui -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtNetwork -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtSql -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtCore -I. -I/usr/include/c++/7 -I/usr/include/x86_64-linux-gnu/c++/7 -I/usr/include/c++/7/backward -I/usr/lib/gcc/x86_64-linux-gnu/7/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include ../PreProject/hospitalizationwindow.h -o moc_hospitalizationwindow.cpp
+	/home/yimu/Qt5.12.12/5.12.12/gcc_64/bin/moc $(DEFINES) --include /home/yimu/mywork/2024-BIT-/Client/build-PreProject-Desktop_Qt_5_12_12_GCC_64bit-Debug/moc_predefs.h -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/mkspecs/linux-g++ -I/home/yimu/mywork/2024-BIT-/Client/PreProject -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtMultimedia -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtWidgets -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtGui -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtNetwork -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtSql -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtTextToSpeech -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtCore -I. -I/usr/include/c++/7 -I/usr/include/x86_64-linux-gnu/c++/7 -I/usr/include/c++/7/backward -I/usr/lib/gcc/x86_64-linux-gnu/7/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include ../PreProject/hospitalizationwindow.h -o moc_hospitalizationwindow.cpp
+
+moc_http.cpp: ../PreProject/http.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/QObject \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qobject.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qobjectdefs.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qnamespace.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qglobal.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qconfig-bootstrapped.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qconfig.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qtcore-config.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qsystemdetection.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qprocessordetection.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qcompilerdetection.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qtypeinfo.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qsysinfo.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qlogging.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qflags.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qatomic.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qbasicatomic.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qatomic_bootstrap.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qgenericatomic.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qatomic_cxx11.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qatomic_msvc.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qglobalstatic.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qmutex.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qnumeric.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qversiontagging.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qobjectdefs_impl.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qstring.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qchar.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qbytearray.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qrefcount.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qarraydata.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qstringliteral.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qstringalgorithms.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qstringview.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qstringbuilder.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qlist.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qalgorithms.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qiterator.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qhashfunctions.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qpair.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qbytearraylist.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qstringlist.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qregexp.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qstringmatcher.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qcoreevent.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qscopedpointer.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qmetatype.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qvarlengtharray.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qcontainerfwd.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qobject_impl.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtNetwork/QNetworkAccessManager \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtNetwork/qnetworkaccessmanager.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtNetwork/qtnetworkglobal.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtNetwork/qtnetwork-config.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtNetwork/qnetworkrequest.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/QSharedDataPointer \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qshareddata.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qhash.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/QString \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/QUrl \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qurl.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qurlquery.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/QVariant \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qvariant.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qmap.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qdebug.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qtextstream.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qiodevice.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qlocale.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qvector.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qpoint.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qset.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qcontiguouscache.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qsharedpointer.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qsharedpointer_impl.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/QVector \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtNetwork/QSslConfiguration \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtNetwork/qsslconfiguration.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtNetwork/qsslsocket.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtNetwork/qtcpsocket.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtNetwork/qabstractsocket.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtNetwork/qsslerror.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtNetwork/qsslcertificate.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qcryptographichash.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qdatetime.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtNetwork/qssl.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/QFlags \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtNetwork/QSslPreSharedKeyAuthenticator \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtNetwork/qsslpresharedkeyauthenticator.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/QMetaType \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtNetwork/QNetworkRequest \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtNetwork/QNetworkReply \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtNetwork/qnetworkreply.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/QIODevice \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/QEventLoop \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qeventloop.h \
+		moc_predefs.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/bin/moc
+	/home/yimu/Qt5.12.12/5.12.12/gcc_64/bin/moc $(DEFINES) --include /home/yimu/mywork/2024-BIT-/Client/build-PreProject-Desktop_Qt_5_12_12_GCC_64bit-Debug/moc_predefs.h -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/mkspecs/linux-g++ -I/home/yimu/mywork/2024-BIT-/Client/PreProject -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtMultimedia -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtWidgets -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtGui -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtNetwork -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtSql -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtTextToSpeech -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtCore -I. -I/usr/include/c++/7 -I/usr/include/x86_64-linux-gnu/c++/7 -I/usr/include/c++/7/backward -I/usr/lib/gcc/x86_64-linux-gnu/7/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include ../PreProject/http.h -o moc_http.cpp
 
 moc_httpmgr.cpp: ../PreProject/httpmgr.h \
 		../PreProject/singleton.h \
@@ -6054,7 +6422,7 @@ moc_httpmgr.cpp: ../PreProject/httpmgr.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qjsondocument.h \
 		moc_predefs.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/bin/moc
-	/home/yimu/Qt5.12.12/5.12.12/gcc_64/bin/moc $(DEFINES) --include /home/yimu/mywork/2024-BIT-/Client/build-PreProject-Desktop_Qt_5_12_12_GCC_64bit-Debug/moc_predefs.h -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/mkspecs/linux-g++ -I/home/yimu/mywork/2024-BIT-/Client/PreProject -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtWidgets -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtGui -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtNetwork -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtSql -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtCore -I. -I/usr/include/c++/7 -I/usr/include/x86_64-linux-gnu/c++/7 -I/usr/include/c++/7/backward -I/usr/lib/gcc/x86_64-linux-gnu/7/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include ../PreProject/httpmgr.h -o moc_httpmgr.cpp
+	/home/yimu/Qt5.12.12/5.12.12/gcc_64/bin/moc $(DEFINES) --include /home/yimu/mywork/2024-BIT-/Client/build-PreProject-Desktop_Qt_5_12_12_GCC_64bit-Debug/moc_predefs.h -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/mkspecs/linux-g++ -I/home/yimu/mywork/2024-BIT-/Client/PreProject -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtMultimedia -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtWidgets -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtGui -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtNetwork -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtSql -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtTextToSpeech -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtCore -I. -I/usr/include/c++/7 -I/usr/include/x86_64-linux-gnu/c++/7 -I/usr/include/c++/7/backward -I/usr/lib/gcc/x86_64-linux-gnu/7/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include ../PreProject/httpmgr.h -o moc_httpmgr.cpp
 
 moc_insidewd.cpp: ../PreProject/insidewd.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/QWidget \
@@ -6160,9 +6528,15 @@ moc_insidewd.cpp: ../PreProject/insidewd.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qfiledevice.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtGui/qvector2d.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtGui/qtouchdevice.h \
+		../PreProject/InsideDoc.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/QString \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtGui/QPixmap \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/QLabel \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/qlabel.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/qframe.h \
 		moc_predefs.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/bin/moc
-	/home/yimu/Qt5.12.12/5.12.12/gcc_64/bin/moc $(DEFINES) --include /home/yimu/mywork/2024-BIT-/Client/build-PreProject-Desktop_Qt_5_12_12_GCC_64bit-Debug/moc_predefs.h -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/mkspecs/linux-g++ -I/home/yimu/mywork/2024-BIT-/Client/PreProject -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtWidgets -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtGui -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtNetwork -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtSql -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtCore -I. -I/usr/include/c++/7 -I/usr/include/x86_64-linux-gnu/c++/7 -I/usr/include/c++/7/backward -I/usr/lib/gcc/x86_64-linux-gnu/7/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include ../PreProject/insidewd.h -o moc_insidewd.cpp
+	/home/yimu/Qt5.12.12/5.12.12/gcc_64/bin/moc $(DEFINES) --include /home/yimu/mywork/2024-BIT-/Client/build-PreProject-Desktop_Qt_5_12_12_GCC_64bit-Debug/moc_predefs.h -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/mkspecs/linux-g++ -I/home/yimu/mywork/2024-BIT-/Client/PreProject -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtMultimedia -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtWidgets -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtGui -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtNetwork -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtSql -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtTextToSpeech -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtCore -I. -I/usr/include/c++/7 -I/usr/include/x86_64-linux-gnu/c++/7 -I/usr/include/c++/7/backward -I/usr/lib/gcc/x86_64-linux-gnu/7/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include ../PreProject/insidewd.h -o moc_insidewd.cpp
 
 moc_invaliditem.cpp: ../PreProject/invaliditem.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/QWidget \
@@ -6315,7 +6689,7 @@ moc_invaliditem.cpp: ../PreProject/invaliditem.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qsettings.h \
 		moc_predefs.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/bin/moc
-	/home/yimu/Qt5.12.12/5.12.12/gcc_64/bin/moc $(DEFINES) --include /home/yimu/mywork/2024-BIT-/Client/build-PreProject-Desktop_Qt_5_12_12_GCC_64bit-Debug/moc_predefs.h -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/mkspecs/linux-g++ -I/home/yimu/mywork/2024-BIT-/Client/PreProject -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtWidgets -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtGui -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtNetwork -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtSql -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtCore -I. -I/usr/include/c++/7 -I/usr/include/x86_64-linux-gnu/c++/7 -I/usr/include/c++/7/backward -I/usr/lib/gcc/x86_64-linux-gnu/7/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include ../PreProject/invaliditem.h -o moc_invaliditem.cpp
+	/home/yimu/Qt5.12.12/5.12.12/gcc_64/bin/moc $(DEFINES) --include /home/yimu/mywork/2024-BIT-/Client/build-PreProject-Desktop_Qt_5_12_12_GCC_64bit-Debug/moc_predefs.h -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/mkspecs/linux-g++ -I/home/yimu/mywork/2024-BIT-/Client/PreProject -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtMultimedia -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtWidgets -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtGui -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtNetwork -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtSql -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtTextToSpeech -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtCore -I. -I/usr/include/c++/7 -I/usr/include/x86_64-linux-gnu/c++/7 -I/usr/include/c++/7/backward -I/usr/lib/gcc/x86_64-linux-gnu/7/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include ../PreProject/invaliditem.h -o moc_invaliditem.cpp
 
 moc_lineitem.cpp: ../PreProject/lineitem.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/QWidget \
@@ -6468,7 +6842,7 @@ moc_lineitem.cpp: ../PreProject/lineitem.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qsettings.h \
 		moc_predefs.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/bin/moc
-	/home/yimu/Qt5.12.12/5.12.12/gcc_64/bin/moc $(DEFINES) --include /home/yimu/mywork/2024-BIT-/Client/build-PreProject-Desktop_Qt_5_12_12_GCC_64bit-Debug/moc_predefs.h -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/mkspecs/linux-g++ -I/home/yimu/mywork/2024-BIT-/Client/PreProject -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtWidgets -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtGui -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtNetwork -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtSql -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtCore -I. -I/usr/include/c++/7 -I/usr/include/x86_64-linux-gnu/c++/7 -I/usr/include/c++/7/backward -I/usr/lib/gcc/x86_64-linux-gnu/7/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include ../PreProject/lineitem.h -o moc_lineitem.cpp
+	/home/yimu/Qt5.12.12/5.12.12/gcc_64/bin/moc $(DEFINES) --include /home/yimu/mywork/2024-BIT-/Client/build-PreProject-Desktop_Qt_5_12_12_GCC_64bit-Debug/moc_predefs.h -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/mkspecs/linux-g++ -I/home/yimu/mywork/2024-BIT-/Client/PreProject -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtMultimedia -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtWidgets -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtGui -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtNetwork -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtSql -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtTextToSpeech -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtCore -I. -I/usr/include/c++/7 -I/usr/include/x86_64-linux-gnu/c++/7 -I/usr/include/c++/7/backward -I/usr/lib/gcc/x86_64-linux-gnu/7/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include ../PreProject/lineitem.h -o moc_lineitem.cpp
 
 moc_listitembase.cpp: ../PreProject/listitembase.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/QWidget \
@@ -6620,7 +6994,7 @@ moc_listitembase.cpp: ../PreProject/listitembase.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qsettings.h \
 		moc_predefs.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/bin/moc
-	/home/yimu/Qt5.12.12/5.12.12/gcc_64/bin/moc $(DEFINES) --include /home/yimu/mywork/2024-BIT-/Client/build-PreProject-Desktop_Qt_5_12_12_GCC_64bit-Debug/moc_predefs.h -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/mkspecs/linux-g++ -I/home/yimu/mywork/2024-BIT-/Client/PreProject -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtWidgets -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtGui -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtNetwork -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtSql -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtCore -I. -I/usr/include/c++/7 -I/usr/include/x86_64-linux-gnu/c++/7 -I/usr/include/c++/7/backward -I/usr/lib/gcc/x86_64-linux-gnu/7/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include ../PreProject/listitembase.h -o moc_listitembase.cpp
+	/home/yimu/Qt5.12.12/5.12.12/gcc_64/bin/moc $(DEFINES) --include /home/yimu/mywork/2024-BIT-/Client/build-PreProject-Desktop_Qt_5_12_12_GCC_64bit-Debug/moc_predefs.h -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/mkspecs/linux-g++ -I/home/yimu/mywork/2024-BIT-/Client/PreProject -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtMultimedia -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtWidgets -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtGui -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtNetwork -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtSql -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtTextToSpeech -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtCore -I. -I/usr/include/c++/7 -I/usr/include/x86_64-linux-gnu/c++/7 -I/usr/include/c++/7/backward -I/usr/lib/gcc/x86_64-linux-gnu/7/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include ../PreProject/listitembase.h -o moc_listitembase.cpp
 
 moc_loadingdlg.cpp: ../PreProject/loadingdlg.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/QDialog \
@@ -6729,7 +7103,7 @@ moc_loadingdlg.cpp: ../PreProject/loadingdlg.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtGui/qtouchdevice.h \
 		moc_predefs.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/bin/moc
-	/home/yimu/Qt5.12.12/5.12.12/gcc_64/bin/moc $(DEFINES) --include /home/yimu/mywork/2024-BIT-/Client/build-PreProject-Desktop_Qt_5_12_12_GCC_64bit-Debug/moc_predefs.h -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/mkspecs/linux-g++ -I/home/yimu/mywork/2024-BIT-/Client/PreProject -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtWidgets -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtGui -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtNetwork -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtSql -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtCore -I. -I/usr/include/c++/7 -I/usr/include/x86_64-linux-gnu/c++/7 -I/usr/include/c++/7/backward -I/usr/lib/gcc/x86_64-linux-gnu/7/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include ../PreProject/loadingdlg.h -o moc_loadingdlg.cpp
+	/home/yimu/Qt5.12.12/5.12.12/gcc_64/bin/moc $(DEFINES) --include /home/yimu/mywork/2024-BIT-/Client/build-PreProject-Desktop_Qt_5_12_12_GCC_64bit-Debug/moc_predefs.h -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/mkspecs/linux-g++ -I/home/yimu/mywork/2024-BIT-/Client/PreProject -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtMultimedia -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtWidgets -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtGui -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtNetwork -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtSql -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtTextToSpeech -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtCore -I. -I/usr/include/c++/7 -I/usr/include/x86_64-linux-gnu/c++/7 -I/usr/include/c++/7/backward -I/usr/lib/gcc/x86_64-linux-gnu/7/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include ../PreProject/loadingdlg.h -o moc_loadingdlg.cpp
 
 moc_logindialog.cpp: ../PreProject/logindialog.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/QDialog \
@@ -6883,7 +7257,7 @@ moc_logindialog.cpp: ../PreProject/logindialog.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qsettings.h \
 		moc_predefs.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/bin/moc
-	/home/yimu/Qt5.12.12/5.12.12/gcc_64/bin/moc $(DEFINES) --include /home/yimu/mywork/2024-BIT-/Client/build-PreProject-Desktop_Qt_5_12_12_GCC_64bit-Debug/moc_predefs.h -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/mkspecs/linux-g++ -I/home/yimu/mywork/2024-BIT-/Client/PreProject -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtWidgets -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtGui -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtNetwork -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtSql -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtCore -I. -I/usr/include/c++/7 -I/usr/include/x86_64-linux-gnu/c++/7 -I/usr/include/c++/7/backward -I/usr/lib/gcc/x86_64-linux-gnu/7/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include ../PreProject/logindialog.h -o moc_logindialog.cpp
+	/home/yimu/Qt5.12.12/5.12.12/gcc_64/bin/moc $(DEFINES) --include /home/yimu/mywork/2024-BIT-/Client/build-PreProject-Desktop_Qt_5_12_12_GCC_64bit-Debug/moc_predefs.h -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/mkspecs/linux-g++ -I/home/yimu/mywork/2024-BIT-/Client/PreProject -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtMultimedia -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtWidgets -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtGui -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtNetwork -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtSql -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtTextToSpeech -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtCore -I. -I/usr/include/c++/7 -I/usr/include/x86_64-linux-gnu/c++/7 -I/usr/include/c++/7/backward -I/usr/lib/gcc/x86_64-linux-gnu/7/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include ../PreProject/logindialog.h -o moc_logindialog.cpp
 
 moc_mainwindow.cpp: ../PreProject/mainwindow.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/QMainWindow \
@@ -7070,6 +7444,35 @@ moc_mainwindow.cpp: ../PreProject/mainwindow.h \
 		../PreProject/misearchsonwd.h \
 		../PreProject/medicalexpensewd.h \
 		../PreProject/quizwd.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtTextToSpeech/QTextToSpeech \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtTextToSpeech/qtexttospeech.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtTextToSpeech/qtexttospeech_global.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtTextToSpeech/qvoice.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtTextToSpeech/QVoice \
+		../PreProject/audio.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtMultimedia/QAudioDeviceInfo \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtMultimedia/qaudiodeviceinfo.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtMultimedia/qtmultimediaglobal.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtMultimedia/qtmultimedia-config.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtMultimedia/qmultimedia.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtMultimedia/qaudio.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtMultimedia/qaudioformat.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtMultimedia/QAudioInput \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtMultimedia/qaudioinput.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtMultimedia/QAudioFormat \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/QFile \
+		../PreProject/speech.h \
+		../PreProject/http.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/QEventLoop \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qeventloop.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/QJsonDocument \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qjsondocument.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/QJsonArray \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qjsonarray.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/QJsonValue \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtNetwork/QHostInfo \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtNetwork/qhostinfo.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtNetwork/qhostaddress.h \
 		../PreProject/bookwindow.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/QListWidgetItem \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/qlistwidget.h \
@@ -7088,10 +7491,15 @@ moc_mainwindow.cpp: ../PreProject/mainwindow.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/qrubberband.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/QListWidget \
 		../PreProject/childwd.h \
+		../PreProject/ChildDoc.h \
 		../PreProject/womanwd.h \
+		../PreProject/WomanDoc.h \
 		../PreProject/outwd.h \
+		../PreProject/OutDoc.h \
 		../PreProject/insidewd.h \
+		../PreProject/InsideDoc.h \
 		../PreProject/skinwd.h \
+		../PreProject/SkinDoc.h \
 		../PreProject/personalwindow.h \
 		../PreProject/personalinfowindow.h \
 		../PreProject/medicalcaseswd.h \
@@ -7100,7 +7508,6 @@ moc_mainwindow.cpp: ../PreProject/mainwindow.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/QApplication \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/qapplication.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qcoreapplication.h \
-		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qeventloop.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/qdesktopwidget.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtGui/qguiapplication.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtGui/qinputmethod.h \
@@ -7129,9 +7536,15 @@ moc_mainwindow.cpp: ../PreProject/mainwindow.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtGui/qtextcursor.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtGui/qtextformat.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtGui/qpen.h \
+		../PreProject/chatdialog.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtGui/QList \
+		../PreProject/statelabel.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtGui/QMouseEvent \
+		../PreProject/statewidget.h \
+		../PreProject/userdata.h \
 		moc_predefs.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/bin/moc
-	/home/yimu/Qt5.12.12/5.12.12/gcc_64/bin/moc $(DEFINES) --include /home/yimu/mywork/2024-BIT-/Client/build-PreProject-Desktop_Qt_5_12_12_GCC_64bit-Debug/moc_predefs.h -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/mkspecs/linux-g++ -I/home/yimu/mywork/2024-BIT-/Client/PreProject -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtWidgets -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtGui -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtNetwork -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtSql -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtCore -I. -I/usr/include/c++/7 -I/usr/include/x86_64-linux-gnu/c++/7 -I/usr/include/c++/7/backward -I/usr/lib/gcc/x86_64-linux-gnu/7/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include ../PreProject/mainwindow.h -o moc_mainwindow.cpp
+	/home/yimu/Qt5.12.12/5.12.12/gcc_64/bin/moc $(DEFINES) --include /home/yimu/mywork/2024-BIT-/Client/build-PreProject-Desktop_Qt_5_12_12_GCC_64bit-Debug/moc_predefs.h -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/mkspecs/linux-g++ -I/home/yimu/mywork/2024-BIT-/Client/PreProject -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtMultimedia -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtWidgets -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtGui -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtNetwork -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtSql -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtTextToSpeech -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtCore -I. -I/usr/include/c++/7 -I/usr/include/x86_64-linux-gnu/c++/7 -I/usr/include/c++/7/backward -I/usr/lib/gcc/x86_64-linux-gnu/7/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include ../PreProject/mainwindow.h -o moc_mainwindow.cpp
 
 moc_medicalcaseswd.cpp: ../PreProject/medicalcaseswd.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/QWidget \
@@ -7239,7 +7652,7 @@ moc_medicalcaseswd.cpp: ../PreProject/medicalcaseswd.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtGui/qtouchdevice.h \
 		moc_predefs.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/bin/moc
-	/home/yimu/Qt5.12.12/5.12.12/gcc_64/bin/moc $(DEFINES) --include /home/yimu/mywork/2024-BIT-/Client/build-PreProject-Desktop_Qt_5_12_12_GCC_64bit-Debug/moc_predefs.h -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/mkspecs/linux-g++ -I/home/yimu/mywork/2024-BIT-/Client/PreProject -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtWidgets -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtGui -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtNetwork -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtSql -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtCore -I. -I/usr/include/c++/7 -I/usr/include/x86_64-linux-gnu/c++/7 -I/usr/include/c++/7/backward -I/usr/lib/gcc/x86_64-linux-gnu/7/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include ../PreProject/medicalcaseswd.h -o moc_medicalcaseswd.cpp
+	/home/yimu/Qt5.12.12/5.12.12/gcc_64/bin/moc $(DEFINES) --include /home/yimu/mywork/2024-BIT-/Client/build-PreProject-Desktop_Qt_5_12_12_GCC_64bit-Debug/moc_predefs.h -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/mkspecs/linux-g++ -I/home/yimu/mywork/2024-BIT-/Client/PreProject -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtMultimedia -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtWidgets -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtGui -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtNetwork -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtSql -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtTextToSpeech -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtCore -I. -I/usr/include/c++/7 -I/usr/include/x86_64-linux-gnu/c++/7 -I/usr/include/c++/7/backward -I/usr/lib/gcc/x86_64-linux-gnu/7/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include ../PreProject/medicalcaseswd.h -o moc_medicalcaseswd.cpp
 
 moc_medicalexpensewd.cpp: ../PreProject/medicalexpensewd.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/QWidget \
@@ -7347,7 +7760,7 @@ moc_medicalexpensewd.cpp: ../PreProject/medicalexpensewd.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtGui/qtouchdevice.h \
 		moc_predefs.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/bin/moc
-	/home/yimu/Qt5.12.12/5.12.12/gcc_64/bin/moc $(DEFINES) --include /home/yimu/mywork/2024-BIT-/Client/build-PreProject-Desktop_Qt_5_12_12_GCC_64bit-Debug/moc_predefs.h -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/mkspecs/linux-g++ -I/home/yimu/mywork/2024-BIT-/Client/PreProject -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtWidgets -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtGui -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtNetwork -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtSql -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtCore -I. -I/usr/include/c++/7 -I/usr/include/x86_64-linux-gnu/c++/7 -I/usr/include/c++/7/backward -I/usr/lib/gcc/x86_64-linux-gnu/7/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include ../PreProject/medicalexpensewd.h -o moc_medicalexpensewd.cpp
+	/home/yimu/Qt5.12.12/5.12.12/gcc_64/bin/moc $(DEFINES) --include /home/yimu/mywork/2024-BIT-/Client/build-PreProject-Desktop_Qt_5_12_12_GCC_64bit-Debug/moc_predefs.h -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/mkspecs/linux-g++ -I/home/yimu/mywork/2024-BIT-/Client/PreProject -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtMultimedia -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtWidgets -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtGui -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtNetwork -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtSql -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtTextToSpeech -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtCore -I. -I/usr/include/c++/7 -I/usr/include/x86_64-linux-gnu/c++/7 -I/usr/include/c++/7/backward -I/usr/lib/gcc/x86_64-linux-gnu/7/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include ../PreProject/medicalexpensewd.h -o moc_medicalexpensewd.cpp
 
 moc_medicinesearchwindow.cpp: ../PreProject/medicinesearchwindow.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/QWidget \
@@ -7465,9 +7878,74 @@ moc_medicinesearchwindow.cpp: ../PreProject/medicinesearchwindow.h \
 		../PreProject/misearchsonwd.h \
 		../PreProject/medicalexpensewd.h \
 		../PreProject/quizwd.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtTextToSpeech/QTextToSpeech \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtTextToSpeech/qtexttospeech.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtTextToSpeech/qtexttospeech_global.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/QSharedDataPointer \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtTextToSpeech/qvoice.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtTextToSpeech/QVoice \
+		../PreProject/audio.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/QObject \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtMultimedia/QAudioDeviceInfo \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtMultimedia/qaudiodeviceinfo.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtMultimedia/qtmultimediaglobal.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtMultimedia/qtmultimedia-config.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtMultimedia/qmultimedia.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtMultimedia/qaudio.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtMultimedia/qaudioformat.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtMultimedia/QAudioInput \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtMultimedia/qaudioinput.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtMultimedia/QAudioFormat \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/QFile \
+		../PreProject/speech.h \
+		../PreProject/http.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtNetwork/QNetworkAccessManager \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtNetwork/qnetworkaccessmanager.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtNetwork/qtnetworkglobal.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtNetwork/qtnetwork-config.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtNetwork/qnetworkrequest.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/QUrl \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/QVariant \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtNetwork/QSslConfiguration \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtNetwork/qsslconfiguration.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtNetwork/qsslsocket.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtNetwork/qtcpsocket.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtNetwork/qabstractsocket.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtNetwork/qsslerror.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtNetwork/qsslcertificate.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qcryptographichash.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qdatetime.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtNetwork/qssl.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/QFlags \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtNetwork/QSslPreSharedKeyAuthenticator \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtNetwork/qsslpresharedkeyauthenticator.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/QMetaType \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtNetwork/QNetworkRequest \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtNetwork/QNetworkReply \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtNetwork/qnetworkreply.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/QIODevice \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/QEventLoop \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qeventloop.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/QMap \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/QByteArray \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/QMessageBox \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/qmessagebox.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/qdialog.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/QJsonDocument \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qjsondocument.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qjsonvalue.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/QJsonObject \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qjsonobject.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/QJsonArray \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qjsonarray.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/QJsonValue \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtNetwork/QHostInfo \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtNetwork/qhostinfo.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtNetwork/qhostaddress.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/QDebug \
 		moc_predefs.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/bin/moc
-	/home/yimu/Qt5.12.12/5.12.12/gcc_64/bin/moc $(DEFINES) --include /home/yimu/mywork/2024-BIT-/Client/build-PreProject-Desktop_Qt_5_12_12_GCC_64bit-Debug/moc_predefs.h -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/mkspecs/linux-g++ -I/home/yimu/mywork/2024-BIT-/Client/PreProject -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtWidgets -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtGui -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtNetwork -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtSql -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtCore -I. -I/usr/include/c++/7 -I/usr/include/x86_64-linux-gnu/c++/7 -I/usr/include/c++/7/backward -I/usr/lib/gcc/x86_64-linux-gnu/7/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include ../PreProject/medicinesearchwindow.h -o moc_medicinesearchwindow.cpp
+	/home/yimu/Qt5.12.12/5.12.12/gcc_64/bin/moc $(DEFINES) --include /home/yimu/mywork/2024-BIT-/Client/build-PreProject-Desktop_Qt_5_12_12_GCC_64bit-Debug/moc_predefs.h -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/mkspecs/linux-g++ -I/home/yimu/mywork/2024-BIT-/Client/PreProject -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtMultimedia -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtWidgets -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtGui -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtNetwork -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtSql -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtTextToSpeech -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtCore -I. -I/usr/include/c++/7 -I/usr/include/x86_64-linux-gnu/c++/7 -I/usr/include/c++/7/backward -I/usr/lib/gcc/x86_64-linux-gnu/7/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include ../PreProject/medicinesearchwindow.h -o moc_medicinesearchwindow.cpp
 
 moc_misearchsonwd.cpp: ../PreProject/misearchsonwd.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/QWidget \
@@ -7575,7 +8053,7 @@ moc_misearchsonwd.cpp: ../PreProject/misearchsonwd.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtGui/qtouchdevice.h \
 		moc_predefs.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/bin/moc
-	/home/yimu/Qt5.12.12/5.12.12/gcc_64/bin/moc $(DEFINES) --include /home/yimu/mywork/2024-BIT-/Client/build-PreProject-Desktop_Qt_5_12_12_GCC_64bit-Debug/moc_predefs.h -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/mkspecs/linux-g++ -I/home/yimu/mywork/2024-BIT-/Client/PreProject -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtWidgets -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtGui -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtNetwork -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtSql -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtCore -I. -I/usr/include/c++/7 -I/usr/include/x86_64-linux-gnu/c++/7 -I/usr/include/c++/7/backward -I/usr/lib/gcc/x86_64-linux-gnu/7/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include ../PreProject/misearchsonwd.h -o moc_misearchsonwd.cpp
+	/home/yimu/Qt5.12.12/5.12.12/gcc_64/bin/moc $(DEFINES) --include /home/yimu/mywork/2024-BIT-/Client/build-PreProject-Desktop_Qt_5_12_12_GCC_64bit-Debug/moc_predefs.h -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/mkspecs/linux-g++ -I/home/yimu/mywork/2024-BIT-/Client/PreProject -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtMultimedia -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtWidgets -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtGui -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtNetwork -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtSql -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtTextToSpeech -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtCore -I. -I/usr/include/c++/7 -I/usr/include/x86_64-linux-gnu/c++/7 -I/usr/include/c++/7/backward -I/usr/lib/gcc/x86_64-linux-gnu/7/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include ../PreProject/misearchsonwd.h -o moc_misearchsonwd.cpp
 
 moc_outwd.cpp: ../PreProject/outwd.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/QWidget \
@@ -7681,9 +8159,15 @@ moc_outwd.cpp: ../PreProject/outwd.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qfiledevice.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtGui/qvector2d.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtGui/qtouchdevice.h \
+		../PreProject/OutDoc.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/QString \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtGui/QPixmap \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/QLabel \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/qlabel.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/qframe.h \
 		moc_predefs.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/bin/moc
-	/home/yimu/Qt5.12.12/5.12.12/gcc_64/bin/moc $(DEFINES) --include /home/yimu/mywork/2024-BIT-/Client/build-PreProject-Desktop_Qt_5_12_12_GCC_64bit-Debug/moc_predefs.h -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/mkspecs/linux-g++ -I/home/yimu/mywork/2024-BIT-/Client/PreProject -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtWidgets -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtGui -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtNetwork -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtSql -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtCore -I. -I/usr/include/c++/7 -I/usr/include/x86_64-linux-gnu/c++/7 -I/usr/include/c++/7/backward -I/usr/lib/gcc/x86_64-linux-gnu/7/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include ../PreProject/outwd.h -o moc_outwd.cpp
+	/home/yimu/Qt5.12.12/5.12.12/gcc_64/bin/moc $(DEFINES) --include /home/yimu/mywork/2024-BIT-/Client/build-PreProject-Desktop_Qt_5_12_12_GCC_64bit-Debug/moc_predefs.h -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/mkspecs/linux-g++ -I/home/yimu/mywork/2024-BIT-/Client/PreProject -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtMultimedia -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtWidgets -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtGui -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtNetwork -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtSql -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtTextToSpeech -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtCore -I. -I/usr/include/c++/7 -I/usr/include/x86_64-linux-gnu/c++/7 -I/usr/include/c++/7/backward -I/usr/lib/gcc/x86_64-linux-gnu/7/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include ../PreProject/outwd.h -o moc_outwd.cpp
 
 moc_owndeal.cpp: ../PreProject/owndeal.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/QWidget \
@@ -7816,7 +8300,7 @@ moc_owndeal.cpp: ../PreProject/owndeal.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtGui/QCloseEvent \
 		moc_predefs.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/bin/moc
-	/home/yimu/Qt5.12.12/5.12.12/gcc_64/bin/moc $(DEFINES) --include /home/yimu/mywork/2024-BIT-/Client/build-PreProject-Desktop_Qt_5_12_12_GCC_64bit-Debug/moc_predefs.h -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/mkspecs/linux-g++ -I/home/yimu/mywork/2024-BIT-/Client/PreProject -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtWidgets -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtGui -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtNetwork -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtSql -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtCore -I. -I/usr/include/c++/7 -I/usr/include/x86_64-linux-gnu/c++/7 -I/usr/include/c++/7/backward -I/usr/lib/gcc/x86_64-linux-gnu/7/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include ../PreProject/owndeal.h -o moc_owndeal.cpp
+	/home/yimu/Qt5.12.12/5.12.12/gcc_64/bin/moc $(DEFINES) --include /home/yimu/mywork/2024-BIT-/Client/build-PreProject-Desktop_Qt_5_12_12_GCC_64bit-Debug/moc_predefs.h -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/mkspecs/linux-g++ -I/home/yimu/mywork/2024-BIT-/Client/PreProject -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtMultimedia -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtWidgets -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtGui -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtNetwork -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtSql -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtTextToSpeech -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtCore -I. -I/usr/include/c++/7 -I/usr/include/x86_64-linux-gnu/c++/7 -I/usr/include/c++/7/backward -I/usr/lib/gcc/x86_64-linux-gnu/7/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include ../PreProject/owndeal.h -o moc_owndeal.cpp
 
 moc_ownillness.cpp: ../PreProject/ownillness.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/QWidget \
@@ -7949,7 +8433,7 @@ moc_ownillness.cpp: ../PreProject/ownillness.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtGui/QCloseEvent \
 		moc_predefs.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/bin/moc
-	/home/yimu/Qt5.12.12/5.12.12/gcc_64/bin/moc $(DEFINES) --include /home/yimu/mywork/2024-BIT-/Client/build-PreProject-Desktop_Qt_5_12_12_GCC_64bit-Debug/moc_predefs.h -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/mkspecs/linux-g++ -I/home/yimu/mywork/2024-BIT-/Client/PreProject -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtWidgets -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtGui -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtNetwork -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtSql -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtCore -I. -I/usr/include/c++/7 -I/usr/include/x86_64-linux-gnu/c++/7 -I/usr/include/c++/7/backward -I/usr/lib/gcc/x86_64-linux-gnu/7/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include ../PreProject/ownillness.h -o moc_ownillness.cpp
+	/home/yimu/Qt5.12.12/5.12.12/gcc_64/bin/moc $(DEFINES) --include /home/yimu/mywork/2024-BIT-/Client/build-PreProject-Desktop_Qt_5_12_12_GCC_64bit-Debug/moc_predefs.h -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/mkspecs/linux-g++ -I/home/yimu/mywork/2024-BIT-/Client/PreProject -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtMultimedia -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtWidgets -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtGui -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtNetwork -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtSql -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtTextToSpeech -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtCore -I. -I/usr/include/c++/7 -I/usr/include/x86_64-linux-gnu/c++/7 -I/usr/include/c++/7/backward -I/usr/lib/gcc/x86_64-linux-gnu/7/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include ../PreProject/ownillness.h -o moc_ownillness.cpp
 
 moc_ownmessage.cpp: ../PreProject/ownmessage.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/QWidget \
@@ -8079,7 +8563,7 @@ moc_ownmessage.cpp: ../PreProject/ownmessage.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/QLayout \
 		moc_predefs.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/bin/moc
-	/home/yimu/Qt5.12.12/5.12.12/gcc_64/bin/moc $(DEFINES) --include /home/yimu/mywork/2024-BIT-/Client/build-PreProject-Desktop_Qt_5_12_12_GCC_64bit-Debug/moc_predefs.h -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/mkspecs/linux-g++ -I/home/yimu/mywork/2024-BIT-/Client/PreProject -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtWidgets -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtGui -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtNetwork -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtSql -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtCore -I. -I/usr/include/c++/7 -I/usr/include/x86_64-linux-gnu/c++/7 -I/usr/include/c++/7/backward -I/usr/lib/gcc/x86_64-linux-gnu/7/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include ../PreProject/ownmessage.h -o moc_ownmessage.cpp
+	/home/yimu/Qt5.12.12/5.12.12/gcc_64/bin/moc $(DEFINES) --include /home/yimu/mywork/2024-BIT-/Client/build-PreProject-Desktop_Qt_5_12_12_GCC_64bit-Debug/moc_predefs.h -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/mkspecs/linux-g++ -I/home/yimu/mywork/2024-BIT-/Client/PreProject -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtMultimedia -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtWidgets -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtGui -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtNetwork -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtSql -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtTextToSpeech -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtCore -I. -I/usr/include/c++/7 -I/usr/include/x86_64-linux-gnu/c++/7 -I/usr/include/c++/7/backward -I/usr/lib/gcc/x86_64-linux-gnu/7/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include ../PreProject/ownmessage.h -o moc_ownmessage.cpp
 
 moc_ownwindow.cpp: ../PreProject/ownwindow.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/QWidget \
@@ -8187,7 +8671,7 @@ moc_ownwindow.cpp: ../PreProject/ownwindow.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtGui/qtouchdevice.h \
 		moc_predefs.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/bin/moc
-	/home/yimu/Qt5.12.12/5.12.12/gcc_64/bin/moc $(DEFINES) --include /home/yimu/mywork/2024-BIT-/Client/build-PreProject-Desktop_Qt_5_12_12_GCC_64bit-Debug/moc_predefs.h -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/mkspecs/linux-g++ -I/home/yimu/mywork/2024-BIT-/Client/PreProject -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtWidgets -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtGui -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtNetwork -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtSql -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtCore -I. -I/usr/include/c++/7 -I/usr/include/x86_64-linux-gnu/c++/7 -I/usr/include/c++/7/backward -I/usr/lib/gcc/x86_64-linux-gnu/7/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include ../PreProject/ownwindow.h -o moc_ownwindow.cpp
+	/home/yimu/Qt5.12.12/5.12.12/gcc_64/bin/moc $(DEFINES) --include /home/yimu/mywork/2024-BIT-/Client/build-PreProject-Desktop_Qt_5_12_12_GCC_64bit-Debug/moc_predefs.h -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/mkspecs/linux-g++ -I/home/yimu/mywork/2024-BIT-/Client/PreProject -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtMultimedia -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtWidgets -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtGui -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtNetwork -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtSql -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtTextToSpeech -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtCore -I. -I/usr/include/c++/7 -I/usr/include/x86_64-linux-gnu/c++/7 -I/usr/include/c++/7/backward -I/usr/lib/gcc/x86_64-linux-gnu/7/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include ../PreProject/ownwindow.h -o moc_ownwindow.cpp
 
 moc_personalinfowindow.cpp: ../PreProject/personalinfowindow.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/QWidget \
@@ -8295,7 +8779,7 @@ moc_personalinfowindow.cpp: ../PreProject/personalinfowindow.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtGui/qtouchdevice.h \
 		moc_predefs.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/bin/moc
-	/home/yimu/Qt5.12.12/5.12.12/gcc_64/bin/moc $(DEFINES) --include /home/yimu/mywork/2024-BIT-/Client/build-PreProject-Desktop_Qt_5_12_12_GCC_64bit-Debug/moc_predefs.h -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/mkspecs/linux-g++ -I/home/yimu/mywork/2024-BIT-/Client/PreProject -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtWidgets -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtGui -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtNetwork -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtSql -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtCore -I. -I/usr/include/c++/7 -I/usr/include/x86_64-linux-gnu/c++/7 -I/usr/include/c++/7/backward -I/usr/lib/gcc/x86_64-linux-gnu/7/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include ../PreProject/personalinfowindow.h -o moc_personalinfowindow.cpp
+	/home/yimu/Qt5.12.12/5.12.12/gcc_64/bin/moc $(DEFINES) --include /home/yimu/mywork/2024-BIT-/Client/build-PreProject-Desktop_Qt_5_12_12_GCC_64bit-Debug/moc_predefs.h -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/mkspecs/linux-g++ -I/home/yimu/mywork/2024-BIT-/Client/PreProject -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtMultimedia -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtWidgets -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtGui -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtNetwork -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtSql -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtTextToSpeech -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtCore -I. -I/usr/include/c++/7 -I/usr/include/x86_64-linux-gnu/c++/7 -I/usr/include/c++/7/backward -I/usr/lib/gcc/x86_64-linux-gnu/7/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include ../PreProject/personalinfowindow.h -o moc_personalinfowindow.cpp
 
 moc_personalwindow.cpp: ../PreProject/personalwindow.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/QWidget \
@@ -8405,7 +8889,7 @@ moc_personalwindow.cpp: ../PreProject/personalwindow.h \
 		../PreProject/medicalcaseswd.h \
 		moc_predefs.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/bin/moc
-	/home/yimu/Qt5.12.12/5.12.12/gcc_64/bin/moc $(DEFINES) --include /home/yimu/mywork/2024-BIT-/Client/build-PreProject-Desktop_Qt_5_12_12_GCC_64bit-Debug/moc_predefs.h -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/mkspecs/linux-g++ -I/home/yimu/mywork/2024-BIT-/Client/PreProject -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtWidgets -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtGui -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtNetwork -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtSql -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtCore -I. -I/usr/include/c++/7 -I/usr/include/x86_64-linux-gnu/c++/7 -I/usr/include/c++/7/backward -I/usr/lib/gcc/x86_64-linux-gnu/7/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include ../PreProject/personalwindow.h -o moc_personalwindow.cpp
+	/home/yimu/Qt5.12.12/5.12.12/gcc_64/bin/moc $(DEFINES) --include /home/yimu/mywork/2024-BIT-/Client/build-PreProject-Desktop_Qt_5_12_12_GCC_64bit-Debug/moc_predefs.h -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/mkspecs/linux-g++ -I/home/yimu/mywork/2024-BIT-/Client/PreProject -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtMultimedia -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtWidgets -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtGui -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtNetwork -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtSql -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtTextToSpeech -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtCore -I. -I/usr/include/c++/7 -I/usr/include/x86_64-linux-gnu/c++/7 -I/usr/include/c++/7/backward -I/usr/lib/gcc/x86_64-linux-gnu/7/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include ../PreProject/personalwindow.h -o moc_personalwindow.cpp
 
 moc_pmainwindow.cpp: ../PreProject/pmainwindow.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/QMainWindow \
@@ -8541,6 +9025,67 @@ moc_pmainwindow.cpp: ../PreProject/pmainwindow.h \
 		../PreProject/misearchsonwd.h \
 		../PreProject/medicalexpensewd.h \
 		../PreProject/quizwd.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtTextToSpeech/QTextToSpeech \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtTextToSpeech/qtexttospeech.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtTextToSpeech/qtexttospeech_global.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/QSharedDataPointer \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtTextToSpeech/qvoice.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtTextToSpeech/QVoice \
+		../PreProject/audio.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/QObject \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtMultimedia/QAudioDeviceInfo \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtMultimedia/qaudiodeviceinfo.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtMultimedia/qtmultimediaglobal.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtMultimedia/qtmultimedia-config.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtMultimedia/qmultimedia.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtMultimedia/qaudio.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtMultimedia/qaudioformat.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtMultimedia/QAudioInput \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtMultimedia/qaudioinput.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtMultimedia/QAudioFormat \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/QFile \
+		../PreProject/speech.h \
+		../PreProject/http.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtNetwork/QNetworkAccessManager \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtNetwork/qnetworkaccessmanager.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtNetwork/qtnetworkglobal.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtNetwork/qtnetwork-config.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtNetwork/qnetworkrequest.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/QUrl \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/QVariant \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtNetwork/QSslConfiguration \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtNetwork/qsslconfiguration.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtNetwork/qsslsocket.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtNetwork/qtcpsocket.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtNetwork/qabstractsocket.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtNetwork/qsslerror.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtNetwork/qsslcertificate.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qcryptographichash.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qdatetime.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtNetwork/qssl.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/QFlags \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtNetwork/QSslPreSharedKeyAuthenticator \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtNetwork/qsslpresharedkeyauthenticator.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/QMetaType \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtNetwork/QNetworkRequest \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtNetwork/QNetworkReply \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtNetwork/qnetworkreply.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/QIODevice \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/QEventLoop \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qeventloop.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/QMap \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/QByteArray \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/QJsonDocument \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qjsondocument.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qjsonvalue.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/QJsonObject \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qjsonobject.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/QJsonArray \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qjsonarray.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/QJsonValue \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtNetwork/QHostInfo \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtNetwork/qhostinfo.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtNetwork/qhostaddress.h \
 		../PreProject/bookwindow.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/QListWidgetItem \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/qlistwidget.h \
@@ -8561,10 +9106,15 @@ moc_pmainwindow.cpp: ../PreProject/pmainwindow.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/qrubberband.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/QListWidget \
 		../PreProject/childwd.h \
+		../PreProject/ChildDoc.h \
 		../PreProject/womanwd.h \
+		../PreProject/WomanDoc.h \
 		../PreProject/outwd.h \
+		../PreProject/OutDoc.h \
 		../PreProject/insidewd.h \
+		../PreProject/InsideDoc.h \
 		../PreProject/skinwd.h \
+		../PreProject/SkinDoc.h \
 		../PreProject/personalwindow.h \
 		../PreProject/personalinfowindow.h \
 		../PreProject/medicalcaseswd.h \
@@ -8573,7 +9123,6 @@ moc_pmainwindow.cpp: ../PreProject/pmainwindow.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/QApplication \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/qapplication.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qcoreapplication.h \
-		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qeventloop.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/qdesktopwidget.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtGui/qguiapplication.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtGui/qinputmethod.h \
@@ -8602,9 +9151,24 @@ moc_pmainwindow.cpp: ../PreProject/pmainwindow.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtGui/qtextcursor.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtGui/qtextformat.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtGui/qpen.h \
+		../PreProject/chatdialog.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/QDialog \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtGui/QList \
+		../PreProject/statelabel.h \
+		../PreProject/global.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/QStyle \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/QRegularExpression \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/QDir \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qdir.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qfileinfo.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/QSettings \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qsettings.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtGui/QMouseEvent \
+		../PreProject/statewidget.h \
+		../PreProject/userdata.h \
 		moc_predefs.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/bin/moc
-	/home/yimu/Qt5.12.12/5.12.12/gcc_64/bin/moc $(DEFINES) --include /home/yimu/mywork/2024-BIT-/Client/build-PreProject-Desktop_Qt_5_12_12_GCC_64bit-Debug/moc_predefs.h -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/mkspecs/linux-g++ -I/home/yimu/mywork/2024-BIT-/Client/PreProject -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtWidgets -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtGui -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtNetwork -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtSql -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtCore -I. -I/usr/include/c++/7 -I/usr/include/x86_64-linux-gnu/c++/7 -I/usr/include/c++/7/backward -I/usr/lib/gcc/x86_64-linux-gnu/7/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include ../PreProject/pmainwindow.h -o moc_pmainwindow.cpp
+	/home/yimu/Qt5.12.12/5.12.12/gcc_64/bin/moc $(DEFINES) --include /home/yimu/mywork/2024-BIT-/Client/build-PreProject-Desktop_Qt_5_12_12_GCC_64bit-Debug/moc_predefs.h -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/mkspecs/linux-g++ -I/home/yimu/mywork/2024-BIT-/Client/PreProject -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtMultimedia -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtWidgets -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtGui -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtNetwork -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtSql -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtTextToSpeech -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtCore -I. -I/usr/include/c++/7 -I/usr/include/x86_64-linux-gnu/c++/7 -I/usr/include/c++/7/backward -I/usr/lib/gcc/x86_64-linux-gnu/7/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include ../PreProject/pmainwindow.h -o moc_pmainwindow.cpp
 
 moc_pmainwindowhome.cpp: ../PreProject/pmainwindowhome.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/QWidget \
@@ -8712,7 +9276,7 @@ moc_pmainwindowhome.cpp: ../PreProject/pmainwindowhome.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtGui/qtouchdevice.h \
 		moc_predefs.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/bin/moc
-	/home/yimu/Qt5.12.12/5.12.12/gcc_64/bin/moc $(DEFINES) --include /home/yimu/mywork/2024-BIT-/Client/build-PreProject-Desktop_Qt_5_12_12_GCC_64bit-Debug/moc_predefs.h -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/mkspecs/linux-g++ -I/home/yimu/mywork/2024-BIT-/Client/PreProject -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtWidgets -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtGui -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtNetwork -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtSql -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtCore -I. -I/usr/include/c++/7 -I/usr/include/x86_64-linux-gnu/c++/7 -I/usr/include/c++/7/backward -I/usr/lib/gcc/x86_64-linux-gnu/7/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include ../PreProject/pmainwindowhome.h -o moc_pmainwindowhome.cpp
+	/home/yimu/Qt5.12.12/5.12.12/gcc_64/bin/moc $(DEFINES) --include /home/yimu/mywork/2024-BIT-/Client/build-PreProject-Desktop_Qt_5_12_12_GCC_64bit-Debug/moc_predefs.h -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/mkspecs/linux-g++ -I/home/yimu/mywork/2024-BIT-/Client/PreProject -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtMultimedia -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtWidgets -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtGui -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtNetwork -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtSql -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtTextToSpeech -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtCore -I. -I/usr/include/c++/7 -I/usr/include/x86_64-linux-gnu/c++/7 -I/usr/include/c++/7/backward -I/usr/lib/gcc/x86_64-linux-gnu/7/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include ../PreProject/pmainwindowhome.h -o moc_pmainwindowhome.cpp
 
 moc_quizwd.cpp: ../PreProject/quizwd.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/QWidget \
@@ -8820,7 +9384,7 @@ moc_quizwd.cpp: ../PreProject/quizwd.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtGui/qtouchdevice.h \
 		moc_predefs.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/bin/moc
-	/home/yimu/Qt5.12.12/5.12.12/gcc_64/bin/moc $(DEFINES) --include /home/yimu/mywork/2024-BIT-/Client/build-PreProject-Desktop_Qt_5_12_12_GCC_64bit-Debug/moc_predefs.h -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/mkspecs/linux-g++ -I/home/yimu/mywork/2024-BIT-/Client/PreProject -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtWidgets -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtGui -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtNetwork -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtSql -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtCore -I. -I/usr/include/c++/7 -I/usr/include/x86_64-linux-gnu/c++/7 -I/usr/include/c++/7/backward -I/usr/lib/gcc/x86_64-linux-gnu/7/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include ../PreProject/quizwd.h -o moc_quizwd.cpp
+	/home/yimu/Qt5.12.12/5.12.12/gcc_64/bin/moc $(DEFINES) --include /home/yimu/mywork/2024-BIT-/Client/build-PreProject-Desktop_Qt_5_12_12_GCC_64bit-Debug/moc_predefs.h -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/mkspecs/linux-g++ -I/home/yimu/mywork/2024-BIT-/Client/PreProject -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtMultimedia -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtWidgets -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtGui -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtNetwork -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtSql -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtTextToSpeech -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtCore -I. -I/usr/include/c++/7 -I/usr/include/x86_64-linux-gnu/c++/7 -I/usr/include/c++/7/backward -I/usr/lib/gcc/x86_64-linux-gnu/7/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include ../PreProject/quizwd.h -o moc_quizwd.cpp
 
 moc_registerdialog.cpp: ../PreProject/registerdialog.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/QDialog \
@@ -8979,7 +9543,7 @@ moc_registerdialog.cpp: ../PreProject/registerdialog.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qbasictimer.h \
 		moc_predefs.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/bin/moc
-	/home/yimu/Qt5.12.12/5.12.12/gcc_64/bin/moc $(DEFINES) --include /home/yimu/mywork/2024-BIT-/Client/build-PreProject-Desktop_Qt_5_12_12_GCC_64bit-Debug/moc_predefs.h -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/mkspecs/linux-g++ -I/home/yimu/mywork/2024-BIT-/Client/PreProject -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtWidgets -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtGui -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtNetwork -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtSql -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtCore -I. -I/usr/include/c++/7 -I/usr/include/x86_64-linux-gnu/c++/7 -I/usr/include/c++/7/backward -I/usr/lib/gcc/x86_64-linux-gnu/7/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include ../PreProject/registerdialog.h -o moc_registerdialog.cpp
+	/home/yimu/Qt5.12.12/5.12.12/gcc_64/bin/moc $(DEFINES) --include /home/yimu/mywork/2024-BIT-/Client/build-PreProject-Desktop_Qt_5_12_12_GCC_64bit-Debug/moc_predefs.h -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/mkspecs/linux-g++ -I/home/yimu/mywork/2024-BIT-/Client/PreProject -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtMultimedia -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtWidgets -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtGui -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtNetwork -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtSql -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtTextToSpeech -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtCore -I. -I/usr/include/c++/7 -I/usr/include/x86_64-linux-gnu/c++/7 -I/usr/include/c++/7/backward -I/usr/lib/gcc/x86_64-linux-gnu/7/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include ../PreProject/registerdialog.h -o moc_registerdialog.cpp
 
 moc_resetdialog.cpp: ../PreProject/resetdialog.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/QDialog \
@@ -9133,7 +9697,7 @@ moc_resetdialog.cpp: ../PreProject/resetdialog.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qsettings.h \
 		moc_predefs.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/bin/moc
-	/home/yimu/Qt5.12.12/5.12.12/gcc_64/bin/moc $(DEFINES) --include /home/yimu/mywork/2024-BIT-/Client/build-PreProject-Desktop_Qt_5_12_12_GCC_64bit-Debug/moc_predefs.h -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/mkspecs/linux-g++ -I/home/yimu/mywork/2024-BIT-/Client/PreProject -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtWidgets -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtGui -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtNetwork -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtSql -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtCore -I. -I/usr/include/c++/7 -I/usr/include/x86_64-linux-gnu/c++/7 -I/usr/include/c++/7/backward -I/usr/lib/gcc/x86_64-linux-gnu/7/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include ../PreProject/resetdialog.h -o moc_resetdialog.cpp
+	/home/yimu/Qt5.12.12/5.12.12/gcc_64/bin/moc $(DEFINES) --include /home/yimu/mywork/2024-BIT-/Client/build-PreProject-Desktop_Qt_5_12_12_GCC_64bit-Debug/moc_predefs.h -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/mkspecs/linux-g++ -I/home/yimu/mywork/2024-BIT-/Client/PreProject -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtMultimedia -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtWidgets -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtGui -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtNetwork -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtSql -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtTextToSpeech -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtCore -I. -I/usr/include/c++/7 -I/usr/include/x86_64-linux-gnu/c++/7 -I/usr/include/c++/7/backward -I/usr/lib/gcc/x86_64-linux-gnu/7/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include ../PreProject/resetdialog.h -o moc_resetdialog.cpp
 
 moc_searchlist.cpp: ../PreProject/searchlist.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/QListWidget \
@@ -9275,7 +9839,7 @@ moc_searchlist.cpp: ../PreProject/searchlist.h \
 		../PreProject/loadingdlg.h \
 		moc_predefs.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/bin/moc
-	/home/yimu/Qt5.12.12/5.12.12/gcc_64/bin/moc $(DEFINES) --include /home/yimu/mywork/2024-BIT-/Client/build-PreProject-Desktop_Qt_5_12_12_GCC_64bit-Debug/moc_predefs.h -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/mkspecs/linux-g++ -I/home/yimu/mywork/2024-BIT-/Client/PreProject -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtWidgets -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtGui -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtNetwork -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtSql -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtCore -I. -I/usr/include/c++/7 -I/usr/include/x86_64-linux-gnu/c++/7 -I/usr/include/c++/7/backward -I/usr/lib/gcc/x86_64-linux-gnu/7/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include ../PreProject/searchlist.h -o moc_searchlist.cpp
+	/home/yimu/Qt5.12.12/5.12.12/gcc_64/bin/moc $(DEFINES) --include /home/yimu/mywork/2024-BIT-/Client/build-PreProject-Desktop_Qt_5_12_12_GCC_64bit-Debug/moc_predefs.h -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/mkspecs/linux-g++ -I/home/yimu/mywork/2024-BIT-/Client/PreProject -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtMultimedia -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtWidgets -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtGui -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtNetwork -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtSql -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtTextToSpeech -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtCore -I. -I/usr/include/c++/7 -I/usr/include/x86_64-linux-gnu/c++/7 -I/usr/include/c++/7/backward -I/usr/lib/gcc/x86_64-linux-gnu/7/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include ../PreProject/searchlist.h -o moc_searchlist.cpp
 
 moc_skinwd.cpp: ../PreProject/skinwd.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/QWidget \
@@ -9381,9 +9945,172 @@ moc_skinwd.cpp: ../PreProject/skinwd.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qfiledevice.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtGui/qvector2d.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtGui/qtouchdevice.h \
+		../PreProject/SkinDoc.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/QString \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtGui/QPixmap \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/QLabel \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/qlabel.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/qframe.h \
 		moc_predefs.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/bin/moc
-	/home/yimu/Qt5.12.12/5.12.12/gcc_64/bin/moc $(DEFINES) --include /home/yimu/mywork/2024-BIT-/Client/build-PreProject-Desktop_Qt_5_12_12_GCC_64bit-Debug/moc_predefs.h -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/mkspecs/linux-g++ -I/home/yimu/mywork/2024-BIT-/Client/PreProject -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtWidgets -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtGui -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtNetwork -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtSql -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtCore -I. -I/usr/include/c++/7 -I/usr/include/x86_64-linux-gnu/c++/7 -I/usr/include/c++/7/backward -I/usr/lib/gcc/x86_64-linux-gnu/7/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include ../PreProject/skinwd.h -o moc_skinwd.cpp
+	/home/yimu/Qt5.12.12/5.12.12/gcc_64/bin/moc $(DEFINES) --include /home/yimu/mywork/2024-BIT-/Client/build-PreProject-Desktop_Qt_5_12_12_GCC_64bit-Debug/moc_predefs.h -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/mkspecs/linux-g++ -I/home/yimu/mywork/2024-BIT-/Client/PreProject -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtMultimedia -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtWidgets -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtGui -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtNetwork -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtSql -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtTextToSpeech -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtCore -I. -I/usr/include/c++/7 -I/usr/include/x86_64-linux-gnu/c++/7 -I/usr/include/c++/7/backward -I/usr/lib/gcc/x86_64-linux-gnu/7/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include ../PreProject/skinwd.h -o moc_skinwd.cpp
+
+moc_speech.cpp: ../PreProject/speech.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/QObject \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qobject.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qobjectdefs.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qnamespace.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qglobal.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qconfig-bootstrapped.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qconfig.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qtcore-config.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qsystemdetection.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qprocessordetection.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qcompilerdetection.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qtypeinfo.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qsysinfo.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qlogging.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qflags.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qatomic.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qbasicatomic.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qatomic_bootstrap.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qgenericatomic.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qatomic_cxx11.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qatomic_msvc.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qglobalstatic.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qmutex.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qnumeric.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qversiontagging.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qobjectdefs_impl.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qstring.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qchar.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qbytearray.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qrefcount.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qarraydata.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qstringliteral.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qstringalgorithms.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qstringview.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qstringbuilder.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qlist.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qalgorithms.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qiterator.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qhashfunctions.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qpair.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qbytearraylist.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qstringlist.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qregexp.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qstringmatcher.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qcoreevent.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qscopedpointer.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qmetatype.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qvarlengtharray.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qcontainerfwd.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qobject_impl.h \
+		../PreProject/http.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtNetwork/QNetworkAccessManager \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtNetwork/qnetworkaccessmanager.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtNetwork/qtnetworkglobal.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtNetwork/qtnetwork-config.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtNetwork/qnetworkrequest.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/QSharedDataPointer \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qshareddata.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qhash.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/QString \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/QUrl \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qurl.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qurlquery.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/QVariant \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qvariant.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qmap.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qdebug.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qtextstream.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qiodevice.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qlocale.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qvector.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qpoint.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qset.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qcontiguouscache.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qsharedpointer.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qsharedpointer_impl.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/QVector \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtNetwork/QSslConfiguration \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtNetwork/qsslconfiguration.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtNetwork/qsslsocket.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtNetwork/qtcpsocket.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtNetwork/qabstractsocket.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtNetwork/qsslerror.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtNetwork/qsslcertificate.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qcryptographichash.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qdatetime.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtNetwork/qssl.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/QFlags \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtNetwork/QSslPreSharedKeyAuthenticator \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtNetwork/qsslpresharedkeyauthenticator.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/QMetaType \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtNetwork/QNetworkRequest \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtNetwork/QNetworkReply \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtNetwork/qnetworkreply.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/QIODevice \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/QEventLoop \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qeventloop.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/QFile \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qfile.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qfiledevice.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/QMap \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/QByteArray \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/QMessageBox \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/qmessagebox.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/qtwidgetsglobal.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtGui/qtguiglobal.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtGui/qtgui-config.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/qtwidgets-config.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/qdialog.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/qwidget.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtGui/qwindowdefs.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtGui/qwindowdefs_win.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qmargins.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtGui/qpaintdevice.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qrect.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qsize.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtGui/qpalette.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtGui/qcolor.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtGui/qrgb.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtGui/qrgba64.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtGui/qbrush.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtGui/qmatrix.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtGui/qpolygon.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtGui/qregion.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qdatastream.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qline.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtGui/qtransform.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtGui/qpainterpath.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtGui/qimage.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtGui/qpixelformat.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtGui/qpixmap.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtGui/qfont.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtGui/qfontmetrics.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtGui/qfontinfo.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/qsizepolicy.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtGui/qcursor.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtGui/qkeysequence.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtGui/qevent.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtGui/qvector2d.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtGui/qtouchdevice.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/QJsonDocument \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qjsondocument.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qjsonvalue.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/QJsonObject \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qjsonobject.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/QJsonArray \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qjsonarray.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/QJsonValue \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtNetwork/QHostInfo \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtNetwork/qhostinfo.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtNetwork/qhostaddress.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/QDebug \
+		moc_predefs.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/bin/moc
+	/home/yimu/Qt5.12.12/5.12.12/gcc_64/bin/moc $(DEFINES) --include /home/yimu/mywork/2024-BIT-/Client/build-PreProject-Desktop_Qt_5_12_12_GCC_64bit-Debug/moc_predefs.h -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/mkspecs/linux-g++ -I/home/yimu/mywork/2024-BIT-/Client/PreProject -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtMultimedia -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtWidgets -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtGui -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtNetwork -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtSql -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtTextToSpeech -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtCore -I. -I/usr/include/c++/7 -I/usr/include/x86_64-linux-gnu/c++/7 -I/usr/include/c++/7/backward -I/usr/lib/gcc/x86_64-linux-gnu/7/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include ../PreProject/speech.h -o moc_speech.cpp
 
 moc_statelabel.cpp: ../PreProject/statelabel.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/QLabel \
@@ -9539,7 +10266,7 @@ moc_statelabel.cpp: ../PreProject/statelabel.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtGui/QMouseEvent \
 		moc_predefs.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/bin/moc
-	/home/yimu/Qt5.12.12/5.12.12/gcc_64/bin/moc $(DEFINES) --include /home/yimu/mywork/2024-BIT-/Client/build-PreProject-Desktop_Qt_5_12_12_GCC_64bit-Debug/moc_predefs.h -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/mkspecs/linux-g++ -I/home/yimu/mywork/2024-BIT-/Client/PreProject -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtWidgets -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtGui -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtNetwork -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtSql -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtCore -I. -I/usr/include/c++/7 -I/usr/include/x86_64-linux-gnu/c++/7 -I/usr/include/c++/7/backward -I/usr/lib/gcc/x86_64-linux-gnu/7/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include ../PreProject/statelabel.h -o moc_statelabel.cpp
+	/home/yimu/Qt5.12.12/5.12.12/gcc_64/bin/moc $(DEFINES) --include /home/yimu/mywork/2024-BIT-/Client/build-PreProject-Desktop_Qt_5_12_12_GCC_64bit-Debug/moc_predefs.h -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/mkspecs/linux-g++ -I/home/yimu/mywork/2024-BIT-/Client/PreProject -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtMultimedia -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtWidgets -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtGui -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtNetwork -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtSql -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtTextToSpeech -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtCore -I. -I/usr/include/c++/7 -I/usr/include/x86_64-linux-gnu/c++/7 -I/usr/include/c++/7/backward -I/usr/lib/gcc/x86_64-linux-gnu/7/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include ../PreProject/statelabel.h -o moc_statelabel.cpp
 
 moc_statewidget.cpp: ../PreProject/statewidget.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/QWidget \
@@ -9694,7 +10421,7 @@ moc_statewidget.cpp: ../PreProject/statewidget.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/qframe.h \
 		moc_predefs.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/bin/moc
-	/home/yimu/Qt5.12.12/5.12.12/gcc_64/bin/moc $(DEFINES) --include /home/yimu/mywork/2024-BIT-/Client/build-PreProject-Desktop_Qt_5_12_12_GCC_64bit-Debug/moc_predefs.h -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/mkspecs/linux-g++ -I/home/yimu/mywork/2024-BIT-/Client/PreProject -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtWidgets -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtGui -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtNetwork -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtSql -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtCore -I. -I/usr/include/c++/7 -I/usr/include/x86_64-linux-gnu/c++/7 -I/usr/include/c++/7/backward -I/usr/lib/gcc/x86_64-linux-gnu/7/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include ../PreProject/statewidget.h -o moc_statewidget.cpp
+	/home/yimu/Qt5.12.12/5.12.12/gcc_64/bin/moc $(DEFINES) --include /home/yimu/mywork/2024-BIT-/Client/build-PreProject-Desktop_Qt_5_12_12_GCC_64bit-Debug/moc_predefs.h -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/mkspecs/linux-g++ -I/home/yimu/mywork/2024-BIT-/Client/PreProject -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtMultimedia -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtWidgets -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtGui -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtNetwork -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtSql -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtTextToSpeech -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtCore -I. -I/usr/include/c++/7 -I/usr/include/x86_64-linux-gnu/c++/7 -I/usr/include/c++/7/backward -I/usr/lib/gcc/x86_64-linux-gnu/7/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include ../PreProject/statewidget.h -o moc_statewidget.cpp
 
 moc_tcpmgr.cpp: ../PreProject/tcpmgr.h \
 		../PreProject/userdata.h \
@@ -9851,7 +10578,7 @@ moc_tcpmgr.cpp: ../PreProject/tcpmgr.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qsettings.h \
 		moc_predefs.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/bin/moc
-	/home/yimu/Qt5.12.12/5.12.12/gcc_64/bin/moc $(DEFINES) --include /home/yimu/mywork/2024-BIT-/Client/build-PreProject-Desktop_Qt_5_12_12_GCC_64bit-Debug/moc_predefs.h -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/mkspecs/linux-g++ -I/home/yimu/mywork/2024-BIT-/Client/PreProject -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtWidgets -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtGui -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtNetwork -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtSql -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtCore -I. -I/usr/include/c++/7 -I/usr/include/x86_64-linux-gnu/c++/7 -I/usr/include/c++/7/backward -I/usr/lib/gcc/x86_64-linux-gnu/7/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include ../PreProject/tcpmgr.h -o moc_tcpmgr.cpp
+	/home/yimu/Qt5.12.12/5.12.12/gcc_64/bin/moc $(DEFINES) --include /home/yimu/mywork/2024-BIT-/Client/build-PreProject-Desktop_Qt_5_12_12_GCC_64bit-Debug/moc_predefs.h -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/mkspecs/linux-g++ -I/home/yimu/mywork/2024-BIT-/Client/PreProject -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtMultimedia -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtWidgets -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtGui -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtNetwork -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtSql -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtTextToSpeech -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtCore -I. -I/usr/include/c++/7 -I/usr/include/x86_64-linux-gnu/c++/7 -I/usr/include/c++/7/backward -I/usr/lib/gcc/x86_64-linux-gnu/7/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include ../PreProject/tcpmgr.h -o moc_tcpmgr.cpp
 
 moc_timetablewd.cpp: ../PreProject/timetablewd.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/QWidget \
@@ -9985,7 +10712,7 @@ moc_timetablewd.cpp: ../PreProject/timetablewd.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/qabstractbutton.h \
 		moc_predefs.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/bin/moc
-	/home/yimu/Qt5.12.12/5.12.12/gcc_64/bin/moc $(DEFINES) --include /home/yimu/mywork/2024-BIT-/Client/build-PreProject-Desktop_Qt_5_12_12_GCC_64bit-Debug/moc_predefs.h -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/mkspecs/linux-g++ -I/home/yimu/mywork/2024-BIT-/Client/PreProject -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtWidgets -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtGui -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtNetwork -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtSql -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtCore -I. -I/usr/include/c++/7 -I/usr/include/x86_64-linux-gnu/c++/7 -I/usr/include/c++/7/backward -I/usr/lib/gcc/x86_64-linux-gnu/7/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include ../PreProject/timetablewd.h -o moc_timetablewd.cpp
+	/home/yimu/Qt5.12.12/5.12.12/gcc_64/bin/moc $(DEFINES) --include /home/yimu/mywork/2024-BIT-/Client/build-PreProject-Desktop_Qt_5_12_12_GCC_64bit-Debug/moc_predefs.h -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/mkspecs/linux-g++ -I/home/yimu/mywork/2024-BIT-/Client/PreProject -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtMultimedia -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtWidgets -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtGui -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtNetwork -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtSql -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtTextToSpeech -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtCore -I. -I/usr/include/c++/7 -I/usr/include/x86_64-linux-gnu/c++/7 -I/usr/include/c++/7/backward -I/usr/lib/gcc/x86_64-linux-gnu/7/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include ../PreProject/timetablewd.h -o moc_timetablewd.cpp
 
 moc_usermgr.cpp: ../PreProject/usermgr.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/QObject \
@@ -10141,7 +10868,7 @@ moc_usermgr.cpp: ../PreProject/usermgr.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qsettings.h \
 		moc_predefs.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/bin/moc
-	/home/yimu/Qt5.12.12/5.12.12/gcc_64/bin/moc $(DEFINES) --include /home/yimu/mywork/2024-BIT-/Client/build-PreProject-Desktop_Qt_5_12_12_GCC_64bit-Debug/moc_predefs.h -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/mkspecs/linux-g++ -I/home/yimu/mywork/2024-BIT-/Client/PreProject -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtWidgets -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtGui -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtNetwork -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtSql -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtCore -I. -I/usr/include/c++/7 -I/usr/include/x86_64-linux-gnu/c++/7 -I/usr/include/c++/7/backward -I/usr/lib/gcc/x86_64-linux-gnu/7/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include ../PreProject/usermgr.h -o moc_usermgr.cpp
+	/home/yimu/Qt5.12.12/5.12.12/gcc_64/bin/moc $(DEFINES) --include /home/yimu/mywork/2024-BIT-/Client/build-PreProject-Desktop_Qt_5_12_12_GCC_64bit-Debug/moc_predefs.h -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/mkspecs/linux-g++ -I/home/yimu/mywork/2024-BIT-/Client/PreProject -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtMultimedia -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtWidgets -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtGui -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtNetwork -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtSql -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtTextToSpeech -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtCore -I. -I/usr/include/c++/7 -I/usr/include/x86_64-linux-gnu/c++/7 -I/usr/include/c++/7/backward -I/usr/lib/gcc/x86_64-linux-gnu/7/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include ../PreProject/usermgr.h -o moc_usermgr.cpp
 
 moc_womanwd.cpp: ../PreProject/womanwd.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/QWidget \
@@ -10247,17 +10974,23 @@ moc_womanwd.cpp: ../PreProject/womanwd.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qfiledevice.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtGui/qvector2d.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtGui/qtouchdevice.h \
+		../PreProject/WomanDoc.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/QString \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtGui/QPixmap \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/QLabel \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/qlabel.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/qframe.h \
 		moc_predefs.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/bin/moc
-	/home/yimu/Qt5.12.12/5.12.12/gcc_64/bin/moc $(DEFINES) --include /home/yimu/mywork/2024-BIT-/Client/build-PreProject-Desktop_Qt_5_12_12_GCC_64bit-Debug/moc_predefs.h -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/mkspecs/linux-g++ -I/home/yimu/mywork/2024-BIT-/Client/PreProject -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtWidgets -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtGui -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtNetwork -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtSql -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtCore -I. -I/usr/include/c++/7 -I/usr/include/x86_64-linux-gnu/c++/7 -I/usr/include/c++/7/backward -I/usr/lib/gcc/x86_64-linux-gnu/7/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include ../PreProject/womanwd.h -o moc_womanwd.cpp
+	/home/yimu/Qt5.12.12/5.12.12/gcc_64/bin/moc $(DEFINES) --include /home/yimu/mywork/2024-BIT-/Client/build-PreProject-Desktop_Qt_5_12_12_GCC_64bit-Debug/moc_predefs.h -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/mkspecs/linux-g++ -I/home/yimu/mywork/2024-BIT-/Client/PreProject -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtMultimedia -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtWidgets -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtGui -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtNetwork -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtSql -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtTextToSpeech -I/home/yimu/Qt5.12.12/5.12.12/gcc_64/include/QtCore -I. -I/usr/include/c++/7 -I/usr/include/x86_64-linux-gnu/c++/7 -I/usr/include/c++/7/backward -I/usr/lib/gcc/x86_64-linux-gnu/7/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include ../PreProject/womanwd.h -o moc_womanwd.cpp
 
 compiler_moc_objc_header_make_all:
 compiler_moc_objc_header_clean:
 compiler_moc_source_make_all:
 compiler_moc_source_clean:
-compiler_uic_make_all: ui_adduseritem.h ui_applyfriend.h ui_applyfrienditem.h ui_applyfriendpage.h ui_authenfriend.h ui_basewindow.h ui_bookwindow.h ui_chatdialog.h ui_chatpage.h ui_chattingroomwindow.h ui_chatuserwid.h ui_chatwindow.h ui_childwd.h ui_conuseritem.h ui_findfaildlg.h ui_findsuccessdlg.h ui_friendinfopage.h ui_friendlabel.h ui_grouptipitem.h ui_homewindow.h ui_hospitalizationwindow.h ui_insidewd.h ui_lineitem.h ui_loadingdlg.h ui_logindialog.h ui_mainwindow.h ui_medicalcaseswd.h ui_medicalexpensewd.h ui_medicinesearchwindow.h ui_misearchsonwd.h ui_outwd.h ui_owndeal.h ui_ownillness.h ui_ownmessage.h ui_ownwindow.h ui_personalinfowindow.h ui_personalwindow.h ui_pmainwindow.h ui_pmainwindowhome.h ui_quizwd.h ui_registerdialog.h ui_resetdialog.h ui_skinwd.h ui_timetablewd.h ui_womanwd.h
+compiler_uic_make_all: ui_adduseritem.h ui_applyfriend.h ui_applyfrienditem.h ui_applyfriendpage.h ui_audio.h ui_authenfriend.h ui_basewindow.h ui_bookwindow.h ui_chatdialog.h ui_chatpage.h ui_chattingroomwindow.h ui_chatuserwid.h ui_chatwindow.h ui_childwd.h ui_conuseritem.h ui_findfaildlg.h ui_findsuccessdlg.h ui_friendinfopage.h ui_friendlabel.h ui_grouptipitem.h ui_homewindow.h ui_hospitalizationwindow.h ui_http.h ui_insidewd.h ui_lineitem.h ui_loadingdlg.h ui_logindialog.h ui_mainwindow.h ui_medicalcaseswd.h ui_medicalexpensewd.h ui_medicinesearchwindow.h ui_misearchsonwd.h ui_outwd.h ui_owndeal.h ui_ownillness.h ui_ownmessage.h ui_ownwindow.h ui_personalinfowindow.h ui_personalwindow.h ui_pmainwindow.h ui_pmainwindowhome.h ui_quizwd.h ui_registerdialog.h ui_resetdialog.h ui_skinwd.h ui_speech.h ui_timetablewd.h ui_womanwd.h
 compiler_uic_clean:
-	-$(DEL_FILE) ui_adduseritem.h ui_applyfriend.h ui_applyfrienditem.h ui_applyfriendpage.h ui_authenfriend.h ui_basewindow.h ui_bookwindow.h ui_chatdialog.h ui_chatpage.h ui_chattingroomwindow.h ui_chatuserwid.h ui_chatwindow.h ui_childwd.h ui_conuseritem.h ui_findfaildlg.h ui_findsuccessdlg.h ui_friendinfopage.h ui_friendlabel.h ui_grouptipitem.h ui_homewindow.h ui_hospitalizationwindow.h ui_insidewd.h ui_lineitem.h ui_loadingdlg.h ui_logindialog.h ui_mainwindow.h ui_medicalcaseswd.h ui_medicalexpensewd.h ui_medicinesearchwindow.h ui_misearchsonwd.h ui_outwd.h ui_owndeal.h ui_ownillness.h ui_ownmessage.h ui_ownwindow.h ui_personalinfowindow.h ui_personalwindow.h ui_pmainwindow.h ui_pmainwindowhome.h ui_quizwd.h ui_registerdialog.h ui_resetdialog.h ui_skinwd.h ui_timetablewd.h ui_womanwd.h
+	-$(DEL_FILE) ui_adduseritem.h ui_applyfriend.h ui_applyfrienditem.h ui_applyfriendpage.h ui_audio.h ui_authenfriend.h ui_basewindow.h ui_bookwindow.h ui_chatdialog.h ui_chatpage.h ui_chattingroomwindow.h ui_chatuserwid.h ui_chatwindow.h ui_childwd.h ui_conuseritem.h ui_findfaildlg.h ui_findsuccessdlg.h ui_friendinfopage.h ui_friendlabel.h ui_grouptipitem.h ui_homewindow.h ui_hospitalizationwindow.h ui_http.h ui_insidewd.h ui_lineitem.h ui_loadingdlg.h ui_logindialog.h ui_mainwindow.h ui_medicalcaseswd.h ui_medicalexpensewd.h ui_medicinesearchwindow.h ui_misearchsonwd.h ui_outwd.h ui_owndeal.h ui_ownillness.h ui_ownmessage.h ui_ownwindow.h ui_personalinfowindow.h ui_personalwindow.h ui_pmainwindow.h ui_pmainwindowhome.h ui_quizwd.h ui_registerdialog.h ui_resetdialog.h ui_skinwd.h ui_speech.h ui_timetablewd.h ui_womanwd.h
 ui_adduseritem.h: ../PreProject/adduseritem.ui \
 		../../../../Qt5.12.12/5.12.12/gcc_64/bin/uic
 	/home/yimu/Qt5.12.12/5.12.12/gcc_64/bin/uic ../PreProject/adduseritem.ui -o ui_adduseritem.h
@@ -10829,6 +11562,10 @@ ui_applyfriendpage.h: ../PreProject/applyfriendpage.ui \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/qrubberband.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/QEvent
 	/home/yimu/Qt5.12.12/5.12.12/gcc_64/bin/uic ../PreProject/applyfriendpage.ui -o ui_applyfriendpage.h
+
+ui_audio.h: ../PreProject/audio.ui \
+		../../../../Qt5.12.12/5.12.12/gcc_64/bin/uic
+	/home/yimu/Qt5.12.12/5.12.12/gcc_64/bin/uic ../PreProject/audio.ui -o ui_audio.h
 
 ui_authenfriend.h: ../PreProject/authenfriend.ui \
 		../../../../Qt5.12.12/5.12.12/gcc_64/bin/uic \
@@ -13275,6 +14012,10 @@ ui_hospitalizationwindow.h: ../PreProject/hospitalizationwindow.ui \
 		../../../../Qt5.12.12/5.12.12/gcc_64/bin/uic
 	/home/yimu/Qt5.12.12/5.12.12/gcc_64/bin/uic ../PreProject/hospitalizationwindow.ui -o ui_hospitalizationwindow.h
 
+ui_http.h: ../PreProject/http.ui \
+		../../../../Qt5.12.12/5.12.12/gcc_64/bin/uic
+	/home/yimu/Qt5.12.12/5.12.12/gcc_64/bin/uic ../PreProject/http.ui -o ui_http.h
+
 ui_insidewd.h: ../PreProject/insidewd.ui \
 		../../../../Qt5.12.12/5.12.12/gcc_64/bin/uic
 	/home/yimu/Qt5.12.12/5.12.12/gcc_64/bin/uic ../PreProject/insidewd.ui -o ui_insidewd.h
@@ -13884,6 +14625,10 @@ ui_resetdialog.h: ../PreProject/resetdialog.ui \
 ui_skinwd.h: ../PreProject/skinwd.ui \
 		../../../../Qt5.12.12/5.12.12/gcc_64/bin/uic
 	/home/yimu/Qt5.12.12/5.12.12/gcc_64/bin/uic ../PreProject/skinwd.ui -o ui_skinwd.h
+
+ui_speech.h: ../PreProject/speech.ui \
+		../../../../Qt5.12.12/5.12.12/gcc_64/bin/uic
+	/home/yimu/Qt5.12.12/5.12.12/gcc_64/bin/uic ../PreProject/speech.ui -o ui_speech.h
 
 ui_timetablewd.h: ../PreProject/timetablewd.ui \
 		../../../../Qt5.12.12/5.12.12/gcc_64/bin/uic
@@ -15038,7 +15783,22 @@ adduseritem.o: ../PreProject/adduseritem.cpp ../PreProject/adduseritem.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qfileinfo.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/QSettings \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qsettings.h \
-		ui_adduseritem.h
+		ui_adduseritem.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/QApplication \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/qapplication.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qcoreapplication.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qeventloop.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/qdesktopwidget.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtGui/qguiapplication.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtGui/qinputmethod.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/QHBoxLayout \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/qboxlayout.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/qlayout.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/qlayoutitem.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/qgridlayout.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/QLabel \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/qlabel.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/qframe.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o adduseritem.o ../PreProject/adduseritem.cpp
 
 applyfriend.o: ../PreProject/applyfriend.cpp ../PreProject/applyfriend.h \
@@ -15201,6 +15961,37 @@ applyfriend.o: ../PreProject/applyfriend.cpp ../PreProject/applyfriend.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/QJsonArray \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qjsonarray.h \
 		ui_applyfriend.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/QApplication \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/qapplication.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qcoreapplication.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qeventloop.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/qdesktopwidget.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtGui/qguiapplication.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtGui/qinputmethod.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/QHBoxLayout \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/qboxlayout.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/qlayout.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/qlayoutitem.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/qgridlayout.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/QScrollArea \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/qscrollarea.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/qabstractscrollarea.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/QSpacerItem \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/QVBoxLayout \
+		../PreProject/clickedbtn.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/QPushButton \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/qpushbutton.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/qabstractbutton.h \
+		../PreProject/clickedoncelabel.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtGui/QMouseEvent \
+		../PreProject/customizeedit.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/QLineEdit \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/qlineedit.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtGui/qtextcursor.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtGui/qtextformat.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtGui/qpen.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtGui/qtextoption.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/QDebug \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/QScrollBar \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/qscrollbar.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/qabstractslider.h \
@@ -15364,7 +16155,28 @@ applyfrienditem.o: ../PreProject/applyfrienditem.cpp ../PreProject/applyfriendit
 		../PreProject/userdata.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/QJsonArray \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qjsonarray.h \
-		ui_applyfrienditem.h
+		ui_applyfrienditem.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/QApplication \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/qapplication.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qcoreapplication.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qeventloop.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/qdesktopwidget.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtGui/qguiapplication.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtGui/qinputmethod.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/QHBoxLayout \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/qboxlayout.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/qlayout.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/qlayoutitem.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/qgridlayout.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/QLabel \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/qlabel.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/qframe.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/QSpacerItem \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/QVBoxLayout \
+		../PreProject/clickedbtn.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/QPushButton \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/qpushbutton.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/qabstractbutton.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o applyfrienditem.o ../PreProject/applyfrienditem.cpp
 
 applyfriendlist.o: ../PreProject/applyfriendlist.cpp ../PreProject/applyfriendlist.h \
@@ -15693,12 +16505,32 @@ applyfriendpage.o: ../PreProject/applyfriendpage.cpp ../PreProject/applyfriendpa
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/QSettings \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qsettings.h \
 		ui_applyfriendpage.h \
-		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtGui/QPainter \
-		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtGui/qpainter.h \
-		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtGui/qtextoption.h \
-		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtGui/qpen.h \
-		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtGui/QPaintEvent \
-		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/QStyleOption \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/QApplication \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/qapplication.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qcoreapplication.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qeventloop.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/qdesktopwidget.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtGui/qguiapplication.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtGui/qinputmethod.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/QHBoxLayout \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/qboxlayout.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/qlayout.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/qlayoutitem.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/qgridlayout.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/QLabel \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/qlabel.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/qframe.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/QSpacerItem \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/QVBoxLayout \
+		../PreProject/applyfriendlist.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/QListWidget \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/qlistwidget.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/qlistview.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/qabstractitemview.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/qabstractscrollarea.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qabstractitemmodel.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qitemselectionmodel.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/qabstractitemdelegate.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/qstyleoption.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/qabstractspinbox.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtGui/qvalidator.h \
@@ -15707,16 +16539,19 @@ applyfriendpage.o: ../PreProject/applyfriendpage.cpp ../PreProject/applyfriendpa
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/qtabbar.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/qtabwidget.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/qrubberband.h \
-		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/qframe.h \
-		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qabstractitemmodel.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/QEvent \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtGui/QPainter \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtGui/qpainter.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtGui/qtextoption.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtGui/qpen.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtGui/QPaintEvent \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/QStyleOption \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/QRandomGenerator \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qrandom.h \
 		../PreProject/authenfriend.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/QDialog \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/qdialog.h \
 		../PreProject/clickedlabel.h \
-		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/QLabel \
-		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/qlabel.h \
 		../PreProject/friendlabel.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/QFrame \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/QJsonDocument \
@@ -15727,6 +16562,172 @@ applyfriendpage.o: ../PreProject/applyfriendpage.cpp ../PreProject/applyfriendpa
 		../PreProject/singleton.h \
 		../PreProject/usermgr.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o applyfriendpage.o ../PreProject/applyfriendpage.cpp
+
+audio.o: ../PreProject/audio.cpp ../PreProject/audio.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/QObject \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qobject.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qobjectdefs.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qnamespace.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qglobal.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qconfig-bootstrapped.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qconfig.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qtcore-config.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qsystemdetection.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qprocessordetection.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qcompilerdetection.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qtypeinfo.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qsysinfo.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qlogging.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qflags.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qatomic.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qbasicatomic.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qatomic_bootstrap.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qgenericatomic.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qatomic_cxx11.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qatomic_msvc.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qglobalstatic.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qmutex.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qnumeric.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qversiontagging.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qobjectdefs_impl.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qstring.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qchar.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qbytearray.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qrefcount.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qarraydata.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qstringliteral.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qstringalgorithms.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qstringview.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qstringbuilder.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qlist.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qalgorithms.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qiterator.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qhashfunctions.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qpair.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qbytearraylist.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qstringlist.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qregexp.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qstringmatcher.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qcoreevent.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qscopedpointer.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qmetatype.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qvarlengtharray.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qcontainerfwd.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qobject_impl.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtMultimedia/QAudioDeviceInfo \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtMultimedia/qaudiodeviceinfo.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtMultimedia/qtmultimediaglobal.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtGui/qtguiglobal.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtGui/qtgui-config.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtMultimedia/qtmultimedia-config.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtMultimedia/qmultimedia.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtMultimedia/qaudio.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtMultimedia/qaudioformat.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qshareddata.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qhash.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtMultimedia/QAudioInput \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtMultimedia/qaudioinput.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qiodevice.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtMultimedia/QAudioFormat \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/QFile \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qfile.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qfiledevice.h \
+		../PreProject/speech.h \
+		../PreProject/http.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtNetwork/QNetworkAccessManager \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtNetwork/qnetworkaccessmanager.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtNetwork/qtnetworkglobal.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtNetwork/qtnetwork-config.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtNetwork/qnetworkrequest.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/QSharedDataPointer \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/QString \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/QUrl \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qurl.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qurlquery.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/QVariant \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qvariant.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qmap.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qdebug.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qtextstream.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qlocale.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qvector.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qpoint.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qset.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qcontiguouscache.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qsharedpointer.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qsharedpointer_impl.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/QVector \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtNetwork/QSslConfiguration \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtNetwork/qsslconfiguration.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtNetwork/qsslsocket.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtNetwork/qtcpsocket.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtNetwork/qabstractsocket.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtNetwork/qsslerror.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtNetwork/qsslcertificate.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qcryptographichash.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qdatetime.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtNetwork/qssl.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/QFlags \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtNetwork/QSslPreSharedKeyAuthenticator \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtNetwork/qsslpresharedkeyauthenticator.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/QMetaType \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtNetwork/QNetworkRequest \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtNetwork/QNetworkReply \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtNetwork/qnetworkreply.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/QIODevice \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/QEventLoop \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qeventloop.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/QMap \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/QByteArray \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/QMessageBox \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/qmessagebox.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/qtwidgetsglobal.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/qtwidgets-config.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/qdialog.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/qwidget.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtGui/qwindowdefs.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtGui/qwindowdefs_win.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qmargins.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtGui/qpaintdevice.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qrect.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qsize.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtGui/qpalette.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtGui/qcolor.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtGui/qrgb.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtGui/qrgba64.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtGui/qbrush.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtGui/qmatrix.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtGui/qpolygon.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtGui/qregion.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qdatastream.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qline.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtGui/qtransform.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtGui/qpainterpath.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtGui/qimage.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtGui/qpixelformat.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtGui/qpixmap.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtGui/qfont.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtGui/qfontmetrics.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtGui/qfontinfo.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/qsizepolicy.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtGui/qcursor.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtGui/qkeysequence.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtGui/qevent.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtGui/qvector2d.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtGui/qtouchdevice.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/QJsonDocument \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qjsondocument.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qjsonvalue.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/QJsonObject \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qjsonobject.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/QJsonArray \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qjsonarray.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/QJsonValue \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtNetwork/QHostInfo \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtNetwork/qhostinfo.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtNetwork/qhostaddress.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/QDebug
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o audio.o ../PreProject/audio.cpp
 
 authenfriend.o: ../PreProject/authenfriend.cpp ../PreProject/authenfriend.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/QDialog \
@@ -15890,6 +16891,37 @@ authenfriend.o: ../PreProject/authenfriend.cpp ../PreProject/authenfriend.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/QJsonDocument \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qjsondocument.h \
 		ui_authenfriend.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/QApplication \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/qapplication.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qcoreapplication.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qeventloop.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/qdesktopwidget.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtGui/qguiapplication.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtGui/qinputmethod.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/QHBoxLayout \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/qboxlayout.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/qlayout.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/qlayoutitem.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/qgridlayout.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/QScrollArea \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/qscrollarea.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/qabstractscrollarea.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/QSpacerItem \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/QVBoxLayout \
+		../PreProject/clickedbtn.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/QPushButton \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/qpushbutton.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/qabstractbutton.h \
+		../PreProject/clickedoncelabel.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtGui/QMouseEvent \
+		../PreProject/customizeedit.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/QLineEdit \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/qlineedit.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtGui/qtextcursor.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtGui/qtextformat.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtGui/qpen.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtGui/qtextoption.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/QDebug \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/QScrollBar \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/qscrollbar.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/qabstractslider.h \
@@ -16021,6 +17053,71 @@ basewindow.o: ../PreProject/basewindow.cpp ../PreProject/basewindow.h \
 		../PreProject/misearchsonwd.h \
 		../PreProject/medicalexpensewd.h \
 		../PreProject/quizwd.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtTextToSpeech/QTextToSpeech \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtTextToSpeech/qtexttospeech.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtTextToSpeech/qtexttospeech_global.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/QSharedDataPointer \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtTextToSpeech/qvoice.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtTextToSpeech/QVoice \
+		../PreProject/audio.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/QObject \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtMultimedia/QAudioDeviceInfo \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtMultimedia/qaudiodeviceinfo.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtMultimedia/qtmultimediaglobal.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtMultimedia/qtmultimedia-config.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtMultimedia/qmultimedia.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtMultimedia/qaudio.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtMultimedia/qaudioformat.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtMultimedia/QAudioInput \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtMultimedia/qaudioinput.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtMultimedia/QAudioFormat \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/QFile \
+		../PreProject/speech.h \
+		../PreProject/http.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtNetwork/QNetworkAccessManager \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtNetwork/qnetworkaccessmanager.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtNetwork/qtnetworkglobal.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtNetwork/qtnetwork-config.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtNetwork/qnetworkrequest.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/QUrl \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/QVariant \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtNetwork/QSslConfiguration \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtNetwork/qsslconfiguration.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtNetwork/qsslsocket.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtNetwork/qtcpsocket.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtNetwork/qabstractsocket.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtNetwork/qsslerror.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtNetwork/qsslcertificate.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qcryptographichash.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qdatetime.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtNetwork/qssl.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/QFlags \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtNetwork/QSslPreSharedKeyAuthenticator \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtNetwork/qsslpresharedkeyauthenticator.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/QMetaType \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtNetwork/QNetworkRequest \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtNetwork/QNetworkReply \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtNetwork/qnetworkreply.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/QIODevice \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/QEventLoop \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qeventloop.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/QMap \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/QByteArray \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/QMessageBox \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/qmessagebox.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/qdialog.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/QJsonDocument \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qjsondocument.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qjsonvalue.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/QJsonObject \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qjsonobject.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/QJsonArray \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qjsonarray.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/QJsonValue \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtNetwork/QHostInfo \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtNetwork/qhostinfo.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtNetwork/qhostaddress.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/QDebug \
 		../PreProject/ownwindow.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/QVBoxLayout \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/qboxlayout.h \
@@ -16157,10 +17254,19 @@ bookwindow.o: ../PreProject/bookwindow.cpp ../PreProject/bookwindow.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/qrubberband.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/QListWidget \
 		../PreProject/childwd.h \
+		../PreProject/ChildDoc.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/QString \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtGui/QPixmap \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/QLabel \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/qlabel.h \
 		../PreProject/womanwd.h \
+		../PreProject/WomanDoc.h \
 		../PreProject/outwd.h \
+		../PreProject/OutDoc.h \
 		../PreProject/insidewd.h \
+		../PreProject/InsideDoc.h \
 		../PreProject/skinwd.h \
+		../PreProject/SkinDoc.h \
 		ui_bookwindow.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/QVariant \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/QApplication \
@@ -16546,50 +17652,66 @@ chatpage.o: ../PreProject/chatpage.cpp ../PreProject/chatpage.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qjsonobject.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/QMap \
 		ui_chatpage.h \
-		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/QStyleOption \
-		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/qstyleoption.h \
-		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/qabstractspinbox.h \
-		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtGui/qvalidator.h \
-		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qregularexpression.h \
-		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtGui/qicon.h \
-		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/qslider.h \
-		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/qabstractslider.h \
-		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/qstyle.h \
-		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/qtabbar.h \
-		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/qtabwidget.h \
-		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/qrubberband.h \
-		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/qframe.h \
-		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qabstractitemmodel.h \
-		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtGui/QPainter \
-		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtGui/qpainter.h \
-		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtGui/qtextoption.h \
-		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtGui/qpen.h \
-		../PreProject/ChatItemBase.h \
-		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/QGridLayout \
-		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/qgridlayout.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/QVariant \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/QApplication \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/qapplication.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qcoreapplication.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qeventloop.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/qdesktopwidget.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtGui/qguiapplication.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtGui/qinputmethod.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/QHBoxLayout \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/qboxlayout.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/qlayout.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/qlayoutitem.h \
-		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/qboxlayout.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/qgridlayout.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/QLabel \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/qlabel.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/qframe.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/QSpacerItem \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/QVBoxLayout \
+		../PreProject/MessageTextEdit.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/QObject \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/QTextEdit \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/qtextedit.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/qabstractscrollarea.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtGui/qtextdocument.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtGui/qtextoption.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtGui/qtextcursor.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtGui/qtextformat.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtGui/qpen.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtGui/QMouseEvent \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtGui/QDrag \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtGui/qdrag.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/QMimeData \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qmimedata.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/QMimeType \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qmimetype.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/QFileInfo \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qfileinfo.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/QFileIconProvider \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/qfileiconprovider.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtGui/qicon.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtGui/QPainter \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtGui/qpainter.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/QVector \
 		../PreProject/global.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/QStyle \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/qstyle.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/QRegularExpression \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qregularexpression.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/QByteArray \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtNetwork/QNetworkReply \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtNetwork/qnetworkreply.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtNetwork/qtnetworkglobal.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtNetwork/qtnetwork-config.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/QIODevice \
-		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/QVariant \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtNetwork/QNetworkRequest \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtNetwork/qnetworkrequest.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/QSharedDataPointer \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/QUrl \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtNetwork/QNetworkAccessManager \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtNetwork/qnetworkaccessmanager.h \
-		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/QVector \
-		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/QObject \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtNetwork/QSslConfiguration \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtNetwork/qsslconfiguration.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtNetwork/qsslsocket.h \
@@ -16606,19 +17728,34 @@ chatpage.o: ../PreProject/chatpage.cpp ../PreProject/chatpage.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/QMetaType \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/QDir \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qdir.h \
-		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qfileinfo.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/QSettings \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qsettings.h \
+		../PreProject/ChatView.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/QScrollArea \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/qscrollarea.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/QTimer \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qtimer.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qbasictimer.h \
+		../PreProject/clickedbtn.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/QPushButton \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/qpushbutton.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/qabstractbutton.h \
+		../PreProject/clickedlabel.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/QStyleOption \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/qstyleoption.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/qabstractspinbox.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtGui/qvalidator.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/qslider.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/qabstractslider.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/qtabbar.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/qtabwidget.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/qrubberband.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qabstractitemmodel.h \
+		../PreProject/ChatItemBase.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/QGridLayout \
 		../PreProject/TextBubble.h \
-		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/QTextEdit \
-		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/qtextedit.h \
-		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/qabstractscrollarea.h \
-		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtGui/qtextdocument.h \
-		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtGui/qtextcursor.h \
-		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtGui/qtextformat.h \
 		../PreProject/BubbleFrame.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/QFrame \
-		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/QHBoxLayout \
 		../PreProject/PictureBubble.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtGui/QPixmap \
 		../PreProject/applyfrienditem.h \
@@ -17350,6 +18487,12 @@ childwd.o: ../PreProject/childwd.cpp ../PreProject/childwd.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qfiledevice.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtGui/qvector2d.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtGui/qtouchdevice.h \
+		../PreProject/ChildDoc.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/QString \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtGui/QPixmap \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/QLabel \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/qlabel.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/qframe.h \
 		ui_childwd.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/QVariant \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/QApplication \
@@ -17360,14 +18503,8 @@ childwd.o: ../PreProject/childwd.cpp ../PreProject/childwd.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtGui/qguiapplication.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtGui/qinputmethod.h \
 		../PreProject/GlobalData.h \
-		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/QString \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/QVector \
 		../PreProject/RegisterDataTransmit.h \
-		../PreProject/ChildDoc.h \
-		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtGui/QPixmap \
-		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/QLabel \
-		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/qlabel.h \
-		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/qframe.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/QPushButton \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/qpushbutton.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/qabstractbutton.h \
@@ -18390,6 +19527,30 @@ findfaildlg.o: ../PreProject/findfaildlg.cpp ../PreProject/findfaildlg.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtGui/qvector2d.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtGui/qtouchdevice.h \
 		ui_findfaildlg.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/QVariant \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/QApplication \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/qapplication.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qcoreapplication.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qeventloop.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/qdesktopwidget.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtGui/qguiapplication.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtGui/qinputmethod.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/QHBoxLayout \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/qboxlayout.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/qlayout.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/qlayoutitem.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/qgridlayout.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/QLabel \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/qlabel.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/qframe.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/QSpacerItem \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/QVBoxLayout \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/QWidget \
+		../PreProject/clickedbtn.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/QPushButton \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/qpushbutton.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/qabstractbutton.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtGui/qicon.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/QDebug
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o findfaildlg.o ../PreProject/findfaildlg.cpp
 
@@ -18506,19 +19667,38 @@ findsuccessdlg.o: ../PreProject/findsuccessdlg.cpp ../PreProject/findsuccessdlg.
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/QJsonObject \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qjsonobject.h \
 		ui_findsuccessdlg.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/QVariant \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/QApplication \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/qapplication.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qcoreapplication.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qeventloop.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/qdesktopwidget.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtGui/qguiapplication.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtGui/qinputmethod.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/QHBoxLayout \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/qboxlayout.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/qlayout.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/qlayoutitem.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/qgridlayout.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/QLabel \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/qlabel.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/qframe.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/QSpacerItem \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/QVBoxLayout \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/QWidget \
+		../PreProject/clickedbtn.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/QPushButton \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/qpushbutton.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/qabstractbutton.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtGui/qicon.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/QDir \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qdir.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qfileinfo.h \
 		../PreProject/applyfriend.h \
 		../PreProject/clickedlabel.h \
-		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/QLabel \
-		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/qlabel.h \
-		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/qframe.h \
 		../PreProject/global.h \
-		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/QWidget \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/QStyle \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/qstyle.h \
-		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtGui/qicon.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/QRegularExpression \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qregularexpression.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/QByteArray \
@@ -18527,7 +19707,6 @@ findsuccessdlg.o: ../PreProject/findsuccessdlg.cpp ../PreProject/findsuccessdlg.
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtNetwork/qtnetworkglobal.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtNetwork/qtnetwork-config.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/QIODevice \
-		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/QVariant \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtNetwork/QNetworkRequest \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtNetwork/qnetworkrequest.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/QSharedDataPointer \
@@ -18668,6 +19847,29 @@ friendinfopage.o: ../PreProject/friendinfopage.cpp ../PreProject/friendinfopage.
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/QJsonObject \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qjsonobject.h \
 		ui_friendinfopage.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/QVariant \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/QApplication \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/qapplication.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qcoreapplication.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qeventloop.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/qdesktopwidget.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtGui/qguiapplication.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtGui/qinputmethod.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/QHBoxLayout \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/qboxlayout.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/qlayout.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/qlayoutitem.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/qgridlayout.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/QLabel \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/qlabel.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/qframe.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/QSpacerItem \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/QVBoxLayout \
+		../PreProject/clickedbtn.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/QPushButton \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/qpushbutton.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/qabstractbutton.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtGui/qicon.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/QDebug
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o friendinfopage.o ../PreProject/friendinfopage.cpp
 
@@ -18778,6 +19980,65 @@ friendlabel.o: ../PreProject/friendlabel.cpp ../PreProject/friendlabel.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtGui/qtouchdevice.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/QString \
 		ui_friendlabel.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/QVariant \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/QApplication \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/qapplication.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qcoreapplication.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qeventloop.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/qdesktopwidget.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtGui/qguiapplication.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtGui/qinputmethod.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/QHBoxLayout \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/qboxlayout.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/qlayout.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/qlayoutitem.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/qgridlayout.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/QLabel \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/qlabel.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/QWidget \
+		../PreProject/clickedlabel.h \
+		../PreProject/global.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/QStyle \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/qstyle.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtGui/qicon.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/QRegularExpression \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qregularexpression.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/QByteArray \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtNetwork/QNetworkReply \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtNetwork/qnetworkreply.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtNetwork/qtnetworkglobal.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtNetwork/qtnetwork-config.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/QIODevice \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtNetwork/QNetworkRequest \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtNetwork/qnetworkrequest.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/QSharedDataPointer \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/QUrl \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtNetwork/QNetworkAccessManager \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtNetwork/qnetworkaccessmanager.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/QVector \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/QObject \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtNetwork/QSslConfiguration \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtNetwork/qsslconfiguration.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtNetwork/qsslsocket.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtNetwork/qtcpsocket.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtNetwork/qabstractsocket.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtNetwork/qsslerror.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtNetwork/qsslcertificate.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qcryptographichash.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qdatetime.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtNetwork/qssl.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/QFlags \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtNetwork/QSslPreSharedKeyAuthenticator \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtNetwork/qsslpresharedkeyauthenticator.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/QMetaType \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/QJsonObject \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qjsonobject.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qjsonvalue.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/QDir \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qdir.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qfileinfo.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/QSettings \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qsettings.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/QDebug
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o friendlabel.o ../PreProject/friendlabel.cpp
 
@@ -19212,12 +20473,75 @@ homewindow.o: ../PreProject/homewindow.cpp ../PreProject/homewindow.h \
 		../PreProject/misearchsonwd.h \
 		../PreProject/medicalexpensewd.h \
 		../PreProject/quizwd.h \
-		ui_homewindow.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtTextToSpeech/QTextToSpeech \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtTextToSpeech/qtexttospeech.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtTextToSpeech/qtexttospeech_global.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/QSharedDataPointer \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtTextToSpeech/qvoice.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtTextToSpeech/QVoice \
+		../PreProject/audio.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/QObject \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtMultimedia/QAudioDeviceInfo \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtMultimedia/qaudiodeviceinfo.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtMultimedia/qtmultimediaglobal.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtMultimedia/qtmultimedia-config.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtMultimedia/qmultimedia.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtMultimedia/qaudio.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtMultimedia/qaudioformat.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtMultimedia/QAudioInput \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtMultimedia/qaudioinput.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtMultimedia/QAudioFormat \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/QFile \
+		../PreProject/speech.h \
+		../PreProject/http.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtNetwork/QNetworkAccessManager \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtNetwork/qnetworkaccessmanager.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtNetwork/qtnetworkglobal.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtNetwork/qtnetwork-config.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtNetwork/qnetworkrequest.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/QUrl \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/QVariant \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtNetwork/QSslConfiguration \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtNetwork/qsslconfiguration.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtNetwork/qsslsocket.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtNetwork/qtcpsocket.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtNetwork/qabstractsocket.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtNetwork/qsslerror.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtNetwork/qsslcertificate.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qcryptographichash.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qdatetime.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtNetwork/qssl.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/QFlags \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtNetwork/QSslPreSharedKeyAuthenticator \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtNetwork/qsslpresharedkeyauthenticator.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/QMetaType \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtNetwork/QNetworkRequest \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtNetwork/QNetworkReply \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtNetwork/qnetworkreply.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/QIODevice \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/QEventLoop \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qeventloop.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/QMap \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/QByteArray \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/QMessageBox \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/qmessagebox.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/qdialog.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/QJsonDocument \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qjsondocument.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qjsonvalue.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/QJsonObject \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qjsonobject.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/QJsonArray \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qjsonarray.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/QJsonValue \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtNetwork/QHostInfo \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtNetwork/qhostinfo.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtNetwork/qhostaddress.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/QDebug \
+		ui_homewindow.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/QApplication \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/qapplication.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qcoreapplication.h \
-		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qeventloop.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/qdesktopwidget.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtGui/qguiapplication.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtGui/qinputmethod.h \
@@ -19233,9 +20557,6 @@ homewindow.o: ../PreProject/homewindow.cpp ../PreProject/homewindow.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtGui/qicon.h \
 		../PreProject/GlobalData.h \
 		../PreProject/RegisterDataTransmit.h \
-		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/QMessageBox \
-		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/qmessagebox.h \
-		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/qdialog.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/QVBoxLayout \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/qboxlayout.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/qlayout.h \
@@ -19254,7 +20575,6 @@ homewindow.o: ../PreProject/homewindow.cpp ../PreProject/homewindow.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/qtabwidget.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/QButtonGroup \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/qbuttongroup.h \
-		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/QDebug \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtSql/QSqlDatabase \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtSql/QSqlError \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtSql/qsqlerror.h \
@@ -19278,10 +20598,15 @@ homewindow.o: ../PreProject/homewindow.cpp ../PreProject/homewindow.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/qrubberband.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/QListWidget \
 		../PreProject/childwd.h \
+		../PreProject/ChildDoc.h \
 		../PreProject/womanwd.h \
+		../PreProject/WomanDoc.h \
 		../PreProject/outwd.h \
+		../PreProject/OutDoc.h \
 		../PreProject/insidewd.h \
+		../PreProject/InsideDoc.h \
 		../PreProject/skinwd.h \
+		../PreProject/SkinDoc.h \
 		../PreProject/personalwindow.h \
 		../PreProject/personalinfowindow.h \
 		../PreProject/medicalcaseswd.h \
@@ -19298,7 +20623,22 @@ homewindow.o: ../PreProject/homewindow.cpp ../PreProject/homewindow.h \
 		../PreProject/chatwindow.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/QTextEdit \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/qtextedit.h \
-		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtGui/qtextdocument.h
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtGui/qtextdocument.h \
+		../PreProject/chatdialog.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/QDialog \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtGui/QList \
+		../PreProject/statelabel.h \
+		../PreProject/global.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/QStyle \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/QRegularExpression \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/QDir \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qdir.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qfileinfo.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/QSettings \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qsettings.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtGui/QMouseEvent \
+		../PreProject/statewidget.h \
+		../PreProject/userdata.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o homewindow.o ../PreProject/homewindow.cpp
 
 hospitalizationwindow.o: ../PreProject/hospitalizationwindow.cpp ../PreProject/hospitalizationwindow.h \
@@ -19452,6 +20792,105 @@ hospitalizationwindow.o: ../PreProject/hospitalizationwindow.cpp ../PreProject/h
 		ui_hospitalizationwindow.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/QVariant
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o hospitalizationwindow.o ../PreProject/hospitalizationwindow.cpp
+
+http.o: ../PreProject/http.cpp ../PreProject/http.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/QObject \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qobject.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qobjectdefs.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qnamespace.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qglobal.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qconfig-bootstrapped.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qconfig.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qtcore-config.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qsystemdetection.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qprocessordetection.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qcompilerdetection.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qtypeinfo.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qsysinfo.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qlogging.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qflags.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qatomic.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qbasicatomic.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qatomic_bootstrap.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qgenericatomic.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qatomic_cxx11.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qatomic_msvc.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qglobalstatic.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qmutex.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qnumeric.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qversiontagging.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qobjectdefs_impl.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qstring.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qchar.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qbytearray.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qrefcount.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qarraydata.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qstringliteral.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qstringalgorithms.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qstringview.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qstringbuilder.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qlist.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qalgorithms.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qiterator.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qhashfunctions.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qpair.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qbytearraylist.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qstringlist.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qregexp.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qstringmatcher.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qcoreevent.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qscopedpointer.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qmetatype.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qvarlengtharray.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qcontainerfwd.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qobject_impl.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtNetwork/QNetworkAccessManager \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtNetwork/qnetworkaccessmanager.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtNetwork/qtnetworkglobal.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtNetwork/qtnetwork-config.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtNetwork/qnetworkrequest.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/QSharedDataPointer \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qshareddata.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qhash.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/QString \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/QUrl \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qurl.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qurlquery.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/QVariant \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qvariant.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qmap.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qdebug.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qtextstream.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qiodevice.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qlocale.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qvector.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qpoint.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qset.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qcontiguouscache.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qsharedpointer.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qsharedpointer_impl.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/QVector \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtNetwork/QSslConfiguration \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtNetwork/qsslconfiguration.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtNetwork/qsslsocket.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtNetwork/qtcpsocket.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtNetwork/qabstractsocket.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtNetwork/qsslerror.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtNetwork/qsslcertificate.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qcryptographichash.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qdatetime.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtNetwork/qssl.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/QFlags \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtNetwork/QSslPreSharedKeyAuthenticator \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtNetwork/qsslpresharedkeyauthenticator.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/QMetaType \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtNetwork/QNetworkRequest \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtNetwork/QNetworkReply \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtNetwork/qnetworkreply.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/QIODevice \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/QEventLoop \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qeventloop.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o http.o ../PreProject/http.cpp
 
 httpmgr.o: ../PreProject/httpmgr.cpp ../PreProject/httpmgr.h \
 		../PreProject/singleton.h \
@@ -19710,6 +21149,12 @@ insidewd.o: ../PreProject/insidewd.cpp ../PreProject/insidewd.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qfiledevice.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtGui/qvector2d.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtGui/qtouchdevice.h \
+		../PreProject/InsideDoc.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/QString \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtGui/QPixmap \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/QLabel \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/qlabel.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/qframe.h \
 		ui_insidewd.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/QVariant \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/QApplication \
@@ -19720,14 +21165,8 @@ insidewd.o: ../PreProject/insidewd.cpp ../PreProject/insidewd.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtGui/qguiapplication.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtGui/qinputmethod.h \
 		../PreProject/GlobalData.h \
-		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/QString \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/QVector \
 		../PreProject/RegisterDataTransmit.h \
-		../PreProject/InsideDoc.h \
-		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtGui/QPixmap \
-		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/QLabel \
-		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/qlabel.h \
-		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/qframe.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/QPushButton \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/qpushbutton.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/qabstractbutton.h \
@@ -20758,6 +22197,35 @@ main.o: ../PreProject/main.cpp ../PreProject/mainwindow.h \
 		../PreProject/misearchsonwd.h \
 		../PreProject/medicalexpensewd.h \
 		../PreProject/quizwd.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtTextToSpeech/QTextToSpeech \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtTextToSpeech/qtexttospeech.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtTextToSpeech/qtexttospeech_global.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtTextToSpeech/qvoice.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtTextToSpeech/QVoice \
+		../PreProject/audio.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtMultimedia/QAudioDeviceInfo \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtMultimedia/qaudiodeviceinfo.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtMultimedia/qtmultimediaglobal.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtMultimedia/qtmultimedia-config.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtMultimedia/qmultimedia.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtMultimedia/qaudio.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtMultimedia/qaudioformat.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtMultimedia/QAudioInput \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtMultimedia/qaudioinput.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtMultimedia/QAudioFormat \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/QFile \
+		../PreProject/speech.h \
+		../PreProject/http.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/QEventLoop \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qeventloop.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/QJsonDocument \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qjsondocument.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/QJsonArray \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qjsonarray.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/QJsonValue \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtNetwork/QHostInfo \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtNetwork/qhostinfo.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtNetwork/qhostaddress.h \
 		../PreProject/bookwindow.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/QListWidgetItem \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/qlistwidget.h \
@@ -20776,10 +22244,15 @@ main.o: ../PreProject/main.cpp ../PreProject/mainwindow.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/qrubberband.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/QListWidget \
 		../PreProject/childwd.h \
+		../PreProject/ChildDoc.h \
 		../PreProject/womanwd.h \
+		../PreProject/WomanDoc.h \
 		../PreProject/outwd.h \
+		../PreProject/OutDoc.h \
 		../PreProject/insidewd.h \
+		../PreProject/InsideDoc.h \
 		../PreProject/skinwd.h \
+		../PreProject/SkinDoc.h \
 		../PreProject/personalwindow.h \
 		../PreProject/personalinfowindow.h \
 		../PreProject/medicalcaseswd.h \
@@ -20788,7 +22261,6 @@ main.o: ../PreProject/main.cpp ../PreProject/mainwindow.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/QApplication \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/qapplication.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qcoreapplication.h \
-		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qeventloop.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/qdesktopwidget.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtGui/qguiapplication.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtGui/qinputmethod.h \
@@ -20817,7 +22289,12 @@ main.o: ../PreProject/main.cpp ../PreProject/mainwindow.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtGui/qtextcursor.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtGui/qtextformat.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtGui/qpen.h \
-		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/QFile
+		../PreProject/chatdialog.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtGui/QList \
+		../PreProject/statelabel.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtGui/QMouseEvent \
+		../PreProject/statewidget.h \
+		../PreProject/userdata.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o main.o ../PreProject/main.cpp
 
 mainwindow.o: ../PreProject/mainwindow.cpp ../PreProject/mainwindow.h \
@@ -21005,6 +22482,35 @@ mainwindow.o: ../PreProject/mainwindow.cpp ../PreProject/mainwindow.h \
 		../PreProject/misearchsonwd.h \
 		../PreProject/medicalexpensewd.h \
 		../PreProject/quizwd.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtTextToSpeech/QTextToSpeech \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtTextToSpeech/qtexttospeech.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtTextToSpeech/qtexttospeech_global.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtTextToSpeech/qvoice.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtTextToSpeech/QVoice \
+		../PreProject/audio.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtMultimedia/QAudioDeviceInfo \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtMultimedia/qaudiodeviceinfo.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtMultimedia/qtmultimediaglobal.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtMultimedia/qtmultimedia-config.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtMultimedia/qmultimedia.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtMultimedia/qaudio.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtMultimedia/qaudioformat.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtMultimedia/QAudioInput \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtMultimedia/qaudioinput.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtMultimedia/QAudioFormat \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/QFile \
+		../PreProject/speech.h \
+		../PreProject/http.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/QEventLoop \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qeventloop.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/QJsonDocument \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qjsondocument.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/QJsonArray \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qjsonarray.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/QJsonValue \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtNetwork/QHostInfo \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtNetwork/qhostinfo.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtNetwork/qhostaddress.h \
 		../PreProject/bookwindow.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/QListWidgetItem \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/qlistwidget.h \
@@ -21023,10 +22529,15 @@ mainwindow.o: ../PreProject/mainwindow.cpp ../PreProject/mainwindow.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/qrubberband.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/QListWidget \
 		../PreProject/childwd.h \
+		../PreProject/ChildDoc.h \
 		../PreProject/womanwd.h \
+		../PreProject/WomanDoc.h \
 		../PreProject/outwd.h \
+		../PreProject/OutDoc.h \
 		../PreProject/insidewd.h \
+		../PreProject/InsideDoc.h \
 		../PreProject/skinwd.h \
+		../PreProject/SkinDoc.h \
 		../PreProject/personalwindow.h \
 		../PreProject/personalinfowindow.h \
 		../PreProject/medicalcaseswd.h \
@@ -21035,7 +22546,6 @@ mainwindow.o: ../PreProject/mainwindow.cpp ../PreProject/mainwindow.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/QApplication \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/qapplication.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qcoreapplication.h \
-		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qeventloop.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/qdesktopwidget.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtGui/qguiapplication.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtGui/qinputmethod.h \
@@ -21064,6 +22574,12 @@ mainwindow.o: ../PreProject/mainwindow.cpp ../PreProject/mainwindow.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtGui/qtextcursor.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtGui/qtextformat.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtGui/qpen.h \
+		../PreProject/chatdialog.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtGui/QList \
+		../PreProject/statelabel.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtGui/QMouseEvent \
+		../PreProject/statewidget.h \
+		../PreProject/userdata.h \
 		ui_mainwindow.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/QMenuBar \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/qmenubar.h \
@@ -21073,9 +22589,6 @@ mainwindow.o: ../PreProject/mainwindow.cpp ../PreProject/mainwindow.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/QStatusBar \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/qstatusbar.h \
 		../PreProject/tcpmgr.h \
-		../PreProject/userdata.h \
-		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/QJsonArray \
-		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qjsonarray.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtNetwork/QTcpSocket \
 		../PreProject/singleton.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o mainwindow.o ../PreProject/mainwindow.cpp
@@ -21435,19 +22948,82 @@ medicinesearchwindow.o: ../PreProject/medicinesearchwindow.cpp ../PreProject/med
 		../PreProject/homewindow.h \
 		../PreProject/medicalexpensewd.h \
 		../PreProject/quizwd.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtTextToSpeech/QTextToSpeech \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtTextToSpeech/qtexttospeech.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtTextToSpeech/qtexttospeech_global.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/QSharedDataPointer \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtTextToSpeech/qvoice.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtTextToSpeech/QVoice \
+		../PreProject/audio.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/QObject \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtMultimedia/QAudioDeviceInfo \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtMultimedia/qaudiodeviceinfo.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtMultimedia/qtmultimediaglobal.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtMultimedia/qtmultimedia-config.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtMultimedia/qmultimedia.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtMultimedia/qaudio.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtMultimedia/qaudioformat.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtMultimedia/QAudioInput \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtMultimedia/qaudioinput.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtMultimedia/QAudioFormat \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/QFile \
+		../PreProject/speech.h \
+		../PreProject/http.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtNetwork/QNetworkAccessManager \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtNetwork/qnetworkaccessmanager.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtNetwork/qtnetworkglobal.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtNetwork/qtnetwork-config.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtNetwork/qnetworkrequest.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/QString \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/QUrl \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/QVariant \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtNetwork/QSslConfiguration \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtNetwork/qsslconfiguration.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtNetwork/qsslsocket.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtNetwork/qtcpsocket.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtNetwork/qabstractsocket.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtNetwork/qsslerror.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtNetwork/qsslcertificate.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qcryptographichash.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qdatetime.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtNetwork/qssl.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/QFlags \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtNetwork/QSslPreSharedKeyAuthenticator \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtNetwork/qsslpresharedkeyauthenticator.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/QMetaType \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtNetwork/QNetworkRequest \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtNetwork/QNetworkReply \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtNetwork/qnetworkreply.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/QIODevice \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/QEventLoop \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qeventloop.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/QMap \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/QByteArray \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/QMessageBox \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/qmessagebox.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/qdialog.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/QJsonDocument \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qjsondocument.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qjsonvalue.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/QJsonObject \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qjsonobject.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/QJsonArray \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qjsonarray.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/QJsonValue \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtNetwork/QHostInfo \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtNetwork/qhostinfo.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtNetwork/qhostaddress.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/QDebug \
 		../PreProject/MedicineItem.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/QLabel \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/qlabel.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/qframe.h \
-		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/QString \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtGui/QPixmap \
 		../PreProject/misearchsonwd.h \
 		ui_medicinesearchwindow.h \
-		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/QVariant \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/QApplication \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/qapplication.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qcoreapplication.h \
-		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qeventloop.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/qdesktopwidget.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtGui/qguiapplication.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtGui/qinputmethod.h \
@@ -21467,10 +23043,6 @@ medicinesearchwindow.o: ../PreProject/medicinesearchwindow.cpp ../PreProject/med
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/qtabwidget.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/QButtonGroup \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/qbuttongroup.h \
-		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/QMessageBox \
-		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/qmessagebox.h \
-		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/qdialog.h \
-		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/QDebug \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtSql/QSqlDatabase \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtSql/qsqldatabase.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtSql/qtsqlglobal.h \
@@ -21499,10 +23071,15 @@ medicinesearchwindow.o: ../PreProject/medicinesearchwindow.cpp ../PreProject/med
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/qrubberband.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/QListWidget \
 		../PreProject/childwd.h \
+		../PreProject/ChildDoc.h \
 		../PreProject/womanwd.h \
+		../PreProject/WomanDoc.h \
 		../PreProject/outwd.h \
+		../PreProject/OutDoc.h \
 		../PreProject/insidewd.h \
+		../PreProject/InsideDoc.h \
 		../PreProject/skinwd.h \
+		../PreProject/SkinDoc.h \
 		../PreProject/personalwindow.h \
 		../PreProject/personalinfowindow.h \
 		../PreProject/medicalcaseswd.h \
@@ -21526,44 +23103,21 @@ medicinesearchwindow.o: ../PreProject/medicinesearchwindow.cpp ../PreProject/med
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/QTextEdit \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/qtextedit.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtGui/qtextdocument.h \
+		../PreProject/chatdialog.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/QDialog \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtGui/QList \
+		../PreProject/statelabel.h \
 		../PreProject/global.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/QStyle \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/QRegularExpression \
-		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/QByteArray \
-		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtNetwork/QNetworkReply \
-		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtNetwork/qnetworkreply.h \
-		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtNetwork/qtnetworkglobal.h \
-		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtNetwork/qtnetwork-config.h \
-		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/QIODevice \
-		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtNetwork/QNetworkRequest \
-		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtNetwork/qnetworkrequest.h \
-		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/QSharedDataPointer \
-		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/QUrl \
-		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtNetwork/QNetworkAccessManager \
-		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtNetwork/qnetworkaccessmanager.h \
-		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/QObject \
-		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtNetwork/QSslConfiguration \
-		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtNetwork/qsslconfiguration.h \
-		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtNetwork/qsslsocket.h \
-		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtNetwork/qtcpsocket.h \
-		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtNetwork/qabstractsocket.h \
-		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtNetwork/qsslerror.h \
-		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtNetwork/qsslcertificate.h \
-		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qcryptographichash.h \
-		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qdatetime.h \
-		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtNetwork/qssl.h \
-		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/QFlags \
-		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtNetwork/QSslPreSharedKeyAuthenticator \
-		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtNetwork/qsslpresharedkeyauthenticator.h \
-		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/QMetaType \
-		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/QJsonObject \
-		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qjsonobject.h \
-		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qjsonvalue.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/QDir \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qdir.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qfileinfo.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/QSettings \
-		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qsettings.h
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qsettings.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtGui/QMouseEvent \
+		../PreProject/statewidget.h \
+		../PreProject/userdata.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o medicinesearchwindow.o ../PreProject/medicinesearchwindow.cpp
 
 misearchsonwd.o: ../PreProject/misearchsonwd.cpp ../PreProject/misearchsonwd.h \
@@ -21785,6 +23339,12 @@ outwd.o: ../PreProject/outwd.cpp ../PreProject/outwd.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qfiledevice.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtGui/qvector2d.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtGui/qtouchdevice.h \
+		../PreProject/OutDoc.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/QString \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtGui/QPixmap \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/QLabel \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/qlabel.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/qframe.h \
 		ui_outwd.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/QVariant \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/QApplication \
@@ -21795,14 +23355,8 @@ outwd.o: ../PreProject/outwd.cpp ../PreProject/outwd.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtGui/qguiapplication.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtGui/qinputmethod.h \
 		../PreProject/GlobalData.h \
-		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/QString \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/QVector \
 		../PreProject/RegisterDataTransmit.h \
-		../PreProject/OutDoc.h \
-		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtGui/QPixmap \
-		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/QLabel \
-		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/qlabel.h \
-		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/qframe.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/QPushButton \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/qpushbutton.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/qabstractbutton.h \
@@ -22390,7 +23944,9 @@ ownwindow.o: ../PreProject/ownwindow.cpp ../PreProject/ownwindow.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/QFormLayout \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/qformlayout.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/QLayout \
-		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/QHBoxLayout
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/QHBoxLayout \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtGui/QPainter \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtGui/qpainter.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o ownwindow.o ../PreProject/ownwindow.cpp
 
 personalinfowindow.o: ../PreProject/personalinfowindow.cpp ../PreProject/personalinfowindow.h \
@@ -22785,6 +24341,67 @@ pmainwindow.o: ../PreProject/pmainwindow.cpp ../PreProject/pmainwindow.h \
 		../PreProject/misearchsonwd.h \
 		../PreProject/medicalexpensewd.h \
 		../PreProject/quizwd.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtTextToSpeech/QTextToSpeech \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtTextToSpeech/qtexttospeech.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtTextToSpeech/qtexttospeech_global.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/QSharedDataPointer \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtTextToSpeech/qvoice.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtTextToSpeech/QVoice \
+		../PreProject/audio.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/QObject \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtMultimedia/QAudioDeviceInfo \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtMultimedia/qaudiodeviceinfo.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtMultimedia/qtmultimediaglobal.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtMultimedia/qtmultimedia-config.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtMultimedia/qmultimedia.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtMultimedia/qaudio.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtMultimedia/qaudioformat.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtMultimedia/QAudioInput \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtMultimedia/qaudioinput.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtMultimedia/QAudioFormat \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/QFile \
+		../PreProject/speech.h \
+		../PreProject/http.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtNetwork/QNetworkAccessManager \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtNetwork/qnetworkaccessmanager.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtNetwork/qtnetworkglobal.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtNetwork/qtnetwork-config.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtNetwork/qnetworkrequest.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/QUrl \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/QVariant \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtNetwork/QSslConfiguration \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtNetwork/qsslconfiguration.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtNetwork/qsslsocket.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtNetwork/qtcpsocket.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtNetwork/qabstractsocket.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtNetwork/qsslerror.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtNetwork/qsslcertificate.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qcryptographichash.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qdatetime.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtNetwork/qssl.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/QFlags \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtNetwork/QSslPreSharedKeyAuthenticator \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtNetwork/qsslpresharedkeyauthenticator.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/QMetaType \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtNetwork/QNetworkRequest \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtNetwork/QNetworkReply \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtNetwork/qnetworkreply.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/QIODevice \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/QEventLoop \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qeventloop.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/QMap \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/QByteArray \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/QJsonDocument \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qjsondocument.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qjsonvalue.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/QJsonObject \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qjsonobject.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/QJsonArray \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qjsonarray.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/QJsonValue \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtNetwork/QHostInfo \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtNetwork/qhostinfo.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtNetwork/qhostaddress.h \
 		../PreProject/bookwindow.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/QListWidgetItem \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/qlistwidget.h \
@@ -22805,10 +24422,15 @@ pmainwindow.o: ../PreProject/pmainwindow.cpp ../PreProject/pmainwindow.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/qrubberband.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/QListWidget \
 		../PreProject/childwd.h \
+		../PreProject/ChildDoc.h \
 		../PreProject/womanwd.h \
+		../PreProject/WomanDoc.h \
 		../PreProject/outwd.h \
+		../PreProject/OutDoc.h \
 		../PreProject/insidewd.h \
+		../PreProject/InsideDoc.h \
 		../PreProject/skinwd.h \
+		../PreProject/SkinDoc.h \
 		../PreProject/personalwindow.h \
 		../PreProject/personalinfowindow.h \
 		../PreProject/medicalcaseswd.h \
@@ -22817,7 +24439,6 @@ pmainwindow.o: ../PreProject/pmainwindow.cpp ../PreProject/pmainwindow.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/QApplication \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/qapplication.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qcoreapplication.h \
-		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qeventloop.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/qdesktopwidget.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtGui/qguiapplication.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtGui/qinputmethod.h \
@@ -22846,8 +24467,22 @@ pmainwindow.o: ../PreProject/pmainwindow.cpp ../PreProject/pmainwindow.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtGui/qtextcursor.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtGui/qtextformat.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtGui/qpen.h \
+		../PreProject/chatdialog.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/QDialog \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtGui/QList \
+		../PreProject/statelabel.h \
+		../PreProject/global.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/QStyle \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/QRegularExpression \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/QDir \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qdir.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qfileinfo.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/QSettings \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qsettings.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtGui/QMouseEvent \
+		../PreProject/statewidget.h \
+		../PreProject/userdata.h \
 		ui_pmainwindow.h \
-		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/QVariant \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/QGridLayout \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/QStackedWidget \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/qstackedwidget.h \
@@ -23793,6 +25428,12 @@ skinwd.o: ../PreProject/skinwd.cpp ../PreProject/skinwd.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qfiledevice.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtGui/qvector2d.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtGui/qtouchdevice.h \
+		../PreProject/SkinDoc.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/QString \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtGui/QPixmap \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/QLabel \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/qlabel.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/qframe.h \
 		ui_skinwd.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/QVariant \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/QApplication \
@@ -23803,14 +25444,8 @@ skinwd.o: ../PreProject/skinwd.cpp ../PreProject/skinwd.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtGui/qguiapplication.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtGui/qinputmethod.h \
 		../PreProject/GlobalData.h \
-		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/QString \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/QVector \
 		../PreProject/RegisterDataTransmit.h \
-		../PreProject/SkinDoc.h \
-		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtGui/QPixmap \
-		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/QLabel \
-		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/qlabel.h \
-		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/qframe.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/QPushButton \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/qpushbutton.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/qabstractbutton.h \
@@ -23836,6 +25471,161 @@ skinwd.o: ../PreProject/skinwd.cpp ../PreProject/skinwd.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/qrubberband.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qabstractitemmodel.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o skinwd.o ../PreProject/skinwd.cpp
+
+speech.o: ../PreProject/speech.cpp ../PreProject/speech.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/QObject \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qobject.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qobjectdefs.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qnamespace.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qglobal.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qconfig-bootstrapped.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qconfig.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qtcore-config.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qsystemdetection.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qprocessordetection.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qcompilerdetection.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qtypeinfo.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qsysinfo.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qlogging.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qflags.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qatomic.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qbasicatomic.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qatomic_bootstrap.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qgenericatomic.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qatomic_cxx11.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qatomic_msvc.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qglobalstatic.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qmutex.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qnumeric.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qversiontagging.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qobjectdefs_impl.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qstring.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qchar.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qbytearray.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qrefcount.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qarraydata.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qstringliteral.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qstringalgorithms.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qstringview.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qstringbuilder.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qlist.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qalgorithms.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qiterator.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qhashfunctions.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qpair.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qbytearraylist.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qstringlist.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qregexp.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qstringmatcher.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qcoreevent.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qscopedpointer.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qmetatype.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qvarlengtharray.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qcontainerfwd.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qobject_impl.h \
+		../PreProject/http.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtNetwork/QNetworkAccessManager \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtNetwork/qnetworkaccessmanager.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtNetwork/qtnetworkglobal.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtNetwork/qtnetwork-config.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtNetwork/qnetworkrequest.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/QSharedDataPointer \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qshareddata.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qhash.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/QString \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/QUrl \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qurl.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qurlquery.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/QVariant \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qvariant.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qmap.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qdebug.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qtextstream.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qiodevice.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qlocale.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qvector.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qpoint.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qset.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qcontiguouscache.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qsharedpointer.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qsharedpointer_impl.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/QVector \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtNetwork/QSslConfiguration \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtNetwork/qsslconfiguration.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtNetwork/qsslsocket.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtNetwork/qtcpsocket.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtNetwork/qabstractsocket.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtNetwork/qsslerror.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtNetwork/qsslcertificate.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qcryptographichash.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qdatetime.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtNetwork/qssl.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/QFlags \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtNetwork/QSslPreSharedKeyAuthenticator \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtNetwork/qsslpresharedkeyauthenticator.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/QMetaType \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtNetwork/QNetworkRequest \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtNetwork/QNetworkReply \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtNetwork/qnetworkreply.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/QIODevice \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/QEventLoop \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qeventloop.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/QFile \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qfile.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qfiledevice.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/QMap \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/QByteArray \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/QMessageBox \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/qmessagebox.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/qtwidgetsglobal.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtGui/qtguiglobal.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtGui/qtgui-config.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/qtwidgets-config.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/qdialog.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/qwidget.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtGui/qwindowdefs.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtGui/qwindowdefs_win.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qmargins.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtGui/qpaintdevice.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qrect.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qsize.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtGui/qpalette.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtGui/qcolor.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtGui/qrgb.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtGui/qrgba64.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtGui/qbrush.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtGui/qmatrix.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtGui/qpolygon.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtGui/qregion.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qdatastream.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qline.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtGui/qtransform.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtGui/qpainterpath.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtGui/qimage.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtGui/qpixelformat.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtGui/qpixmap.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtGui/qfont.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtGui/qfontmetrics.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtGui/qfontinfo.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/qsizepolicy.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtGui/qcursor.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtGui/qkeysequence.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtGui/qevent.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtGui/qvector2d.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtGui/qtouchdevice.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/QJsonDocument \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qjsondocument.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qjsonvalue.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/QJsonObject \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qjsonobject.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/QJsonArray \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qjsonarray.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/QJsonValue \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtNetwork/QHostInfo \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtNetwork/qhostinfo.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtNetwork/qhostaddress.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/QDebug
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o speech.o ../PreProject/speech.cpp
 
 statelabel.o: ../PreProject/statelabel.cpp ../PreProject/statelabel.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/QLabel \
@@ -24894,6 +26684,12 @@ womanwd.o: ../PreProject/womanwd.cpp ../PreProject/womanwd.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/qfiledevice.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtGui/qvector2d.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtGui/qtouchdevice.h \
+		../PreProject/WomanDoc.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/QString \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtGui/QPixmap \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/QLabel \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/qlabel.h \
+		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/qframe.h \
 		ui_womanwd.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/QVariant \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/QApplication \
@@ -24904,14 +26700,8 @@ womanwd.o: ../PreProject/womanwd.cpp ../PreProject/womanwd.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtGui/qguiapplication.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtGui/qinputmethod.h \
 		../PreProject/GlobalData.h \
-		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/QString \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore/QVector \
 		../PreProject/RegisterDataTransmit.h \
-		../PreProject/WomanDoc.h \
-		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtGui/QPixmap \
-		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/QLabel \
-		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/qlabel.h \
-		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/qframe.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/QPushButton \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/qpushbutton.h \
 		../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets/qabstractbutton.h \
@@ -24973,6 +26763,9 @@ moc_applyfriendlist.o: moc_applyfriendlist.cpp
 
 moc_applyfriendpage.o: moc_applyfriendpage.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_applyfriendpage.o moc_applyfriendpage.cpp
+
+moc_audio.o: moc_audio.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_audio.o moc_audio.cpp
 
 moc_authenfriend.o: moc_authenfriend.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_authenfriend.o moc_authenfriend.cpp
@@ -25042,6 +26835,9 @@ moc_homewindow.o: moc_homewindow.cpp
 
 moc_hospitalizationwindow.o: moc_hospitalizationwindow.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_hospitalizationwindow.o moc_hospitalizationwindow.cpp
+
+moc_http.o: moc_http.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_http.o moc_http.cpp
 
 moc_httpmgr.o: moc_httpmgr.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_httpmgr.o moc_httpmgr.cpp
@@ -25120,6 +26916,9 @@ moc_searchlist.o: moc_searchlist.cpp
 
 moc_skinwd.o: moc_skinwd.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_skinwd.o moc_skinwd.cpp
+
+moc_speech.o: moc_speech.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_speech.o moc_speech.cpp
 
 moc_statelabel.o: moc_statelabel.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_statelabel.o moc_statelabel.cpp

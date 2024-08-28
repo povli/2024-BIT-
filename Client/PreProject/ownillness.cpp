@@ -29,7 +29,7 @@ void OwnIllness::initializeTable() {
     model = new QStandardItemModel(10, 5, this);
     tableView->setModel(model);
 
-    model->setHorizontalHeaderLabels({"日期", "时间", "科室", "医生", "列5"});
+    model->setHorizontalHeaderLabels({"日期", "时间", "科室", "医生","预约状态" });
 
     int size=GlobalData::registerdata.size();
     qDebug()<<size;
@@ -46,6 +46,9 @@ void OwnIllness::initializeTable() {
                     model->setItem(row, column, item);
                 }else if(column==3){
                     QStandardItem *item = new QStandardItem(QString("%1").arg(GlobalData::registerdata[row].Name));
+                    model->setItem(row, column, item);
+                }else if(column==4){
+                    QStandardItem *item = new QStandardItem(QString("成功"));
                     model->setItem(row, column, item);
                 }
 

@@ -1,4 +1,4 @@
-QT       += core gui network sql
+QT       += core gui network sql multimedia texttospeech
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -20,6 +20,7 @@ SOURCES += \
     applyfrienditem.cpp \
     applyfriendlist.cpp \
     applyfriendpage.cpp \
+    audio.cpp \
     authenfriend.cpp \
     basewindow.cpp \
     bookwindow.cpp \
@@ -44,6 +45,7 @@ SOURCES += \
     grouptipitem.cpp \
     homewindow.cpp \
     hospitalizationwindow.cpp \
+    http.cpp \
     httpmgr.cpp \
     insidewd.cpp \
     invaliditem.cpp \
@@ -71,6 +73,7 @@ SOURCES += \
     resetdialog.cpp \
     searchlist.cpp \
     skinwd.cpp \
+    speech.cpp \
     statelabel.cpp \
     statewidget.cpp \
     tcpmgr.cpp \
@@ -100,6 +103,7 @@ HEADERS += \
     applyfrienditem.h \
     applyfriendlist.h \
     applyfriendpage.h \
+    audio.h \
     authenfriend.h \
     basewindow.h \
     bookwindow.h \
@@ -124,6 +128,7 @@ HEADERS += \
     grouptipitem.h \
     homewindow.h \
     hospitalizationwindow.h \
+    http.h \
     httpmgr.h \
     insidewd.h \
     invaliditem.h \
@@ -151,6 +156,7 @@ HEADERS += \
     searchlist.h \
     singleton.h \
     skinwd.h \
+    speech.h \
     statelabel.h \
     statewidget.h \
     tcpmgr.h \
@@ -165,6 +171,7 @@ FORMS += \
     applyfriend.ui \
     applyfrienditem.ui \
     applyfriendpage.ui \
+    audio.ui \
     authenfriend.ui \
     basewindow.ui \
     bookwindow.ui \
@@ -182,6 +189,7 @@ FORMS += \
     grouptipitem.ui \
     homewindow.ui \
     hospitalizationwindow.ui \
+    http.ui \
     insidewd.ui \
     lineitem.ui \
     loadingdlg.ui \
@@ -204,6 +212,7 @@ FORMS += \
     registerdialog.ui \
     resetdialog.ui \
     skinwd.ui \
+    speech.ui \
     timetablewd.ui \
     womanwd.ui
 

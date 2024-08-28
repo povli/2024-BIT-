@@ -26,10 +26,10 @@ public:
     QWidget *gridLayoutWidget;
     QGridLayout *gridLayout;
     QToolButton *chattingroom;
-    QToolButton *personal;
+    QToolButton *home;
     QToolButton *book;
     QToolButton *hospitalization;
-    QToolButton *home;
+    QToolButton *personal;
     QStackedWidget *stackedWidget;
 
     void setupUi(QMainWindow *PMainWindow)
@@ -41,7 +41,7 @@ public:
         centralwidget->setObjectName(QString::fromUtf8("centralwidget"));
         gridLayoutWidget = new QWidget(centralwidget);
         gridLayoutWidget->setObjectName(QString::fromUtf8("gridLayoutWidget"));
-        gridLayoutWidget->setGeometry(QRect(0, 587, 861, 81));
+        gridLayoutWidget->setGeometry(QRect(0, 587, 861, 72));
         gridLayout = new QGridLayout(gridLayoutWidget);
         gridLayout->setObjectName(QString::fromUtf8("gridLayout"));
         gridLayout->setSizeConstraint(QLayout::SetMinAndMaxSize);
@@ -60,16 +60,16 @@ public:
 
         gridLayout->addWidget(chattingroom, 0, 3, 1, 1);
 
-        personal = new QToolButton(gridLayoutWidget);
-        personal->setObjectName(QString::fromUtf8("personal"));
-        sizePolicy.setHeightForWidth(personal->sizePolicy().hasHeightForWidth());
-        personal->setSizePolicy(sizePolicy);
-        personal->setMinimumSize(QSize(130, 70));
-        personal->setMaximumSize(QSize(70, 70));
-        personal->setStyleSheet(QString::fromUtf8("background-image: url(:/res/personal.png);"));
-        personal->setIconSize(QSize(70, 70));
+        home = new QToolButton(gridLayoutWidget);
+        home->setObjectName(QString::fromUtf8("home"));
+        sizePolicy.setHeightForWidth(home->sizePolicy().hasHeightForWidth());
+        home->setSizePolicy(sizePolicy);
+        home->setMinimumSize(QSize(130, 70));
+        home->setMaximumSize(QSize(70, 70));
+        home->setStyleSheet(QString::fromUtf8("background-image: url(:/res/home.png);"));
+        home->setIconSize(QSize(70, 70));
 
-        gridLayout->addWidget(personal, 0, 2, 1, 1);
+        gridLayout->addWidget(home, 0, 0, 1, 1);
 
         book = new QToolButton(gridLayoutWidget);
         book->setObjectName(QString::fromUtf8("book"));
@@ -93,16 +93,16 @@ public:
 
         gridLayout->addWidget(hospitalization, 0, 4, 1, 1);
 
-        home = new QToolButton(gridLayoutWidget);
-        home->setObjectName(QString::fromUtf8("home"));
-        sizePolicy.setHeightForWidth(home->sizePolicy().hasHeightForWidth());
-        home->setSizePolicy(sizePolicy);
-        home->setMinimumSize(QSize(130, 70));
-        home->setMaximumSize(QSize(70, 70));
-        home->setStyleSheet(QString::fromUtf8("background-image: url(:/res/home.png);"));
-        home->setIconSize(QSize(70, 70));
+        personal = new QToolButton(gridLayoutWidget);
+        personal->setObjectName(QString::fromUtf8("personal"));
+        sizePolicy.setHeightForWidth(personal->sizePolicy().hasHeightForWidth());
+        personal->setSizePolicy(sizePolicy);
+        personal->setMinimumSize(QSize(130, 70));
+        personal->setMaximumSize(QSize(70, 70));
+        personal->setStyleSheet(QString::fromUtf8("background-image: url(:/res/personal.png);"));
+        personal->setIconSize(QSize(70, 70));
 
-        gridLayout->addWidget(home, 0, 0, 1, 1);
+        gridLayout->addWidget(personal, 0, 2, 1, 1);
 
         stackedWidget = new QStackedWidget(centralwidget);
         stackedWidget->setObjectName(QString::fromUtf8("stackedWidget"));
@@ -120,10 +120,10 @@ public:
     {
         PMainWindow->setWindowTitle(QApplication::translate("PMainWindow", "PMainWindow", nullptr));
         chattingroom->setText(QString());
-        personal->setText(QString());
+        home->setText(QString());
         book->setText(QString());
         hospitalization->setText(QString());
-        home->setText(QString());
+        personal->setText(QString());
     } // retranslateUi
 
 };
