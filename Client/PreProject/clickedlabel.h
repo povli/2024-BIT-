@@ -16,6 +16,8 @@ class ClickedLabel : public QLabel
                       QString select="", QString select_hover="", QString select_press="");
 
         ClickLbState GetCurState();
+        bool SetCurState(ClickLbState state);
+        void ResetNormalState();
     protected:
 
     private:
@@ -30,6 +32,7 @@ class ClickedLabel : public QLabel
         ClickLbState _curstate;
     signals:
         void clicked(void);
+        //void clicked(QString, ClickLbState);
 };
 
 #endif // CLICKEDLABEL_H

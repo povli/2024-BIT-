@@ -49,5 +49,15 @@
         <file>res/add_friend_normal.png</file>
         <file>res/add_friend_hover.png</file>
         <file>res/add_friend.png</file>
+        <file>res/chatroom.png</file>
+        <file>res/home.png</file>
+        <file>res/hospitalization.png</file>
+        <file>res/mycases.png</file>
+        <file>res/myregister.png</file>
+        <file>res/personal.png</file>
+        <file>res/register.png</file>
+        <file>res/medicalexpense.jpg</file>
+        <file>res/psychologyquiz.jpg</file>
+        <file>res/homepagebackground.jpg</file>
     </qresource>
 </RCC>
