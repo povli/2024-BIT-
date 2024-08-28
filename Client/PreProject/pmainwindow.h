@@ -15,6 +15,9 @@
 #include "hospitalizationwindow.h"
 #include "ownwindow.h"
 #include "chatwindow.h"
+
+#include "chatdialog.h"
+
 void MIsqlite_Init();
 
 QT_BEGIN_NAMESPACE

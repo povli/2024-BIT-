@@ -31,8 +31,8 @@ class ClickedLabel : public QLabel
 
         ClickLbState _curstate;
     signals:
-        void clicked(void);
-        //void clicked(QString, ClickLbState);
+        //void clicked(void);
+        void clicked(QString, ClickLbState);
 };
 
 #endif // CLICKEDLABEL_H
