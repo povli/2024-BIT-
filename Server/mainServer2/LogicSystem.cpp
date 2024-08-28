@@ -94,6 +94,92 @@ void LogicSystem::RegisterCallBacks() {
 	_fun_callbacks[MSG_EDIT_DOCTOR_SELFINFO] = std::bind(&LogicSystem::EditDoctorInfo, this,
 		placeholders::_1, placeholders::_2, placeholders::_3);
 
+	_fun_callbacks[ID_DOCTOR_CALL_PAINTINFO] = std::bind(&LogicSystem::DoctorCallForPaintInfo, this,
+		placeholders::_1, placeholders::_2, placeholders::_3);
+
+}
+
+
+void LogicSystem::DoctorCallForPaintInfo(shared_ptr<CSession> session, const short &msg_id, const string &msg_data) {
+	Json::Reader reader;
+	Json::Value root;
+	reader.parse(msg_data, root);
+	auto uid = root["uid"].asInt();
+	auto token = root["token"].asString();
+	std::cout << "user login uid is  " << uid << " user token  is "
+		<< token << endl;
+
+	Json::Value  rtvalue;
+	Defer defer([this, &rtvalue, session]() {
+		std::string return_str = rtvalue.toStyledString();
+		session->Send(return_str, ID_DOCTOR_CALL_PAINTINFO);
+		});
+
+	std::vector<std::shared_ptr<paintInfobase>> baseList;
+    std::vector<std::shared_ptr<paintInfocheck>> checkList;
+    std::vector<std::shared_ptr<paintInfochufang>> chufangList;
+
+    //Json::Value rtvalue;
+
+    if (GetGuahaoInfo(uid, baseList, checkList, chufangList)) {
+        Json::Value baseArray(Json::arrayValue);
+        for (const auto& base : baseList) {
+            Json::Value obj;
+            obj["userid"] = base->_uid;
+            obj["username"] = base->_name;
+            obj["useremail"] = base->_email;
+            obj["usersex"] = base->_sex;
+            obj["userage"] = base->_age;
+            obj["userorderdata"] = base->_orderdata;
+            obj["userinfo"] = base->_info;
+            baseArray.append(obj);
+        }
+        rtvalue["baseList"] = baseArray;
+
+        Json::Value checkArray(Json::arrayValue);
+        for (const auto& check : checkList) {
+            Json::Value obj;
+            obj["userid"] = check->_uid;
+            obj["username"] = check->_name;
+            obj["useremail"] = check->_email;
+            obj["usersex"] = check->_sex;
+            obj["userage"] = check->_age;
+            obj["userorderdata"] = check->_orderdata;
+            obj["userinfo"] = check->_info;
+            obj["checkresult"] = check->_checkresult;
+            checkArray.append(obj);
+        }
+        rtvalue["checkList"] = checkArray;
+
+        Json::Value chufangArray(Json::arrayValue);
+        for (const auto& chufang : chufangList) {
+            Json::Value obj;
+            obj["userid"] = chufang->_uid;
+            obj["username"] = chufang->_name;
+            obj["useremail"] = chufang->_email;
+            obj["usersex"] = chufang->_sex;
+            obj["userage"] = chufang->_age;
+            obj["userorderdata"] = chufang->_orderdata;
+            obj["userinfo"] = chufang->_info;
+            obj["checkresult"] = chufang->_checkresult;
+            obj["chufang"] = chufang->_chufang;
+            chufangArray.append(obj);
+        }
+        rtvalue["chufangList"] = chufangArray;
+    }
+
+    return;
+
+
+
+}
+
+bool LogicSystem::GetGuahaoInfo(int doctor_uid,
+	std::vector<std::shared_ptr<paintInfobase>>& baseList,
+	std::vector<std::shared_ptr<paintInfocheck>>& checkList,
+	std::vector<std::shared_ptr<paintInfochufang>>& chufangList) {
+
+	return MysqlMgr::GetInstance()->GetGuahaoList(doctor_uid, baseList, checkList, chufangList);
 }
 
 void LogicSystem::EditDoctorInfo(shared_ptr<CSession> session, const short &msg_id, const string &msg_data) {
@@ -112,6 +198,7 @@ void LogicSystem::EditDoctorInfo(shared_ptr<CSession> session, const short &msg_
 	std::string uid_str = std::to_string(uid);
 	Defer defer([this, &rtvalue, session]() {
 		std::string return_str = rtvalue.toStyledString();
+
 		session->Send(return_str, MSG_EDIT_DOCTOR_SELFINFO);
 		});
 
@@ -121,13 +208,15 @@ void LogicSystem::EditDoctorInfo(shared_ptr<CSession> session, const short &msg_
 	auto email = root["email"].asString();
 	auto intro = root["intr"].asString();
 	auto department_id=std::make_shared<int>();
-	bool Edit_doctorinfo=MysqlMgr::GetInstance()->UpdateDoctorInfo(uid,name, email,department,intro,department_id);
+	bool Edit_doctorinfo=true;
+	Edit_doctorinfo=MysqlMgr::GetInstance()->UpdateDoctorInfo(uid,name, email,department,intro,department_id);
+	Edit_doctorinfo=true;
 	if (!Edit_doctorinfo) {
 		rtvalue["error"] = ErrorCodes::UidInvalid;
 		return ;
 	}
 
-	//rtvalue["error"]=ErrorCodes::Success;
+	rtvalue["error"]=ErrorCodes::Success;
 	std::string base_key = USER_BASE_INFO + uid_str;
 
 
@@ -147,11 +236,12 @@ void LogicSystem::EditDoctorInfo(shared_ptr<CSession> session, const short &msg_
 	redis_root["intr"]=intro;
 	//redis_root["IDcard"]=doctorinfo->IDcard;
 	RedisMgr::GetInstance()->Set(base_key, redis_root.toStyledString());
-	rtvalue["error"] = ErrorCodes::Success;
+	//rtvalue["error"] = ErrorCodes::Success;
 	rtvalue["name"] = name;
 	rtvalue["email"] = email;
 	rtvalue["department"] = *department_id;
 	rtvalue["intr"] = intro;
+	std::cout<<rtvalue["error"].asString()<<std::endl;
 	return;
 
 
@@ -281,7 +371,7 @@ void LogicSystem::LoginHandler(shared_ptr<CSession> session, const short &msg_id
 	//rtvalue["icon"] = user_info->icon;
 
 	//从数据库获取申请列表
-	/*std::vector<std::shared_ptr<ApplyInfo>> apply_list;
+	std::vector<std::shared_ptr<ApplyInfo>> apply_list;
 	auto b_apply = GetFriendApplyInfo(uid,apply_list);
 	if (b_apply) {
 		for (auto & apply : apply_list) {
@@ -298,7 +388,7 @@ void LogicSystem::LoginHandler(shared_ptr<CSession> session, const short &msg_id
 	}
 
 	//获取好友列表
-	std::vector<std::shared_ptr<UserInfo>> friend_list;
+	/*std::vector<std::shared_ptr<UserInfo>> friend_list;
 	bool b_friend_list = GetFriendList(uid, friend_list);
 	for (auto& friend_ele : friend_list) {
 		Json::Value obj;

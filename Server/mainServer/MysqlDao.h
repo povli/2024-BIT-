@@ -160,7 +160,10 @@ public:
 	bool AuthFriendApply(const int& from, const int& to);
 	bool AddFriend(const int& from, const int& to, std::string back_name);
 
-
+	bool GetGuahaoList(int doctor_uid,
+	std::vector<std::shared_ptr<paintInfobase>>& baseList,
+	std::vector<std::shared_ptr<paintInfocheck>>& checkList,
+	std::vector<std::shared_ptr<paintInfochufang>>& chufangList);
 
 
 

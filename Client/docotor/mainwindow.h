@@ -26,6 +26,9 @@ public:
 
     pinf *window = nullptr;
     information *window1 = nullptr;
+signals:
+    void sig_patient_mesg_need();
+    void sig_make_first_list();
 
 protected slots:
     void showTime();

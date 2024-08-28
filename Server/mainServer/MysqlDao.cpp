@@ -535,6 +535,61 @@ bool MysqlDao::GetApplyList(int touid, std::vector<std::shared_ptr<ApplyInfo>>& 
 	}
 }
 
+bool MysqlDao::GetGuahaoList(int doctor_uid,
+    std::vector<std::shared_ptr<paintInfobase>>& baseList,
+    std::vector<std::shared_ptr<paintInfocheck>>& checkList,
+    std::vector<std::shared_ptr<paintInfochufang>>& chufangList) {
+
+    auto con = pool_->getConnection();
+    if (con == nullptr) {
+        return false;
+    }
+
+    Defer defer([this, &con]() {
+        pool_->returnConnection(std::move(con));
+    });
+
+    try {
+        std::unique_ptr<sql::PreparedStatement> pstmt(con->_con->prepareStatement(
+            "SELECT useruid, username, useremail, usersex, userage, userorderdata, userinfo, checkresult, chufang "
+            "FROM guahao WHERE doctoruid = ?"));
+
+        pstmt->setInt(1, doctor_uid);
+
+        std::unique_ptr<sql::ResultSet> res(pstmt->executeQuery());
+
+        while (res->next()) {
+            int userid = res->getInt("useruid");
+            std::string username = res->getString("username");
+            std::string useremail = res->getString("useremail");
+            int usersex = res->getInt("usersex");
+            std::string userage = res->getString("userage");
+            std::string userorderdata = res->getString("userorderdata");
+            std::string userinfo = res->getString("userinfo");
+            std::string checkresult = res->getString("checkresult");
+            std::string chufang = res->getString("chufang");
+
+            // 构建 paintInfobase 对象
+            auto base_ptr = std::make_shared<paintInfobase>(userid, username, useremail, usersex, userage, userorderdata, userinfo);
+            baseList.push_back(base_ptr);
+
+            // 构建 paintInfocheck 对象
+            auto check_ptr = std::make_shared<paintInfocheck>(userid, username, useremail, usersex, userage, userorderdata, userinfo, checkresult);
+            checkList.push_back(check_ptr);
+
+            // 构建 paintInfochufang 对象
+            auto chufang_ptr = std::make_shared<paintInfochufang>(userid, username, useremail, usersex, userage, userorderdata, userinfo, checkresult, chufang);
+            chufangList.push_back(chufang_ptr);
+        }
+        return true;
+    } catch (sql::SQLException& e) {
+        std::cerr << "SQLException: " << e.what();
+        std::cerr << " (MySQL error code: " << e.getErrorCode();
+        std::cerr << ", SQLState: " << e.getSQLState() << " )" << std::endl;
+        return false;
+    }
+}
+
 bool MysqlDao::GetFriendList(int self_id, std::vector<std::shared_ptr<UserInfo> >& user_info_list) {
 
 	auto con = pool_->getConnection();

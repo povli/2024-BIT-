@@ -38,6 +38,8 @@ enum ReqId{
     ID_DOCTOR_LOGIN=1021,//医生登录
     ID_DOCTOR_REV=1022,//医生登录的回包
     ID_DOCTOR_SEND_EDIT_SELFINFO=1023,//医生修改个人信息
+    ID_DOCTOR_CALL_PAINTINFO=1024,//医生申请病人挂号信息
+
 };
 
 enum Moudles{

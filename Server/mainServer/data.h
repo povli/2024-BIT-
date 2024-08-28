@@ -52,5 +52,47 @@ struct ApplyInfo {
     int _sex;
     int _status;
 };
+struct paintInfobase {
+    paintInfobase(int uid, std::string name, std::string email, int sex, std::string age, std::string orderdata, std::string info)
+        : _uid(uid), _name(name), _email(email), _sex(sex), _age(age), _orderdata(orderdata), _info(info) {}
+
+    int _uid;
+    std::string _name;
+    std::string _email;
+    int _sex;
+    std::string _age;
+    std::string _orderdata;
+    std::string _info;
+};
+
+struct paintInfocheck {
+    paintInfocheck(int uid, std::string name, std::string email, int sex, std::string age, std::string orderdata, std::string info, std::string checkresult)
+        : _uid(uid), _name(name), _email(email), _sex(sex), _age(age), _orderdata(orderdata), _info(info), _checkresult(checkresult) {}
+
+    int _uid;
+    std::string _name;
+    std::string _email;
+    int _sex;
+    std::string _age;
+    std::string _orderdata;
+    std::string _info;
+    std::string _checkresult;
+};
+
+struct paintInfochufang {
+    paintInfochufang(int uid, std::string name, std::string email, int sex, std::string age, std::string orderdata, std::string info, std::string checkresult, std::string chufang)
+        : _uid(uid), _name(name), _email(email), _sex(sex), _age(age), _orderdata(orderdata), _info(info), _checkresult(checkresult), _chufang(chufang) {}
+
+    int _uid;
+    std::string _name;
+    std::string _email;
+    int _sex;
+    std::string _age;
+    std::string _orderdata;
+    std::string _info;
+    std::string _checkresult;
+    std::string _chufang;
+};
+
 
 #endif //DATA_H

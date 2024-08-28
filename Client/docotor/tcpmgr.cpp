@@ -1,6 +1,7 @@
 #include "tcpmgr.h"
 #include <QAbstractSocket>
 #include<QJsonDocument>
+#include <qvector.h>
 #include"usermgr.h"
 #include<QDebug>
 #include"information.h"
@@ -219,6 +220,111 @@ void TcpMgr::initHandlers()
             emit sig_swich_chatdlg();
 
     });
+        _handlers.insert(ID_DOCTOR_CALL_PAINTINFO, [this](ReqId id, int len, QByteArray rawdata){
+
+            Q_UNUSED(len);
+            qDebug()<< "handle id is "<< id << " data is " << rawdata;
+            // 将QByteArray转换为QJsonDocument
+            QJsonDocument jsonDoc = QJsonDocument::fromJson(rawdata);
+
+            // 检查转换是否成功
+            if(jsonDoc.isNull()){
+               qDebug() << "Failed to create QJsonDocument.";
+               return;
+            }
+
+            QJsonObject responseJson = jsonDoc.object();
+
+            QVector<QVector<QString>> data;
+                QJsonArray baseList = responseJson["baseList"].toArray();
+
+                for (const QJsonValue& value : baseList) {
+                    QJsonObject obj = value.toObject();
+                    QVector<QString> row;
+                    row.append(QString::number(obj["userid"].toInt()));
+                    row.append(obj["username"].toString());
+                    row.append(obj["useremail"].toString());
+                    int sex = obj["usersex"].toInt();
+                           QString sexStr;
+                           if (sex == 0) {
+                               sexStr = "女";
+                           } else if (sex == 1) {
+                               sexStr = "男";
+                           } else {
+                               sexStr = "其他";
+                           }
+                           row.append(sexStr);
+                    row.append(obj["userage"].toString());
+                    row.append(obj["userorderdata"].toString());
+                    row.append(obj["userinfo"].toString());
+                    data.append(row);
+                }
+
+                QVector<QVector<QString>> mdata;
+                    QJsonArray checkList = responseJson["checkList"].toArray();
+
+                    for (const QJsonValue& value : checkList) {
+                        QJsonObject obj = value.toObject();
+                        QVector<QString> row;
+                        row.append(QString::number(obj["userid"].toInt()));
+                        row.append(obj["username"].toString());
+                        row.append(obj["useremail"].toString());
+                        int sex = obj["usersex"].toInt();
+                               QString sexStr;
+                               if (sex == 0) {
+                                   sexStr = "女";
+                               } else if (sex == 1) {
+                                   sexStr = "男";
+                               } else {
+                                   sexStr = "其他";
+                               }
+                               row.append(sexStr);
+                        row.append(obj["userage"].toString());
+                        row.append(obj["userorderdata"].toString());
+                        row.append(obj["userinfo"].toString());
+                        row.append(obj["checkresult"].toString());
+                        mdata.append(row);
+                    }
+
+                    QVector<QVector<QString>> wdata;
+                        QJsonArray chufangList = responseJson["chufangList"].toArray();
+
+                        for (const QJsonValue& value : chufangList) {
+                            QJsonObject obj = value.toObject();
+                            QVector<QString> row;
+                            row.append(QString::number(obj["userid"].toInt()));
+                            row.append(obj["username"].toString());
+                            row.append(obj["useremail"].toString());
+                            int sex = obj["usersex"].toInt();
+                                   QString sexStr;
+                                   if (sex == 0) {
+                                       sexStr = "女";
+                                   } else if (sex == 1) {
+                                       sexStr = "男";
+                                   } else {
+                                       sexStr = "其他";
+                                   }
+                                   row.append(sexStr);
+                            row.append(obj["userage"].toString());
+                            row.append(obj["userorderdata"].toString());
+                            row.append(obj["userinfo"].toString());
+                            row.append(obj["checkresult"].toString());
+                            row.append(obj["chufang"].toString());
+                            wdata.append(row);
+                        }
+
+                        UserMgr::GetInstance()->setData(data);
+                        UserMgr::GetInstance()->setMdata(mdata);
+                        UserMgr::GetInstance()->setWdata(wdata);
+
+                        emit sig_make_first_list(UserMgr::GetInstance()->getData());
+
+
+
+
+
+
+        });
 }
 
 void TcpMgr::handleMsg(ReqId id, int len, QByteArray data)

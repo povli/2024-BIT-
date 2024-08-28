@@ -1,12 +1,9 @@
 #include "pinf.h"
 #include "ui_pinf.h"
-#include "mainwindow.h"
-
-
-#include <QStandardItemModel>
 #include <QHeaderView>
-#include <QTableView>
-
+#include <QStandardItemModel>
+#include"mainwindow.h"
+#include"tcpmgr.h"
 
 void pinf::setupTableViewStyle(QTableView *tableView)
 {
@@ -61,100 +58,122 @@ pinf::pinf(QWidget *parent) :
 
     this->setStyleSheet("background-color: skyblue;");
     this->windowp = new pbd;
-    connect(windowp,&pbd::goback,this,[=]()
-    {
+    connect(windowp, &pbd::goback, this, [=]() {
         windowp->close();
         this->show();
     });
+    connect(TcpMgr::GetInstance().get(),&TcpMgr::sig_make_first_list,this,&pinf::setRecordationData);
+    //connect(MainWindow)
 
+    // 初始化表格模型
+    QStandardItemModel *recordationModel = new QStandardItemModel(0, 7, this);
+    recordationModel->setHorizontalHeaderLabels({
+        "患者编号", "患者姓名", "患者账号", "患者性别", "患者年龄",
+        "患者预约日期", "患者信息资料"
+    });
+    ui->tableViewRecordation_2->setModel(recordationModel);
+    setupTableViewStyle(ui->tableViewRecordation_2);
 
-    // 初始化并设置“预约记录”标签页的模型
-       QStandardItemModel *recordationModel = new QStandardItemModel(0, 7, this);
-       recordationModel->setHorizontalHeaderLabels({
-           "患者编号", "患者姓名", "患者账号", "患者性别", "患者年龄",
-           "患者预约日期", "患者信息资料"
-       });
-      ui->tableViewRecordation_2->setModel(recordationModel);;
-       setupTableViewStyle(ui->tableViewRecordation_2); // 设置预约记录表格样式
+    QStandardItemModel *userModel = new QStandardItemModel(0, 8, this);
+    userModel->setHorizontalHeaderLabels({
+        "患者编号", "患者姓名", "患者账号", "患者性别", "患者年龄",
+        "患者预约日期", "患者信息资料", "诊断结果"
+    });
+    ui->tableViewUser_2->setModel(userModel);
+    setupTableViewStyle(ui->tableViewUser_2);
 
-       // 初始化并设置“诊断记录”标签页的模型
-       QStandardItemModel *userModel = new QStandardItemModel(0, 8, this);
-       userModel->setHorizontalHeaderLabels({
-           "患者编号", "患者姓名", "患者账号", "患者性别", "患者年龄",
-           "患者预约日期", "患者信息资料", "诊断结果"
-       });
-       ui->tableViewUser_2->setModel(userModel);
-       setupTableViewStyle(ui->tableViewUser_2); // 设置诊断记录表格样式
+    QStandardItemModel *goodsModel = new QStandardItemModel(0, 9, this);
+    goodsModel->setHorizontalHeaderLabels({
+        "患者编号", "患者姓名", "患者账号", "患者性别", "患者年龄",
+        "患者预约日期", "患者信息资料", "诊断结果", "处方"
+    });
+    ui->tableViewGoods_2->setModel(goodsModel);
+    setupTableViewStyle(ui->tableViewGoods_2);
 
-       // 初始化并设置“处方记录”标签页的模型
-       QStandardItemModel *goodsModel = new QStandardItemModel(0, 9, this);
-       goodsModel->setHorizontalHeaderLabels({
-           "患者编号", "患者姓名", "患者账号", "患者性别", "患者年龄",
-           "患者预约日期", "患者信息资料", "诊断结果", "处方"
-       });
-       ui->tableViewGoods_2->setModel(goodsModel);
-       setupTableViewStyle(ui->tableViewGoods_2); // 设置处方记录表格样式
-
-       // 初始化并设置“住院记录”标签页的模型
-       QStandardItemModel *statisticsModel = new QStandardItemModel(0, 5, this);
-       statisticsModel->setHorizontalHeaderLabels({
-           "患者编号", "患者姓名", "病房号", "病床号", "住院日期"
-       });
-       ui->tableViewStatistics_2->setModel(statisticsModel);
-       setupTableViewStyle(ui->tableViewStatistics_2); // 设置住院记录表格样式
-
-       // 示例数据填充
-       // 请根据需要替换或添加实际数据
-       for (int row = 0; row < 10; ++row) {
-           recordationModel->setItem(row, 0, new QStandardItem(QString::number(row)));
-           recordationModel->setItem(row, 1, new QStandardItem("姓名" + QString::number(row)));
-           recordationModel->setItem(row, 2, new QStandardItem("账号" + QString::number(row)));
-           recordationModel->setItem(row, 3, new QStandardItem("性别" + QString::number(row)));
-           recordationModel->setItem(row, 4, new QStandardItem(QString::number(20 + row)));
-           recordationModel->setItem(row, 5, new QStandardItem("日期" + QString::number(row)));
-           recordationModel->setItem(row, 6, new QStandardItem("信息" + QString::number(row)));
-       }
-
-       for (int row = 0; row < 10; ++row) {
-           userModel->setItem(row, 0, new QStandardItem(QString::number(row)));
-           userModel->setItem(row, 1, new QStandardItem("姓名" + QString::number(row)));
-           userModel->setItem(row, 2, new QStandardItem("账号" + QString::number(row)));
-           userModel->setItem(row, 3, new QStandardItem("性别" + QString::number(row)));
-           userModel->setItem(row, 4, new QStandardItem(QString::number(20 + row)));
-           userModel->setItem(row, 5, new QStandardItem("日期" + QString::number(row)));
-           userModel->setItem(row, 6, new QStandardItem("信息" + QString::number(row)));
-           userModel->setItem(row, 7, new QStandardItem("结果" + QString::number(row)));
-       }
-
-       for (int row = 0; row < 10; ++row) {
-           goodsModel->setItem(row, 0, new QStandardItem(QString::number(row)));
-           goodsModel->setItem(row, 1, new QStandardItem("姓名" + QString::number(row)));
-           goodsModel->setItem(row, 2, new QStandardItem("账号" + QString::number(row)));
-           goodsModel->setItem(row, 3, new QStandardItem("性别" + QString::number(row)));
-           goodsModel->setItem(row, 4, new QStandardItem(QString::number(20 + row)));
-           goodsModel->setItem(row, 5, new QStandardItem("日期" + QString::number(row)));
-           goodsModel->setItem(row, 6, new QStandardItem("信息" + QString::number(row)));
-           goodsModel->setItem(row, 7, new QStandardItem("结果" + QString::number(row)));
-           goodsModel->setItem(row, 8, new QStandardItem("处方" + QString::number(row)));
-       }
-
-       for (int row = 0; row < 10; ++row) {
-           statisticsModel->setItem(row, 0, new QStandardItem(QString::number(row)));
-           statisticsModel->setItem(row, 1, new QStandardItem("姓名" + QString::number(row)));
-           statisticsModel->setItem(row, 2, new QStandardItem("病房" + QString::number(row)));
-           statisticsModel->setItem(row, 3, new QStandardItem("床号" + QString::number(row)));
-           statisticsModel->setItem(row, 4, new QStandardItem("日期" + QString::number(row)));
-       }
+    QStandardItemModel *statisticsModel = new QStandardItemModel(0, 5, this);
+    statisticsModel->setHorizontalHeaderLabels({
+        "患者编号", "患者姓名", "病房号", "病床号", "住院日期"
+    });
+    ui->tableViewStatistics_2->setModel(statisticsModel);
+    setupTableViewStyle(ui->tableViewStatistics_2);
 }
 
-
-//pinf界面和pbd界面切换相关
-void pinf::on_tableViewRecordation_2_doubleClicked(const QModelIndex &index)
+void pinf::setRecordationData(const QVector<QVector<QString>> &data)
 {
-    if(index.column()==0)
-    {
-        this->hide();
-        windowp->show();
+    QStandardItemModel *model = qobject_cast<QStandardItemModel*>(ui->tableViewRecordation_2->model());
+    if (model) {
+        model->clear();  // 清空现有数据
+        model->setHorizontalHeaderLabels({
+            "患者编号", "患者姓名", "患者账号", "患者性别", "患者年龄",
+            "患者预约日期", "患者信息资料"
+        });
+
+        for (const QVector<QString> &row : data) {
+            if (row.size() == 7) {
+                for (int col = 0; col < row.size(); ++col) {
+                    model->setItem(model->rowCount(), col, new QStandardItem(row[col]));
+                }
+            }
+        }
+    }
+}
+
+void pinf::setUserData(const QVector<QVector<QString>> &data)
+{
+    QStandardItemModel *model = qobject_cast<QStandardItemModel*>(ui->tableViewUser_2->model());
+    if (model) {
+        model->clear();  // 清空现有数据
+        model->setHorizontalHeaderLabels({
+            "患者编号", "患者姓名", "患者账号", "患者性别", "患者年龄",
+            "患者预约日期", "患者信息资料", "诊断结果"
+        });
+
+        for (const QVector<QString> &row : data) {
+            if (row.size() == 8 && !row[7].isEmpty()) {  // 诊断结果不为空
+                for (int col = 0; col < row.size(); ++col) {
+                    model->setItem(model->rowCount(), col, new QStandardItem(row[col]));
+                }
+            }
+        }
+    }
+}
+
+void pinf::setGoodsData(const QVector<QVector<QString>> &data)
+{
+    QStandardItemModel *model = qobject_cast<QStandardItemModel*>(ui->tableViewGoods_2->model());
+    if (model) {
+        model->clear();  // 清空现有数据
+        model->setHorizontalHeaderLabels({
+            "患者编号", "患者姓名", "患者账号", "患者性别", "患者年龄",
+            "患者预约日期", "患者信息资料", "诊断结果", "处方"
+        });
+
+        for (const QVector<QString> &row : data) {
+            if (row.size() == 9 && !row[8].isEmpty()) {  // 处方不为空
+                for (int col = 0; col < row.size(); ++col) {
+                    model->setItem(model->rowCount(), col, new QStandardItem(row[col]));
+                }
+            }
+        }
+    }
+}
+
+void pinf::setStatisticsData(const QVector<QVector<QString>> &data)
+{
+    QStandardItemModel *model = qobject_cast<QStandardItemModel*>(ui->tableViewStatistics_2->model());
+    if (model) {
+        model->clear();  // 清空现有数据
+        model->setHorizontalHeaderLabels({
+            "患者编号", "患者姓名", "病房号", "病床号", "住院日期"
+        });
+
+        for (const QVector<QString> &row : data) {
+            if (row.size() == 5 && !row[2].isEmpty()) {  // 病房号不为空
+                for (int col = 0; col < row.size(); ++col) {
+                    model->setItem(model->rowCount(), col, new QStandardItem(row[col]));
+                }
+            }
+        }
     }
 }
 
@@ -163,12 +182,20 @@ pinf::~pinf()
     delete ui;
 }
 
-//MianWindow界面和pinf界面切换相关
 void pinf::on_pushButton_clicked()
 {
-   // emit goback();
-    this->hide();
-    //MainWindow *mmainWindow = new MainWindow(this);
-   // mmainWindow->show();
+    emit goback();
 }
+
+void pinf::on_tableViewRecordation_2_doubleClicked(const QModelIndex &index)
+{
+    if (index.column() == 0)
+    {
+        this->hide();
+        windowp->show();
+    }
+}
+
+
+
 

@@ -3,6 +3,7 @@
 #include "absence.h"
 #include "pinf.h"
 #include "information.h"
+#include "tcpmgr.h"
 #include <QMessageBox>
 #include <QTextBlock>
 #include <QDebug>
@@ -19,6 +20,7 @@
 #include <QTimer>
 #include <QDateTime>
 #include <QMouseEvent>
+#include <QJsonDocument>
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent), ui(new Ui::MainWindow)
@@ -218,8 +220,20 @@ void MainWindow::on_PI_clicked()
 //    setCentralWidget(window);
 //    window->show();
 //    this->hide();
+
+    //emit sig_patient_mesg_need();
+    QJsonObject jsonObj;
+    jsonObj["uid"]=UserMgr::GetInstance()->getUid();
+    qDebug()<<jsonObj["uid"].toInt();
+
+    QJsonDocument doc(jsonObj);
+    QString jsonString = doc.toJson(QJsonDocument::Indented);
+
+    //发送tcp请求给chat server
+    emit TcpMgr::GetInstance()->sig_send_data(ReqId::ID_DOCTOR_CALL_PAINTINFO, jsonString);
     pinf *pinfWindow = new pinf(this);
     pinfWindow->show();
+   // emit sig_make_first_list();
 }
 
 void MainWindow::on_INF_clicked()

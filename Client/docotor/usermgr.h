@@ -73,6 +73,26 @@ public:
                     default: return "未知科室";
                 }
             }
+        void setData(QVector<QVector<QString>> tmpdata){
+            data=tmpdata;
+        }
+
+        void setMdata(QVector<QVector<QString>> tmpdata){
+            mdata=tmpdata;
+        }
+        void setWdata(QVector<QVector<QString>> tmpdata){
+            wdata=tmpdata;
+        }
+        QVector<QVector<QString>> getData(){
+            return data;
+
+        }
+        QVector<QVector<QString>> getMdata(){
+            return mdata;
+        }
+        QVector<QVector<QString>> getWdata(){
+            return wdata;
+        }
 
 private:
     UserMgr();
@@ -89,6 +109,9 @@ private:
     QString _IDcard;
     int _department_id;
     QString _intr;
+    QVector<QVector<QString>> data;
+    QVector<QVector<QString>> mdata;
+    QVector<QVector<QString>> wdata;
 
 };
 

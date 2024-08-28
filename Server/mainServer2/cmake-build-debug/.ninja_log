@@ -74,3 +74,16 @@
 16668	21067	1724773281195622005	mainServer2	27aafb2432dcba5f
 297	23846	1724775229734671906	CMakeFiles/mainServer2.dir/LogicSystem.cpp.o	f3ee3f20f7da5043
 23849	29230	1724775253281753719	mainServer2	27aafb2432dcba5f
+28	17131	1724819944391319658	CMakeFiles/mainServer2.dir/MysqlMgr.cpp.o	a148e6721d2799a8
+28	22532	1724819944391319658	CMakeFiles/mainServer2.dir/RedisMgr.cpp.o	b8281c291783bac2
+26	22535	1724819944391319658	CMakeFiles/mainServer2.dir/MsgNode.cpp.o	de6615f80353352d
+27	24651	1724819944391319658	CMakeFiles/mainServer2.dir/MysqlDao.cpp.o	566af4f40f20010e
+29	26538	1724819944395328058	CMakeFiles/mainServer2.dir/StatusGrpcClient.cpp.o	e9c3627f958bdf04
+31	26988	1724819944395328058	CMakeFiles/mainServer2.dir/UserMgr.cpp.o	f99a63fd8530b804
+24	29537	1724819944387311258	CMakeFiles/mainServer2.dir/CServer.cpp.o	742c0de025c58083
+25	30271	1724819944391319658	CMakeFiles/mainServer2.dir/CSession.cpp.o	f5d2766b16e4c5ec
+23	32258	1724819944387311258	CMakeFiles/mainServer2.dir/ChatServiceImpl.cpp.o	3d9367b79eb388f4
+22	34339	1724819944387311258	CMakeFiles/mainServer2.dir/main.cpp.o	bec3e09157464945
+23	35146	1724819944387311258	CMakeFiles/mainServer2.dir/ChatGrpcClient.cpp.o	4a54bbe3c829eb02
+26	36283	1724819944391319658	CMakeFiles/mainServer2.dir/LogicSystem.cpp.o	f3ee3f20f7da5043
+36283	41379	1724819980645803635	mainServer2	27aafb2432dcba5f

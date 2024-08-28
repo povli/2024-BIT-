@@ -22,6 +22,10 @@ public:
     bool UpdatePwd(const std::string& name, const std::string& email);
     bool CheckPwd(const std::string& name, const std::string& pwd, UserInfo& userInfo);
     bool AddFriendApply(const int& from, const int& to);
+    bool GetGuahaoList(int doctor_uid,
+    std::vector<std::shared_ptr<paintInfobase>>& baseList,
+    std::vector<std::shared_ptr<paintInfocheck>>& checkList,
+    std::vector<std::shared_ptr<paintInfochufang>>& chufangList);
     bool AuthFriendApply(const int& from, const int& to);
     bool AddFriend(const int& from, const int& to, std::string back_name);
     bool UpdateDoctorInfo(int id, const std::string& name, const std::string& email, const std::string& department, const std::string& intr,const std::shared_ptr<int> &department_id);
