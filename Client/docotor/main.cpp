@@ -1,4 +1,7 @@
 #include "hmainwindow.h"
+#include "pinf.h"
+#include "pbd.h"
+#include "mainwindow.h"
 #include<QFile>
 
 #include <QApplication>
@@ -31,7 +34,8 @@ int main(int argc, char *argv[])
     QString gate_port = settings.value("GateServer/port").toString();
     gate_url_prefix = "http://"+gate_host+":"+gate_port;
 
-    hMainWindow w;
+    // hMainWindow w;
+    pbd w;
     w.show();
     return a.exec();
 }

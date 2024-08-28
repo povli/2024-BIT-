@@ -1,10 +1,13 @@
 #include "pinf.h"
 #include "ui_pinf.h"
+#include "mainwindow.h"
 #include <QHeaderView>
 #include <QStandardItemModel>
 #include <qjsondocument.h>
 #include"mainwindow.h"
 #include"tcpmgr.h"
+#include <QPushButton>
+#include <QMouseEvent>
 
 void pinf::setupTableViewStyle(QTableView *tableView)
 {
@@ -47,6 +50,35 @@ void pinf::setupTableViewStyle(QTableView *tableView)
     verticalHeader->setFixedWidth(70);    // 垂直头部宽度
 }
 
+// ButtonDelegate 实现
+ButtonDelegate::ButtonDelegate(QObject *parent) :
+    QStyledItemDelegate(parent)
+{
+}
+
+void ButtonDelegate::paint(QPainter *painter, const QStyleOptionViewItem &option, const QModelIndex &index) const
+{
+    if (index.column() == 7) { // 假设按钮在第8列
+        QStyleOptionButton buttonOpt;
+        buttonOpt.rect = option.rect;
+        buttonOpt.text = "详情";
+        buttonOpt.state = QStyle::State_Enabled;
+
+        QApplication::style()->drawControl(QStyle::CE_PushButton, &buttonOpt, painter);
+    } else {
+        QStyledItemDelegate::paint(painter, option, index);
+    }
+}
+
+bool ButtonDelegate::editorEvent(QEvent *event, QAbstractItemModel *model, const QStyleOptionViewItem &option, const QModelIndex &index)
+{
+    if (index.column() == 7 && event->type() == QEvent::MouseButtonRelease) {
+        emit buttonClicked(index);
+        return true;
+    }
+    return QStyledItemDelegate::editorEvent(event, model, option, index);
+}
+
 pinf::pinf(QWidget *parent) :
     QWidget(parent),
     ui(new Ui::pinf)
@@ -63,16 +95,19 @@ pinf::pinf(QWidget *parent) :
         windowp->close();
         this->show();
     });
-    connect(TcpMgr::GetInstance().get(),&TcpMgr::sig_make_first_list,this,&pinf::setRecordationData);
-    //connect(MainWindow)
+    // connect(TcpMgr::GetInstance().get(),&TcpMgr::sig_make_first_list,this,&pinf::setRecordationData);
+
+    buttonDelegate = new ButtonDelegate(this);
+    connect(buttonDelegate, &ButtonDelegate::buttonClicked, this, &pinf::onButtonClicked);
 
     // 初始化表格模型
-    QStandardItemModel *recordationModel = new QStandardItemModel(0, 7, this);
+    QStandardItemModel *recordationModel = new QStandardItemModel(0, 8, this);
     recordationModel->setHorizontalHeaderLabels({
         "患者编号", "患者姓名", "患者账号", "患者性别", "患者年龄",
-        "患者预约日期", "患者信息资料"
+        "患者预约日期", "患者信息资料", "操作"
     });
     ui->tableViewRecordation_2->setModel(recordationModel);
+    ui->tableViewRecordation_2->setItemDelegateForColumn(7, buttonDelegate);
     setupTableViewStyle(ui->tableViewRecordation_2);
 
     QStandardItemModel *userModel = new QStandardItemModel(0, 8, this);
@@ -97,6 +132,8 @@ pinf::pinf(QWidget *parent) :
     });
     ui->tableViewStatistics_2->setModel(statisticsModel);
     setupTableViewStyle(ui->tableViewStatistics_2);
+
+    connect(buttonDelegate, &ButtonDelegate::buttonClicked, this, &pinf::onButtonClicked);
 }
 
 void pinf::setRecordationData(const QVector<QVector<QString>> &data)
@@ -106,14 +143,21 @@ void pinf::setRecordationData(const QVector<QVector<QString>> &data)
         model->clear();  // 清空现有数据
         model->setHorizontalHeaderLabels({
             "患者编号", "患者姓名", "患者账号", "患者性别", "患者年龄",
-            "患者预约日期", "患者信息资料"
+            "患者预约日期", "详情"
         });
 
-        for (const QVector<QString> &row : data) {
-            if (row.size() == 7) {
-                for (int col = 0; col < row.size(); ++col) {
-                    model->setItem(model->rowCount(), col, new QStandardItem(row[col]));
+        int rowCount = data.size();
+        model->setRowCount(rowCount);  // 设置行数
+
+        patientIds.clear(); // 清空现有的患者编号
+
+        for (int row = 0; row < rowCount; ++row) {
+            const QVector<QString> &dataRow = data[row];
+            if (dataRow.size() == 7) {
+                for (int col = 0; col < dataRow.size(); ++col) {
+                    model->setItem(row, col, new QStandardItem(dataRow[col]));
                 }
+                patientIds.append(dataRow[0]); // 假设患者编号在第0列
             }
         }
     }
@@ -129,10 +173,14 @@ void pinf::setUserData(const QVector<QVector<QString>> &data)
             "患者预约日期", "患者信息资料", "诊断结果"
         });
 
-        for (const QVector<QString> &row : data) {
-            if (row.size() == 8 && !row[7].isEmpty()) {  // 诊断结果不为空
-                for (int col = 0; col < row.size(); ++col) {
-                    model->setItem(model->rowCount(), col, new QStandardItem(row[col]));
+        int rowCount = data.size();
+        model->setRowCount(rowCount);  // 设置行数
+
+        for (int row = 0; row < rowCount; ++row) {
+            const QVector<QString> &dataRow = data[row];
+            if (dataRow.size() == 8 && !dataRow[7].isEmpty()) {  // 诊断结果不为空
+                for (int col = 0; col < dataRow.size(); ++col) {
+                    model->setItem(row, col, new QStandardItem(dataRow[col]));
                 }
             }
         }
@@ -149,10 +197,14 @@ void pinf::setGoodsData(const QVector<QVector<QString>> &data)
             "患者预约日期", "患者信息资料", "诊断结果", "处方"
         });
 
-        for (const QVector<QString> &row : data) {
-            if (row.size() == 9 && !row[8].isEmpty()) {  // 处方不为空
-                for (int col = 0; col < row.size(); ++col) {
-                    model->setItem(model->rowCount(), col, new QStandardItem(row[col]));
+        int rowCount = data.size();
+        model->setRowCount(rowCount);  // 设置行数
+
+        for (int row = 0; row < rowCount; ++row) {
+            const QVector<QString> &dataRow = data[row];
+            if (dataRow.size() == 9 && !dataRow[8].isEmpty()) {  // 处方不为空
+                for (int col = 0; col < dataRow.size(); ++col) {
+                    model->setItem(row, col, new QStandardItem(dataRow[col]));
                 }
             }
         }
@@ -168,13 +220,26 @@ void pinf::setStatisticsData(const QVector<QVector<QString>> &data)
             "患者编号", "患者姓名", "病房号", "病床号", "住院日期"
         });
 
-        for (const QVector<QString> &row : data) {
-            if (row.size() == 5 && !row[2].isEmpty()) {  // 病房号不为空
-                for (int col = 0; col < row.size(); ++col) {
-                    model->setItem(model->rowCount(), col, new QStandardItem(row[col]));
+        int rowCount = data.size();
+        model->setRowCount(rowCount);  // 设置行数
+
+        for (int row = 0; row < rowCount; ++row) {
+            const QVector<QString> &dataRow = data[row];
+            if (dataRow.size() == 5 && !dataRow[2].isEmpty()) {  // 病房号不为空
+                for (int col = 0; col < dataRow.size(); ++col) {
+                    model->setItem(row, col, new QStandardItem(dataRow[col]));
                 }
             }
         }
+    }
+}
+
+void pinf::onButtonClicked(const QModelIndex &index)
+{
+    QString patientId = patientIds.at(index.row());
+    if (windowp) {
+        this->hide();
+        windowp->show();
     }
 }
 
@@ -185,7 +250,10 @@ pinf::~pinf()
 
 void pinf::on_pushButton_clicked()
 {
-    emit goback();
+    // emit goback();
+    this->hide();
+    // MainWindow *mmMainWindow = new MainWindow();
+    // mmMainWindow->show();
 }
 
 void pinf::on_tableViewRecordation_2_doubleClicked(const QModelIndex &index)
@@ -198,8 +266,13 @@ void pinf::on_tableViewRecordation_2_doubleClicked(const QModelIndex &index)
     }
 }
 
-
-
+void pinf::on_tabWidget_tabBarClicked(int index)
+{
+    if(index == 1) {}
+    else if(index == 2) {}
+    else if(index == 3) {}
+    else if(index == 4) {}
+}
 
 
 void pinf::on_tabWidget_tabBarClicked(int index)
