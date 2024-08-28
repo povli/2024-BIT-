@@ -1,6 +1,9 @@
 #ifndef SINGLETON_H
 #define SINGLETON_H
-
+#include <memory>
+#include <mutex>
+#include <iostream>
+//以上为新添加
 #include"global.h"
 using namespace std;
 template <typename  T>
