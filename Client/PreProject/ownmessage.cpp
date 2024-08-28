@@ -201,7 +201,7 @@ void OwnMessage::confirm() {
     // 切换回显示模式
     setDisplayMode(true);
 
-    QString myname =nameEdit->text();//json部分
+    /*QString myname =nameEdit->text();//json部分
     //QString mybirth =dobEdit->text();
     QString myid = idEdit->text();
     QString myphone = phoneEdit->text();
@@ -213,7 +213,7 @@ void OwnMessage::confirm() {
     jsonObj["myphone"]=myphone;//我的电话
     jsonObj["myemail"]=myemail;//我的邮箱
     QJsonDocument doc(jsonObj);
-    QString jsonString = doc.toJson(QJsonDocument::Indented);
+    QString jsonString = doc.toJson(QJsonDocument::Indented);*/
 
     // 弹出确认对话框
     QMessageBox::information(this, "确认", "信息已提交！");

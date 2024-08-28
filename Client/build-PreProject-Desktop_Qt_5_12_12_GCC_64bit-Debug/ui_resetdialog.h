@@ -204,7 +204,7 @@ public:
     {
         ResetDialog->setWindowTitle(QApplication::translate("ResetDialog", "Dialog", nullptr));
         err_tip->setText(QString());
-        user_lb->setText(QApplication::translate("ResetDialog", "\345\267\245\345\217\267\357\274\232", nullptr));
+        user_lb->setText(QApplication::translate("ResetDialog", "\347\224\250\346\210\267\345\220\215\357\274\232", nullptr));
         email_lb->setText(QApplication::translate("ResetDialog", "\351\202\256\347\256\261\357\274\232", nullptr));
         varify_lb->setText(QApplication::translate("ResetDialog", "\351\252\214\350\257\201\347\240\201\357\274\232", nullptr));
         varify_btn->setText(QApplication::translate("ResetDialog", "\350\216\267\345\217\226", nullptr));

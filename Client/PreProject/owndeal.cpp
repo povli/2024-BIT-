@@ -54,14 +54,15 @@ void OwnDeal::initializeTable(int num,QString *docname,QString *judge,QString *p
 
     for (int row = 0; row < num; ++row) {
         for (int column = 0; column < 3; ++column) {
-        for (int column = 0; column < 3; ++column) {
             if(column==0){
                 QStandardItem *item = new QStandardItem(QString("%1").arg(docname[row]));
                 model->setItem(row, column, item);
-            }else if(column==1){
+            }
+            else if(column==1){
                 QStandardItem *item = new QStandardItem(QString("%1").arg(judge[row]));
                 model->setItem(row, column, item);
-            }else if(column==2){
+            }
+            else if(column==2){
                 QStandardItem *item = new QStandardItem(QString("%1").arg(prescription[row]));
                 model->setItem(row, column, item);
             }
@@ -82,18 +83,15 @@ void OwnDeal::initializeTable(int num,QString *docname,QString *judge,QString *p
     }
 }
 
-void OwnDeal::showDetails(int row) {
+void OwnDeal::showDetails(int row){
     QString docname = model->item(row, 0)->text();
         QString judge = model->item(row, 1)->text();
         QString prescription = model->item(row, 2)->text();
-        QString note = model->item(row, 3)->text();
-
-        QString details = QString("医生: %1\n诊断: %2\n处方: %3\n医嘱: %4")
+        //QString note = model->item(row, 3)->text();
+        QString details = QString("医生: %1\n诊断: %2\n处方: %3\n")
                 .arg(docname)
                 .arg(judge)
-                .arg(prescription)
-                .arg(note);
-
+                .arg(prescription);
     //    QMessageBox::information(this, "详细信息:", details);
         ShowDetails *showDetail = new ShowDetails(details, this);
         showDetail->show();
