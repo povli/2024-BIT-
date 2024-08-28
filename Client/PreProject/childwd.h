@@ -2,6 +2,7 @@
 #define CHILDWD_H
 
 #include <QWidget>
+#include "ChildDoc.h"
 
 namespace Ui {
 class ChildWd;
@@ -18,6 +19,8 @@ public:
 //    void showdate();
 public:
     QString str;
+    void datatrans(int num,QString *id,QString *name,QString *introduce,QString *position);
+    QVector<ChildDoc> childdoc;
 private slots:
     void showdate();
 private:

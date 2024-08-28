@@ -2,6 +2,7 @@
 #define SKINWD_H
 
 #include <QWidget>
+#include "SkinDoc.h"
 
 namespace Ui {
 class SkinWd;
@@ -16,6 +17,8 @@ public:
     ~SkinWd();
 public:
     QString str;
+    void datatrans(int num,QString *id,QString *name,QString *introduce,QString *position);
+    QVector<SkinDoc> skindoc;
 
 private slots:
     void showdate();

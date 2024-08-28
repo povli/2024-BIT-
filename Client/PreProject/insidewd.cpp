@@ -1,7 +1,6 @@
 #include "insidewd.h"
 #include "ui_insidewd.h"
 #include "GlobalData.h"
-#include "InsideDoc.h"
 #include <QLabel>
 #include <vector>
 #include <QVector>
@@ -9,14 +8,16 @@
 #include "timetablewd.h"
 using namespace std;
 
-int GlobalData::InsideDocnum=3;
+int GlobalData::InsideDocnum=0;
 
 InsideWd::InsideWd(QWidget *parent) :
     QWidget(parent),
     ui(new Ui::InsideWd)
 {
     ui->setupUi(this);
-    QVector<InsideDoc> insidedoc(100);
+
+    //请在此处调用datatrans()
+
     int i=0;
     while(i<GlobalData::InsideDocnum){  //condition
         insidedoc[i].picturelabel=new QLabel("picture",this);
@@ -55,4 +56,17 @@ void InsideWd::showdate(){
     ttWd->resize(500,300);
     ttWd->showdoc("内科",str);
     ttWd->show();
+}
+//封装借口，数据传输用
+//num是数据库里医生数量,其余请传入对应的数组：工号，姓名，介绍，职位。
+void InsideWd::datatrans(int num,QString *id,QString *name,QString *introduce,QString *position){
+    GlobalData::InsideDocnum=num;
+    while(num--){
+        InsideDoc temp;
+        temp.id=id[num];
+        temp.name=name[num];
+        temp.introduce=introduce[num];
+        temp.position=position[num];
+        insidedoc.append(temp);
+    }
 }

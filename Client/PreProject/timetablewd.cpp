@@ -100,3 +100,4 @@ void TimetableWd::showdoc(QString room, QString doc){
     ttdoc=doc;
     doctorLabel->setText("预约医生:"+room+doc);
 }
+

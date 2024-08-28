@@ -19,9 +19,9 @@ private slots:
     void showDetails();
     void goBack();
 
+public:
+    void initializeTable(int num,QString *docname,QString *judge,QString *prescription,QString *note);
 private:
-    void initializeTable();
-
     QPushButton *backButton;
     QTableView *tableView;
     QStandardItemModel *model;
