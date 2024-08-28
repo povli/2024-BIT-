@@ -9,6 +9,7 @@
 #include "RedisMgr.h"
 #include "UserMgr.h"
 #include "ChatGrpcClient.h"
+#include"MysqlDao.h"
 
 using namespace std;
 
@@ -96,9 +97,92 @@ void LogicSystem::RegisterCallBacks() {
 
 	_fun_callbacks[ID_DOCTOR_CALL_PAINTINFO] = std::bind(&LogicSystem::DoctorCallForPaintInfo, this,
 		placeholders::_1, placeholders::_2, placeholders::_3);
+	_fun_callbacks[ID_WRITE_PAINT_CHECKRESULT] = std::bind(&LogicSystem::DoctorWriteCheckResult, this,
+		placeholders::_1, placeholders::_2, placeholders::_3);
+	_fun_callbacks[ID_WRITE_PAINT_ADVICE] = std::bind(&LogicSystem::DoctorWriteAdvice, this,
+		placeholders::_1, placeholders::_2, placeholders::_3);
+
+	_fun_callbacks[ID_hospital] = std::bind(&LogicSystem::addHospi, this,
+		placeholders::_1, placeholders::_2, placeholders::_3);
+
 
 }
 
+
+void LogicSystem::addHospi(shared_ptr<CSession> session, const short &msg_id, const string &msg_data) {
+	Json::Reader reader;
+	Json::Value root;
+	reader.parse(msg_data, root);
+	Json::Value  rtvalue;
+	Defer defer([this, &rtvalue, session]() {
+		std::string return_str = rtvalue.toStyledString();
+		session->Send(return_str, ID_WRITE_PAINT_ADVICE);
+		});
+	auto doctoruid=root["doctor_uid"].asInt();
+	auto patientuid_str = root["patient_uid"].asString();
+	int patientuid = std::stoi(patientuid_str);
+
+	auto patientname=root["patient_name"].asString();
+	auto bed_number=root["bed_number"].asString();
+	auto admission_number=root["admission_data"].asString();
+	auto doctor_name=root["doctorname"].asString();
+	auto room=root["room"].asString();
+
+	bool tmp=MysqlMgr::GetInstance()->InsertIntoHospitalization(doctoruid,patientuid,patientname,bed_number,admission_number,doctor_name,room);
+
+
+}
+
+
+void LogicSystem::DoctorWriteAdvice(shared_ptr<CSession> session, const short &msg_id, const string &msg_data) {
+	Json::Reader reader;
+	Json::Value root;
+	reader.parse(msg_data, root);
+	auto id = root["id"].asString();
+	int iid=std::stoi(id);
+	//auto token = root["token"].asString();
+	auto paintuid=root["doctorid"].asString();
+	std::cout << "user login uid is  "  << endl;
+	Json::Value  rtvalue;
+	Defer defer([this, &rtvalue, session]() {
+		std::string return_str = rtvalue.toStyledString();
+		session->Send(return_str, ID_WRITE_PAINT_ADVICE);
+		});
+	auto result=root["result"].asString();
+	bool dodd=MysqlMgr::GetInstance()->UpdateCheckAdivice(iid,paintuid,result);
+
+
+
+
+
+
+
+}
+
+void LogicSystem::DoctorWriteCheckResult(shared_ptr<CSession> session, const short &msg_id, const string &msg_data) {
+	Json::Reader reader;
+	Json::Value root;
+	reader.parse(msg_data, root);
+	auto id = root["id"].asString();
+	int iid=std::stoi(id);
+	//auto token = root["token"].asString();
+	auto paintuid=root["doctorid"].asString();
+	std::cout << "user login uid is  "  << endl;
+	Json::Value  rtvalue;
+	Defer defer([this, &rtvalue, session]() {
+		std::string return_str = rtvalue.toStyledString();
+		session->Send(return_str, ID_WRITE_PAINT_CHECKRESULT);
+		});
+	auto result=root["result"].asString();
+	bool dodd=MysqlMgr::GetInstance()->UpdateCheckResult(iid,paintuid,result);
+
+
+
+
+
+
+
+}
 
 void LogicSystem::DoctorCallForPaintInfo(shared_ptr<CSession> session, const short &msg_id, const string &msg_data) {
 	Json::Reader reader;
@@ -118,6 +202,7 @@ void LogicSystem::DoctorCallForPaintInfo(shared_ptr<CSession> session, const sho
 	std::vector<std::shared_ptr<paintInfobase>> baseList;
     std::vector<std::shared_ptr<paintInfocheck>> checkList;
     std::vector<std::shared_ptr<paintInfochufang>> chufangList;
+	std::vector<HosInfobase> hospitalList;
 
     //Json::Value rtvalue;
 
@@ -125,6 +210,7 @@ void LogicSystem::DoctorCallForPaintInfo(shared_ptr<CSession> session, const sho
         Json::Value baseArray(Json::arrayValue);
         for (const auto& base : baseList) {
             Json::Value obj;
+        	obj["id"]=base->_id;
             obj["userid"] = base->_uid;
             obj["username"] = base->_name;
             obj["useremail"] = base->_email;
@@ -139,6 +225,7 @@ void LogicSystem::DoctorCallForPaintInfo(shared_ptr<CSession> session, const sho
         Json::Value checkArray(Json::arrayValue);
         for (const auto& check : checkList) {
             Json::Value obj;
+        	obj["id"]=check->id;
             obj["userid"] = check->_uid;
             obj["username"] = check->_name;
             obj["useremail"] = check->_email;
@@ -154,6 +241,7 @@ void LogicSystem::DoctorCallForPaintInfo(shared_ptr<CSession> session, const sho
         Json::Value chufangArray(Json::arrayValue);
         for (const auto& chufang : chufangList) {
             Json::Value obj;
+        	obj["id"]=chufang->id;
             obj["userid"] = chufang->_uid;
             obj["username"] = chufang->_name;
             obj["useremail"] = chufang->_email;
@@ -167,6 +255,24 @@ void LogicSystem::DoctorCallForPaintInfo(shared_ptr<CSession> session, const sho
         }
         rtvalue["chufangList"] = chufangArray;
     }
+
+
+
+		// 新增医院信息查询
+		if (MysqlMgr::GetInstance()->GetHospitalizationInfo(uid, hospitalList)) {  // 假设uid对应doctor_uid
+			Json::Value hospitalArray(Json::arrayValue);
+			for (const auto& hospital : hospitalList) {
+				Json::Value obj;
+				obj["patient_uid"] = hospital.patient_uid;
+				obj["patient_name"] = hospital.patient_name;
+				obj["roomnum"] = hospital.roomnum;
+				obj["bed_number"] = hospital.bed_number;
+				obj["admission_data"] = hospital.admission_data;
+				hospitalArray.append(obj);
+			}
+			rtvalue["hospitalList"] = hospitalArray;
+		}
+
 
     return;
 

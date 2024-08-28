@@ -8,6 +8,7 @@
 #include"tcpmgr.h"
 #include <QPushButton>
 #include <QMouseEvent>
+#include <asm-generic/errno.h>
 
 void pinf::setupTableViewStyle(QTableView *tableView)
 {
@@ -95,7 +96,7 @@ pinf::pinf(QWidget *parent) :
         windowp->close();
         this->show();
     });
-    // connect(TcpMgr::GetInstance().get(),&TcpMgr::sig_make_first_list,this,&pinf::setRecordationData);
+     connect(TcpMgr::GetInstance().get(),&TcpMgr::sig_make_first_list,this,&pinf::setRecordationData);
 
     buttonDelegate = new ButtonDelegate(this);
     connect(buttonDelegate, &ButtonDelegate::buttonClicked, this, &pinf::onButtonClicked);
@@ -143,7 +144,7 @@ void pinf::setRecordationData(const QVector<QVector<QString>> &data)
         model->clear();  // 清空现有数据
         model->setHorizontalHeaderLabels({
             "患者编号", "患者姓名", "患者账号", "患者性别", "患者年龄",
-            "患者预约日期", "详情"
+            "患者预约日期", "患者信息资料", "详情"
         });
 
         int rowCount = data.size();
@@ -153,11 +154,13 @@ void pinf::setRecordationData(const QVector<QVector<QString>> &data)
 
         for (int row = 0; row < rowCount; ++row) {
             const QVector<QString> &dataRow = data[row];
-            if (dataRow.size() == 7) {
-                for (int col = 0; col < dataRow.size(); ++col) {
+            if (dataRow.size() == 8) {
+                for (int col = 1; col < dataRow.size(); ++col) {
                     model->setItem(row, col, new QStandardItem(dataRow[col]));
                 }
                 patientIds.append(dataRow[0]); // 假设患者编号在第0列
+                Ids.append(dataRow[1]);
+
             }
         }
     }
@@ -174,14 +177,23 @@ void pinf::setUserData(const QVector<QVector<QString>> &data)
         });
 
         int rowCount = data.size();
-        model->setRowCount(rowCount);  // 设置行数
-
+        int atrow=0;
         for (int row = 0; row < rowCount; ++row) {
             const QVector<QString> &dataRow = data[row];
-            if (dataRow.size() == 8 && !dataRow[7].isEmpty()) {  // 诊断结果不为空
-                for (int col = 0; col < dataRow.size(); ++col) {
-                    model->setItem(row, col, new QStandardItem(dataRow[col]));
+            if (dataRow.size() == 9 && !dataRow[8].isEmpty()) {  // 诊断结果不为空
+                atrow++;
+            }
+        }
+        model->setRowCount(atrow);  // 设置行数
+                                                       int a=0;
+        for (int row = 0; row < rowCount; ++row) {
+            const QVector<QString> &dataRow = data[row];
+            if (dataRow.size() == 9 && !dataRow[8].isEmpty()) {
+                // 诊断结果不为空
+                for (int col = 1; col < dataRow.size(); ++col) {
+                    model->setItem(a, col, new QStandardItem(dataRow[col]));
                 }
+                a++;
             }
         }
     }
@@ -198,14 +210,34 @@ void pinf::setGoodsData(const QVector<QVector<QString>> &data)
         });
 
         int rowCount = data.size();
-        model->setRowCount(rowCount);  // 设置行数
-
+        int arow=0;
         for (int row = 0; row < rowCount; ++row) {
             const QVector<QString> &dataRow = data[row];
-            if (dataRow.size() == 9 && !dataRow[8].isEmpty()) {  // 处方不为空
-                for (int col = 0; col < dataRow.size(); ++col) {
-                    model->setItem(row, col, new QStandardItem(dataRow[col]));
+            if (dataRow.size() == 10 && !dataRow[9].isEmpty()) {  // 处方不为空
+                arow++;
+            }
+        }
+        model->setRowCount(arow);  // 设置行数
+int a=0;
+        for (int row = 0; row < rowCount; ++row) {
+            const QVector<QString> &dataRow = data[row];
+            if (dataRow.size() == 10 && !dataRow[9].isEmpty()) {  // 处方不为空
+                for (int col = 1; col < dataRow.size(); ++col) {
+                    model->setItem(a, col, new QStandardItem(dataRow[col]));
                 }
+
+
+
+
+
+
+
+
+
+
+
+
+                a++;
             }
         }
     }
@@ -237,7 +269,45 @@ void pinf::setStatisticsData(const QVector<QVector<QString>> &data)
 void pinf::onButtonClicked(const QModelIndex &index)
 {
     QString patientId = patientIds.at(index.row());
+    QString patinridid=Ids.at(index.row());
+    UserMgr::GetInstance()->setpaintIdp(patinridid);
+    UserMgr::GetInstance()->setguahaoidEdit(patientId);
     if (windowp) {
+        QString result;
+        int idValue = patientId.toInt();  // 如果 patientId 是 QVariant 并且代表一个整数
+        QString idStr = QString::number(idValue);
+            QVector<QVector<QString>> data = UserMgr::GetInstance()->getData();
+
+
+            for (const QVector<QString>& row : data) {
+                if (!row.isEmpty() && row[0] == idStr) {
+                    // 比较第一个元素（userid）是否等于给定的id
+
+                    QString username = row[2];
+                    QString useremail = row[3];
+                    QString usersex = row[4];
+                    QString userage = row[5];
+                    QString userorderdata = row[6];
+                    QString userinfo = row[7];
+
+                    // 将提取到的数据拼接成一个结果字符串，可以根据需求调整格式
+                    result = "name: " + username + "\n" +
+                             "accounts: " + useremail + "\n" +
+                             "departments" + usersex + "\n" +
+                             "phones" + userage + "\n" +
+                             "times" + userorderdata + "\n" +
+                             "Info: " + userinfo+"id"+patientId;
+                    break;  // 找到匹配的数据后，跳出循环
+                }
+            }
+
+
+
+
+
+
+
+        emit UserMgr::GetInstance()->sig_to_paint_info_detail(result);
         this->hide();
         windowp->show();
     }
@@ -268,17 +338,25 @@ void pinf::on_tableViewRecordation_2_doubleClicked(const QModelIndex &index)
 
 void pinf::on_tabWidget_tabBarClicked(int index)
 {
-    if(index == 1) {}
-    else if(index == 2) {}
-    else if(index == 3) {}
-    else if(index == 4) {}
+    if(index == 0) {
+        setRecordationData(UserMgr::GetInstance()->getData());
+    }
+    else if(index == 1) {
+       setUserData(UserMgr::GetInstance()->getMdata());
+    }
+    else if(index == 2) {
+
+        setGoodsData(UserMgr::GetInstance()->getWdata());
+    }
+    else if(index == 3) {
+        setStatisticsData(UserMgr::GetInstance()->gethdata());
+    }
 }
 
 
-void pinf::on_tabWidget_tabBarClicked(int index)
-{
-    setUserData(UserMgr::GetInstance()->getMdata());
-}
+
+
+
 
 
 

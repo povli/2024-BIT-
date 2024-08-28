@@ -233,7 +233,7 @@ void MainWindow::on_PI_clicked()
     emit TcpMgr::GetInstance()->sig_send_data(ReqId::ID_DOCTOR_CALL_PAINTINFO, jsonString);
     pinf *pinfWindow = new pinf(this);
     pinfWindow->show();
-   // emit sig_make_first_list();
+    emit sig_make_first_list();
 }
 
 void MainWindow::on_INF_clicked()

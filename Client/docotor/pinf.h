@@ -26,6 +26,7 @@ public:
 
 signals:
     void buttonClicked(const QModelIndex &index);
+
 };
 
 class pinf : public QWidget
@@ -42,9 +43,11 @@ public:
     void setUserData(const QVector<QVector<QString>> &data);
     void setGoodsData(const QVector<QVector<QString>> &data);
     void setStatisticsData(const QVector<QVector<QString>> &data);
-
+QVector<QString> patientIds;
+QVector<QString> Ids;
 signals:
     void goback();
+
 
 private slots:
     void on_pushButton_clicked();
@@ -52,7 +55,7 @@ private slots:
     void on_tabWidget_tabBarClicked(int index);
     void onButtonClicked(const QModelIndex &index); // 处理按钮点击的槽
 
-    void on_tabWidget_tabBarClicked(int index);
+    //void on_tabWidget_tabBarClicked(int index);
 
 
 
@@ -61,7 +64,7 @@ private:
     void setupTableViewStyle(QTableView *tableView);
 
     ButtonDelegate *buttonDelegate; // ButtonDelegate 实例
-    QVector<QString> patientIds;     // 存储患者编号
+         // 存储患者编号
 };
 
 #endif // PINF_H

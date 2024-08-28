@@ -159,6 +159,26 @@ public:
 	bool AddFriendApply(const int& from, const int& to);
 	bool AuthFriendApply(const int& from, const int& to);
 	bool AddFriend(const int& from, const int& to, std::string back_name);
+	bool UpdateCheckResult(int id, const std::string& paintuid, const std::string& result);
+	bool UpdateCheckAdivice(int id, const std::string& paintuid, const std::string& result);
+	bool GetHospitalizationInfo(int doctor_uid, std::vector<HosInfobase>& hospitalList);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	bool InsertIntoHospitalization(int doctoruid, int patientuid, const std::string& patientname,
+										 const std::string& bed_number, const std::string& admission_number,
+										 const std::string& doctor_name, const std::string& room);
 
 	bool GetGuahaoList(int doctor_uid,
 	std::vector<std::shared_ptr<paintInfobase>>& baseList,

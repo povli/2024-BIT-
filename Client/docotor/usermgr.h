@@ -30,7 +30,7 @@ public:
         QString getToken() const { return _token; }
         //void setToken(const QString& token) { _token = token; }
 
-        int getUid() const { return _uid; }
+        int getUid()  { return _uid; }
         //void setUid(int uid) { _uid = uid; }
 
         QString getWorkID() const { return _workID; }
@@ -93,6 +93,28 @@ public:
         QVector<QVector<QString>> getWdata(){
             return wdata;
         }
+        void setguahaoidEdit(QString id){
+            _guahaoidEdit=id;
+        }
+        QString getguahaoidEdit(){
+            return _guahaoidEdit;
+        }
+        void setpaintIdp(QString id){
+            paintidp=id;
+        }
+        QString getpainIdep(){
+            return paintidp;
+        }
+        void sethdata(QVector<QVector<QString>> data){
+            hdata=data;
+        }
+        QVector<QVector<QString>> gethdata(){
+            return hdata;
+        }
+
+
+signals:
+        void sig_to_paint_info_detail(const QString jsonsq);
 
 private:
     UserMgr();
@@ -107,11 +129,15 @@ private:
     QString _month;
     QString _day;
     QString _IDcard;
+    QString _guahaoidEdit;
     int _department_id;
     QString _intr;
+    QString paintidp;
     QVector<QVector<QString>> data;
     QVector<QVector<QString>> mdata;
     QVector<QVector<QString>> wdata;
+    QVector<QVector<QString>> hdata;
+
 
 };
 

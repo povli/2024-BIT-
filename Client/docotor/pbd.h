@@ -3,6 +3,7 @@
 
 #include <QWidget>
 #include <QString>
+//#include"pinf.h"
 
 namespace Ui {
 class pbd;
@@ -15,6 +16,7 @@ class pbd : public QWidget
 public:
     explicit pbd(QWidget *parent = nullptr);
     ~pbd();
+    QString paintid;
 
 signals:
     void goback();
@@ -31,6 +33,7 @@ private slots:
 private:
     Ui::pbd *ui;
     void paintEvent(QPaintEvent *event);
+    //pinf* pin;
 };
 
 #endif // PBD_H

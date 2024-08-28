@@ -9,12 +9,16 @@
 #include <QJsonObject>
 #include <QJsonArray>
 #include <QFile>
+#include"pinf.h"
+#include"usermgr.h"
 
 pbd::pbd(QWidget *parent) :
     QWidget(parent),
     ui(new Ui::pbd)
 {
     ui->setupUi(this);
+    connect(UserMgr::GetInstance().get(),&UserMgr::sig_to_paint_info_detail,this,&pbd::populateData);
+
 }
 
 pbd::~pbd()
@@ -38,6 +42,7 @@ void pbd::paintEvent(QPaintEvent *event)
 
 void pbd::on_pushButton_2_clicked()
 {
+    DiagnosticDialog::paintid=paintid;
     DiagnosticDialog *diagnosticWindow = new DiagnosticDialog(this);
     diagnosticWindow->show();
 }
@@ -66,14 +71,15 @@ void pbd::populateData(const QString &jsonString)
     QJsonArray times = obj["times"].toArray();
     QJsonArray departments = obj["departments"].toArray();
     QJsonArray phones = obj["phones"].toArray();
+    paintid=obj["id"].toString();
 
     // 填充患者姓名
-    QStandardItemModel *nameModel = new QStandardItemModel();
+   /* QStandardItemModel *nameModel = new QStandardItemModel();
     for (const QJsonValue &value : names) {
         QStandardItem *item = new QStandardItem(value.toString());
         nameModel->appendRow(item);
     }
-    ui->tableView->setModel(nameModel);
+    ui->tableView->setText(nameModel);
 
     // 填充患者账号
     QStandardItemModel *accountModel = new QStandardItemModel();
@@ -105,7 +111,7 @@ void pbd::populateData(const QString &jsonString)
         QStandardItem *item = new QStandardItem(value.toString());
         phoneModel->appendRow(item);
     }
-    ui->tableView_4->setModel(phoneModel);
+    ui->tableView_4->setModel(phoneModel);*/
 }
 
 //QString jsonString = "{\"names\": [\"张三\"], \"accounts\": [\"123456\"], \"times\": [\"2024-08-28 10:00\"], \"departments\": [\"内科\"], \"phones\": [\"123-456-7890\"]}";

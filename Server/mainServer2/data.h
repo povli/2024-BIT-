@@ -53,9 +53,9 @@ struct ApplyInfo {
     int _status;
 };
 struct paintInfobase {
-    paintInfobase(int uid, std::string name, std::string email, int sex, std::string age, std::string orderdata, std::string info)
-        : _uid(uid), _name(name), _email(email), _sex(sex), _age(age), _orderdata(orderdata), _info(info) {}
-
+    paintInfobase(int id,int uid, std::string name, std::string email, int sex, std::string age, std::string orderdata, std::string info)
+        : _id(id),_uid(uid), _name(name), _email(email), _sex(sex), _age(age), _orderdata(orderdata), _info(info) {}
+    int _id;
     int _uid;
     std::string _name;
     std::string _email;
@@ -66,9 +66,9 @@ struct paintInfobase {
 };
 
 struct paintInfocheck {
-    paintInfocheck(int uid, std::string name, std::string email, int sex, std::string age, std::string orderdata, std::string info, std::string checkresult)
-        : _uid(uid), _name(name), _email(email), _sex(sex), _age(age), _orderdata(orderdata), _info(info), _checkresult(checkresult) {}
-
+    paintInfocheck(int id,int uid, std::string name, std::string email, int sex, std::string age, std::string orderdata, std::string info, std::string checkresult)
+        : id(id),_uid(uid), _name(name), _email(email), _sex(sex), _age(age), _orderdata(orderdata), _info(info), _checkresult(checkresult) {}
+    int id;
     int _uid;
     std::string _name;
     std::string _email;
@@ -79,10 +79,19 @@ struct paintInfocheck {
     std::string _checkresult;
 };
 
-struct paintInfochufang {
-    paintInfochufang(int uid, std::string name, std::string email, int sex, std::string age, std::string orderdata, std::string info, std::string checkresult, std::string chufang)
-        : _uid(uid), _name(name), _email(email), _sex(sex), _age(age), _orderdata(orderdata), _info(info), _checkresult(checkresult), _chufang(chufang) {}
+struct HosInfobase {
+    int patient_uid;
+    std::string patient_name;
+    std::string roomnum;
+    std::string bed_number;
+    std::string admission_data;
+};
 
+
+struct paintInfochufang {
+    paintInfochufang(int id,int uid, std::string name, std::string email, int sex, std::string age, std::string orderdata, std::string info, std::string checkresult, std::string chufang)
+        :id(id), _uid(uid), _name(name), _email(email), _sex(sex), _age(age), _orderdata(orderdata), _info(info), _checkresult(checkresult), _chufang(chufang) {}
+    int id;
     int _uid;
     std::string _name;
     std::string _email;
