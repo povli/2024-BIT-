@@ -16,5 +16,9 @@
         <file>pictures/预约背景图.jpg</file>
         <file>pictures/主界面背景图.jpg</file>
         <file>pictures/患者主界面.jpg</file>
+        <file>pictures/远程医疗x64.png</file>
+        <file>pictures/导航x64.png</file>
+        <file>pictures/jiankangzhishu_x64.png</file>
+        <file>pictures/4-聊天室x64.png</file>
     </qresource>
 </RCC>

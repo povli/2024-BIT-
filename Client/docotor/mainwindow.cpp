@@ -4,6 +4,9 @@
 #include "pinf.h"
 #include "information.h"
 #include "tcpmgr.h"
+#include "remainwindow.h"
+#include "guidemainwindow.h"
+#include "inchartx.h"
 #include <QMessageBox>
 #include <QTextBlock>
 #include <QDebug>
@@ -62,6 +65,26 @@ MainWindow::MainWindow(QWidget *parent)
     pixmap2.load(":/images/pictures/个人信息x64.png");
     ui->label_5->setPixmap(pixmap2);
     ui->label_5->installEventFilter(this);
+
+    QPixmap pixmap3;
+    pixmap3.load(":/images/pictures/jiankangzhishu_x64.png");
+    ui->label_20->setPixmap(pixmap3);
+    ui->label_20->installEventFilter(this);
+
+    QPixmap pixmap4;
+    pixmap4.load(":/images/pictures/远程医疗x64.png");
+    ui->label_21->setPixmap(pixmap4);
+    ui->label_21->installEventFilter(this);
+
+    QPixmap pixmap5;
+    pixmap5.load(":/images/pictures/4-聊天室x64.png");
+    ui->label_22->setPixmap(pixmap5);
+    ui->label_22->installEventFilter(this);
+
+    QPixmap pixmap6;
+    pixmap6.load(":/images/pictures/导航x64.png");
+    ui->label_23->setPixmap(pixmap6);
+    ui->label_23->installEventFilter(this);
 
     // Connect buttons to their respective actions
     connect(ui->WA, &QPushButton::clicked, [=]()
@@ -278,6 +301,55 @@ bool MainWindow::eventFilter(QObject *obj, QEvent *event)
             ui->stackedWidget->setCurrentIndex(1);
             return true;
         }
+        if (obj == ui->label_20 && mouseEvent->button() == Qt::LeftButton)
+        {
+            on_HC_clicked();  // Navigate to pinf
+            return true;
+        }
+        if (obj == ui->label_21 && mouseEvent->button() == Qt::LeftButton)
+        {
+            on_YS_clicked();  // Navigate to pinf
+            return true;
+        }
+        if (obj == ui->label_22 && mouseEvent->button() == Qt::LeftButton)
+        {
+            on_CR_clicked();  // Navigate to pinf
+            return true;
+        }
+        if (obj == ui->label_23 && mouseEvent->button() == Qt::LeftButton)
+        {
+            on_NG_clicked();  // Navigate to pinf
+            return true;
+        }
     }
     return QMainWindow::eventFilter(obj, event);
 }
+
+
+void MainWindow::on_YS_clicked()
+{
+    reMainWindow *rereMainWindow = new reMainWindow(this);
+    // this->hide();
+    rereMainWindow->show();
+}
+
+void MainWindow::on_NG_clicked()
+{
+    guideMainWindow *guideguideMainWindow = new guideMainWindow(this);
+    // this->hide();
+    guideguideMainWindow->show();
+}
+
+
+void MainWindow::on_HC_clicked()
+{
+    InChartX *InchartxWindow = new InChartX(this);
+    InchartxWindow->show();
+}
+
+
+void MainWindow::on_CR_clicked()
+{
+
+}
+

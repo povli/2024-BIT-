@@ -1,4 +1,6 @@
 #include "hmainwindow.h"
+#include "remainwindow.h"
+#include "guidemainwindow.h"
 #include<QFile>
 
 #include <QApplication>
@@ -32,6 +34,7 @@ int main(int argc, char *argv[])
     gate_url_prefix = "http://"+gate_host+":"+gate_port;
 
     hMainWindow w;
+    // guideMainWindow w;
     w.show();
     return a.exec();
 }

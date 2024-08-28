@@ -18,7 +18,7 @@ hMainWindow::hMainWindow(QWidget *parent)
 
     //连接创建主界面信号
    connect(TcpMgr::GetInstance().get(),&TcpMgr::sig_swich_chatdlg, this, &hMainWindow::SlotSwitchMain);
-   //emit TcpMgr::GetInstance()->sig_swich_chatdlg();
+   emit TcpMgr::GetInstance()->sig_swich_chatdlg();
 
 
 }

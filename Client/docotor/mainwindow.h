@@ -42,6 +42,15 @@ private slots:
     void on_INF_clicked();
     void on_checkBox_1_stateChanged(int arg1);
 
+
+    void on_YS_clicked();
+
+    void on_NG_clicked();
+
+    void on_HC_clicked();
+
+    void on_CR_clicked();
+
 private:
     Ui::MainWindow *ui;
     int m_maxWordNum;

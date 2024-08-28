@@ -1,4 +1,6 @@
 QT       += core gui network
+QT       += sql
+QT       += charts
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -12,59 +14,100 @@ SOURCES += \
     absence.cpp \
     advice.cpp \
     change.cpp \
+    circularbuf.cpp \
     clickedlabel.cpp \
     diagnostic.cpp \
+    display.cpp \
     global.cpp \
+    guidemainwindow.cpp \
+    historydata.cpp \
     hmainwindow.cpp \
     hospital.cpp \
     httpmgr.cpp \
+    inchartx.cpp \
     information.cpp \
     logindialog.cpp \
     main.cpp \
     mainwindow.cpp \
+    medicalrecord.cpp \
+    mydialog.cpp \
+    openuser.cpp \
     pbd.cpp \
     pinf.cpp \
+    questionnaire.cpp \
+    register.cpp \
     registerdialog.cpp \
+    remainwindow.cpp \
     resetdialog.cpp \
     tcpmgr.cpp \
+    tcpserver.cpp \
+    tcpthread.cpp \
     timerbtn.cpp \
-    usermgr.cpp
+    usermgr.cpp \
+    wavescene.cpp
 
 HEADERS += \
+    DataType.h \
     absence.h \
     advice.h \
     change.h \
+    circularbuf.h \
     clickedlabel.h \
+    database.h \
     diagnostic.h \
+    display.h \
     global.h \
+    guidemainwindow.h \
+    historydata.h \
     hmainwindow.h \
     hospital.h \
     httpmgr.h \
+    inchartx.h \
     information.h \
     logindialog.h \
     mainwindow.h \
+    medicalrecord.h \
+    mydialog.h \
+    mystruct.h \
+    openuser.h \
     pbd.h \
     pinf.h \
+    questionnaire.h \
+    register.h \
     registerdialog.h \
+    remainwindow.h \
     resetdialog.h \
     singleton.h \
     tcpmgr.h \
+    tcpserver.h \
+    tcpthread.h \
     timerbtn.h \
-    usermgr.h
+    usermgr.h \
+    wavescene.h
 
 FORMS += \
     absence.ui \
     advice.ui \
     change.ui \
     diagnostic.ui \
+    display.ui \
+    guidemainwindow.ui \
+    historydata.ui \
     hmainwindow.ui \
     hospital.ui \
+    inchartx.ui \
     information.ui \
     logindialog.ui \
     mainwindow.ui \
+    medicalrecord.ui \
+    mydialog.ui \
+    openuser.ui \
     pbd.ui \
     pinf.ui \
+    questionnaire.ui \
+    register.ui \
     registerdialog.ui \
+    remainwindow.ui \
     resetdialog.ui
 
 # Default rules for deployment.
@@ -74,14 +117,104 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 
 RESOURCES += \
     doctorDemo.qrc \
+    doctorDemo.qrc \
+    images.qrc \
+    rcs.qrc \
     rcs.qrc \
     rcs.qrc
 
 DISTFILES += \
+    Health.pro.user.78ab447 \
     PreProject.pro.user \
+    PreProject.pro.user.27a7e1c \
     PreProject.pro.user.5814c12 \
     config.ini \
     green.webp \
+    historyData/p220130703142759/ecgAVF.txt \
+    historyData/p220130703142759/ecgAVL.txt \
+    historyData/p220130703142759/ecgAVR.txt \
+    historyData/p220130703142759/ecgI.txt \
+    historyData/p220130703142759/ecgII.txt \
+    historyData/p220130703142759/ecgIII.txt \
+    historyData/p220130703142759/ecgV1.txt \
+    historyData/p220130703142759/ecgV2.txt \
+    historyData/p220130703142759/ecgV3.txt \
+    historyData/p220130703142759/ecgV4.txt \
+    historyData/p220130703142759/ecgV5.txt \
+    historyData/p220130703142759/ecgV6.txt \
+    historyData/p220130704144114/ecgAVF.txt \
+    historyData/p220130704144114/ecgAVL.txt \
+    historyData/p220130704144114/ecgAVR.txt \
+    historyData/p220130704144114/ecgI.txt \
+    historyData/p220130704144114/ecgII.txt \
+    historyData/p220130704144114/ecgIII.txt \
+    historyData/p220130704144114/ecgV1.txt \
+    historyData/p220130704144114/ecgV2.txt \
+    historyData/p220130704144114/ecgV3.txt \
+    historyData/p220130704144114/ecgV4.txt \
+    historyData/p220130704144114/ecgV5.txt \
+    historyData/p220130704144114/ecgV6.txt \
+    historyData/p220130705160803/ecgAVF.txt \
+    historyData/p220130705160803/ecgAVL.txt \
+    historyData/p220130705160803/ecgAVR.txt \
+    historyData/p220130705160803/ecgI.txt \
+    historyData/p220130705160803/ecgII.txt \
+    historyData/p220130705160803/ecgIII.txt \
+    historyData/p220130705160803/ecgV1.txt \
+    historyData/p220130705160803/ecgV2.txt \
+    historyData/p220130705160803/ecgV3.txt \
+    historyData/p220130705160803/ecgV4.txt \
+    historyData/p220130705160803/ecgV5.txt \
+    historyData/p220130705160803/ecgV6.txt \
+    historyData/p220130705161210/ecgAVF.txt \
+    historyData/p220130705161210/ecgAVL.txt \
+    historyData/p220130705161210/ecgAVR.txt \
+    historyData/p220130705161210/ecgI.txt \
+    historyData/p220130705161210/ecgII.txt \
+    historyData/p220130705161210/ecgIII.txt \
+    historyData/p220130705161210/ecgV1.txt \
+    historyData/p220130705161210/ecgV2.txt \
+    historyData/p220130705161210/ecgV3.txt \
+    historyData/p220130705161210/ecgV4.txt \
+    historyData/p220130705161210/ecgV5.txt \
+    historyData/p220130705161210/ecgV6.txt \
+    historyData/p220240827193736/ecgAVF.txt \
+    historyData/p220240827193736/ecgAVL.txt \
+    historyData/p220240827193736/ecgAVR.txt \
+    historyData/p220240827193736/ecgI.txt \
+    historyData/p220240827193736/ecgII.txt \
+    historyData/p220240827193736/ecgIII.txt \
+    historyData/p220240827193736/ecgV1.txt \
+    historyData/p220240827193736/ecgV2.txt \
+    historyData/p220240827193736/ecgV3.txt \
+    historyData/p220240827193736/ecgV4.txt \
+    historyData/p220240827193736/ecgV5.txt \
+    historyData/p220240827193736/ecgV6.txt \
+    historyException/20131101142942/ecgI.txt \
+    historyException/p220130703140315/ecgAVF.txt \
+    historyException/p220130703140315/ecgAVL.txt \
+    historyException/p220130703140315/ecgAVR.txt \
+    historyException/p220130703140315/ecgI.txt \
+    historyException/p220130703140315/ecgII.txt \
+    historyException/p220130703140315/ecgIII.txt \
+    historyException/p220130703140315/ecgV1.txt \
+    historyException/p220130703140315/ecgV2.txt \
+    historyException/p220130703140315/ecgV3.txt \
+    historyException/p220130703140315/ecgV4.txt \
+    historyException/p220130703140315/ecgV5.txt \
+    historyException/p220130703140315/ecgV6.txt \
+    historyException/p220130705160846/ecgAVF.txt \
+    historyException/p220130705160846/ecgAVL.txt \
+    historyException/p220130705160846/ecgAVR.txt \
+    historyException/p220130705160846/ecgI.txt \
+    historyException/p220130705160846/ecgII.txt \
+    historyException/p220130705160846/ecgIII.txt \
+    historyException/p220130705160846/ecgV1.txt \
+    historyException/p220130705160846/ecgV2.txt \
+    historyException/p220130705160846/ecgV3.txt \
+    historyException/p220130705160846/ecgV4.txt \
+    historyException/p220130705160846/ecgV5.txt \
+    historyException/p220130705160846/ecgV6.txt \
     pictures/个人信息x64.png \
     pictures/主界面背景图.jpg \
     pictures/患者主界面.jpg \
@@ -159,5 +292,9 @@ unix:CONFIG(release, debug | release)
     # 执行 cp 命令
     QMAKE_POST_LINK += cp -f \"$$TargetConfig\" \"$$OutputDir\"
 }
+
+SUBDIRS += \
+    ../../../../health/Health.pro \
+    Health.pro
 
 
