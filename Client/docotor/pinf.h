@@ -37,6 +37,10 @@ private slots:
 
     //void on_tabWidget_currentChanged(int index);
 
+    void on_tabWidget_tabBarClicked(int index);
+
+
+
 private:
     Ui::pinf *ui;
     void setupTableViewStyle(QTableView *tableView);

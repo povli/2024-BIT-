@@ -2,6 +2,7 @@
 #include "ui_pinf.h"
 #include <QHeaderView>
 #include <QStandardItemModel>
+#include <qjsondocument.h>
 #include"mainwindow.h"
 #include"tcpmgr.h"
 
@@ -191,9 +192,19 @@ void pinf::on_tableViewRecordation_2_doubleClicked(const QModelIndex &index)
 {
     if (index.column() == 0)
     {
+
         this->hide();
         windowp->show();
     }
+}
+
+
+
+
+
+void pinf::on_tabWidget_tabBarClicked(int index)
+{
+    setUserData(UserMgr::GetInstance()->getMdata());
 }
 
 
