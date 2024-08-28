@@ -36,7 +36,10 @@ int main(int argc, char *argv[])
     gate_url_prefix = "http://"+gate_host+":"+gate_port;
 
     hMainWindow w;
-    // guideMainWindow w;
+    // 模拟的 JSON 数据
+    // QString jsonString = "{\"name\": \"张三\", \"account\": \"123456\", \"time\": \"2024-08-28 10:00\", \"gender\": \"男\", \"age\": \"31\"}";
+    // pbd w;
     w.show();
+    // w.populateData(jsonString);
     return a.exec();
 }

@@ -66,13 +66,18 @@ void pbd::populateData(const QString &jsonString)
     if (!doc.isObject()) return;
 
     QJsonObject obj = doc.object();
-    QJsonArray names = obj["names"].toArray();
-    QJsonArray accounts = obj["accounts"].toArray();
-    QJsonArray times = obj["times"].toArray();
-    QJsonArray departments = obj["departments"].toArray();
-    QJsonArray phones = obj["phones"].toArray();
-    paintid=obj["id"].toString();
+    QString name = obj["name"].toString();
+    QString account = obj["account"].toString();
+    QString time = obj["time"].toString();
+    QString gender = obj["gender"].toString();
+    QString age = obj["age"].toString();
 
+    // 更新 QLabel 的文本
+    ui->label->setText("患者姓名: " + name);
+    ui->label_5->setText("患者账号: " + account);
+    ui->label_2->setText("预约时间: " + time);
+    ui->label_3->setText("性别: " + gender);
+    ui->label_4->setText("年龄: " + age);
     // 填充患者姓名
    /* QStandardItemModel *nameModel = new QStandardItemModel();
     for (const QJsonValue &value : names) {

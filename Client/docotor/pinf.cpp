@@ -155,8 +155,8 @@ void pinf::setRecordationData(const QVector<QVector<QString>> &data)
         for (int row = 0; row < rowCount; ++row) {
             const QVector<QString> &dataRow = data[row];
             if (dataRow.size() == 8) {
-                for (int col = 1; col < dataRow.size(); ++col) {
-                    model->setItem(row, col, new QStandardItem(dataRow[col]));
+                for (int col = 0; col < dataRow.size(); ++col) {
+                    model->setItem(row, col, new QStandardItem(dataRow[col + 1]));
                 }
                 patientIds.append(dataRow[0]); // 假设患者编号在第0列
                 Ids.append(dataRow[1]);
@@ -190,8 +190,8 @@ void pinf::setUserData(const QVector<QVector<QString>> &data)
             const QVector<QString> &dataRow = data[row];
             if (dataRow.size() == 9 && !dataRow[8].isEmpty()) {
                 // 诊断结果不为空
-                for (int col = 1; col < dataRow.size(); ++col) {
-                    model->setItem(a, col, new QStandardItem(dataRow[col]));
+                for (int col = 0; col < dataRow.size(); ++col) {
+                    model->setItem(a, col, new QStandardItem(dataRow[col + 1]));
                 }
                 a++;
             }
@@ -222,8 +222,8 @@ int a=0;
         for (int row = 0; row < rowCount; ++row) {
             const QVector<QString> &dataRow = data[row];
             if (dataRow.size() == 10 && !dataRow[9].isEmpty()) {  // 处方不为空
-                for (int col = 1; col < dataRow.size(); ++col) {
-                    model->setItem(a, col, new QStandardItem(dataRow[col]));
+                for (int col = 0; col < dataRow.size(); ++col) {
+                    model->setItem(a, col, new QStandardItem(dataRow[col + 1]));
                 }
 
 

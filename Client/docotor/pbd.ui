@@ -81,13 +81,6 @@
         </property>
        </widget>
       </item>
-      <item>
-       <widget class="QLabel" name="tableView">
-        <property name="text">
-         <string/>
-        </property>
-       </widget>
-      </item>
      </layout>
     </item>
     <item>
@@ -101,13 +94,6 @@
         </property>
         <property name="text">
          <string>患者账号:</string>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QLabel" name="tableView_5">
-        <property name="text">
-         <string/>
         </property>
        </widget>
       </item>
@@ -127,13 +113,6 @@
         </property>
        </widget>
       </item>
-      <item>
-       <widget class="QLabel" name="tableView_2">
-        <property name="text">
-         <string/>
-        </property>
-       </widget>
-      </item>
      </layout>
     </item>
     <item>
@@ -150,13 +129,6 @@
         </property>
        </widget>
       </item>
-      <item>
-       <widget class="QLabel" name="tableView_3">
-        <property name="text">
-         <string/>
-        </property>
-       </widget>
-      </item>
      </layout>
     </item>
     <item>
@@ -170,13 +142,6 @@
         </property>
         <property name="text">
          <string>年龄:</string>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QLabel" name="label_7">
-        <property name="text">
-         <string/>
         </property>
        </widget>
       </item>
