@@ -61,6 +61,19 @@ bool MysqlMgr::GetApplyList(int touid,
     return _dao.GetApplyList(touid, applyList, begin, limit);
 }
 
+bool MysqlMgr::GetGuahaoList(int doctor_uid,
+    std::vector<std::shared_ptr<paintInfobase>>& baseList,
+    std::vector<std::shared_ptr<paintInfocheck>>& checkList,
+    std::vector<std::shared_ptr<paintInfochufang>>& chufangList) {
+
+    return _dao.GetGuahaoList(doctor_uid, baseList, checkList, chufangList);
+}
+
+bool MysqlMgr::UpdateDoctorInfo(int id, const std::string &name, const std::string &email, const std::string &department, const std::string &intr,const std::shared_ptr<int> &department_id) {
+    return _dao.UpdateDoctorInfo(id, name, email, department, intr,department_id);
+}
+
+
 bool MysqlMgr::GetFriendList(int self_id, std::vector<std::shared_ptr<UserInfo> >& user_info) {
     return _dao.GetFriendList(self_id, user_info);
 }

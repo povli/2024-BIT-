@@ -63,7 +63,7 @@
      <x>100</x>
      <y>110</y>
      <width>341</width>
-     <height>381</height>
+     <height>386</height>
     </rect>
    </property>
    <layout class="QVBoxLayout" name="verticalLayout">
@@ -82,7 +82,11 @@
        </widget>
       </item>
       <item>
-       <widget class="QLineEdit" name="lineEdit"/>
+       <widget class="QLabel" name="tableView">
+        <property name="text">
+         <string/>
+        </property>
+       </widget>
       </item>
      </layout>
     </item>
@@ -101,7 +105,11 @@
        </widget>
       </item>
       <item>
-       <widget class="QLineEdit" name="lineEdit_5"/>
+       <widget class="QLabel" name="tableView_5">
+        <property name="text">
+         <string/>
+        </property>
+       </widget>
       </item>
      </layout>
     </item>
@@ -120,7 +128,11 @@
        </widget>
       </item>
       <item>
-       <widget class="QLineEdit" name="lineEdit_2"/>
+       <widget class="QLabel" name="tableView_2">
+        <property name="text">
+         <string/>
+        </property>
+       </widget>
       </item>
      </layout>
     </item>
@@ -134,12 +146,16 @@
          </font>
         </property>
         <property name="text">
-         <string>所属科室:</string>
+         <string>性别：</string>
         </property>
        </widget>
       </item>
       <item>
-       <widget class="QLineEdit" name="lineEdit_3"/>
+       <widget class="QLabel" name="tableView_3">
+        <property name="text">
+         <string/>
+        </property>
+       </widget>
       </item>
      </layout>
     </item>
@@ -153,12 +169,16 @@
          </font>
         </property>
         <property name="text">
-         <string>电话:</string>
+         <string>年龄:</string>
         </property>
        </widget>
       </item>
       <item>
-       <widget class="QLineEdit" name="lineEdit_4"/>
+       <widget class="QLabel" name="label_7">
+        <property name="text">
+         <string/>
+        </property>
+       </widget>
       </item>
      </layout>
     </item>
@@ -174,24 +194,6 @@
     </rect>
    </property>
    <layout class="QVBoxLayout" name="verticalLayout_2">
-    <item>
-     <widget class="QPushButton" name="pushButton">
-      <property name="font">
-       <font>
-        <pointsize>14</pointsize>
-       </font>
-      </property>
-      <property name="autoFillBackground">
-       <bool>false</bool>
-      </property>
-      <property name="styleSheet">
-       <string notr="true"/>
-      </property>
-      <property name="text">
-       <string>病例详情</string>
-      </property>
-     </widget>
-    </item>
     <item>
      <widget class="QPushButton" name="pushButton_2">
       <property name="font">

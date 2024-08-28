@@ -18,8 +18,11 @@ SOURCES += \
     clickedbtn.cpp \
     clickedlabel.cpp \
     clickedoncelabel.cpp \
+<<<<<<< HEAD
     client.cpp \
     drawer.cpp \
+=======
+>>>>>>> f13f535229988e18c0852b12f5665323f7ecf635
     global.cpp \
     homewindow.cpp \
     hospitalizationwindow.cpp \
@@ -46,8 +49,11 @@ SOURCES += \
     quizwd.cpp \
     registerdialog.cpp \
     resetdialog.cpp \
+<<<<<<< HEAD
     server.cpp \
     showdetails.cpp \
+=======
+>>>>>>> f13f535229988e18c0852b12f5665323f7ecf635
     skinwd.cpp \
     speech.cpp \
     tcpmgr.cpp \
@@ -59,6 +65,11 @@ SOURCES += \
     womanwd.cpp
 
 HEADERS += \
+<<<<<<< HEAD
+=======
+    ChatItemBase.h \
+    ChatView.h \
+>>>>>>> f13f535229988e18c0852b12f5665323f7ecf635
     ChildDoc.h \
     GlobalData.h \
     InsideDoc.h \
@@ -84,6 +95,11 @@ HEADERS += \
     http.h \
     httpmgr.h \
     insidewd.h \
+<<<<<<< HEAD
+=======
+    invaliditem.h \
+    listitembase.h \
+>>>>>>> f13f535229988e18c0852b12f5665323f7ecf635
     loadingdlg.h \
     logindialog.h \
     mainwindow.h \
@@ -124,7 +140,10 @@ FORMS += \
     chattingroomwindow.ui \
     chatwindow.ui \
     childwd.ui \
+<<<<<<< HEAD
     client.ui \
+=======
+>>>>>>> f13f535229988e18c0852b12f5665323f7ecf635
     homewindow.ui \
     hospitalizationwindow.ui \
     http.ui \

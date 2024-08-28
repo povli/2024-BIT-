@@ -306,6 +306,61 @@ bool MysqlDao::AddFriend(const int& from, const int& to, std::string back_name) 
 	return true;
 }
 
+bool MysqlDao::UpdateDoctorInfo(int id, const std::string& name, const std::string& email, const std::string& department, const std::string& intr, const std::shared_ptr<int>& departid) {
+	auto con = pool_->getConnection();
+	if (con == nullptr) {
+		return true;  // 返回 true，因为这是默认值
+	}
+
+	Defer defer([this, &con]() {
+		pool_->returnConnection(std::move(con));
+	});
+
+	try {
+		// 首先通过 department 名称查找对应的 department_id
+		std::unique_ptr<sql::PreparedStatement> pstmtDept(con->_con->prepareStatement("SELECT department_id FROM departments WHERE name = ?"));
+		pstmtDept->setString(1, department);
+		std::unique_ptr<sql::ResultSet> resDept(pstmtDept->executeQuery());
+
+		int department_id = -1;
+		if (resDept->next()) {
+			department_id = resDept->getInt("department_id");
+			if (departid) {
+				*departid = department_id; // 修改 departid 所指向的 int 值
+			}
+		} else {
+			std::cerr << "Department not found: " << department << std::endl;
+			return true;  // 如果找不到 department，仍然返回 true
+		}
+
+		// 准备更新 doctors 表的 SQL 语句
+		std::unique_ptr<sql::PreparedStatement> pstmt(con->_con->prepareStatement(
+			"UPDATE doctors SET name = ?, email = ?, department_id = ?, intr = ? WHERE id = ?"));
+
+		// 绑定参数
+		pstmt->setString(1, name);
+		pstmt->setString(2, email);
+		pstmt->setInt(3, department_id);
+		pstmt->setString(4, intr);
+		pstmt->setInt(5, id);
+
+		// 执行更新
+		int updateCount = pstmt->executeUpdate();
+
+		std::cout << "Updated rows: " << updateCount << std::endl;
+		// 无论更新多少行，都返回 true，因为这是默认值
+		return true;
+	} catch (sql::SQLException& e) {
+		std::cerr << "SQLException: " << e.what();
+		std::cerr << " (MySQL error code: " << e.getErrorCode();
+		std::cerr << ", SQLState: " << e.getSQLState() << " )" << std::endl;
+		return true;  // 即使捕获到异常，也返回 true
+	}
+}
+
+
+
+
 std::shared_ptr<UserInfo> MysqlDao::GetUser(int uid)
 {
 	auto con = pool_->getConnection();
@@ -478,6 +533,61 @@ bool MysqlDao::GetApplyList(int touid, std::vector<std::shared_ptr<ApplyInfo>>& 
 		std::cerr << ", SQLState: " << e.getSQLState() << " )" << std::endl;
 		return false;
 	}
+}
+
+bool MysqlDao::GetGuahaoList(int doctor_uid,
+    std::vector<std::shared_ptr<paintInfobase>>& baseList,
+    std::vector<std::shared_ptr<paintInfocheck>>& checkList,
+    std::vector<std::shared_ptr<paintInfochufang>>& chufangList) {
+
+    auto con = pool_->getConnection();
+    if (con == nullptr) {
+        return false;
+    }
+
+    Defer defer([this, &con]() {
+        pool_->returnConnection(std::move(con));
+    });
+
+    try {
+        std::unique_ptr<sql::PreparedStatement> pstmt(con->_con->prepareStatement(
+            "SELECT useruid, username, useremail, usersex, userage, userorderdata, userinfo, checkresult, chufang "
+            "FROM guahao WHERE doctoruid = ?"));
+
+        pstmt->setInt(1, doctor_uid);
+
+        std::unique_ptr<sql::ResultSet> res(pstmt->executeQuery());
+
+        while (res->next()) {
+            int userid = res->getInt("useruid");
+            std::string username = res->getString("username");
+            std::string useremail = res->getString("useremail");
+            int usersex = res->getInt("usersex");
+            std::string userage = res->getString("userage");
+            std::string userorderdata = res->getString("userorderdata");
+            std::string userinfo = res->getString("userinfo");
+            std::string checkresult = res->getString("checkresult");
+            std::string chufang = res->getString("chufang");
+
+            // 构建 paintInfobase 对象
+            auto base_ptr = std::make_shared<paintInfobase>(userid, username, useremail, usersex, userage, userorderdata, userinfo);
+            baseList.push_back(base_ptr);
+
+            // 构建 paintInfocheck 对象
+            auto check_ptr = std::make_shared<paintInfocheck>(userid, username, useremail, usersex, userage, userorderdata, userinfo, checkresult);
+            checkList.push_back(check_ptr);
+
+            // 构建 paintInfochufang 对象
+            auto chufang_ptr = std::make_shared<paintInfochufang>(userid, username, useremail, usersex, userage, userorderdata, userinfo, checkresult, chufang);
+            chufangList.push_back(chufang_ptr);
+        }
+        return true;
+    } catch (sql::SQLException& e) {
+        std::cerr << "SQLException: " << e.what();
+        std::cerr << " (MySQL error code: " << e.getErrorCode();
+        std::cerr << ", SQLState: " << e.getSQLState() << " )" << std::endl;
+        return false;
+    }
 }
 
 bool MysqlDao::GetFriendList(int self_id, std::vector<std::shared_ptr<UserInfo> >& user_info_list) {

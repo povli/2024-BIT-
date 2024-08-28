@@ -34,6 +34,18 @@ signals:
 
     void sig_login_failed(int);
     void sig_swich_chatdlg();
+    void sig_edit_doctor_selfintr_failed();
+    void dataUpdated();
+    void apperSuccess();
+
+
+
+
+
+
+
+
+    void sig_make_first_list(QVector<QVector<QString>> data);
 };
 
 #endif // TCPMGR_H

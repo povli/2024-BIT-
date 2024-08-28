@@ -1,8 +1,12 @@
 #include "hmainwindow.h"
+#include "pinf.h"
+#include "pbd.h"
+#include "mainwindow.h"
 #include<QFile>
+#include"diagnostic.h"
 
 #include <QApplication>
-
+QString  DiagnosticDialog::paintid="ff";
 int main(int argc, char *argv[])
 {
 
@@ -32,6 +36,7 @@ int main(int argc, char *argv[])
     gate_url_prefix = "http://"+gate_host+":"+gate_port;
 
     hMainWindow w;
+    //pbd w;
     w.show();
     return a.exec();
 }

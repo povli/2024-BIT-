@@ -3,6 +3,7 @@
 
 #include <QWidget>
 #include <QPaintEvent>
+#include"usermgr.h"
 
 namespace Ui {
 class information;
@@ -14,16 +15,18 @@ class information : public QWidget
 
 public:
     explicit information(QWidget *parent = nullptr);
+    void paintEvent(QPaintEvent *event);
     ~information();
 
 signals:
     void goback();
 
-protected:
-    void paintEvent(QPaintEvent *event) override; // 声明 paintEvent 方法
-
 private slots:
     void on_pushButton_clicked();
+    void on_pushButtonCommit_2_clicked();
+    void handleDataUpdated(); // 处理数据更新的槽函数
+
+
 
 private:
     Ui::information *ui;

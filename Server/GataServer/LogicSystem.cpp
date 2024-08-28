@@ -467,6 +467,7 @@ LogicSystem::LogicSystem() {
 		Json::Value root;
 		Json::Reader reader;
 		Json::Value src_root;
+		std::cout<<"1"<<std::endl;
 		//查询数据库
 		bool parse_success = reader.parse(body_str, src_root);
 		if (!parse_success) {

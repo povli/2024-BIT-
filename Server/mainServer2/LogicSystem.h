@@ -32,12 +32,17 @@ private:
     LogicSystem();
     void DealMsg();
     void RegisterCallBacks();
+    void DoctorWriteAdvice(shared_ptr<CSession> session, const short &msg_id, const string &msg_data);
+    void addHospi(shared_ptr<CSession> session, const short &msg_id, const string &msg_data);
+    void DoctorWriteCheckResult(shared_ptr<CSession> session, const short &msg_id, const string &msg_data);
     void LoginHandler(shared_ptr<CSession> session, const short &msg_id, const string &msg_data);
     void DoctorLoginHandler(shared_ptr<CSession> session, const short &msg_id, const string &msg_data);
     void SearchInfo(std::shared_ptr<CSession> session, const short& msg_id, const string& msg_data);
     void AddFriendApply(std::shared_ptr<CSession> session, const short& msg_id, const string& msg_data);
     void AuthFriendApply(std::shared_ptr<CSession> session, const short& msg_id, const string& msg_data);
     void DealChatTextMsg(std::shared_ptr<CSession> session, const short& msg_id, const string& msg_data);
+    void UpdateUserInfo(shared_ptr<CSession> session, const short &msg_id, const string &msg_data);
+    void ProcessOrderRequest(shared_ptr<CSession> session, const short &msg_id, const string &msg_data);
     bool isPureDigit(const std::string& str);
     void GetUserByUid(std::string uid_str, Json::Value& rtvalue);
     void GetUserByName(std::string name, Json::Value& rtvalue);
@@ -45,12 +50,20 @@ private:
     bool GetFriendApplyInfo(int to_uid, std::vector<std::shared_ptr<ApplyInfo>>& list);
     bool GetFriendList(int self_id, std::vector<std::shared_ptr<UserInfo>> & user_list);
     bool GetDoctorInfo(std::string base_key, int uid, std::shared_ptr<DoctorInfo>& doctorinfo);
+    void EditDoctorInfo(shared_ptr<CSession> session, const short &msg_id, const string &msg_data);
+    void DoctorCallForPaintInfo(shared_ptr<CSession> session, const short &msg_id, const string &msg_data);
+    bool GetGuahaoInfo(int doctor_uid,
+    std::vector<std::shared_ptr<paintInfobase>>& baseList,
+    std::vector<std::shared_ptr<paintInfocheck>>& checkList,
+    std::vector<std::shared_ptr<paintInfochufang>>& chufangList);
+   // void DoctorCallForPaintInfo(shared_ptr<CSession> session, const short &msg_id, const string &msg_data);
     std::thread _worker_thread;
     std::queue<shared_ptr<LogicNode>> _msg_que;
     std::mutex _mutex;
     std::condition_variable _consume;
     bool _b_stop;
     std::map<short, FunCallBack> _fun_callbacks;
+
 };
 
 

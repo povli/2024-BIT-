@@ -159,6 +159,17 @@ public:
 	bool AddFriendApply(const int& from, const int& to);
 	bool AuthFriendApply(const int& from, const int& to);
 	bool AddFriend(const int& from, const int& to, std::string back_name);
+
+	bool GetGuahaoList(int doctor_uid,
+	std::vector<std::shared_ptr<paintInfobase>>& baseList,
+	std::vector<std::shared_ptr<paintInfocheck>>& checkList,
+	std::vector<std::shared_ptr<paintInfochufang>>& chufangList);
+
+
+
+
+
+	bool UpdateDoctorInfo(int id, const std::string& name, const std::string& email, const std::string& department, const std::string& intr,const std::shared_ptr<int>& departid);
 	std::shared_ptr<UserInfo> GetUser(int uid);
 	std::shared_ptr<UserInfo> GetUser(std::string name);
 	std::shared_ptr<DoctorInfo>  GetDoctor(int id);

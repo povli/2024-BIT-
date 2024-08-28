@@ -11,6 +11,7 @@ public:
 
     // 重写mouseReleaseEvent
     virtual void mouseReleaseEvent(QMouseEvent *e) override;
+
 private:
     QTimer  *_timer;
     int _counter;

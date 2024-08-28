@@ -20,7 +20,7 @@ private slots:
     void goBack();
 
 public:
-    void initializeTable(int num,QString *docname,QString *judge,QString *prescription,QString *note);
+    void initializeTable(int num,QString *docname,QString *judge,QString *prescription);
 private:
     QPushButton *backButton;
     QTableView *tableView;

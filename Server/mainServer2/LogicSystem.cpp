@@ -9,6 +9,7 @@
 #include "RedisMgr.h"
 #include "UserMgr.h"
 #include "ChatGrpcClient.h"
+#include"MysqlDao.h"
 
 using namespace std;
 
@@ -91,8 +92,367 @@ void LogicSystem::RegisterCallBacks() {
 
 	_fun_callbacks[MSG_DOCTOR_MAINSERVER_LOGIN] = std::bind(&LogicSystem::DoctorLoginHandler, this,
 		placeholders::_1, placeholders::_2, placeholders::_3);
+	_fun_callbacks[MSG_EDIT_DOCTOR_SELFINFO] = std::bind(&LogicSystem::EditDoctorInfo, this,
+		placeholders::_1, placeholders::_2, placeholders::_3);
+
+	_fun_callbacks[ID_DOCTOR_CALL_PAINTINFO] = std::bind(&LogicSystem::DoctorCallForPaintInfo, this,
+		placeholders::_1, placeholders::_2, placeholders::_3);
+	_fun_callbacks[ID_WRITE_PAINT_CHECKRESULT] = std::bind(&LogicSystem::DoctorWriteCheckResult, this,
+		placeholders::_1, placeholders::_2, placeholders::_3);
+	_fun_callbacks[ID_WRITE_PAINT_ADVICE] = std::bind(&LogicSystem::DoctorWriteAdvice, this,
+		placeholders::_1, placeholders::_2, placeholders::_3);
+
+	_fun_callbacks[ID_hospital] = std::bind(&LogicSystem::addHospi, this,
+		placeholders::_1, placeholders::_2, placeholders::_3);
+
+	_fun_callbacks[ID_UPDATE_USER_INFO] = std::bind(&LogicSystem::UpdateUserInfo, this,
+		placeholders::_1, placeholders::_2, placeholders::_3);
+	_fun_callbacks[ID_order] = std::bind(&LogicSystem::ProcessOrderRequest, this,
+		placeholders::_1, placeholders::_2, placeholders::_3);
+
 
 }
+
+
+void LogicSystem::addHospi(shared_ptr<CSession> session, const short &msg_id, const string &msg_data) {
+	Json::Reader reader;
+	Json::Value root;
+	reader.parse(msg_data, root);
+	Json::Value  rtvalue;
+	Defer defer([this, &rtvalue, session]() {
+		std::string return_str = rtvalue.toStyledString();
+		session->Send(return_str, ID_WRITE_PAINT_ADVICE);
+		});
+	auto doctoruid=root["doctor_uid"].asInt();
+	auto patientuid_str = root["patient_uid"].asString();
+	int patientuid = std::stoi(patientuid_str);
+
+	auto patientname=root["patient_name"].asString();
+	auto bed_number=root["bed_number"].asString();
+	auto admission_number=root["admission_data"].asString();
+	auto doctor_name=root["doctorname"].asString();
+	auto room=root["room"].asString();
+
+	bool tmp=MysqlMgr::GetInstance()->InsertIntoHospitalization(doctoruid,patientuid,patientname,bed_number,admission_number,doctor_name,room);
+
+
+}
+
+
+void LogicSystem::DoctorWriteAdvice(shared_ptr<CSession> session, const short &msg_id, const string &msg_data) {
+	Json::Reader reader;
+	Json::Value root;
+	reader.parse(msg_data, root);
+	auto id = root["id"].asString();
+	int iid=std::stoi(id);
+	//auto token = root["token"].asString();
+	auto paintuid=root["doctorid"].asString();
+	std::cout << "user login uid is  "  << endl;
+	Json::Value  rtvalue;
+	Defer defer([this, &rtvalue, session]() {
+		std::string return_str = rtvalue.toStyledString();
+		session->Send(return_str, ID_WRITE_PAINT_ADVICE);
+		});
+	auto result=root["result"].asString();
+	bool dodd=MysqlMgr::GetInstance()->UpdateCheckAdivice(iid,paintuid,result);
+
+
+
+
+
+
+
+}
+void LogicSystem::ProcessOrderRequest(shared_ptr<CSession> session, const short &msg_id, const string &msg_data) {
+	Json::Reader reader;
+	Json::Value root;
+	reader.parse(msg_data, root);
+
+	auto uuseruid = root["useruid"].asString();
+	std::string doctorName = root["doctorname"].asString();
+	std::string username = root["username"].asString();
+	std::string useremail = root["email"].asString();
+	std::string usersex_str = root["usersex"].asString();
+	std::string orderTime = root["time"].asString();
+	int useruid=std::stoi(uuseruid);
+
+	int usersex;
+	if (usersex_str == "女") {
+		usersex = 0;
+	} else if (usersex_str == "男") {
+		usersex = 1;
+	} else {
+		usersex = 2;
+	}
+
+	Json::Value rtvalue;
+	Defer defer([this, &rtvalue, session, msg_id]() {
+		std::string return_str = rtvalue.toStyledString();
+		session->Send(return_str, msg_id);
+	});
+
+	// 查询 doctor 表中的 doctoruid
+	int doctoruid = -1;
+	bool doctorFound = MysqlMgr::GetInstance()->GetDoctorIdByName(doctorName, doctoruid);
+
+	if (!doctorFound) {
+		rtvalue["error"] = "Doctor not found.";
+		return;
+	}
+
+	// 插入新的挂号数据
+	bool insertSuccess = MysqlMgr::GetInstance()->InsertGuahaoData(useruid, doctoruid, doctorName, username, useremail, usersex, orderTime);
+
+	if (!insertSuccess) {
+		rtvalue["error"] = "Failed to insert new guahao data.";
+		return;
+	}
+
+	rtvalue["error"] = "Success";
+}
+
+
+void LogicSystem::DoctorWriteCheckResult(shared_ptr<CSession> session, const short &msg_id, const string &msg_data) {
+	Json::Reader reader;
+	Json::Value root;
+	reader.parse(msg_data, root);
+	auto id = root["id"].asString();
+	int iid=std::stoi(id);
+	//auto token = root["token"].asString();
+	auto paintuid=root["doctorid"].asString();
+	std::cout << "user login uid is  "  << endl;
+	Json::Value  rtvalue;
+	Defer defer([this, &rtvalue, session]() {
+		std::string return_str = rtvalue.toStyledString();
+		session->Send(return_str, ID_WRITE_PAINT_CHECKRESULT);
+		});
+	auto result=root["result"].asString();
+	bool dodd=MysqlMgr::GetInstance()->UpdateCheckResult(iid,paintuid,result);
+
+
+
+
+
+
+
+}
+
+void LogicSystem::DoctorCallForPaintInfo(shared_ptr<CSession> session, const short &msg_id, const string &msg_data) {
+	Json::Reader reader;
+	Json::Value root;
+	reader.parse(msg_data, root);
+	auto uid = root["uid"].asInt();
+	auto token = root["token"].asString();
+	std::cout << "user login uid is  " << uid << " user token  is "
+		<< token << endl;
+
+	Json::Value  rtvalue;
+	Defer defer([this, &rtvalue, session]() {
+		std::string return_str = rtvalue.toStyledString();
+		session->Send(return_str, ID_DOCTOR_CALL_PAINTINFO);
+		});
+
+	std::vector<std::shared_ptr<paintInfobase>> baseList;
+    std::vector<std::shared_ptr<paintInfocheck>> checkList;
+    std::vector<std::shared_ptr<paintInfochufang>> chufangList;
+	std::vector<HosInfobase> hospitalList;
+
+    //Json::Value rtvalue;
+
+    if (GetGuahaoInfo(uid, baseList, checkList, chufangList)) {
+        Json::Value baseArray(Json::arrayValue);
+        for (const auto& base : baseList) {
+            Json::Value obj;
+        	obj["id"]=base->_id;
+            obj["userid"] = base->_uid;
+            obj["username"] = base->_name;
+            obj["useremail"] = base->_email;
+            obj["usersex"] = base->_sex;
+            obj["userage"] = base->_age;
+            obj["userorderdata"] = base->_orderdata;
+            obj["userinfo"] = base->_info;
+            baseArray.append(obj);
+        }
+        rtvalue["baseList"] = baseArray;
+
+        Json::Value checkArray(Json::arrayValue);
+        for (const auto& check : checkList) {
+            Json::Value obj;
+        	obj["id"]=check->id;
+            obj["userid"] = check->_uid;
+            obj["username"] = check->_name;
+            obj["useremail"] = check->_email;
+            obj["usersex"] = check->_sex;
+            obj["userage"] = check->_age;
+            obj["userorderdata"] = check->_orderdata;
+            obj["userinfo"] = check->_info;
+            obj["checkresult"] = check->_checkresult;
+            checkArray.append(obj);
+        }
+        rtvalue["checkList"] = checkArray;
+
+        Json::Value chufangArray(Json::arrayValue);
+        for (const auto& chufang : chufangList) {
+            Json::Value obj;
+        	obj["id"]=chufang->id;
+            obj["userid"] = chufang->_uid;
+            obj["username"] = chufang->_name;
+            obj["useremail"] = chufang->_email;
+            obj["usersex"] = chufang->_sex;
+            obj["userage"] = chufang->_age;
+            obj["userorderdata"] = chufang->_orderdata;
+            obj["userinfo"] = chufang->_info;
+            obj["checkresult"] = chufang->_checkresult;
+            obj["chufang"] = chufang->_chufang;
+            chufangArray.append(obj);
+        }
+        rtvalue["chufangList"] = chufangArray;
+    }
+
+
+
+		// 新增医院信息查询
+		if (MysqlMgr::GetInstance()->GetHospitalizationInfo(uid, hospitalList)) {  // 假设uid对应doctor_uid
+			Json::Value hospitalArray(Json::arrayValue);
+			for (const auto& hospital : hospitalList) {
+				Json::Value obj;
+				obj["patient_uid"] = hospital.patient_uid;
+				obj["patient_name"] = hospital.patient_name;
+				obj["roomnum"] = hospital.roomnum;
+				obj["bed_number"] = hospital.bed_number;
+				obj["admission_data"] = hospital.admission_data;
+				hospitalArray.append(obj);
+			}
+			rtvalue["hospitalList"] = hospitalArray;
+		}
+
+
+    return;
+
+
+
+}
+
+bool LogicSystem::GetGuahaoInfo(int doctor_uid,
+	std::vector<std::shared_ptr<paintInfobase>>& baseList,
+	std::vector<std::shared_ptr<paintInfocheck>>& checkList,
+	std::vector<std::shared_ptr<paintInfochufang>>& chufangList) {
+
+	return MysqlMgr::GetInstance()->GetGuahaoList(doctor_uid, baseList, checkList, chufangList);
+}
+
+void LogicSystem::EditDoctorInfo(shared_ptr<CSession> session, const short &msg_id, const string &msg_data) {
+	Json::Reader reader;
+	Json::Value root;
+	reader.parse(msg_data, root);
+	auto uid = root["uid"].asInt();
+	//auto token = root["token"].asString();
+	std::cout << "doctor login uid is  " << uid << " user token  is "
+		 << endl;
+
+	Json::Value  rtvalue;
+
+
+
+	std::string uid_str = std::to_string(uid);
+	Defer defer([this, &rtvalue, session]() {
+		std::string return_str = rtvalue.toStyledString();
+
+		session->Send(return_str, MSG_EDIT_DOCTOR_SELFINFO);
+		});
+
+	auto name = root["name"].asString();
+	std::cout<<name<<std::endl;
+	auto department= root["department"].asString();
+	auto email = root["email"].asString();
+	auto intro = root["intr"].asString();
+	auto department_id=std::make_shared<int>();
+	bool Edit_doctorinfo=true;
+	Edit_doctorinfo=MysqlMgr::GetInstance()->UpdateDoctorInfo(uid,name, email,department,intro,department_id);
+	Edit_doctorinfo=true;
+	if (!Edit_doctorinfo) {
+		rtvalue["error"] = ErrorCodes::UidInvalid;
+		return ;
+	}
+
+	rtvalue["error"]=ErrorCodes::Success;
+	std::string base_key = USER_BASE_INFO + uid_str;
+
+
+
+
+	Json::Value redis_root;
+	/////////redis_root["id"]=doctor_info->id;
+	redis_root["name"]=name;
+	//redis_root["pwd"]=doctor_info->pwd;
+	redis_root["email"]=email;
+	//////////redis_root["sex"]=doctorinfo->sex;
+	//redis_root["year"]=doctorinfo->year;
+	//redis_root["month"]=doctorinfo->month;
+	//redis_root["day"]=doctorinfo->day;
+	//redis_root["workID"]=doctorinfo->workID;
+	redis_root["department"]=*department_id;
+	redis_root["intr"]=intro;
+	//redis_root["IDcard"]=doctorinfo->IDcard;
+	RedisMgr::GetInstance()->Set(base_key, redis_root.toStyledString());
+	//rtvalue["error"] = ErrorCodes::Success;
+	rtvalue["name"] = name;
+	rtvalue["email"] = email;
+	rtvalue["department"] = *department_id;
+	rtvalue["intr"] = intro;
+	std::cout<<rtvalue["error"].asString()<<std::endl;
+	return;
+
+
+}
+
+void LogicSystem::UpdateUserInfo(shared_ptr<CSession> session, const short &msg_id, const string &msg_data) {
+	Json::Reader reader;
+	Json::Value root;
+	reader.parse(msg_data, root);
+
+	auto uid = root["uid"].asInt();
+	std::string name = root["name"].asString();
+	std::string dob = root["dob"].asString();  // 如果需要使用 dob
+	std::string IDcard = root["IDcard"].asString();
+	std::string phone = root["phone"].asString();
+	std::string email = root["email"].asString();
+
+	Json::Value rtvalue;
+
+	// 创建 Redis 缓存键
+	std::string uid_str = std::to_string(uid);
+	std::string base_key = "user:" + uid_str + ":info";
+
+	Defer defer([this, &rtvalue, session, msg_id]() {
+	std::string return_str = rtvalue.toStyledString();
+	session->Send(return_str, msg_id);
+});
+
+	// 更新数据库
+	bool updateSuccess = MysqlMgr::GetInstance()->UpdateUserInfo(uid, name, IDcard, phone, email);
+
+	if (!updateSuccess) {
+		rtvalue["error"] = "Update failed";
+		return;
+	}
+
+	// 更新 Redis 缓存
+	Json::Value redis_root;
+	redis_root["name"] = name;
+	redis_root["IDcard"] = IDcard;
+	redis_root["phone"] = phone;
+	redis_root["email"] = email;
+
+	RedisMgr::GetInstance()->Set(base_key, redis_root.toStyledString());
+
+	rtvalue["error"] = "Success";
+	rtvalue["name"] = name;
+	rtvalue["IDcard"] = IDcard;
+	rtvalue["phone"] = phone;
+	rtvalue["email"] = email;
+}
+
 
 void LogicSystem::DoctorLoginHandler(shared_ptr<CSession> session, const short &msg_id, const string &msg_data) {
 	Json::Reader reader;
@@ -133,7 +493,7 @@ void LogicSystem::DoctorLoginHandler(shared_ptr<CSession> session, const short &
 		return;
 	}
 
-	rtvalue["ID"]=doctor_info->id;
+	rtvalue["ID"]=uid;
 	rtvalue["workID"]=doctor_info->workID;
 	rtvalue["name"]=doctor_info->name;
 	rtvalue["pwd"]=doctor_info->pwd;
@@ -203,15 +563,123 @@ void LogicSystem::LoginHandler(shared_ptr<CSession> session, const short &msg_id
 
 	std::string base_key = USER_BASE_INFO + uid_str;
 	auto user_info = std::make_shared<UserInfo>();
-	bool b_base = GetBaseInfo(base_key, uid, user_info);
-	if (!b_base) {
-		rtvalue["error"] = ErrorCodes::UidInvalid;
-		return;
+	UserInfo userInfo;
+
+	// 获取用户信息
+	if (MysqlMgr::GetInstance()->GetUserInfo(uid, userInfo)) {
+		Json::Value obj;
+		obj["id"] = userInfo.id;
+		obj["uid"] = userInfo.uid;
+		obj["name"] = userInfo.name;
+		obj["email"] = userInfo.email;
+		obj["pwd"] = userInfo.pwd;
+		obj["realName"] = userInfo.realName;
+		obj["sex"] = userInfo.sex;
+		obj["year"] = userInfo.year;
+		obj["month"] = userInfo.month;
+		obj["data"] = userInfo.data;
+		obj["IDcard"] = userInfo.IDcard;
+		obj["phone"] = userInfo.phone;
+		rtvalue["userInfo"] = obj;
+	} else {
+		rtvalue["error"] = "Failed to retrieve user information.";
 	}
-	rtvalue["uid"] = uid;
-	rtvalue["pwd"] = user_info->pwd;
-	rtvalue["name"] = user_info->name;
-	rtvalue["email"] = user_info->email;
+	auto pediatrics = std::make_shared<DepartmentInfo>(DepartmentInfo{1, "儿科", "负责儿童疾病的科室", {}});
+    auto internalMedicine = std::make_shared<DepartmentInfo>(DepartmentInfo{2, "内科", "负责内科疾病的科室", {}});
+    auto surgery = std::make_shared<DepartmentInfo>(DepartmentInfo{3, "外科", "负责外科手术的科室", {}});
+    auto gynecology = std::make_shared<DepartmentInfo>(DepartmentInfo{4, "妇科", "负责妇女健康和疾病的科室", {}});
+    auto dermatology = std::make_shared<DepartmentInfo>(DepartmentInfo{5, "皮肤科", "负责皮肤疾病的科室", {}});
+
+    // 调用数据库操作函数，填充数据
+    if (MysqlMgr::GetInstance()->GetDoctorInfoByDepartment(pediatrics, internalMedicine, surgery, gynecology, dermatology)) {
+        // 将每个科室信息转换为 JSON 并添加到返回值中
+        auto addDepartmentToJson = [](const std::shared_ptr<DepartmentInfo>& department, Json::Value& root) {
+            Json::Value departmentJson;
+            departmentJson["department_id"] = department->department_id;
+            departmentJson["name"] = department->name;
+            departmentJson["description"] = department->description;
+
+            Json::Value doctorsArray(Json::arrayValue);
+            for (const auto& doctor : department->doctors) {
+                Json::Value doctorJson;
+                doctorJson["id"] = doctor->id;
+                doctorJson["workID"] = doctor->workID;
+                doctorJson["name"] = doctor->name;
+                doctorJson["pwd"] = doctor->pwd;
+                doctorJson["email"] = doctor->email;
+                doctorJson["sex"] = doctor->sex;
+                doctorJson["year"] = doctor->year;
+                doctorJson["month"] = doctor->month;
+                doctorJson["day"] = doctor->day;
+                doctorJson["IDcard"] = doctor->IDcard;
+                doctorJson["phone"] = doctor->phone;
+                doctorJson["department_id"] = doctor->department_id;
+                doctorJson["intr"] = doctor->intr;
+                doctorsArray.append(doctorJson);
+            }
+
+            departmentJson["doctors"] = doctorsArray;
+            root.append(departmentJson);
+        };
+
+        // 添加所有科室到 JSON 返回值
+        addDepartmentToJson(pediatrics, rtvalue["departments"]);
+        addDepartmentToJson(internalMedicine, rtvalue["departments"]);
+        addDepartmentToJson(surgery, rtvalue["departments"]);
+        addDepartmentToJson(gynecology, rtvalue["departments"]);
+        addDepartmentToJson(dermatology, rtvalue["departments"]);
+    }
+
+	std::vector<std::shared_ptr<GuahaoInfo>> guahaoList;
+
+	// 获取挂号信息
+	if (MysqlMgr::GetInstance()->GetGuahaoInfo(uid, guahaoList)) {
+		Json::Value guahaoArray(Json::arrayValue);
+		for (const auto& guahao : guahaoList) {
+			Json::Value obj;
+			obj["id"] = guahao->id;
+			obj["doctoruid"] = guahao->doctoruid;
+			obj["useruid"] = guahao->useruid;
+			obj["doctorname"] = guahao->doctorname;
+			obj["username"] = guahao->username;
+			obj["useremail"] = guahao->useremail;
+			obj["usersex"] = guahao->usersex;
+			obj["userage"] = guahao->userage;
+			obj["userorderdata"] = guahao->userorderdata;
+			obj["userinfo"] = guahao->userinfo;
+			obj["checkresult"] = guahao->checkresult;
+			obj["chufang"] = guahao->chufang;
+			guahaoArray.append(obj);
+		}
+		rtvalue["guahaoList"] = guahaoArray;
+	} else {
+		rtvalue["error"] = "Failed to retrieve guahao information.";
+	}
+
+	std::vector<std::shared_ptr<HospitalizationInfo>> hospitalizationList;
+
+	// 获取住院信息
+	if (MysqlMgr::GetInstance()->UserGetHospitalizationInfo(uid, hospitalizationList)) {
+		Json::Value hospitalizationArray(Json::arrayValue);
+		for (const auto& hospitalization : hospitalizationList) {
+			Json::Value obj;
+			obj["id"] = hospitalization->id;
+			obj["doctor_uid"] = hospitalization->doctor_uid;
+			obj["patient_uid"] = hospitalization->patient_uid;
+			obj["patient_name"] = hospitalization->patient_name;
+			obj["bed_number"] = hospitalization->bed_number;
+			obj["admission_data"] = hospitalization->admission_data;
+			obj["doctorname"] = hospitalization->doctorname;
+			obj["roomnum"] = hospitalization->roomnum;
+			hospitalizationArray.append(obj);
+		}
+		rtvalue["hospitalizationList"] = hospitalizationArray;
+	} else {
+		rtvalue["error"] = "Failed to retrieve hospitalization information.";
+	}
+
+
+
 	//rtvalue["nick"] = user_info->nick;
 	//rtvalue["desc"] = user_info->desc;
 	//rtvalue["sex"] = user_info->sex;
@@ -235,7 +703,7 @@ void LogicSystem::LoginHandler(shared_ptr<CSession> session, const short &msg_id
 	}
 
 	//获取好友列表
-	std::vector<std::shared_ptr<UserInfo>> friend_list;
+	/*std::vector<std::shared_ptr<UserInfo>> friend_list;
 	bool b_friend_list = GetFriendList(uid, friend_list);
 	for (auto& friend_ele : friend_list) {
 		Json::Value obj;
@@ -680,16 +1148,22 @@ bool LogicSystem::GetDoctorInfo(std::string base_key, int uid, std::shared_ptr<D
 		Json::Reader reader;
 		Json::Value root;
 		reader.parse(info_str, root);
+		std::cout<<"text before id "<<endl;
 		doctorinfo->id=root["id"].asInt();
+		std::cout<<"text after id "<< doctorinfo->id<<endl;
 		doctorinfo->name=root["name"].asString();
 		doctorinfo->pwd=root["pwd"].asString();
 		doctorinfo->email=root["email"].asString();
+		std::cout<<"text after id "<<endl;
 		doctorinfo->sex=root["sex"].asInt();
+		std::cout<<"sex "<<doctorinfo->sex<<std::endl;
 		doctorinfo->year=root["year"].asString();
 		doctorinfo->month=root["month"].asString();
 		doctorinfo->day=root["day"].asString();
 		doctorinfo->workID=root["workID"].asString();
+		std::cout<<"text after id "<<endl;
 		doctorinfo->department_id=root["department"].asInt();
+		std::cout<<"ddd:"<<doctorinfo->department_id<<std::endl;
 		doctorinfo->intr=root["intr"].asString();
 		doctorinfo->IDcard=root["IDcard"].asString();
 	}

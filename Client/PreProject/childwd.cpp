@@ -6,6 +6,7 @@
 #include <QVector>
 #include <QPushButton>
 #include "timetablewd.h"
+#include "usermgr.h"
 
 using namespace std;
 
@@ -18,17 +19,31 @@ ChildWd::ChildWd(QWidget *parent) :
     ui->setupUi(this);
 
     //请在此处调用datatrans();!!!!!!!!!!!!!!!!!!!!!!!看这里！！！！
-    /*int j=5;
-    while(j--){
-        QLabel *temp=new QLabel(this);
-        QString pixmapstring=QString(":/res/doc%1.jpeg").arg(j);
-        QPixmap pixmap(pixmapstring);
-        temp->setPixmap(pixmap.scaled(QSize(100,100),
-                                       Qt::IgnoreAspectRatio,
-                                       Qt::SmoothTransformation));
-        temp->resize(100,100);
-        temp->move(0,100*j);
-    }*/
+    QVector<QVector<QString>> pediatricsData = UserMgr::GetInstance()->getPediatricsData();
+
+    int num = pediatricsData.size();
+    QString *id = new QString[num];
+    QString *name = new QString[num];
+    QString *introduce = new QString[num];
+    QString *sex = new QString[num];
+
+    for (int i = 0; i < num; ++i) {
+        id[i] = pediatricsData[i][1];          // 工号
+        name[i] = pediatricsData[i][2];        // 姓名
+        introduce[i] = pediatricsData[i][5];   // 介绍
+        sex[i] = pediatricsData[i][12];         // 性别
+    }
+
+    // 调用 datatrans 函数传递数据
+    // 调用 datatrans 函数传递数据
+    this->datatrans(num, id, name, introduce, sex);
+
+
+    // 清理动态分配的内存
+    delete[] id;
+    delete[] name;
+    delete[] introduce;
+    delete[] sex;
 
     int i=0;
     while(i<GlobalData::ChildDocnum){  //condition
@@ -78,15 +93,15 @@ void ChildWd::showdate(){
     ttWd->show();
 }
 //封装借口，数据传输用
-//num是数据库里医生数量,其余请传入对应的数组：工号，姓名，介绍，职位。
-void ChildWd::datatrans(int num,QString *id,QString *name,QString *introduce,QString *position){
+//num是数据库里医生数量,其余请传入对应的数组：工号，姓名，介绍，性别。
+void ChildWd::datatrans(int num,QString *id,QString *name,QString *introduce,QString *sex){
     GlobalData::ChildDocnum=num;
     while(num--){
         ChildDoc temp;
         temp.id=id[num];
         temp.name=name[num];
         temp.introduce=introduce[num];
-        temp.position=position[num];
+        temp.position=sex[num];
         childdoc.append(temp);
     }
 }
