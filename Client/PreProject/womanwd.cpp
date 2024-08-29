@@ -40,7 +40,9 @@ WomanWd::WomanWd(QWidget *parent) :
         delete[] name;
         delete[] introduce;
         delete[] position;
-
+    //QVector<WomanWd> woman(100);
+    QVector<WomanDoc> womandoc(100);
+    GlobalData::WomanDocnum=3;
     int i=0;
     while(i<GlobalData::WomanDocnum){  //condition
         QLabel *temp=new QLabel(this);

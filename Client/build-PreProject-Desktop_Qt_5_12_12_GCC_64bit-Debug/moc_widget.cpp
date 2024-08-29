@@ -21,8 +21,8 @@ QT_BEGIN_MOC_NAMESPACE
 QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 struct qt_meta_stringdata_Widget_t {
-    QByteArrayData data[21];
-    char stringdata0[341];
+    QByteArrayData data[22];
+    char stringdata0[357];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -51,7 +51,8 @@ QT_MOC_LITERAL(16, 261, 15), // "QTextCharFormat"
 QT_MOC_LITERAL(17, 277, 3), // "fmt"
 QT_MOC_LITERAL(18, 281, 19), // "on_saveTBtn_clicked"
 QT_MOC_LITERAL(19, 301, 20), // "on_clearTBtn_clicked"
-QT_MOC_LITERAL(20, 322, 18) // "on_exitBtn_clicked"
+QT_MOC_LITERAL(20, 322, 18), // "on_exitBtn_clicked"
+QT_MOC_LITERAL(21, 341, 15) // "audio_start_end"
 
     },
     "Widget\0processPendingDatagrams\0\0"
@@ -62,7 +63,8 @@ QT_MOC_LITERAL(20, 322, 18) // "on_exitBtn_clicked"
     "on_italicTBtn_clicked\0on_underlineTBtn_clicked\0"
     "on_colorTBtn_clicked\0curFmtChanged\0"
     "QTextCharFormat\0fmt\0on_saveTBtn_clicked\0"
-    "on_clearTBtn_clicked\0on_exitBtn_clicked"
+    "on_clearTBtn_clicked\0on_exitBtn_clicked\0"
+    "audio_start_end"
 };
 #undef QT_MOC_LITERAL
 
@@ -72,7 +74,7 @@ static const uint qt_meta_data_Widget[] = {
        8,       // revision
        0,       // classname
        0,    0, // classinfo
-      14,   14, // methods
+      15,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -80,20 +82,21 @@ static const uint qt_meta_data_Widget[] = {
        0,       // signalCount
 
  // slots: name, argc, parameters, tag, flags
-       1,    0,   84,    2, 0x08 /* Private */,
-       3,    0,   85,    2, 0x08 /* Private */,
-       4,    1,   86,    2, 0x08 /* Private */,
-       5,    0,   89,    2, 0x08 /* Private */,
-       6,    1,   90,    2, 0x08 /* Private */,
-       8,    1,   93,    2, 0x08 /* Private */,
-      10,    1,   96,    2, 0x08 /* Private */,
-      12,    1,   99,    2, 0x08 /* Private */,
-      13,    1,  102,    2, 0x08 /* Private */,
-      14,    0,  105,    2, 0x08 /* Private */,
-      15,    1,  106,    2, 0x08 /* Private */,
-      18,    0,  109,    2, 0x08 /* Private */,
-      19,    0,  110,    2, 0x08 /* Private */,
-      20,    0,  111,    2, 0x08 /* Private */,
+       1,    0,   89,    2, 0x08 /* Private */,
+       3,    0,   90,    2, 0x08 /* Private */,
+       4,    1,   91,    2, 0x08 /* Private */,
+       5,    0,   94,    2, 0x08 /* Private */,
+       6,    1,   95,    2, 0x08 /* Private */,
+       8,    1,   98,    2, 0x08 /* Private */,
+      10,    1,  101,    2, 0x08 /* Private */,
+      12,    1,  104,    2, 0x08 /* Private */,
+      13,    1,  107,    2, 0x08 /* Private */,
+      14,    0,  110,    2, 0x08 /* Private */,
+      15,    1,  111,    2, 0x08 /* Private */,
+      18,    0,  114,    2, 0x08 /* Private */,
+      19,    0,  115,    2, 0x08 /* Private */,
+      20,    0,  116,    2, 0x08 /* Private */,
+      21,    0,  117,    2, 0x08 /* Private */,
 
  // slots: parameters
     QMetaType::Void,
@@ -107,6 +110,7 @@ static const uint qt_meta_data_Widget[] = {
     QMetaType::Void, QMetaType::Bool,   11,
     QMetaType::Void,
     QMetaType::Void, 0x80000000 | 16,   17,
+    QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void,
@@ -134,6 +138,7 @@ void Widget::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void
         case 11: _t->on_saveTBtn_clicked(); break;
         case 12: _t->on_clearTBtn_clicked(); break;
         case 13: _t->on_exitBtn_clicked(); break;
+        case 14: _t->audio_start_end(); break;
         default: ;
         }
     }
@@ -168,13 +173,13 @@ int Widget::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 14)
+        if (_id < 15)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 14;
+        _id -= 15;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 14)
+        if (_id < 15)
             *reinterpret_cast<int*>(_a[0]) = -1;
-        _id -= 14;
+        _id -= 15;
     }
     return _id;
 }

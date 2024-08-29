@@ -12,6 +12,10 @@ Widget::Widget(QWidget *parent,QString usrname) :
 {
     ui->setupUi(this);
     this->init();
+
+    my_audio = new Audio;//语音识别对象
+    my_say = new QTextToSpeech;//文字转语音 播放
+
     udpSocket = new QUdpSocket(this);               //创建udp套接字
     uName = usrname;
     port = 23232;                                   //端口默认为23232
@@ -26,6 +30,7 @@ Widget::Widget(QWidget *parent,QString usrname) :
     connect(ui->msgTextEdit, SIGNAL(currentCharFormatChanged(QTextCharFormat))
             ,this, SLOT(curFmtChanged(QTextCharFormat)));
     connect(ui->sendBtn, SIGNAL(pressed()), this, SLOT(on_sendBtn_clicked()));
+    connect(ui->AudioBtn,&QPushButton::clicked,this,&Widget::audio_start_end);
 }
 
 void Widget::init()
@@ -335,4 +340,23 @@ void Widget::closeEvent(QCloseEvent *e)
 {
     sndMsg(UsrLeft);
     QWidget::closeEvent(e);
+}
+
+void Widget::audio_start_end()
+{
+    if(flag == false)
+    {
+        my_audio->startAudio("audiofile");
+        flag = !flag;
+        ui->AudioBtn->setText("结束录音");
+    }
+    else{
+        my_audio->stopAudio();
+        QString retStr = my_audio->startSpeech();//识别结果
+        my_say->say(retStr);//播放出来
+        qDebug() << retStr;
+        ui->msgTextEdit->setText(retStr);//显示出来
+        flag = !flag;
+        ui->AudioBtn->setText("开始录音");
+    }
 }

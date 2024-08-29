@@ -53,6 +53,8 @@ public:
     QPushButton *sendBtn;
     QSpacerItem *horizontalSpacer_3;
     QLabel *usrNumLbl;
+    QSpacerItem *horizontalSpacer_4;
+    QPushButton *AudioBtn;
     QSpacerItem *horizontalSpacer;
     QPushButton *exitBtn;
 
@@ -239,6 +241,15 @@ public:
 
         horizontalLayout->addWidget(usrNumLbl);
 
+        horizontalSpacer_4 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+
+        horizontalLayout->addItem(horizontalSpacer_4);
+
+        AudioBtn = new QPushButton(Widget);
+        AudioBtn->setObjectName(QString::fromUtf8("AudioBtn"));
+
+        horizontalLayout->addWidget(AudioBtn);
+
         horizontalSpacer = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
 
         horizontalLayout->addItem(horizontalSpacer);
@@ -292,6 +303,7 @@ public:
         ___qtablewidgetitem1->setText(QApplication::translate("Widget", "IP\345\234\260\345\235\200", nullptr));
         sendBtn->setText(QApplication::translate("Widget", "\345\217\221\351\200\201", nullptr));
         usrNumLbl->setText(QApplication::translate("Widget", "\345\234\250\347\272\277\347\224\250\346\210\267\357\274\2320\344\272\272", nullptr));
+        AudioBtn->setText(QApplication::translate("Widget", "\345\274\200\345\247\213\345\275\225\351\237\263", nullptr));
         exitBtn->setText(QApplication::translate("Widget", "\351\200\200\345\207\272", nullptr));
     } // retranslateUi
 

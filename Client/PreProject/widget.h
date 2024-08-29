@@ -11,6 +11,9 @@
 #include <QProcess>
 #include <QColorDialog>
 #include <QTextCharFormat>
+#include <QTextToSpeech>
+#include <QVoice>
+#include "audio.h"//语音识别
 
 class QUdpSocket;
 class server;
@@ -49,6 +52,9 @@ private:
     server *srv;
     void init();
     QColor color;
+    bool flag = false;
+    Audio *my_audio;
+    QTextToSpeech *my_say;
 
 private slots:
     void processPendingDatagrams();                             //接收udp文件
@@ -65,5 +71,6 @@ private slots:
     void on_saveTBtn_clicked();
     void on_clearTBtn_clicked();
     void on_exitBtn_clicked();
+    void audio_start_end();
 };
 #endif // WIDGET_H
