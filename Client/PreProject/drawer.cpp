@@ -12,7 +12,7 @@ Drawer::Drawer(QWidget *parent, Qt::WindowFlags f) :
     setWindowIcon(QPixmap(":/res/qq.png"));
 
     toolBtn1 = new QToolButton(this);
-    toolBtn1->setText("小龙");
+    toolBtn1->setText("王医生");
     toolBtn1->setIcon(QPixmap(":/res/1.jpg"));
     toolBtn1->setIconSize(QPixmap(":/res/1.jpg").size());
     toolBtn1->setAutoRaise(true);                               //鼠标离开时，按钮自动恢复成弹起状态
@@ -20,7 +20,7 @@ Drawer::Drawer(QWidget *parent, Qt::WindowFlags f) :
     QObject::connect(toolBtn1, SIGNAL(clicked()), this, SLOT(showChatWidget1()));
 
     toolBtn2 = new QToolButton;
-    toolBtn2->setText("小强");
+    toolBtn2->setText("李医生");
     toolBtn2->setIcon(QPixmap(":/res/2.jpg"));
     toolBtn2->setIconSize(QPixmap(":/res/2.jpg").size());
     toolBtn2->setAutoRaise(true);
@@ -36,7 +36,7 @@ Drawer::Drawer(QWidget *parent, Qt::WindowFlags f) :
     connect(toolBtn3, SIGNAL(clicked()), this, SLOT(showChatWidget3()));
 
     toolBtn4 = new QToolButton;
-    toolBtn4->setText("小新");
+    toolBtn4->setText("张医生");
     toolBtn4->setIcon(QPixmap(":/res/4.jpg"));
     toolBtn4->setIconSize(QPixmap(":/res/4.jpg").size());
     toolBtn4->setAutoRaise(true);
@@ -44,7 +44,7 @@ Drawer::Drawer(QWidget *parent, Qt::WindowFlags f) :
     connect(toolBtn4, SIGNAL(clicked()), this, SLOT(showChatWidget4()));
 
     toolBtn5 = new QToolButton;
-    toolBtn5->setText("小花");
+    toolBtn5->setText("刘医生");
     toolBtn5->setIcon(QPixmap(":/res/5.jpg"));
     toolBtn5->setIconSize(QPixmap(":/res/5.jpg").size());
     toolBtn5->setAutoRaise(true);
@@ -52,7 +52,7 @@ Drawer::Drawer(QWidget *parent, Qt::WindowFlags f) :
     connect(toolBtn5, SIGNAL(clicked()), this, SLOT(showChatWidget5()));
 
     toolBtn6 = new QToolButton;
-    toolBtn6->setText("二狗");
+    toolBtn6->setText("杜医生");
     toolBtn6->setIcon(QPixmap(":/res/6.jpg"));
     toolBtn6->setIconSize(QPixmap(":/res/6.jpg").size());
     toolBtn6->setAutoRaise(true);
@@ -60,7 +60,7 @@ Drawer::Drawer(QWidget *parent, Qt::WindowFlags f) :
     connect(toolBtn6, SIGNAL(clicked()), this, SLOT(showChatWidget6()));
 
     toolBtn7 = new QToolButton;
-    toolBtn7->setText("小明");
+    toolBtn7->setText("钱医生");
     toolBtn7->setIcon(QPixmap(":/res/7.jpg"));
     toolBtn7->setIconSize(QPixmap(":/res/7.jpg").size());
     toolBtn7->setAutoRaise(true);
@@ -68,7 +68,7 @@ Drawer::Drawer(QWidget *parent, Qt::WindowFlags f) :
     connect(toolBtn7, SIGNAL(clicked()), this, SLOT(showChatWidget7()));
 
     toolBtn8 = new QToolButton;
-    toolBtn8->setText("大黄");
+    toolBtn8->setText("秦医生");
     toolBtn8->setIcon(QPixmap(":/res/8.jpg"));
     toolBtn8->setIconSize(QPixmap(":/res/8.jpg").size());
     toolBtn8->setAutoRaise(true);
@@ -76,7 +76,7 @@ Drawer::Drawer(QWidget *parent, Qt::WindowFlags f) :
     connect(toolBtn8, SIGNAL(clicked()), this, SLOT(showChatWidget8()));
 
     toolBtn9 = new QToolButton;
-    toolBtn9->setText("小美");
+    toolBtn9->setText("何医生");
     toolBtn9->setIcon(QPixmap(":/res/9.jpg"));
     toolBtn9->setIconSize(QPixmap(":/res/9.jpg").size());
     toolBtn9->setAutoRaise(true);

@@ -25,6 +25,7 @@ SOURCES += \
     hospitalizationwindow.cpp \
     http.cpp \
     httpmgr.cpp \
+    iknow.cpp \
     insidewd.cpp \
     loadingdlg.cpp \
     logindialog.cpp \
@@ -85,6 +86,7 @@ HEADERS += \
     hospitalizationwindow.h \
     http.h \
     httpmgr.h \
+    iknow.h \
     insidewd.h \
     invaliditem.h \
     listitembase.h \
